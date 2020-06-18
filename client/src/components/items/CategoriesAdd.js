@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Container, Form } from 'react-bootstrap';
 import makeAnimated from 'react-select/animated';
 import Select from 'react-select';
-import ImageUploader from 'react-images-upload';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import useResources from '../../utils/useResources';
@@ -10,20 +9,12 @@ import useResources from '../../utils/useResources';
 const CategoriesAdd = (props) => {
   const initialFormState = { title: '', thumbnail: '', location: '' };
   const [item, setItem] = useState(initialFormState);
-  // const [validated, setValidated] = useState(false);
-  const [pictures, setPictures] = useState([]);
+  const [itemAdded, setItemAdded] = useState(false);
   const animatedComponents = makeAnimated();
   const locations = useResources('locations');
-  const [itemAdded, setItemAdded] = useState(false);
 
   async function onSubmit(e) {
     e.preventDefault();
-    // const form = e.currentTarget;
-    // if (form.checkValidity() === false) {
-    //   e.preventDefault();
-    //   e.stopPropagation();
-    // }
-    // setValidated(true);
     props.addItem(item);
     setItemAdded(true);
     setItem(initialFormState);
@@ -37,18 +28,9 @@ const CategoriesAdd = (props) => {
     setItem({ ...item, [action.name]: value });
   }
 
-  function onDrop(picture) {
-    setPictures([...pictures, picture]);
-  }
-
   return (
     <>
-      <Form
-        // noValidate
-        // validated={validated}
-        onSubmit={onSubmit}
-        className='needs-validation'
-      >
+      <Form onSubmit={onSubmit} className='needs-validation'>
         <Form.Group>
           <Form.Control
             name='title'
@@ -58,11 +40,8 @@ const CategoriesAdd = (props) => {
             type='text'
             required
           />
-          {/* <Form.Control.Feedback type='invalid'>
-            Please provide a valid title.
-          </Form.Control.Feedback> */}
         </Form.Group>
-        {/* <Form.Group>
+        <Form.Group>
           <Form.Control
             name='thumbnail'
             placeholder='Thumbnail *'
@@ -71,10 +50,7 @@ const CategoriesAdd = (props) => {
             type='text'
             required
           />
-          <Form.Control.Feedback type='invalid'>
-            Please provide a valid image.
-          </Form.Control.Feedback>
-        </Form.Group> */}
+        </Form.Group>
         <Form.Group>
           <Select
             name='location'
@@ -88,22 +64,6 @@ const CategoriesAdd = (props) => {
             isMulti
           />
         </Form.Group>
-        <ImageUploader
-          {...props}
-          name='thumbnail'
-          withIcon={false}
-          onChange={onDrop}
-          // onChange={() => {
-          //   onDrop();
-          //   onChange();
-          // }}
-          imgExtension={['.jpg', '.gif', '.png', '.gif']}
-          maxFileSize={5242880}
-          withPreview
-          singleImage
-          withLabel={false}
-          value={item.thumbnail}
-        />
         <Container className='d-flex justify-content-center'>
           <Button
             type='submit'

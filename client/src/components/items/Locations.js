@@ -72,15 +72,15 @@ const Items = () => {
       <Row>
         <Col md={8}>
           <Container className='sticky-top shadow-sm p-3 rounded'>
-            {editingItem ? (
+            {!editingItem ? (
+              <AddItem addItem={addItem} />
+            ) : (
               <EditItem
                 currentItem={currentItem}
                 editingItem={editingItem}
                 setEditingItem={setEditingItem}
                 updateItem={updateItem}
               />
-            ) : (
-              <AddItem addItem={addItem} />
             )}
           </Container>
         </Col>

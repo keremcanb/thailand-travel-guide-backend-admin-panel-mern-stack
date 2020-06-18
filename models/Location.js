@@ -5,8 +5,7 @@ const LocationSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  thumbnail: { type: String },
-  // thumbnail: { type: String, required: [true, 'Thumbnail is required'] },
+  thumbnail: { type: String, required: true },
 });
 
 module.exports = mongoose.model('location', LocationSchema);

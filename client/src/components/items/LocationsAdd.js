@@ -3,29 +3,26 @@ import axios from 'axios';
 import { Container, Form } from 'react-bootstrap';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
+import ImageUploader from 'react-images-upload';
 import Message from '../layout/Message';
-// import AddForm from '../layout/AddForm';
 
-const AddItem = ({ addItem }) => {
+const AddItem = (props) => {
   const initialFormState = { title: '', thumbnail: '' };
   const [item, setItem] = useState(initialFormState);
-  // const [validated, setValidated] = useState(false);
   const [itemAdded, setItemAdded] = useState(false);
 
+  // vanilla img ul
   const [file, setFile] = useState('');
   const [filename, setFilename] = useState('Choose File');
   const [uploadedFile, setUploadedFile] = useState({});
   const [message, setMessage] = useState('');
 
+  // react-images-upload
+  const [pictures, setPictures] = useState([]);
+
   async function onSubmit(e) {
     e.preventDefault();
-    // const form = e.currentTarget;
-    // if (form.checkValidity() === false) {
-    //   e.preventDefault();
-    //   e.stopPropagation();
-    // }
-    // setValidated(true);
-    addItem(item);
+    props.addItem(item);
     setItemAdded(true);
     setItem(initialFormState);
 
@@ -57,13 +54,13 @@ const AddItem = ({ addItem }) => {
     setItem({ ...item, [e.target.name]: e.target.value });
   }
 
+  function onDrop(picture) {
+    setPictures([...pictures, picture]);
+  }
+
   return (
     <>
-      <Form
-        // noValidate
-        // validated={validated}
-        onSubmit={onSubmit}
-      >
+      <Form onSubmit={onSubmit}>
         <Form.Group>
           <Form.Control
             name='title'
@@ -73,27 +70,42 @@ const AddItem = ({ addItem }) => {
             type='text'
             required
           />
-          {/* <Form.Control.Feedback type='invalid'>
-            Please provide a valid title.
-          </Form.Control.Feedback> */}
+        </Form.Group>
+        <Form.Group>
+          <Form.Control
+            name='thumbnail'
+            placeholder='Thumbnail *'
+            value={item.thumbnail}
+            onChange={onChange}
+            type='text'
+            required
+          />
         </Form.Group>
         <>
           {message ? <Message msg={message} /> : null}
           <Form.Group className='custom-file mb-4'>
             <Form.File
-              name='thumbnail'
+              // name='thumbnail'
+              // value={item.thumbnail}
               id='custom-file'
               label={filename}
               onChange={onChangeFile}
-              value={item.thumbnail}
               custom
-              // required
             />
           </Form.Group>
-          {/* <Form.Control.Feedback type='invalid'>
-            Please choose an image.
-          </Form.Control.Feedback> */}
         </>
+        <ImageUploader
+          {...props}
+          // name='thumbnail'
+          // value={item.thumbnail}
+          onChange={onDrop}
+          withIcon={false}
+          withLabel={false}
+          imgExtension={['.jpg', '.gif', '.png', '.gif']}
+          maxFileSize={5242880}
+          withPreview
+          singleImage
+        />
         <Container className='text-center'>
           <Button
             type='submit'
@@ -121,11 +133,6 @@ const AddItem = ({ addItem }) => {
         </Container>
       )}
     </>
-    //   <AddItemForm
-    //   selectedItem={item}
-    //   submit={onSubmit}
-    //   change={onChange}
-    // />
   );
 };
 

@@ -29,7 +29,6 @@ const ListItems = ({ selectedItem, deleteItem, editItem, onSearch }) => {
                   <Image
                     src={item.thumbnail}
                     alt={item.title}
-                    // className='mr-4'
                     thumbnail
                     width={120}
                     height={40}

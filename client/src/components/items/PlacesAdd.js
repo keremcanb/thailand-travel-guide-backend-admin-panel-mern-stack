@@ -18,20 +18,13 @@ const AddItem = ({ addItem }) => {
     lng: '',
   };
   const [item, setItem] = useState(initialFormState);
-  // const [validated, setValidated] = useState(false);
+  const [itemAdded, setItemAdded] = useState(false);
   const { title, image, thumbnail, content, info, link, lat, lng } = item;
   const locations = useResources('locations');
   const categories = useResources('categories');
-  const [itemAdded, setItemAdded] = useState(false);
 
   async function onSubmit(e) {
     e.preventDefault();
-    // const form = e.currentTarget;
-    // if (form.checkValidity() === false) {
-    //   e.preventDefault();
-    //   e.stopPropagation();
-    // }
-    // setValidated(true);
     addItem(item);
     setItemAdded(true);
     setItem(initialFormState);
@@ -43,11 +36,7 @@ const AddItem = ({ addItem }) => {
 
   return (
     <>
-      <Form
-        // noValidate
-        // validated={validated}
-        onSubmit={onSubmit}
-      >
+      <Form onSubmit={onSubmit}>
         <Form.Group>
           <Form.Control
             name='title'
@@ -57,9 +46,6 @@ const AddItem = ({ addItem }) => {
             type='text'
             required
           />
-          {/* <Form.Control.Feedback type='invalid'>
-            Please provide a valid title.
-          </Form.Control.Feedback> */}
         </Form.Group>
         <Form.Group>
           <Form.Control
@@ -70,9 +56,6 @@ const AddItem = ({ addItem }) => {
             type='text'
             required
           />
-          {/* <Form.Control.Feedback type='invalid'>
-            Please provide a valid image.
-          </Form.Control.Feedback> */}
         </Form.Group>
         <Form.Group>
           <Form.Control
@@ -83,9 +66,6 @@ const AddItem = ({ addItem }) => {
             type='text'
             required
           />
-          {/* <Form.Control.Feedback type='invalid'>
-            Please provide a valid thumbnail.
-          </Form.Control.Feedback> */}
         </Form.Group>
         <Form.Group>
           <Form.Control
@@ -97,9 +77,6 @@ const AddItem = ({ addItem }) => {
             rows='3'
             required
           />
-          {/* <Form.Control.Feedback type='invalid'>
-            Please provide a valid content.
-          </Form.Control.Feedback> */}
         </Form.Group>
         <Form.Group>
           <Row>
@@ -117,9 +94,6 @@ const AddItem = ({ addItem }) => {
                   </option>
                 ))}
               </Form.Control>
-              {/* <Form.Control.Feedback type='invalid'>
-                Please select a location..
-              </Form.Control.Feedback> */}
             </Col>
             <Col>
               <Form.Control
@@ -135,9 +109,6 @@ const AddItem = ({ addItem }) => {
                   </option>
                 ))}
               </Form.Control>
-              {/* <Form.Control.Feedback type='invalid'>
-                Please select a category.
-              </Form.Control.Feedback> */}
             </Col>
           </Row>
         </Form.Group>
@@ -149,9 +120,6 @@ const AddItem = ({ addItem }) => {
             onChange={onChange}
             type='text'
           />
-          {/* <Form.Control.Feedback type='invalid'>
-            Please provide a valid info.
-          </Form.Control.Feedback> */}
         </Form.Group>
         <Form.Group>
           <Form.Control
