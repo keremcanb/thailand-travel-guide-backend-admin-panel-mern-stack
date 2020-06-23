@@ -3,6 +3,7 @@ const compression = require('compression');
 const helmet = require('helmet');
 const path = require('path');
 const fileUpload = require('express-fileupload');
+const cors = require('cors');
 const connectDB = require('./config/db');
 
 const app = express();
@@ -12,6 +13,8 @@ connectDB();
 app.use(fileUpload());
 app.use(compression());
 app.use(helmet());
+app.use(cors());
+
 app.use(express.json({ extended: false }));
 app.use(express.static('public'));
 
@@ -33,6 +36,24 @@ app.post('/upload', (req, res) => {
     res.json({ fileName: file.name, filePath: `/${file.name}` });
   });
 });
+
+// file upload api
+// app.post('/upload', (req, res) => {
+//   if (!req.files) {
+//     return res.status(500).send({ msg: 'file is not found' });
+//   }
+//   // accessing the file
+//   const myFile = req.files.file;
+//   //  mv() method places the file inside public directory
+//   myFile.mv(`${__dirname}/public/${myFile.name}`, function (err) {
+//     if (err) {
+//       console.log(err);
+//       return res.status(500).send({ msg: 'Error occured' });
+//     }
+//     // returing the response with file path and name
+//     return res.send({ name: myFile.name, path: `/${myFile.name}` });
+//   });
+// });
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {

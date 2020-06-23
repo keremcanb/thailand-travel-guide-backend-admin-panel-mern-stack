@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Container, Form } from 'react-bootstrap';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
-import ImageUploader from 'react-images-upload';
+// import ImageUploader from 'react-images-upload';
 import Message from '../layout/Message';
 
 const AddItem = (props) => {
@@ -18,7 +18,7 @@ const AddItem = (props) => {
   const [message, setMessage] = useState('');
 
   // react-images-upload
-  const [pictures, setPictures] = useState([]);
+  // const [pictures, setPictures] = useState([]);
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -48,15 +48,16 @@ const AddItem = (props) => {
   function onChangeFile(e) {
     setFile(e.target.files[0]);
     setFilename(e.target.files[0].name);
+    setItem({ ...item, [e.target.name]: e.target.value });
   }
 
   function onChange(e) {
     setItem({ ...item, [e.target.name]: e.target.value });
   }
 
-  function onDrop(picture) {
-    setPictures([...pictures, picture]);
-  }
+  // function onDrop(picture) {
+  //   setPictures([...pictures, picture]);
+  // }
 
   return (
     <>
@@ -71,7 +72,7 @@ const AddItem = (props) => {
             required
           />
         </Form.Group>
-        <Form.Group>
+        {/* <Form.Group>
           <Form.Control
             name='thumbnail'
             placeholder='Thumbnail *'
@@ -80,13 +81,12 @@ const AddItem = (props) => {
             type='text'
             required
           />
-        </Form.Group>
+        </Form.Group> */}
         <>
           {message ? <Message msg={message} /> : null}
           <Form.Group className='custom-file mb-4'>
             <Form.File
-              // name='thumbnail'
-              // value={item.thumbnail}
+              name='thumbnail'
               id='custom-file'
               label={filename}
               onChange={onChangeFile}
@@ -94,7 +94,7 @@ const AddItem = (props) => {
             />
           </Form.Group>
         </>
-        <ImageUploader
+        {/* <ImageUploader
           {...props}
           // name='thumbnail'
           // value={item.thumbnail}
@@ -105,7 +105,7 @@ const AddItem = (props) => {
           maxFileSize={5242880}
           withPreview
           singleImage
-        />
+        /> */}
         <Container className='text-center'>
           <Button
             type='submit'

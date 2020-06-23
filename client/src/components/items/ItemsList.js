@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import IconButton from '@material-ui/core/IconButton';
-import LazyLoad from 'react-lazy-load';
+// import LazyLoad from 'react-lazy-load';
 import SearchBar from '../layout/SearchBar';
 
 const ListItems = ({ selectedItem, deleteItem, editItem, onSearch }) => {
@@ -25,7 +25,7 @@ const ListItems = ({ selectedItem, deleteItem, editItem, onSearch }) => {
           <Container key={item._id}>
             <ul className='list-unstyled'>
               <Media as='li'>
-                <LazyLoad>
+                {/* <LazyLoad> */}
                   <Image
                     src={item.thumbnail}
                     alt={item.title}
@@ -33,7 +33,7 @@ const ListItems = ({ selectedItem, deleteItem, editItem, onSearch }) => {
                     width={120}
                     height={40}
                   />
-                </LazyLoad>
+                {/* </LazyLoad> */}
                 <Media.Body>
                   <h6 className='text-center mt-1 mb-4'>
                     <strong>{item.title}</strong>

@@ -54,6 +54,7 @@ const CategoriesAdd = (props) => {
         <Form.Group>
           <Select
             name='location'
+            placeholder='Locations *'
             options={locations.map((loc) => ({
               value: loc.title,
               label: loc.title,
