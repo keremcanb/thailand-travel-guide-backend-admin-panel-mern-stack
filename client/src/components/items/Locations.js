@@ -18,6 +18,7 @@ const Items = () => {
       setItems(result.data);
     }
     getItems();
+    // effect will only run once when the component mounts, and not on every re-render.
   }, []);
 
   function addItem(item) {
