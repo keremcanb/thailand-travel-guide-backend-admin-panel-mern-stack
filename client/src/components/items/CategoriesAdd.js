@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Container, Form } from 'react-bootstrap';
 import makeAnimated from 'react-select/animated';
 import Select from 'react-select';
+import ImageUploader from 'react-images-upload';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import useResources from '../../utils/useResources';
@@ -12,6 +13,9 @@ const CategoriesAdd = (props) => {
   const [itemAdded, setItemAdded] = useState(false);
   const animatedComponents = makeAnimated();
   const locations = useResources('locations');
+
+  // react-images-upload
+  const [pictures, setPictures] = useState([]);
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -28,6 +32,10 @@ const CategoriesAdd = (props) => {
     setItem({ ...item, [action.name]: value });
   }
 
+  function onDrop(picture) {
+    setPictures([...pictures, picture]);
+  }
+
   return (
     <>
       <Form onSubmit={onSubmit} className='needs-validation'>
@@ -41,7 +49,7 @@ const CategoriesAdd = (props) => {
             required
           />
         </Form.Group>
-        <Form.Group>
+        {/* <Form.Group>
           <Form.Control
             name='thumbnail'
             placeholder='Thumbnail *'
@@ -50,7 +58,7 @@ const CategoriesAdd = (props) => {
             type='text'
             required
           />
-        </Form.Group>
+        </Form.Group> */}
         <Form.Group>
           <Select
             name='location'
@@ -65,6 +73,18 @@ const CategoriesAdd = (props) => {
             isMulti
           />
         </Form.Group>
+        <ImageUploader
+          {...props}
+          // name='thumbnail'
+          // value={item.thumbnail}
+          onChange={onDrop}
+          withIcon={false}
+          withLabel={false}
+          imgExtension={['.jpg', '.gif', '.png', '.gif']}
+          maxFileSize={5242880}
+          withPreview
+          singleImage
+        />
         <Container className='d-flex justify-content-center'>
           <Button
             type='submit'

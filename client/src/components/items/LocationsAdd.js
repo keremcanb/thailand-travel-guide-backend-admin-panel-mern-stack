@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Container, Form } from 'react-bootstrap';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
-// import ImageUploader from 'react-images-upload';
 import Message from '../layout/Message';
 
 const AddItem = (props) => {
@@ -16,9 +15,6 @@ const AddItem = (props) => {
   const [filename, setFilename] = useState('Choose File');
   const [uploadedFile, setUploadedFile] = useState({});
   const [message, setMessage] = useState('');
-
-  // react-images-upload
-  // const [pictures, setPictures] = useState([]);
 
   async function onSubmit(e) {
     e.preventDefault();
@@ -55,10 +51,6 @@ const AddItem = (props) => {
     setItem({ ...item, [e.target.name]: e.target.value });
   }
 
-  // function onDrop(picture) {
-  //   setPictures([...pictures, picture]);
-  // }
-
   return (
     <>
       <Form onSubmit={onSubmit}>
@@ -94,18 +86,6 @@ const AddItem = (props) => {
             />
           </Form.Group>
         </>
-        {/* <ImageUploader
-          {...props}
-          // name='thumbnail'
-          // value={item.thumbnail}
-          onChange={onDrop}
-          withIcon={false}
-          withLabel={false}
-          imgExtension={['.jpg', '.gif', '.png', '.gif']}
-          maxFileSize={5242880}
-          withPreview
-          singleImage
-        /> */}
         <Container className='text-center'>
           <Button
             type='submit'
