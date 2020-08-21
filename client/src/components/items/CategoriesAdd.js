@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Container, Form } from 'react-bootstrap';
 import makeAnimated from 'react-select/animated';
 import Select from 'react-select';
-import ImageUploader from 'react-images-upload';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
 import useResources from '../../utils/useResources';
@@ -10,17 +9,14 @@ import useResources from '../../utils/useResources';
 const CategoriesAdd = (props) => {
   const initialFormState = { title: '', thumbnail: '', location: '' };
   const [item, setItem] = useState(initialFormState);
-  const [itemAdded, setItemAdded] = useState(false);
   const animatedComponents = makeAnimated();
   const locations = useResources('locations');
-
-  // react-images-upload
-  const [pictures, setPictures] = useState([]);
+  // const [itemAdded, setItemAdded] = useState(false);
 
   async function onSubmit(e) {
     e.preventDefault();
     props.addItem(item);
-    setItemAdded(true);
+    // setItemAdded(true);
     setItem(initialFormState);
   }
 
@@ -30,10 +26,6 @@ const CategoriesAdd = (props) => {
 
   function onSelect(value, action) {
     setItem({ ...item, [action.name]: value });
-  }
-
-  function onDrop(picture) {
-    setPictures([...pictures, picture]);
   }
 
   return (
@@ -49,7 +41,7 @@ const CategoriesAdd = (props) => {
             required
           />
         </Form.Group>
-        {/* <Form.Group>
+        <Form.Group>
           <Form.Control
             name='thumbnail'
             placeholder='Thumbnail *'
@@ -58,11 +50,10 @@ const CategoriesAdd = (props) => {
             type='text'
             required
           />
-        </Form.Group> */}
+        </Form.Group>
         <Form.Group>
           <Select
             name='location'
-            placeholder='Locations *'
             options={locations.map((loc) => ({
               value: loc.title,
               label: loc.title,
@@ -73,18 +64,6 @@ const CategoriesAdd = (props) => {
             isMulti
           />
         </Form.Group>
-        <ImageUploader
-          {...props}
-          // name='thumbnail'
-          // value={item.thumbnail}
-          onChange={onDrop}
-          withIcon={false}
-          withLabel={false}
-          imgExtension={['.jpg', '.gif', '.png', '.gif']}
-          maxFileSize={5242880}
-          withPreview
-          singleImage
-        />
         <Container className='d-flex justify-content-center'>
           <Button
             type='submit'
@@ -96,11 +75,11 @@ const CategoriesAdd = (props) => {
           </Button>
         </Container>
       </Form>
-      {itemAdded && (
+      {/* {itemAdded && (
         <Container className='d-flex justify-content-center mt-2'>
           <h5>Category added</h5>
         </Container>
-      )}
+      )} */}
     </>
   );
 };

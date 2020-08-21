@@ -34,20 +34,7 @@ router.get('/categories', async (req, res) => {
 router.get('/places', async (req, res) => {
   try {
     const places = await Place.find();
-    const pageCount = Math.ceil(places.length / 20);
-    let page = parseInt(req.query.p);
-    if (!page) {
-      page = 1;
-    }
-    if (page > pageCount) {
-      page = pageCount;
-    }
-    res.json({
-      page,
-      pageCount,
-      places: places.slice(page * 20 - 20, page * 20),
-    });
-    // res.json(places);
+    res.json(places);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');

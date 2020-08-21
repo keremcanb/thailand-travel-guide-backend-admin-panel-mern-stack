@@ -18,7 +18,6 @@ const Items = () => {
       setItems(result.data);
     }
     getItems();
-    // effect will only run once when the component mounts, and not on every re-render.
   }, []);
 
   function addItem(item) {
@@ -73,15 +72,15 @@ const Items = () => {
       <Row>
         <Col md={8}>
           <Container className='sticky-top shadow-sm p-3 rounded'>
-            {!editingItem ? (
-              <AddItem addItem={addItem} />
-            ) : (
+            {editingItem ? (
               <EditItem
                 currentItem={currentItem}
                 editingItem={editingItem}
                 setEditingItem={setEditingItem}
                 updateItem={updateItem}
               />
+            ) : (
+              <AddItem addItem={addItem} />
             )}
           </Container>
         </Col>

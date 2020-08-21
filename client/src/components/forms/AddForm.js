@@ -2,37 +2,22 @@ import React, { useState } from 'react';
 import { Container, Form, Col, Row } from 'react-bootstrap';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
-import useResources from '../../utils/useResources';
+// import useResources from '../../utils/useResources';
 
-const AddItem = ({ addItem }) => {
-  const initialFormState = {
-    title: '',
-    image: '',
-    thumbnail: '',
-    content: '',
-    location: '',
-    category: '',
-    info: '',
-    link: '',
-    lat: '',
-    lng: '',
-  };
-  const [item, setItem] = useState(initialFormState);
-  const { title, image, thumbnail, content, info, link, lat, lng } = item;
-  const locations = useResources('locations');
-  const categories = useResources('categories');
-  // const [itemAdded, setItemAdded] = useState(false);
+const AddItem = ({ onSubmit }) => {
+  const [title, setTitle] = useState('');
+  const [thumbnail, setThumbnail] = useState('');
+  const [image, setImage] = useState('');
+  // const [content, setContent] = useState('');
+  // const [location, setLocation] = useState('');
+  // const [category, setCategory] = useState('');
+  // const [info, setInfo] = useState('');
+  // const [link, setLink] = useState('');
+  // const [lat, setLat] = useState('');
+  // const [lng, setLng] = useState('');
 
-  async function onSubmit(e) {
-    e.preventDefault();
-    addItem(item);
-    // setItemAdded(true);
-    setItem(initialFormState);
-  }
-
-  function onChange(e) {
-    setItem({ ...item, [e.target.name]: e.target.value });
-  }
+  // const locations = useResources('locations');
+  // const categories = useResources('categories');
 
   return (
     <>
@@ -42,17 +27,7 @@ const AddItem = ({ addItem }) => {
             name='title'
             placeholder='Title *'
             value={title}
-            onChange={onChange}
-            type='text'
-            required
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Control
-            name='image'
-            placeholder='Image *'
-            value={image}
-            onChange={onChange}
+            onChange={setTitle}
             type='text'
             required
           />
@@ -62,23 +37,35 @@ const AddItem = ({ addItem }) => {
             name='thumbnail'
             placeholder='Thumbnail *'
             value={thumbnail}
-            onChange={onChange}
+            onChange={setThumbnail}
             type='text'
             required
           />
         </Form.Group>
-        <Form.Group>
+        {!!image && (
+          <Form.Group>
+            <Form.Control
+              name='image'
+              placeholder='Image *'
+              value={image}
+              onChange={setImage}
+              type='text'
+              required
+            />
+          </Form.Group>
+        )}
+        {/* <Form.Group>
           <Form.Control
             name='content'
             placeholder='Content *'
             value={content}
-            onChange={onChange}
+            onChange={setContent}
             as='textarea'
             rows='3'
             required
           />
-        </Form.Group>
-        <Form.Group>
+        </Form.Group> */}
+        {/* <Form.Group>
           <Row>
             <Col>
               <Form.Control
@@ -111,13 +98,13 @@ const AddItem = ({ addItem }) => {
               </Form.Control>
             </Col>
           </Row>
-        </Form.Group>
-        <Form.Group>
+        </Form.Group> */}
+        {/* <Form.Group>
           <Form.Control
             name='info'
             placeholder='Info'
             value={info}
-            onChange={onChange}
+            onChange={setInfo}
             type='text'
           />
         </Form.Group>
@@ -126,7 +113,7 @@ const AddItem = ({ addItem }) => {
             name='link'
             placeholder='Link'
             value={link}
-            onChange={onChange}
+            onChange={setLink}
             type='text'
           />
           <Form.Control.Feedback type='invalid'>
@@ -140,7 +127,7 @@ const AddItem = ({ addItem }) => {
                 name='lat'
                 placeholder='Lat'
                 value={lat}
-                onChange={onChange}
+                onChange={setLat}
                 type='text'
               />
             </Col>
@@ -149,12 +136,12 @@ const AddItem = ({ addItem }) => {
                 name='lng'
                 placeholder='Lng'
                 value={lng}
-                onChange={onChange}
+                onChange={setLng}
                 type='text'
               />
             </Col>
           </Row>
-        </Form.Group>
+        </Form.Group> */}
         <Container className='d-flex justify-content-center'>
           <Button
             type='submit'
