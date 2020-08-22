@@ -7,12 +7,12 @@ import AddIcon from '@material-ui/icons/Add';
 const AddItem = ({ addItem }) => {
   const initialFormState = { title: '', thumbnail: '' };
   const [item, setItem] = useState(initialFormState);
-  // const [itemAdded, setItemAdded] = useState(false);
+  const [itemAdded, setItemAdded] = useState(false);
 
   async function onSubmit(e) {
     e.preventDefault();
     addItem(item);
-    // setItemAdded(true);
+    setItemAdded(true);
     setItem(initialFormState);
   }
 
@@ -54,11 +54,11 @@ const AddItem = ({ addItem }) => {
           </Button>
         </Container>
       </Form>
-      {/* {itemAdded && (
+      {itemAdded && (
         <Container className='d-flex justify-content-center mt-2'>
           <h5>Location added</h5>
         </Container>
-      )} */}
+      )}
     </>
   );
 };

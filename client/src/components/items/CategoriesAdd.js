@@ -11,12 +11,12 @@ const CategoriesAdd = (props) => {
   const [item, setItem] = useState(initialFormState);
   const animatedComponents = makeAnimated();
   const locations = useResources('locations');
-  // const [itemAdded, setItemAdded] = useState(false);
+  const [itemAdded, setItemAdded] = useState(false);
 
   async function onSubmit(e) {
     e.preventDefault();
     props.addItem(item);
-    // setItemAdded(true);
+    setItemAdded(true);
     setItem(initialFormState);
   }
 
@@ -75,11 +75,11 @@ const CategoriesAdd = (props) => {
           </Button>
         </Container>
       </Form>
-      {/* {itemAdded && (
+      {itemAdded && (
         <Container className='d-flex justify-content-center mt-2'>
           <h5>Category added</h5>
         </Container>
-      )} */}
+      )}
     </>
   );
 };
