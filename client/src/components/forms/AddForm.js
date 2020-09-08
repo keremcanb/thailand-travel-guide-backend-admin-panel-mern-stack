@@ -42,7 +42,7 @@ const AddItem = ({ onSubmit }) => {
             required
           />
         </Form.Group>
-        {!!image && (
+        {image && (
           <Form.Group>
             <Form.Control
               name='image'

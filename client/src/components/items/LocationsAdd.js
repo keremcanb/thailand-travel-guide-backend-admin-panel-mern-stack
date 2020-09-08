@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Container, Form } from 'react-bootstrap';
 import Button from '@material-ui/core/Button';
 import AddIcon from '@material-ui/icons/Add';
-// import Message from '../layout/Message';
 
 const AddItem = ({ addItem }) => {
   const initialFormState = { title: '', thumbnail: '' };
