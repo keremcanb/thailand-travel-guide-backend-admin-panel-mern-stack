@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import TechSelectOptions from '../techs/TechSelectOptions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import M from 'materialize-css/dist/js/materialize.min.js';
 import { updateLog } from '../../actions/location';
 
 const EditLogModal = ({ current, updateLog }) => {
@@ -20,7 +19,7 @@ const EditLogModal = ({ current, updateLog }) => {
 
   const onSubmit = () => {
     if (message === '' || tech === '') {
-      M.toast({ html: 'Please enter a message and tech' });
+      // M.toast({ html: 'Please enter a message and tech' });
     } else {
       const updLog = {
         id: current.id,

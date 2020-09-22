@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import M from 'materialize-css/dist/js/materialize.min.js';
+// import M from 'materialize-css/dist/js/materialize.min.js';
 import { Media, Image, Modal, Container, Spinner } from 'react-bootstrap';
 import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
@@ -14,7 +14,7 @@ import { deleteLocation, setCurrent } from '../../actions/location';
 const LocationItem = ({ location, deleteLocation, setCurrent }) => {
   const onDelete = () => {
     deleteLocation(location.id);
-    M.toast({ html: 'Location Deleted' });
+    // M.toast({ html: 'Location Deleted' });
   };
 
   return (

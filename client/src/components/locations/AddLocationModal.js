@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import M from 'materialize-css/dist/js/materialize.min.js';
 import { addLocation } from '../../actions/location';
 
 const AddLocationModal = ({ addLocation }) => {
@@ -10,7 +9,7 @@ const AddLocationModal = ({ addLocation }) => {
 
   const onSubmit = () => {
     if (message === '') {
-      M.toast({ html: 'Please enter a message and tech' });
+      // M.toast({ html: 'Please enter a message and tech' });
     } else {
       const newLocation = {
         message,
@@ -18,7 +17,7 @@ const AddLocationModal = ({ addLocation }) => {
 
       addLocation(newLocation);
 
-      M.toast({ html: `Location added` });
+      // M.toast({ html: `Location added` });
 
       // Clear Fields
       setMessage('');
