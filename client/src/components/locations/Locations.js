@@ -27,7 +27,7 @@ const LocationsNew = ({ location: { locations, loading }, getLocations }) => {
           ))}
         </Grid>
         <Grid className={classes.gridFab}>
-          <Fab color='primary' aria-label='add'>
+          <Fab color='primary' aria-label='add' href='#add-log-modal'>
             <AddIcon />
           </Fab>
         </Grid>
@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
     gridGap: theme.spacing(3),
+    justifyContent: 'center',
     marginTop: '100px',
   },
   gridFab: {
