@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 // import M from 'materialize-css/dist/js/materialize.min.js';
-import { Media, Image, Modal, Container, Spinner } from 'react-bootstrap';
+// import { Media, Image, Modal, Container, Spinner } from 'react-bootstrap';
+import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
@@ -18,42 +19,37 @@ const LocationItem = ({ location, deleteLocation, setCurrent }) => {
   };
 
   return (
-    <Container key={location._id}>
-      <Image
+    <Grid key={location._id}>
+      <img
         src={location.thumbnail}
         alt={location.title}
         // className='mr-4'
         thumbnail
-        width={120}
-        height={40}
+        width={150}
+        height={75}
       />
-      <Media.Body>
-        <h6 className='text-center mt-1 mb-4'>
-          <strong>{location.title}</strong>
-        </h6>
-        <Container className='d-flex justify-content-center'>
-          <IconButton
-            color='primary'
-            className='shadow-sm mr-4'
-            size='small'
-            // onClick={() => {
-            //   editItem(item);
-            // }}
-          >
-            <EditIcon />
-          </IconButton>
-          <IconButton
-            color='secondary'
-            className='shadow-sm'
-            size='small'
-            onClick={onDelete}
-          >
-            <DeleteIcon />
-          </IconButton>
-        </Container>
-      </Media.Body>
-      <hr />
-    </Container>
+      <h6>
+        <strong>{location.title}</strong>
+      </h6>
+      <IconButton
+        color='primary'
+        className='shadow-sm mr-4'
+        size='small'
+        // onClick={() => {
+        //   editItem(item);
+        // }}
+      >
+        <EditIcon />
+      </IconButton>
+      <IconButton
+        color='secondary'
+        className='shadow-sm'
+        size='small'
+        onClick={onDelete}
+      >
+        <DeleteIcon />
+      </IconButton>
+    </Grid>
   );
 };
 
