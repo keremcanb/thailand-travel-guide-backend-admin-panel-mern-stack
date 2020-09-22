@@ -8,9 +8,9 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import { updateLog } from '../../actions/logActions';
 
 const EditLogModal = ({ current, updateLog }) => {
-  const [message, setMessage] = useState('');
-  const [attention, setAttention] = useState(false);
-  const [tech, setTech] = useState('');
+  const [title, setTitle] = useState('');
+  // const [attention, setAttention] = useState(false);
+  // const [tech, setTech] = useState('');
 
   const modalStyle = {
     width: '75%',
@@ -19,50 +19,50 @@ const EditLogModal = ({ current, updateLog }) => {
 
   useEffect(() => {
     if (current) {
-      setMessage(current.message);
-      setAttention(current.attention);
-      setTech(current.tech);
+      setTitle(current.title);
+      // setAttention(current.attention);
+      // setTech(current.tech);
     }
   }, [current]);
 
   const onSubmit = () => {
-    if (message === '' || tech === '') {
-      M.toast({ html: 'Please enter a message and tech' });
+    if (title === '') {
+      M.toast({ html: 'Please enter a title and tech' });
     } else {
       const updLog = {
         id: current.id,
-        message,
-        attention,
-        tech,
+        title,
+        // attention,
+        // tech,
         date: new Date(),
       };
 
       updateLog(updLog);
-      M.toast({ html: `Log updated by ${tech}` });
+      M.toast({ html: `Log updated` });
 
       // Clear Fields
-      setMessage('');
-      setTech('');
-      setAttention(false);
+      setTitle('');
+      // setTech('');
+      // setAttention(false);
     }
   };
 
   return (
     <div id='edit-log-modal' className='modal' style={modalStyle}>
       <div className='modal-content'>
-        <h4>Enter System Log</h4>
+        {/* <h4>Enter System Log</h4> */}
         <div className='row'>
           <div className='input-field'>
             <input
               type='text'
-              name='message'
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              name='title'
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
             />
           </div>
         </div>
 
-        <div className='row'>
+        {/* <div className='row'>
           <div className='input-field'>
             <select
               name='tech'
@@ -73,11 +73,11 @@ const EditLogModal = ({ current, updateLog }) => {
               <option value='' disabled>
                 Select Technician
               </option>
-              {/* <TechSelectOptions /> */}
+              <TechSelectOptions />
             </select>
           </div>
-        </div>
-
+        </div> */}
+        {/*
         <div className='row'>
           <div className='input-field'>
             <p>
@@ -93,7 +93,7 @@ const EditLogModal = ({ current, updateLog }) => {
               </label>
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className='modal-footer'>
         <a

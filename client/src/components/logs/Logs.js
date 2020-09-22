@@ -12,9 +12,6 @@ const Logs = ({ getLogs, log: { logs, loading } }) => {
 
   return !(loading || logs === null) ? (
     <ul className='collection with-header'>
-      <li className='collection-header'>
-        <h4 className='center'>System Logs</h4>
-      </li>
       {!loading && logs.length === 0 ? (
         <p className='center'>No logs to show...</p>
       ) : (
