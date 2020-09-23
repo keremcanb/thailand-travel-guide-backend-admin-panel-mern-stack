@@ -64,7 +64,7 @@ export const updateLog = (log) => async (dispatch) => {
   try {
     setLoading();
 
-    const res = await axios.put(`/api/locations/${log._id}`, log);
+    const res = await axios.put(`/api/locations/${log.id}`, log);
     const data = await res.data;
 
     dispatch({

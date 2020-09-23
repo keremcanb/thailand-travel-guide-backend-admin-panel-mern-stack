@@ -11,6 +11,12 @@ const EditLogModal = ({ current, updateLog }) => {
   const [title, setTitle] = useState('');
   const [thumbnail, setThumbnail] = useState('');
 
+  const modalStyle = {
+    width: '70%',
+    height: '60%',
+    marginTop: '100px',
+  };
+
   useEffect(() => {
     if (current) {
       setTitle(current.title);
@@ -22,18 +28,18 @@ const EditLogModal = ({ current, updateLog }) => {
     if (title === '' || thumbnail === '') {
       M.toast({ html: 'Please enter title and thumbnail' });
     } else {
-      updateLog({ title, thumbnail });
+      const updLog = {
+        id: current.id,
+        title,
+        thumbnail,
+      };
+
+      updateLog(updLog);
       M.toast({ html: `Location updated` });
 
       setTitle('');
       setThumbnail('');
     }
-  };
-
-  const modalStyle = {
-    width: '70%',
-    height: '60%',
-    marginTop: '100px',
   };
 
   return (
