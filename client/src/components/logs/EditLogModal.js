@@ -9,42 +9,34 @@ import { updateLog } from '../../actions/logActions';
 
 const EditLogModal = ({ current, updateLog }) => {
   const [title, setTitle] = useState('');
+  const [thumbnail, setThumbnail] = useState('');
   // const [attention, setAttention] = useState(false);
   // const [tech, setTech] = useState('');
 
   const modalStyle = {
-    width: '50%',
-    height: '40%',
+    width: '70%',
+    height: '60%',
     marginTop: '100px',
   };
 
   useEffect(() => {
     if (current) {
       setTitle(current.title);
+      setThumbnail(current.thumbnail);
       // setAttention(current.attention);
       // setTech(current.tech);
     }
   }, [current]);
 
   const onSubmit = () => {
-    if (title === '') {
-      M.toast({ html: 'Please enter a title and tech' });
+    if (title === '' || thumbnail === '') {
+      M.toast({ html: 'Please enter title and thumbnail' });
     } else {
-      const updLog = {
-        id: current.id,
-        title,
-        // attention,
-        // tech,
-        date: new Date(),
-      };
+      updateLog({ title, thumbnail });
+      M.toast({ html: `Location updated` });
 
-      updateLog(updLog);
-      M.toast({ html: `Log updated` });
-
-      // Clear Fields
       setTitle('');
-      // setTech('');
-      // setAttention(false);
+      setThumbnail('');
     }
   };
 
@@ -63,39 +55,21 @@ const EditLogModal = ({ current, updateLog }) => {
           </div>
         </div>
 
-        {/* <div className='row'>
-          <div className='input-field'>
-            <select
-              name='tech'
-              value={tech}
-              className='browser-default'
-              onChange={(e) => setTech(e.target.value)}
-            >
-              <option value='' disabled>
-                Select Technician
-              </option>
-              <TechSelectOptions />
-            </select>
-          </div>
-        </div> */}
-        {/*
         <div className='row'>
           <div className='input-field'>
-            <p>
-              <label>
-                <input
-                  type='checkbox'
-                  className='filled-in'
-                  checked={attention}
-                  value={attention}
-                  onChange={() => setAttention(!attention)}
-                />
-                <span>Needs Attention</span>
-              </label>
-            </p>
+            <input
+              type='text'
+              name='thumbnail'
+              value={thumbnail}
+              onChange={(e) => setThumbnail(e.target.value)}
+            />
+            <label htmlFor='thumbnail' className='active'>
+              Thumbnail
+            </label>
           </div>
-        </div> */}
+        </div>
       </div>
+
       <div className='modal-footer'>
         <a
           href='#!'

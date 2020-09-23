@@ -23,8 +23,8 @@ export const getLogs = () => async (dispatch) => {
   try {
     setLoading();
 
-    const res = await fetch('/api/locations');
-    const data = await res.json();
+    const res = await axios.get('/api/locations');
+    const data = await res.data;
 
     dispatch({
       type: GET_LOGS,
@@ -44,7 +44,6 @@ export const addLog = (log) => async (dispatch) => {
     setLoading();
 
     const res = await axios.post('/api/locations', log);
-
     const data = await res.data;
 
     dispatch({
@@ -65,14 +64,8 @@ export const updateLog = (log) => async (dispatch) => {
   try {
     setLoading();
 
-    const res = await fetch(`/api/locations${log.id}`, {
-      method: 'PUT',
-      body: JSON.stringify(log),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const data = await res.json();
+    const res = await axios.put(`/api/locations/${log._id}`, log);
+    const data = await res.data;
 
     dispatch({
       type: UPDATE_LOG,
@@ -91,9 +84,7 @@ export const deleteLog = (id) => async (dispatch) => {
   try {
     setLoading();
 
-    await fetch(`/api/locations${id}`, {
-      method: 'DELETE',
-    });
+    await axios.delete(`/api/locations/${id}`);
 
     dispatch({
       type: DELETE_LOG,

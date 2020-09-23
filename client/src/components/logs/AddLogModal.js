@@ -10,9 +10,6 @@ import { addLog } from '../../actions/logActions';
 const AddLogModal = ({ addLog }) => {
   const [title, setTitle] = useState('');
   const [thumbnail, setThumbnail] = useState('');
-  // const [message, setMessage] = useState('');
-  // const [attention, setAttention] = useState(false);
-  // const [tech, setTech] = useState('');
 
   const onSubmit = () => {
     if (title === '' || thumbnail === '') {
@@ -22,15 +19,14 @@ const AddLogModal = ({ addLog }) => {
 
       M.toast({ html: `${title} ${thumbnail} was added as a tech` });
 
-      // Clear fields
       setTitle('');
       setThumbnail('');
     }
   };
 
   const modalStyle = {
-    width: '80%',
-    height: '50%',
+    width: '70%',
+    height: '60%',
     marginTop: '100px',
   };
 
@@ -65,40 +61,8 @@ const AddLogModal = ({ addLog }) => {
             </label>
           </div>
         </div>
-
-        {/* <div className='row'>
-          <div className='input-field'>
-            <select
-              name='tech'
-              value={tech}
-              className='browser-default'
-              onChange={(e) => setTech(e.target.value)}
-            >
-              <option value='' disabled>
-                Select Technician
-              </option>
-              <TechSelectOptions />
-            </select>
-          </div>
-        </div> */}
-
-        {/* <div className='row'>
-          <div className='input-field'>
-            <p>
-              <label>
-                <input
-                  type='checkbox'
-                  className='filled-in'
-                  checked={attention}
-                  value={attention}
-                  onChange={() => setAttention(!attention)}
-                />
-                <span>Needs Attention</span>
-              </label>
-            </p>
-          </div>
-        </div> */}
       </div>
+
       <div className='modal-footer'>
         <a
           href='#!'

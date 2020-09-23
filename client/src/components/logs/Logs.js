@@ -38,7 +38,7 @@ const useStyles = makeStyles((theme) => ({
     gridTemplateColumns: 'repeat(4, 1fr)',
     gridGap: theme.spacing(10),
     justifyContent: 'center',
-    marginTop: '100px',
+    marginTop: '50px',
   },
   gridFab: {
     float: 'right',

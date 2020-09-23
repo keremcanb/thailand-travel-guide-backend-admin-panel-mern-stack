@@ -25,13 +25,13 @@ export default function (state = initialState, action) {
     case DELETE_LOG:
       return {
         ...state,
-        logs: state.logs.filter((log) => log.id !== payload),
+        logs: state.logs.filter((log) => log._id !== payload),
         loading: false,
       };
     case UPDATE_LOG:
       return {
         ...state,
-        logs: state.logs.map((log) => (log.id === payload.id ? payload : log)),
+        logs: state.logs.map((log) => (log._id === payload.id ? payload : log)),
         loading: false,
       };
     case SET_CURRENT:
