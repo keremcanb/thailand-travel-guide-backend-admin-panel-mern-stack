@@ -1,12 +1,12 @@
 import axios from 'axios';
 import {
-  GET_LOGS,
+  GET_LOCATIONS,
   SET_LOADING,
-  LOGS_ERROR,
-  ADD_LOG,
-  DELETE_LOG,
-  UPDATE_LOG,
-  SEARCH_LOGS,
+  LOCATIONS_ERROR,
+  ADD_LOCATION,
+  DELETE_LOCATION,
+  UPDATE_LOCATION,
+  SEARCH_LOCATIONS,
   SET_CURRENT,
   CLEAR_CURRENT,
 } from './types';
@@ -18,8 +18,8 @@ export const setLoading = () => {
   };
 };
 
-// Get logs
-export const getLogs = () => async (dispatch) => {
+// Get locations
+export const getLocations = () => async (dispatch) => {
   try {
     setLoading();
 
@@ -27,94 +27,94 @@ export const getLogs = () => async (dispatch) => {
     const data = await res.data;
 
     dispatch({
-      type: GET_LOGS,
+      type: GET_LOCATIONS,
       payload: data,
     });
   } catch (err) {
     dispatch({
-      type: LOGS_ERROR,
+      type: LOCATIONS_ERROR,
       payload: err.response.statusText,
     });
   }
 };
 
-// Add log
-export const addLog = (log) => async (dispatch) => {
+// Add location
+export const addLocation = (location) => async (dispatch) => {
   try {
     setLoading();
 
-    const res = await axios.post('/api/locations', log);
+    const res = await axios.post('/api/locations', location);
     const data = await res.data;
 
     dispatch({
-      type: ADD_LOG,
+      type: ADD_LOCATION,
       payload: data,
     });
   } catch (err) {
-    console.log(err);
+    console.location(err);
     dispatch({
-      type: LOGS_ERROR,
+      type: LOCATIONS_ERROR,
       payload: err.response.statusText,
     });
   }
 };
 
-// Update log
-export const updateLog = (log) => async (dispatch) => {
+// Update location
+export const updateLocation = (location) => async (dispatch) => {
   try {
     setLoading();
 
-    const res = await axios.put(`/api/locations/${log.id}`, log);
+    const res = await axios.put(`/api/locations/${location.id}`, location);
     const data = await res.data;
 
     dispatch({
-      type: UPDATE_LOG,
+      type: UPDATE_LOCATION,
       payload: data,
     });
   } catch (err) {
     dispatch({
-      type: LOGS_ERROR,
+      type: LOCATIONS_ERROR,
       payload: err.response.statusText,
     });
   }
 };
 
-// Delete log
-export const deleteLog = (id) => async (dispatch) => {
+// Delete location
+export const deleteLocation = (id) => async (dispatch) => {
   try {
     setLoading();
 
     await axios.delete(`/api/locations/${id}`);
 
     dispatch({
-      type: DELETE_LOG,
+      type: DELETE_LOCATION,
       payload: id,
     });
   } catch (err) {
     dispatch({
-      type: LOGS_ERROR,
+      type: LOCATIONS_ERROR,
       payload: err.response.statusText,
     });
   }
 };
 
-// Set current log
-export const setCurrent = (log) => {
+// Set current location
+export const setCurrent = (location) => {
   return {
     type: SET_CURRENT,
-    payload: log,
+    payload: location,
   };
 };
 
-// Clear current log
+// Clear current location
 export const clearCurrent = () => {
   return {
     type: CLEAR_CURRENT,
   };
 };
 
-// Search logs
-export const searchLogs = (text) => async (dispatch) => {
+// Search locations
+export const searchLocations = (text) => async (dispatch) => {
   try {
     setLoading();
 
@@ -122,12 +122,12 @@ export const searchLogs = (text) => async (dispatch) => {
     const data = await res.json();
 
     dispatch({
-      type: SEARCH_LOGS,
+      type: SEARCH_LOCATIONS,
       payload: data,
     });
   } catch (err) {
     dispatch({
-      type: LOGS_ERROR,
+      type: LOCATIONS_ERROR,
       payload: err.response.data,
     });
   }

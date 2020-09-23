@@ -4,7 +4,7 @@ import Login from '../auth/Login';
 import Dashboard from '../layout/Dashboard';
 import NotFound from '../layout/NotFound';
 import PrivateRoute from './PrivateRoute';
-import Log from '../../Log';
+import Location from '../../Location';
 import Category from '../../Category';
 import Place from '../../Place';
 import Alert from '../layout/Alert';
@@ -20,7 +20,7 @@ const Routes = () => {
       <Switch>
         <Route exact path='/login' component={Login} />
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
-        <PrivateRoute exact path='/logs' component={Log} />
+        <PrivateRoute exact path='/locations' component={Location} />
         <PrivateRoute exact path='/categories' component={Category} />
         <PrivateRoute exact path='/places' component={Place} />
         <Route component={NotFound} />

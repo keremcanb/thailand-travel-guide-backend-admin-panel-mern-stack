@@ -24,13 +24,13 @@ export const ADD_TECH = 'ADD_TECH';
 export const DELETE_TECH = 'DELETE_TECH';
 export const TECHS_ERROR = 'TECHS_ERROR';
 
-export const GET_LOGS = 'GET_LOGS';
-export const ADD_LOG = 'ADD_LOG';
-export const UPDATE_LOG = 'UPDATE_LOG';
-export const DELETE_LOG = 'DELETE_LOG';
-export const CLEAR_LOGS = 'CLEAR_LOGS';
-export const LOGS_ERROR = 'LOGS_ERROR';
-export const SEARCH_LOGS = 'SEARCH_LOGS';
+export const GET_LOCATIONS = 'GET_LOCATIONS';
+export const ADD_LOCATION = 'ADD_LOCATION';
+export const UPDATE_LOCATION = 'UPDATE_LOCATION';
+export const DELETE_LOCATION = 'DELETE_LOCATION';
+export const CLEAR_LOCATIONS = 'CLEAR_LOCATIONS';
+export const LOCATIONS_ERROR = 'LOCATIONS_ERROR';
+export const SEARCH_LOCATIONS = 'SEARCH_LOCATIONS';
 
 export const GET_CATEGORIES = 'GET_CATEGORIES';
 export const ADD_CATEGORY = 'ADD_CATEGORY';

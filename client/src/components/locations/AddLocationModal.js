@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addLog } from '../../actions/logActions';
+import { addLocation } from '../../actions/location';
 
-const AddLogModal = ({ addLog }) => {
+const AddLocationModal = ({ addLocation }) => {
   const [title, setTitle] = useState('');
   const [thumbnail, setThumbnail] = useState('');
 
@@ -19,7 +19,7 @@ const AddLogModal = ({ addLog }) => {
     if (title === '' || thumbnail === '') {
       M.toast({ html: 'Please enter the first and last name' });
     } else {
-      addLog({ title, thumbnail });
+      addLocation({ title, thumbnail });
 
       M.toast({ html: `${title} and ${thumbnail} added` });
 
@@ -29,9 +29,9 @@ const AddLogModal = ({ addLog }) => {
   };
 
   return (
-    <div id='add-log-modal' className='modal' style={modalStyle}>
+    <div id='add-location-modal' className='modal' style={modalStyle}>
       <div className='modal-content'>
-        {/* <h4>Enter System Log</h4> */}
+        {/* <h4>Enter System Location</h4> */}
         <div className='row'>
           <div className='input-field'>
             <input
@@ -74,8 +74,8 @@ const AddLogModal = ({ addLog }) => {
   );
 };
 
-AddLogModal.propTypes = {
-  addLog: PropTypes.func.isRequired,
+AddLocationModal.propTypes = {
+  addLocation: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addLog })(AddLogModal);
+export default connect(null, { addLocation })(AddLocationModal);

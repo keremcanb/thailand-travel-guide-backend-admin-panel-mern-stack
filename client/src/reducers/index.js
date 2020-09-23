@@ -4,7 +4,7 @@ import auth from './auth';
 import profile from './profile';
 import category from './category';
 import place from './place';
-import logReducer from './logReducer';
+import location from './location';
 import techReducer from './techReducer';
 
 export default combineReducers({
@@ -13,6 +13,6 @@ export default combineReducers({
   profile,
   category,
   place,
-  log: logReducer,
+  location,
   tech: techReducer,
 });

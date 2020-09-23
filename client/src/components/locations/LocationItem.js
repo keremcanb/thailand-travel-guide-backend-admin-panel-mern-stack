@@ -6,32 +6,37 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { deleteLog, setCurrent } from '../../actions/logActions';
+import { deleteLocation, setCurrent } from '../../actions/location';
 
-const LogItem = ({ deleteLog, setCurrent, log }) => {
+const LocationItem = ({ deleteLocation, setCurrent, location }) => {
   const classes = useStyles();
 
   const onDelete = () => {
-    deleteLog(log._id);
+    deleteLocation(location._id);
 
-    M.toast({ html: 'Log Deleted' });
+    M.toast({ html: 'Location Deleted' });
   };
 
   return (
     <Grid className={classes.gridMain}>
       <div>
-        <img src={log.thumbnail} alt={log.title} width={150} height={75} />
+        <img
+          src={location.thumbnail}
+          alt={location.title}
+          width={150}
+          height={75}
+        />
       </div>
       <div>
-        <h6 style={{ textAlign: 'center' }}>{log.title}</h6>
+        <h6 style={{ textAlign: 'center' }}>{location.title}</h6>
       </div>
       <br />
       <div>
         <a
-          href='#edit-log-modal'
-          onClick={() => setCurrent(log)}
+          href='#edit-location-modal'
+          onClick={() => setCurrent(location)}
           className={`modal-trigger ${
-            log.attention ? 'red-text' : 'blue-text'
+            location.attention ? 'red-text' : 'blue-text'
           }`}
         >
           <i className='material-icons blue-text'>edit</i>
@@ -53,10 +58,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-LogItem.propTypes = {
-  log: PropTypes.object.isRequired,
-  deleteLog: PropTypes.func.isRequired,
+LocationItem.propTypes = {
+  location: PropTypes.object.isRequired,
+  deleteLocation: PropTypes.func.isRequired,
   setCurrent: PropTypes.func.isRequired,
 };
 
-export default connect(null, { deleteLog, setCurrent })(LogItem);
+export default connect(null, { deleteLocation, setCurrent })(LocationItem);

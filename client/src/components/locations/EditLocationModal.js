@@ -5,9 +5,9 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { updateLog } from '../../actions/logActions';
+import { updateLocation } from '../../actions/location';
 
-const EditLogModal = ({ current, updateLog }) => {
+const EditLocationModal = ({ current, updateLocation }) => {
   const [title, setTitle] = useState('');
   const [thumbnail, setThumbnail] = useState('');
 
@@ -28,13 +28,13 @@ const EditLogModal = ({ current, updateLog }) => {
     if (title === '' || thumbnail === '') {
       M.toast({ html: 'Please enter title and thumbnail' });
     } else {
-      const updLog = {
+      const updLocation = {
         id: current.id,
         title,
         thumbnail,
       };
 
-      updateLog(updLog);
+      updateLocation(updLocation);
       M.toast({ html: `Location updated` });
 
       setTitle('');
@@ -43,9 +43,9 @@ const EditLogModal = ({ current, updateLog }) => {
   };
 
   return (
-    <div id='edit-log-modal' className='modal' style={modalStyle}>
+    <div id='edit-location-modal' className='modal' style={modalStyle}>
       <div className='modal-content'>
-        {/* <h4>Enter System Log</h4> */}
+        {/* <h4>Enter System Location</h4> */}
         <div className='row'>
           <div className='input-field'>
             <input
@@ -88,13 +88,13 @@ const EditLogModal = ({ current, updateLog }) => {
   );
 };
 
-EditLogModal.propTypes = {
+EditLocationModal.propTypes = {
   current: PropTypes.object,
-  updateLog: PropTypes.func.isRequired,
+  updateLocation: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  current: state.log.current,
+  current: state.location.current,
 });
 
-export default connect(mapStateToProps, { updateLog })(EditLogModal);
+export default connect(mapStateToProps, { updateLocation })(EditLocationModal);

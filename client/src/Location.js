@@ -2,15 +2,15 @@
 import React, { useEffect } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import SearchBar from './components/layout/SearchBar';
-import Logs from './components/logs/Logs';
-import AddBtn from './components/layout/AddBtn';
-import AddLogModal from './components/logs/AddLogModal';
-import EditLogModal from './components/logs/EditLogModal';
+import Locations from './components/locations/Locations';
+import AddBtnLocation from './components/layout/AddBtnLocation';
+import AddLocationModal from './components/locations/AddLocationModal';
+import EditLocationModal from './components/locations/EditLocationModal';
 import AddTechModal from './components/techs/AddTechModal';
 // import TechListModal from './components/techs/TechListModal';
 import 'materialize-css/dist/css/materialize.min.css';
 
-const Log = () => {
+const Location = () => {
   useEffect(() => {
     M.AutoInit();
   }, []);
@@ -19,15 +19,15 @@ const Log = () => {
     <>
       <SearchBar />
       <div className='container'>
-        <AddBtn />
-        <AddLogModal />
-        <EditLogModal />
+        <AddBtnLocation />
+        <AddLocationModal />
+        <EditLocationModal />
         <AddTechModal />
         {/* <TechListModal /> */}
-        <Logs />
+        <Locations />
       </div>
     </>
   );
 };
 
-export default Log;
+export default Location;

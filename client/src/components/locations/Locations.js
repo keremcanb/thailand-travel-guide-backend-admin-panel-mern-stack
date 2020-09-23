@@ -4,25 +4,25 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
-import LogItem from './LogItem';
+import LocationItem from './LocationItem';
 import Preloader from '../layout/Preloader';
-import { getLogs } from '../../actions/logActions';
+import { getLocations } from '../../actions/location';
 
-const Logs = ({ getLogs, log: { logs, loading } }) => {
+const Locations = ({ getLocations, location: { locations, loading } }) => {
   const classes = useStyles();
 
   useEffect(() => {
-    getLogs();
-  }, [getLogs]);
+    getLocations();
+  }, [getLocations]);
 
-  return !(loading || logs === null) ? (
+  return !(loading || locations === null) ? (
     <Container>
-      {!loading && logs.length === 0 ? (
-        <p className='center'>No logs to show...</p>
+      {!loading && locations.length === 0 ? (
+        <p className='center'>No locations to show...</p>
       ) : (
         <Grid className={classes.gridMain}>
-          {logs.map((log) => (
-            <LogItem key={log._id} log={log} />
+          {locations.map((location) => (
+            <LocationItem key={location._id} location={location} />
           ))}
         </Grid>
       )}
@@ -45,13 +45,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-Logs.propTypes = {
-  log: PropTypes.object.isRequired,
-  getLogs: PropTypes.func.isRequired,
+Locations.propTypes = {
+  location: PropTypes.object.isRequired,
+  getLocations: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  log: state.log,
+  location: state.location,
 });
 
-export default connect(mapStateToProps, { getLogs })(Logs);
+export default connect(mapStateToProps, { getLocations })(Locations);
