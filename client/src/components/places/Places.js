@@ -4,13 +4,10 @@ import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import { makeStyles } from '@material-ui/core/styles';
 import PlaceItem from './PlaceItem';
 import { getPlaces } from '../../actions/place';
 
 const Places = ({ getPlaces, place: { places, loading } }) => {
-  const classes = useStyles();
-
   useEffect(() => {
     getPlaces();
   }, [getPlaces]);
@@ -22,7 +19,7 @@ const Places = ({ getPlaces, place: { places, loading } }) => {
       {!loading && places.length === 0 ? (
         <p className="center">No places to show...</p>
       ) : (
-        <Grid className={classes.gridMain}>
+        <Grid style={gridStyle}>
           {places.map((place) => (
             <PlaceItem key={place._id} place={place} />
           ))}
@@ -32,16 +29,15 @@ const Places = ({ getPlaces, place: { places, loading } }) => {
   );
 };
 
-const useStyles = makeStyles((theme) => ({
-  gridMain: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
-    gridGap: theme.spacing(7),
-    justifyContent: 'center',
-    marginTop: '30px'
-  }
-}));
-
+const gridStyle = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(4, 1fr)',
+  justifyContent: 'center',
+  alignContent: 'center',
+  gridRowGap: '20px',
+  gridColumnGap: '50px',
+  marginTop: '40px'
+};
 Places.propTypes = {
   place: PropTypes.object.isRequired,
   getPlaces: PropTypes.func.isRequired

@@ -1,61 +1,59 @@
 import React, { useState } from 'react';
+import { Container, Form } from 'react-bootstrap';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addPlace } from '../../actions/place';
 
 const AddPlaceModal = ({ addPlace }) => {
-  const [title, setTitle] = useState('');
-  const [thumbnail, setThumbnail] = useState('');
+  const initialFormState = { title: '', thumbnail: '' };
+  const [place, setPlace] = useState(initialFormState);
+  const { title, thumbnail } = place;
 
   const onSubmit = () => {
     if (title === '' || thumbnail === '') {
-      M.toast({ html: 'Please enter the first and last name' });
+      M.toast({ html: 'Please enter place' });
     } else {
-      addPlace({ title, thumbnail });
-
-      M.toast({ html: `${title} and ${thumbnail} added` });
-
-      setTitle('');
-      setThumbnail('');
+      addPlace(place);
+      M.toast({ html: `Place added` });
+      setPlace(initialFormState);
     }
   };
 
+  const onChange = (e) => {
+    setPlace({ ...place, [e.target.name]: e.target.value });
+  };
+
   return (
-    <div
+    <Container
       id="add-place-modal"
       className="modal"
-      style={{ width: '70%', height: '60%', marginTop: '50px' }}
+      // style={{ width: '70%', height: '60%', marginTop: '50px' }}
     >
       <div className="modal-content">
-        {/* <h4>Enter System Place</h4> */}
-        <div className="row">
-          <div className="input-field">
-            <input
-              type="text"
+        {/* <h4>Enter Place</h4> */}
+        <Form>
+          <Form.Group>
+            <Form.Control
               name="title"
+              placeholder="Title *"
               value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <label htmlFor="title" className="active">
-              Title
-            </label>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="input-field">
-            <input
+              onChange={onChange}
               type="text"
-              name="thumbnail"
-              value={thumbnail}
-              onChange={(e) => setThumbnail(e.target.value)}
+              required
             />
-            <label htmlFor="thumbnail" className="active">
-              Thumbnail
-            </label>
-          </div>
-        </div>
+          </Form.Group>
+          <Form.Group>
+            <Form.Control
+              name="thumbnail"
+              placeholder="Thumbnail *"
+              value={thumbnail}
+              onChange={onChange}
+              type="text"
+              required
+            />
+          </Form.Group>
+        </Form>
       </div>
 
       <div className="modal-footer">
@@ -67,7 +65,7 @@ const AddPlaceModal = ({ addPlace }) => {
           Enter
         </a>
       </div>
-    </div>
+    </Container>
   );
 };
 

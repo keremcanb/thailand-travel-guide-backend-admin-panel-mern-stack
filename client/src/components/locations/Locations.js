@@ -9,8 +9,6 @@ import LocationItem from './LocationItem';
 import { getLocations } from '../../actions/location';
 
 const Locations = ({ getLocations, location: { locations, loading } }) => {
-  const classes = useStyles();
-
   useEffect(() => {
     getLocations();
   }, [getLocations]);
@@ -22,7 +20,7 @@ const Locations = ({ getLocations, location: { locations, loading } }) => {
       {!loading && locations.length === 0 ? (
         <p className="center">No locations to show...</p>
       ) : (
-        <Grid className={classes.gridMain}>
+        <Grid style={gridStyle}>
           {locations.map((location) => (
             <LocationItem key={location._id} location={location} />
           ))}
@@ -32,15 +30,15 @@ const Locations = ({ getLocations, location: { locations, loading } }) => {
   );
 };
 
-const useStyles = makeStyles((theme) => ({
-  gridMain: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
-    gridGap: theme.spacing(7),
-    justifyContent: 'center',
-    marginTop: '30px'
-  }
-}));
+const gridStyle = {
+  display: 'grid',
+  gridTemplateColumns: 'repeat(4, 1fr)',
+  justifyContent: 'center',
+  alignContent: 'center',
+  gridRowGap: '20px',
+  gridColumnGap: '50px',
+  marginTop: '40px'
+};
 
 Locations.propTypes = {
   location: PropTypes.object.isRequired,
