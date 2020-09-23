@@ -1,3 +1,4 @@
+import axios from 'axios';
 import {
   GET_LOGS,
   SET_LOADING,
@@ -42,20 +43,16 @@ export const addLog = (log) => async (dispatch) => {
   try {
     setLoading();
 
-    const res = await fetch('/api/locations', {
-      method: 'POST',
-      body: JSON.stringify(log),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const data = await res.json();
+    const res = await axios.post('/api/locations', log);
+
+    const data = await res.data;
 
     dispatch({
       type: ADD_LOG,
       payload: data,
     });
   } catch (err) {
+    console.log(err);
     dispatch({
       type: LOGS_ERROR,
       payload: err.response.statusText,

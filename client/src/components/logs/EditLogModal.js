@@ -13,8 +13,9 @@ const EditLogModal = ({ current, updateLog }) => {
   // const [tech, setTech] = useState('');
 
   const modalStyle = {
-    width: '75%',
-    height: '75%',
+    width: '50%',
+    height: '40%',
+    marginTop: '100px',
   };
 
   useEffect(() => {
