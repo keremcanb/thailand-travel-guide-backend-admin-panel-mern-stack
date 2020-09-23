@@ -12,7 +12,7 @@ const LogItem = ({ deleteLog, setCurrent, log }) => {
   const classes = useStyles();
 
   const onDelete = () => {
-    deleteLog(log.id);
+    deleteLog(log._id);
 
     M.toast({ html: 'Log Deleted' });
   };

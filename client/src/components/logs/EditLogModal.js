@@ -10,21 +10,11 @@ import { updateLog } from '../../actions/logActions';
 const EditLogModal = ({ current, updateLog }) => {
   const [title, setTitle] = useState('');
   const [thumbnail, setThumbnail] = useState('');
-  // const [attention, setAttention] = useState(false);
-  // const [tech, setTech] = useState('');
-
-  const modalStyle = {
-    width: '70%',
-    height: '60%',
-    marginTop: '100px',
-  };
 
   useEffect(() => {
     if (current) {
       setTitle(current.title);
       setThumbnail(current.thumbnail);
-      // setAttention(current.attention);
-      // setTech(current.tech);
     }
   }, [current]);
 
@@ -40,6 +30,12 @@ const EditLogModal = ({ current, updateLog }) => {
     }
   };
 
+  const modalStyle = {
+    width: '70%',
+    height: '60%',
+    marginTop: '100px',
+  };
+
   return (
     <div id='edit-log-modal' className='modal' style={modalStyle}>
       <div className='modal-content'>
@@ -52,6 +48,9 @@ const EditLogModal = ({ current, updateLog }) => {
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
+            <label htmlFor='title' className='active'>
+              Title
+            </label>
           </div>
         </div>
 
