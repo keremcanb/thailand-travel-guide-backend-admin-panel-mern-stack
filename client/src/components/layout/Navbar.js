@@ -15,15 +15,18 @@ const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
       <Nav.Link as={Link} to='/categories' href='/categories'>
         Categories
       </Nav.Link>
+      <Nav.Link as={Link} to='/places' href='/places'>
+        Places
+      </Nav.Link>
       {/* <Nav.Link as={Link} to='/locations' href='/locations'>
         Locations
       </Nav.Link> */}
       {/* <Nav.Link as={Link} to='/categories' href='/categories'>
         Categories
       </Nav.Link> */}
-      <Nav.Link as={Link} to='/places' href='/places'>
+      {/* <Nav.Link as={Link} to='/places' href='/places'>
         Places
-      </Nav.Link>
+      </Nav.Link> */}
       <Nav.Link onClick={logout} href='#!'>
         <ExitToAppIcon />
       </Nav.Link>

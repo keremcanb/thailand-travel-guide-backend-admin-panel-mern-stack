@@ -11,6 +11,7 @@ import Alert from '../layout/Alert';
 // import Register from '../auth/Register';
 import App from '../../Logs';
 import Category from '../../Categories';
+import Place from '../../Places';
 
 const Routes = () => {
   return (
@@ -22,6 +23,7 @@ const Routes = () => {
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
         <PrivateRoute exact path='/app' component={App} />
         <PrivateRoute exact path='/categories' component={Category} />
+        <PrivateRoute exact path='/places' component={Place} />
         {/* <PrivateRoute exact path='/locations' component={Locations} /> */}
         {/* <PrivateRoute exact path='/categories' component={Categories} /> */}
         <PrivateRoute exact path='/places' component={Places} />
