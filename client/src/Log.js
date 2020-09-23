@@ -10,7 +10,7 @@ import AddTechModal from './components/techs/AddTechModal';
 // import TechListModal from './components/techs/TechListModal';
 import 'materialize-css/dist/css/materialize.min.css';
 
-const App = () => {
+const Log = () => {
   useEffect(() => {
     M.AutoInit();
   }, []);
@@ -30,4 +30,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Log;

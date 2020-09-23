@@ -9,7 +9,7 @@ import { logout } from '../../actions/auth';
 const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <>
-      <Nav.Link as={Link} to='/app' href='/app'>
+      <Nav.Link as={Link} to='/logs' href='/logs'>
         Locations
       </Nav.Link>
       <Nav.Link as={Link} to='/categories' href='/categories'>

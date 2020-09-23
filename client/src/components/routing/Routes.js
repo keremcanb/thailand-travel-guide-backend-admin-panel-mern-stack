@@ -4,14 +4,14 @@ import Login from '../auth/Login';
 import Dashboard from '../layout/Dashboard';
 import NotFound from '../layout/NotFound';
 import PrivateRoute from './PrivateRoute';
+import Log from '../../Log';
+import Category from '../../Category';
+import Place from '../../Place';
+import Alert from '../layout/Alert';
 // import Locations from '../items/Locations';
 // import Categories from '../items/Categories';
-import Places from '../items/Places';
-import Alert from '../layout/Alert';
+// import Places from '../items/Places';
 // import Register from '../auth/Register';
-import App from '../../Logs';
-import Category from '../../Categories';
-import Place from '../../Places';
 
 const Routes = () => {
   return (
@@ -19,15 +19,15 @@ const Routes = () => {
       <Alert />
       <Switch>
         <Route exact path='/login' component={Login} />
-        {/* <Route exact path='/register' component={Register} /> */}
         <PrivateRoute exact path='/dashboard' component={Dashboard} />
-        <PrivateRoute exact path='/app' component={App} />
+        <PrivateRoute exact path='/logs' component={Log} />
         <PrivateRoute exact path='/categories' component={Category} />
         <PrivateRoute exact path='/places' component={Place} />
+        <Route component={NotFound} />
+        {/* <Route exact path='/register' component={Register} /> */}
         {/* <PrivateRoute exact path='/locations' component={Locations} /> */}
         {/* <PrivateRoute exact path='/categories' component={Categories} /> */}
-        <PrivateRoute exact path='/places' component={Places} />
-        <Route component={NotFound} />
+        {/* <PrivateRoute exact path='/places' component={Places} /> */}
       </Switch>
     </section>
   );
