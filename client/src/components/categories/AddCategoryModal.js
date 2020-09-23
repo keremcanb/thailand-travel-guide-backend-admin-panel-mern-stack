@@ -3,62 +3,79 @@ import React, { useState } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Form } from 'react-bootstrap';
+import makeAnimated from 'react-select/animated';
+import Select from 'react-select';
 import { addCategory } from '../../actions/category';
+import useResources from '../../utils/useResources';
 
 const AddCategoryModal = ({ addCategory }) => {
-  const [title, setTitle] = useState('');
-  const [thumbnail, setThumbnail] = useState('');
-
-  const modalStyle = {
-    width: '70%',
-    height: '60%',
-    marginTop: '100px',
-  };
+  const initialFormState = { title: '', thumbnail: '' };
+  const [category, setCategory] = useState(initialFormState);
+  const { title, thumbnail, location } = category;
+  const animatedComponents = makeAnimated();
+  const locations = useResources('locations');
 
   const onSubmit = () => {
-    if (title === '' || thumbnail === '') {
-      M.toast({ html: 'Please enter the first and last name' });
+    if (title === '' || thumbnail === '' || location === '') {
+      M.toast({ html: 'Please enter category' });
     } else {
-      addCategory({ title, thumbnail });
-
-      M.toast({ html: `${title} and ${thumbnail} added` });
-
-      setTitle('');
-      setThumbnail('');
+      addCategory(category);
+      M.toast({ html: `Category added` });
+      setCategory(initialFormState);
     }
   };
 
-  return (
-    <div id='add-category-modal' className='modal' style={modalStyle}>
-      <div className='modal-content'>
-        {/* <h4>Enter System Category</h4> */}
-        <div className='row'>
-          <div className='input-field'>
-            <input
-              type='text'
-              name='title'
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <label htmlFor='title' className='active'>
-              Title
-            </label>
-          </div>
-        </div>
+  const onChange = (e) => {
+    setCategory({ ...category, [e.target.name]: e.target.value });
+  };
 
-        <div className='row'>
-          <div className='input-field'>
-            <input
-              type='text'
-              name='thumbnail'
-              value={thumbnail}
-              onChange={(e) => setThumbnail(e.target.value)}
-            />
-            <label htmlFor='thumbnail' className='active'>
-              Thumbnail
-            </label>
-          </div>
-        </div>
+  function onSelect(value, action) {
+    setCategory({ ...category, [action.name]: value });
+  }
+
+  return (
+    <div
+      id='add-category-modal'
+      className='modal'
+      // style={{ width: '100%', height: '100%' }}
+    >
+      <div className='modal-content'>
+        {/* <h4>Enter Category</h4> */}
+
+        <Form.Group>
+          <Form.Control
+            name='title'
+            placeholder='Title *'
+            value={category.title}
+            onChange={onChange}
+            type='text'
+            required
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Control
+            name='thumbnail'
+            placeholder='Thumbnail *'
+            value={category.thumbnail}
+            onChange={onChange}
+            type='text'
+            required
+          />
+        </Form.Group>
+        <Form.Group>
+          <Select
+            name='location'
+            options={locations.map((loc) => ({
+              value: loc.title,
+              label: loc.title,
+            }))}
+            onChange={onSelect}
+            closeMenuOnSelect={false}
+            components={animatedComponents}
+            isMulti
+          />
+        </Form.Group>
       </div>
 
       <div className='modal-footer'>

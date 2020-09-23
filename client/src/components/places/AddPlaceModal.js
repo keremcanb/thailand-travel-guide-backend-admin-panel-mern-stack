@@ -9,12 +9,6 @@ const AddPlaceModal = ({ addPlace }) => {
   const [title, setTitle] = useState('');
   const [thumbnail, setThumbnail] = useState('');
 
-  const modalStyle = {
-    width: '70%',
-    height: '60%',
-    marginTop: '100px',
-  };
-
   const onSubmit = () => {
     if (title === '' || thumbnail === '') {
       M.toast({ html: 'Please enter the first and last name' });
@@ -29,7 +23,11 @@ const AddPlaceModal = ({ addPlace }) => {
   };
 
   return (
-    <div id='add-place-modal' className='modal' style={modalStyle}>
+    <div
+      id='add-place-modal'
+      className='modal'
+      style={{ width: '70%', height: '60%', marginTop: '50px' }}
+    >
       <div className='modal-content'>
         {/* <h4>Enter System Place</h4> */}
         <div className='row'>

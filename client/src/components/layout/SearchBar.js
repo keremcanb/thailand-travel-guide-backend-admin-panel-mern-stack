@@ -1,40 +1,14 @@
-import React, { useRef } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { searchLocations } from '../../actions/location';
+import React from 'react';
+import { Form } from 'react-bootstrap';
 
-const SearchBar = ({ searchLocations }) => {
-  const text = useRef('');
-
-  const onChange = () => {
-    searchLocations(text.current.value);
-  };
-
+const SearchBox = ({ onSearch }) => {
   return (
-    <nav style={{ marginBottom: '30px', marginTop: '75px' }} className='blue'>
-      <div className='nav-wrapper'>
-        <form>
-          <div className='input-field'>
-            <input
-              ref={text}
-              onChange={onChange}
-              id='search'
-              type='search'
-              placeholder='Search...'
-            />
-            <label className='label-icon' htmlFor='search'>
-              <i className='material-icons'>search</i>
-            </label>
-            <i className='material-icons'>close</i>
-          </div>
-        </form>
-      </div>
-    </nav>
+    <Form>
+      <Form.Group className='mt-3'>
+        <Form.Control type='search' placeholder='Filter' onChange={onSearch} />
+      </Form.Group>
+    </Form>
   );
 };
 
-SearchBar.propTypes = {
-  searchLocations: PropTypes.func.isRequired,
-};
-
-export default connect(null, { searchLocations })(SearchBar);
+export default SearchBox;
