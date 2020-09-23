@@ -10,14 +10,11 @@ const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <>
       <Nav.Link as={Link} to='/app' href='/app'>
-        App
-      </Nav.Link>
-      <Nav.Link as={Link} to='/locationsnew' href='/locations'>
-        Loc New
-      </Nav.Link>
-      <Nav.Link as={Link} to='/locations' href='/locations'>
         Locations
       </Nav.Link>
+      {/* <Nav.Link as={Link} to='/locations' href='/locations'>
+        Locations
+      </Nav.Link> */}
       <Nav.Link as={Link} to='/categories' href='/categories'>
         Categories
       </Nav.Link>
