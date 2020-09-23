@@ -9,25 +9,16 @@ import { logout } from '../../actions/auth';
 const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
     <>
-      <Nav.Link as={Link} to='/locations' href='/locations'>
+      <Nav.Link as={Link} to="/locations" href="/locations">
         Locations
       </Nav.Link>
-      <Nav.Link as={Link} to='/categories' href='/categories'>
+      <Nav.Link as={Link} to="/categories" href="/categories">
         Categories
       </Nav.Link>
-      <Nav.Link as={Link} to='/places' href='/places'>
+      <Nav.Link as={Link} to="/places" href="/places">
         Places
       </Nav.Link>
-      {/* <Nav.Link as={Link} to='/locations' href='/locations'>
-        Locations
-      </Nav.Link> */}
-      {/* <Nav.Link as={Link} to='/categories' href='/categories'>
-        Categories
-      </Nav.Link> */}
-      {/* <Nav.Link as={Link} to='/places' href='/places'>
-        Places
-      </Nav.Link> */}
-      <Nav.Link onClick={logout} href='#!'>
+      <Nav.Link onClick={logout} href="#!">
         <ExitToAppIcon />
       </Nav.Link>
     </>
@@ -35,29 +26,29 @@ const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
 
   return (
     <Navbar
-      bg='dark'
-      variant='dark'
-      expand='lg'
+      bg="dark"
+      variant="dark"
+      expand="lg"
       collapseOnSelect
       style={{ boxShadow: '0 8px 6px -6px #999', opacity: '0.9' }}
-      fixed='top'
+      fixed="top"
     >
       <Container>
         <Navbar.Brand>
           <img
-            src='/tgr-logo.png'
-            width='40'
-            height='30'
-            alt='logo'
-            className='mr-3'
+            src="/tgr-logo.png"
+            width="40"
+            height="30"
+            alt="logo"
+            className="mr-3"
           />
           TGR Admin
         </Navbar.Brand>
         {isAuthenticated && (
-          <Navbar.Toggle aria-controls='responsive-navbar-nav' />
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         )}
-        <Navbar.Collapse id='responsive-navbar-nav'>
-          <Nav className='ml-auto'>
+        <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="ml-auto">
             {!loading && isAuthenticated && authLinks}
           </Nav>
         </Navbar.Collapse>
@@ -68,11 +59,11 @@ const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
 
 Navigation.propTypes = {
   logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, { logout })(Navigation);

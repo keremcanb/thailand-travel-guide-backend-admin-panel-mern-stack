@@ -1,11 +1,9 @@
-/* eslint-disable import/extensions */
-/* eslint-disable jsx-a11y/no-onchange */
 import React, { useState, useEffect } from 'react';
-// import TechSelectOptions from '../techs/TechSelectOptions';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { updateCategory } from '../../actions/category';
+// import TechSelectOptions from '../techs/TechSelectOptions';
 
 const EditCategoryModal = ({ current, updateCategory }) => {
   const [title, setTitle] = useState('');
@@ -14,7 +12,7 @@ const EditCategoryModal = ({ current, updateCategory }) => {
   const modalStyle = {
     width: '70%',
     height: '60%',
-    marginTop: '100px',
+    marginTop: '100px'
   };
 
   useEffect(() => {
@@ -31,7 +29,7 @@ const EditCategoryModal = ({ current, updateCategory }) => {
       const updCategory = {
         id: current.id,
         title,
-        thumbnail,
+        thumbnail
       };
 
       updateCategory(updCategory);
@@ -43,43 +41,43 @@ const EditCategoryModal = ({ current, updateCategory }) => {
   };
 
   return (
-    <div id='edit-category-modal' className='modal' style={modalStyle}>
-      <div className='modal-content'>
+    <div id="edit-category-modal" className="modal" style={modalStyle}>
+      <div className="modal-content">
         {/* <h4>Enter System Category</h4> */}
-        <div className='row'>
-          <div className='input-field'>
+        <div className="row">
+          <div className="input-field">
             <input
-              type='text'
-              name='title'
+              type="text"
+              name="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-            <label htmlFor='title' className='active'>
+            <label htmlFor="title" className="active">
               Title
             </label>
           </div>
         </div>
 
-        <div className='row'>
-          <div className='input-field'>
+        <div className="row">
+          <div className="input-field">
             <input
-              type='text'
-              name='thumbnail'
+              type="text"
+              name="thumbnail"
               value={thumbnail}
               onChange={(e) => setThumbnail(e.target.value)}
             />
-            <label htmlFor='thumbnail' className='active'>
+            <label htmlFor="thumbnail" className="active">
               Thumbnail
             </label>
           </div>
         </div>
       </div>
 
-      <div className='modal-footer'>
+      <div className="modal-footer">
         <a
-          href='#!'
+          href="#!"
           onClick={onSubmit}
-          className='modal-close waves-effect blue waves-light btn'
+          className="modal-close waves-effect blue waves-light btn"
         >
           Enter
         </a>
@@ -90,11 +88,11 @@ const EditCategoryModal = ({ current, updateCategory }) => {
 
 EditCategoryModal.propTypes = {
   current: PropTypes.object,
-  updateCategory: PropTypes.func.isRequired,
+  updateCategory: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  current: state.category.current,
+  current: state.category.current
 });
 
 export default connect(mapStateToProps, { updateCategory })(EditCategoryModal);

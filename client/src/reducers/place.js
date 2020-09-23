@@ -7,14 +7,14 @@ import {
   UPDATE_PLACE,
   SEARCH_PLACES,
   SET_CURRENT,
-  CLEAR_CURRENT,
+  CLEAR_CURRENT
 } from '../actions/types';
 
 const initialState = {
   places: null,
   current: null,
   loading: false,
-  error: null,
+  error: null
 };
 
 export default function (state = initialState, action) {
@@ -29,13 +29,13 @@ export default function (state = initialState, action) {
       return {
         ...state,
         places: [...state.places, payload],
-        loading: false,
+        loading: false
       };
     case DELETE_PLACE:
       return {
         ...state,
         places: state.places.filter((place) => place._id !== payload),
-        loading: false,
+        loading: false
       };
     case UPDATE_PLACE:
       return {
@@ -43,7 +43,7 @@ export default function (state = initialState, action) {
         places: state.places.map((place) =>
           place._id === payload.id ? payload : place
         ),
-        loading: false,
+        loading: false
       };
     case SET_CURRENT:
       return { ...state, current: payload };
@@ -55,7 +55,7 @@ export default function (state = initialState, action) {
       console.error(payload);
       return {
         ...state,
-        error: payload,
+        error: payload
       };
     default:
       return state;

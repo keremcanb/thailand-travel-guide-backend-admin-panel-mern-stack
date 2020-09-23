@@ -8,13 +8,13 @@ import {
   UPDATE_CATEGORY,
   SEARCH_CATEGORIES,
   SET_CURRENT,
-  CLEAR_CURRENT,
+  CLEAR_CURRENT
 } from './types';
 
 // Set loading to true
 export const setLoading = () => {
   return {
-    type: SET_LOADING,
+    type: SET_LOADING
   };
 };
 
@@ -28,12 +28,12 @@ export const getCategories = () => async (dispatch) => {
 
     dispatch({
       type: GET_CATEGORIES,
-      payload: data,
+      payload: data
     });
   } catch (err) {
     dispatch({
       type: CATEGORIES_ERROR,
-      payload: err.response.statusText,
+      payload: err.response.statusText
     });
   }
 };
@@ -48,13 +48,13 @@ export const addCategory = (category) => async (dispatch) => {
 
     dispatch({
       type: ADD_CATEGORY,
-      payload: data,
+      payload: data
     });
   } catch (err) {
     console.category(err);
     dispatch({
       type: CATEGORIES_ERROR,
-      payload: err.response.statusText,
+      payload: err.response.statusText
     });
   }
 };
@@ -69,12 +69,12 @@ export const updateCategory = (category) => async (dispatch) => {
 
     dispatch({
       type: UPDATE_CATEGORY,
-      payload: data,
+      payload: data
     });
   } catch (err) {
     dispatch({
       type: CATEGORIES_ERROR,
-      payload: err.response.statusText,
+      payload: err.response.statusText
     });
   }
 };
@@ -88,12 +88,12 @@ export const deleteCategory = (id) => async (dispatch) => {
 
     dispatch({
       type: DELETE_CATEGORY,
-      payload: id,
+      payload: id
     });
   } catch (err) {
     dispatch({
       type: CATEGORIES_ERROR,
-      payload: err.response.statusText,
+      payload: err.response.statusText
     });
   }
 };
@@ -102,14 +102,14 @@ export const deleteCategory = (id) => async (dispatch) => {
 export const setCurrent = (category) => {
   return {
     type: SET_CURRENT,
-    payload: category,
+    payload: category
   };
 };
 
 // Clear current category
 export const clearCurrent = () => {
   return {
-    type: CLEAR_CURRENT,
+    type: CLEAR_CURRENT
   };
 };
 
@@ -123,12 +123,12 @@ export const searchCategories = (text) => async (dispatch) => {
 
     dispatch({
       type: SEARCH_CATEGORIES,
-      payload: data,
+      payload: data
     });
   } catch (err) {
     dispatch({
       type: CATEGORIES_ERROR,
-      payload: err.response.data,
+      payload: err.response.data
     });
   }
 };

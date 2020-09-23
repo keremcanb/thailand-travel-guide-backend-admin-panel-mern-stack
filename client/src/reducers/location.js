@@ -7,14 +7,14 @@ import {
   UPDATE_LOCATION,
   SEARCH_LOCATIONS,
   SET_CURRENT,
-  CLEAR_CURRENT,
+  CLEAR_CURRENT
 } from '../actions/types';
 
 const initialState = {
   locations: null,
   current: null,
   loading: false,
-  error: null,
+  error: null
 };
 
 export default function (state = initialState, action) {
@@ -29,7 +29,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         locations: [...state.locations, payload],
-        loading: false,
+        loading: false
       };
     case DELETE_LOCATION:
       return {
@@ -37,7 +37,7 @@ export default function (state = initialState, action) {
         locations: state.locations.filter(
           (location) => location._id !== payload
         ),
-        loading: false,
+        loading: false
       };
     case UPDATE_LOCATION:
       return {
@@ -45,7 +45,7 @@ export default function (state = initialState, action) {
         locations: state.locations.map((location) =>
           location._id === payload.id ? payload : location
         ),
-        loading: false,
+        loading: false
       };
     case SET_CURRENT:
       return { ...state, current: payload };
@@ -57,7 +57,7 @@ export default function (state = initialState, action) {
       console.error(payload);
       return {
         ...state,
-        error: payload,
+        error: payload
       };
     default:
       return state;

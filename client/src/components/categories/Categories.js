@@ -18,7 +18,7 @@ const Categories = ({ getCategories, category: { categories, loading } }) => {
   return !(loading || categories === null) ? (
     <Container>
       {!loading && categories.length === 0 ? (
-        <p className='center'>No categories to show...</p>
+        <p className="center">No categories to show...</p>
       ) : (
         <Grid className={classes.gridMain}>
           {categories.map((category) => (
@@ -36,22 +36,19 @@ const useStyles = makeStyles((theme) => ({
   gridMain: {
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
-    gridGap: theme.spacing(10),
+    gridGap: theme.spacing(7),
     justifyContent: 'center',
-    marginTop: '50px',
-  },
-  gridFab: {
-    float: 'right',
-  },
+    marginTop: '30px'
+  }
 }));
 
 Categories.propTypes = {
   category: PropTypes.object.isRequired,
-  getCategories: PropTypes.func.isRequired,
+  getCategories: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  category: state.category,
+  category: state.category
 });
 
 export default connect(mapStateToProps, { getCategories })(Categories);

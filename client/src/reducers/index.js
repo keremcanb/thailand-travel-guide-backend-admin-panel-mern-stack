@@ -14,5 +14,5 @@ export default combineReducers({
   category,
   place,
   location,
-  tech: techReducer,
+  tech: techReducer
 });

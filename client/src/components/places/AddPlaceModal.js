@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import React, { useState } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
@@ -24,46 +23,46 @@ const AddPlaceModal = ({ addPlace }) => {
 
   return (
     <div
-      id='add-place-modal'
-      className='modal'
+      id="add-place-modal"
+      className="modal"
       style={{ width: '70%', height: '60%', marginTop: '50px' }}
     >
-      <div className='modal-content'>
+      <div className="modal-content">
         {/* <h4>Enter System Place</h4> */}
-        <div className='row'>
-          <div className='input-field'>
+        <div className="row">
+          <div className="input-field">
             <input
-              type='text'
-              name='title'
+              type="text"
+              name="title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-            <label htmlFor='title' className='active'>
+            <label htmlFor="title" className="active">
               Title
             </label>
           </div>
         </div>
 
-        <div className='row'>
-          <div className='input-field'>
+        <div className="row">
+          <div className="input-field">
             <input
-              type='text'
-              name='thumbnail'
+              type="text"
+              name="thumbnail"
               value={thumbnail}
               onChange={(e) => setThumbnail(e.target.value)}
             />
-            <label htmlFor='thumbnail' className='active'>
+            <label htmlFor="thumbnail" className="active">
               Thumbnail
             </label>
           </div>
         </div>
       </div>
 
-      <div className='modal-footer'>
+      <div className="modal-footer">
         <a
-          href='#!'
+          href="#!"
           onClick={onSubmit}
-          className='modal-close waves-effect blue waves-light btn'
+          className="modal-close waves-effect blue waves-light btn"
         >
           Enter
         </a>
@@ -73,7 +72,7 @@ const AddPlaceModal = ({ addPlace }) => {
 };
 
 AddPlaceModal.propTypes = {
-  addPlace: PropTypes.func.isRequired,
+  addPlace: PropTypes.func.isRequired
 };
 
 export default connect(null, { addPlace })(AddPlaceModal);

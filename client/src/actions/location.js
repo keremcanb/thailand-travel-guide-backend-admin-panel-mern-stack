@@ -8,13 +8,13 @@ import {
   UPDATE_LOCATION,
   SEARCH_LOCATIONS,
   SET_CURRENT,
-  CLEAR_CURRENT,
+  CLEAR_CURRENT
 } from './types';
 
 // Set loading to true
 export const setLoading = () => {
   return {
-    type: SET_LOADING,
+    type: SET_LOADING
   };
 };
 
@@ -28,12 +28,12 @@ export const getLocations = () => async (dispatch) => {
 
     dispatch({
       type: GET_LOCATIONS,
-      payload: data,
+      payload: data
     });
   } catch (err) {
     dispatch({
       type: LOCATIONS_ERROR,
-      payload: err.response.statusText,
+      payload: err.response.statusText
     });
   }
 };
@@ -48,13 +48,13 @@ export const addLocation = (location) => async (dispatch) => {
 
     dispatch({
       type: ADD_LOCATION,
-      payload: data,
+      payload: data
     });
   } catch (err) {
     console.location(err);
     dispatch({
       type: LOCATIONS_ERROR,
-      payload: err.response.statusText,
+      payload: err.response.statusText
     });
   }
 };
@@ -69,12 +69,12 @@ export const updateLocation = (location) => async (dispatch) => {
 
     dispatch({
       type: UPDATE_LOCATION,
-      payload: data,
+      payload: data
     });
   } catch (err) {
     dispatch({
       type: LOCATIONS_ERROR,
-      payload: err.response.statusText,
+      payload: err.response.statusText
     });
   }
 };
@@ -88,12 +88,12 @@ export const deleteLocation = (id) => async (dispatch) => {
 
     dispatch({
       type: DELETE_LOCATION,
-      payload: id,
+      payload: id
     });
   } catch (err) {
     dispatch({
       type: LOCATIONS_ERROR,
-      payload: err.response.statusText,
+      payload: err.response.statusText
     });
   }
 };
@@ -102,14 +102,14 @@ export const deleteLocation = (id) => async (dispatch) => {
 export const setCurrent = (location) => {
   return {
     type: SET_CURRENT,
-    payload: location,
+    payload: location
   };
 };
 
 // Clear current location
 export const clearCurrent = () => {
   return {
-    type: CLEAR_CURRENT,
+    type: CLEAR_CURRENT
   };
 };
 
@@ -123,12 +123,12 @@ export const searchLocations = (text) => async (dispatch) => {
 
     dispatch({
       type: SEARCH_LOCATIONS,
-      payload: data,
+      payload: data
     });
   } catch (err) {
     dispatch({
       type: LOCATIONS_ERROR,
-      payload: err.response.data,
+      payload: err.response.data
     });
   }
 };

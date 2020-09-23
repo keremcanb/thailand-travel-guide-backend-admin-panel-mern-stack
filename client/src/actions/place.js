@@ -8,13 +8,13 @@ import {
   UPDATE_PLACE,
   SEARCH_PLACES,
   SET_CURRENT,
-  CLEAR_CURRENT,
+  CLEAR_CURRENT
 } from './types';
 
 // Set loading to true
 export const setLoading = () => {
   return {
-    type: SET_LOADING,
+    type: SET_LOADING
   };
 };
 
@@ -28,12 +28,12 @@ export const getPlaces = () => async (dispatch) => {
 
     dispatch({
       type: GET_PLACES,
-      payload: data,
+      payload: data
     });
   } catch (err) {
     dispatch({
       type: PLACES_ERROR,
-      payload: err.response.statusText,
+      payload: err.response.statusText
     });
   }
 };
@@ -48,13 +48,13 @@ export const addPlace = (place) => async (dispatch) => {
 
     dispatch({
       type: ADD_PLACE,
-      payload: data,
+      payload: data
     });
   } catch (err) {
     console.place(err);
     dispatch({
       type: PLACES_ERROR,
-      payload: err.response.statusText,
+      payload: err.response.statusText
     });
   }
 };
@@ -69,12 +69,12 @@ export const updatePlace = (place) => async (dispatch) => {
 
     dispatch({
       type: UPDATE_PLACE,
-      payload: data,
+      payload: data
     });
   } catch (err) {
     dispatch({
       type: PLACES_ERROR,
-      payload: err.response.statusText,
+      payload: err.response.statusText
     });
   }
 };
@@ -88,12 +88,12 @@ export const deletePlace = (id) => async (dispatch) => {
 
     dispatch({
       type: DELETE_PLACE,
-      payload: id,
+      payload: id
     });
   } catch (err) {
     dispatch({
       type: PLACES_ERROR,
-      payload: err.response.statusText,
+      payload: err.response.statusText
     });
   }
 };
@@ -102,14 +102,14 @@ export const deletePlace = (id) => async (dispatch) => {
 export const setCurrent = (place) => {
   return {
     type: SET_CURRENT,
-    payload: place,
+    payload: place
   };
 };
 
 // Clear current place
 export const clearCurrent = () => {
   return {
-    type: CLEAR_CURRENT,
+    type: CLEAR_CURRENT
   };
 };
 
@@ -123,12 +123,12 @@ export const searchPlaces = (text) => async (dispatch) => {
 
     dispatch({
       type: SEARCH_PLACES,
-      payload: data,
+      payload: data
     });
   } catch (err) {
     dispatch({
       type: PLACES_ERROR,
-      payload: err.response.data,
+      payload: err.response.data
     });
   }
 };

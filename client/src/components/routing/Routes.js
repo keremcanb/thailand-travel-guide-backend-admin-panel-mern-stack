@@ -15,14 +15,14 @@ import Alert from '../layout/Alert';
 
 const Routes = () => {
   return (
-    <section className='container'>
+    <section className="container">
       <Alert />
       <Switch>
-        <Route exact path='/login' component={Login} />
-        <PrivateRoute exact path='/dashboard' component={Dashboard} />
-        <PrivateRoute exact path='/locations' component={Location} />
-        <PrivateRoute exact path='/categories' component={Category} />
-        <PrivateRoute exact path='/places' component={Place} />
+        <Route exact path="/login" component={Login} />
+        <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        <PrivateRoute exact path="/locations" component={Location} />
+        <PrivateRoute exact path="/categories" component={Category} />
+        <PrivateRoute exact path="/places" component={Place} />
         <Route component={NotFound} />
         {/* <Route exact path='/register' component={Register} /> */}
         {/* <PrivateRoute exact path='/locations' component={Locations} /> */}

@@ -18,7 +18,7 @@ const Places = ({ getPlaces, place: { places, loading } }) => {
   return !(loading || places === null) ? (
     <Container>
       {!loading && places.length === 0 ? (
-        <p className='center'>No places to show...</p>
+        <p className="center">No places to show...</p>
       ) : (
         <Grid className={classes.gridMain}>
           {places.map((place) => (
@@ -36,22 +36,19 @@ const useStyles = makeStyles((theme) => ({
   gridMain: {
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
-    gridGap: theme.spacing(10),
+    gridGap: theme.spacing(7),
     justifyContent: 'center',
-    marginTop: '50px',
-  },
-  gridFab: {
-    float: 'right',
-  },
+    marginTop: '30px'
+  }
 }));
 
 Places.propTypes = {
   place: PropTypes.object.isRequired,
-  getPlaces: PropTypes.func.isRequired,
+  getPlaces: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  place: state.place,
+  place: state.place
 });
 
 export default connect(mapStateToProps, { getPlaces })(Places);

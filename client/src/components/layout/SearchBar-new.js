@@ -11,21 +11,21 @@ const SearchBar = ({ searchLocations }) => {
   };
 
   return (
-    <nav style={{ marginBottom: '30px', marginTop: '75px' }} className='blue'>
-      <div className='nav-wrapper'>
+    <nav style={{ marginBottom: '30px', marginTop: '75px' }} className="blue">
+      <div className="nav-wrapper">
         <form>
-          <div className='input-field'>
+          <div className="input-field">
             <input
               ref={text}
               onChange={onChange}
-              id='search'
-              type='search'
-              placeholder='Search...'
+              id="search"
+              type="search"
+              placeholder="Search..."
             />
-            <label className='label-icon' htmlFor='search'>
-              <i className='material-icons'>search</i>
+            <label className="label-icon" htmlFor="search">
+              <i className="material-icons">search</i>
             </label>
-            <i className='material-icons'>close</i>
+            <i className="material-icons">close</i>
           </div>
         </form>
       </div>
@@ -34,7 +34,7 @@ const SearchBar = ({ searchLocations }) => {
 };
 
 SearchBar.propTypes = {
-  searchLocations: PropTypes.func.isRequired,
+  searchLocations: PropTypes.func.isRequired
 };
 
 export default connect(null, { searchLocations })(SearchBar);

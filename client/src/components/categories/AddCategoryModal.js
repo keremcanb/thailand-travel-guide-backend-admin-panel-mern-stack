@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import React, { useState } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
@@ -36,39 +35,39 @@ const AddCategoryModal = ({ addCategory }) => {
 
   return (
     <div
-      id='add-category-modal'
-      className='modal'
+      id="add-category-modal"
+      className="modal"
       // style={{ width: '100%', height: '100%' }}
     >
-      <div className='modal-content'>
+      <div className="modal-content">
         {/* <h4>Enter Category</h4> */}
 
         <Form.Group>
           <Form.Control
-            name='title'
-            placeholder='Title *'
+            name="title"
+            placeholder="Title *"
             value={category.title}
             onChange={onChange}
-            type='text'
+            type="text"
             required
           />
         </Form.Group>
         <Form.Group>
           <Form.Control
-            name='thumbnail'
-            placeholder='Thumbnail *'
+            name="thumbnail"
+            placeholder="Thumbnail *"
             value={category.thumbnail}
             onChange={onChange}
-            type='text'
+            type="text"
             required
           />
         </Form.Group>
         <Form.Group>
           <Select
-            name='location'
+            name="location"
             options={locations.map((loc) => ({
               value: loc.title,
-              label: loc.title,
+              label: loc.title
             }))}
             onChange={onSelect}
             closeMenuOnSelect={false}
@@ -78,11 +77,11 @@ const AddCategoryModal = ({ addCategory }) => {
         </Form.Group>
       </div>
 
-      <div className='modal-footer'>
+      <div className="modal-footer">
         <a
-          href='#!'
+          href="#!"
           onClick={onSubmit}
-          className='modal-close waves-effect blue waves-light btn'
+          className="modal-close waves-effect blue waves-light btn"
         >
           Enter
         </a>
@@ -92,7 +91,7 @@ const AddCategoryModal = ({ addCategory }) => {
 };
 
 AddCategoryModal.propTypes = {
-  addCategory: PropTypes.func.isRequired,
+  addCategory: PropTypes.func.isRequired
 };
 
 export default connect(null, { addCategory })(AddCategoryModal);

@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import React, { useState } from 'react';
 import { Container, Form } from 'react-bootstrap';
 import M from 'materialize-css/dist/js/materialize.min.js';
@@ -27,41 +26,41 @@ const AddLocationModal = ({ addLocation }) => {
 
   return (
     <Container
-      id='add-location-modal'
-      className='modal'
+      id="add-location-modal"
+      className="modal"
       // style={{ width: '70%', height: '60%', marginTop: '50px' }}
     >
-      <div className='modal-content'>
+      <div className="modal-content">
         {/* <h4>Enter Location</h4> */}
         <Form>
           <Form.Group>
             <Form.Control
-              name='title'
-              placeholder='Title *'
+              name="title"
+              placeholder="Title *"
               value={title}
               onChange={onChange}
-              type='text'
+              type="text"
               required
             />
           </Form.Group>
           <Form.Group>
             <Form.Control
-              name='thumbnail'
-              placeholder='Thumbnail *'
+              name="thumbnail"
+              placeholder="Thumbnail *"
               value={thumbnail}
               onChange={onChange}
-              type='text'
+              type="text"
               required
             />
           </Form.Group>
         </Form>
       </div>
 
-      <div className='modal-footer'>
+      <div className="modal-footer">
         <a
-          href='#!'
+          href="#!"
           onClick={onSubmit}
-          className='modal-close waves-effect blue waves-light btn'
+          className="modal-close waves-effect blue waves-light btn"
         >
           Enter
         </a>
@@ -71,7 +70,7 @@ const AddLocationModal = ({ addLocation }) => {
 };
 
 AddLocationModal.propTypes = {
-  addLocation: PropTypes.func.isRequired,
+  addLocation: PropTypes.func.isRequired
 };
 
 export default connect(null, { addLocation })(AddLocationModal);

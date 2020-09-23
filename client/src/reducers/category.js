@@ -7,14 +7,14 @@ import {
   UPDATE_CATEGORY,
   SEARCH_CATEGORIES,
   SET_CURRENT,
-  CLEAR_CURRENT,
+  CLEAR_CURRENT
 } from '../actions/types';
 
 const initialState = {
   categories: null,
   current: null,
   loading: false,
-  error: null,
+  error: null
 };
 
 export default function (state = initialState, action) {
@@ -29,7 +29,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         categories: [...state.categories, payload],
-        loading: false,
+        loading: false
       };
     case DELETE_CATEGORY:
       return {
@@ -37,7 +37,7 @@ export default function (state = initialState, action) {
         categories: state.categories.filter(
           (category) => category._id !== payload
         ),
-        loading: false,
+        loading: false
       };
     case UPDATE_CATEGORY:
       return {
@@ -45,7 +45,7 @@ export default function (state = initialState, action) {
         categories: state.categories.map((category) =>
           category._id === payload.id ? payload : category
         ),
-        loading: false,
+        loading: false
       };
     case SET_CURRENT:
       return { ...state, current: payload };
@@ -57,7 +57,7 @@ export default function (state = initialState, action) {
       console.error(payload);
       return {
         ...state,
-        error: payload,
+        error: payload
       };
     default:
       return state;
