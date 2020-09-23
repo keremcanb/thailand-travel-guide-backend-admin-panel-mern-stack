@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import SearchBar from './components/layout/SearchBar';
 import Categories from './components/categories/Categories';
-import AddBtn from './components/layout/AddBtn';
+import AddBtnCategory from './components/layout/AddBtnCategory';
 import AddCategoryModal from './components/categories/AddCategoryModal';
 import EditCategoryModal from './components/categories/EditCategoryModal';
 import AddTechModal from './components/techs/AddTechModal';
@@ -19,7 +19,7 @@ const Category = () => {
     <>
       <SearchBar />
       <div className='container'>
-        <AddBtn />
+        <AddBtnCategory />
         <AddCategoryModal />
         <EditCategoryModal />
         <AddTechModal />
