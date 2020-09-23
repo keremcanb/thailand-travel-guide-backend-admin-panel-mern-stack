@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import LocationItem from './LocationItem';
-import Preloader from '../layout/Preloader';
 import { getLocations } from '../../actions/location';
 
 const Locations = ({ getLocations, location: { locations, loading } }) => {
@@ -15,7 +15,9 @@ const Locations = ({ getLocations, location: { locations, loading } }) => {
     getLocations();
   }, [getLocations]);
 
-  return !(loading || locations === null) ? (
+  return loading || locations === null ? (
+    <LinearProgress />
+  ) : (
     <Container>
       {!loading && locations.length === 0 ? (
         <p className="center">No locations to show...</p>
@@ -27,8 +29,6 @@ const Locations = ({ getLocations, location: { locations, loading } }) => {
         </Grid>
       )}
     </Container>
-  ) : (
-    <Preloader />
   );
 };
 

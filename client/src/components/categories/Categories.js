@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import { makeStyles } from '@material-ui/core/styles';
 import CategoryItem from './CategoryItem';
-import Preloader from '../layout/Preloader';
 import { getCategories } from '../../actions/category';
 
 const Categories = ({ getCategories, category: { categories, loading } }) => {
@@ -15,7 +15,9 @@ const Categories = ({ getCategories, category: { categories, loading } }) => {
     getCategories();
   }, [getCategories]);
 
-  return !(loading || categories === null) ? (
+  return loading || categories === null ? (
+    <LinearProgress />
+  ) : (
     <Container>
       {!loading && categories.length === 0 ? (
         <p className="center">No categories to show...</p>
@@ -27,8 +29,6 @@ const Categories = ({ getCategories, category: { categories, loading } }) => {
         </Grid>
       )}
     </Container>
-  ) : (
-    <Preloader />
   );
 };
 
