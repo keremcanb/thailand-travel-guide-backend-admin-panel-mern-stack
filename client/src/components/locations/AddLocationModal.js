@@ -40,15 +40,16 @@ const AddLocationModal = ({ addLocation }) => {
       actions={[
         <>
           <Button
-            href="#!"
             onClick={onSubmit}
             node="button"
             waves="light"
+            type="submit"
             style={{
               marginRight: '10px'
             }}
           >
             Submit
+            <Icon right>send</Icon>
           </Button>
           <Button modal="close" node="button" waves="green">
             Close

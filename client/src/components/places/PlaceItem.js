@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import LazyLoad from 'react-lazy-load';
-import Grid from '@material-ui/core/Grid';
+import { Col, Row, Icon } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { deletePlace, setCurrent } from '../../actions/place';
 
@@ -13,24 +13,28 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
   };
 
   return (
-    <Grid>
-      <LazyLoad>
-        <img src={place.thumbnail} alt={place.title} width={150} height={75} />
-      </LazyLoad>
-      <h6 style={{ textAlign: 'center' }}>{place.title}</h6>
-      <div>
-        <a
-          href="#edit-place-modal"
-          className="modal-trigger"
-          onClick={() => setCurrent(place)}
-        >
-          <i className="material-icons blue-text">edit</i>
-        </a>
-        <a href="#!" onClick={onDelete} className="secondary-content">
-          <i className="material-icons red-text">delete</i>
-        </a>
-      </div>
-    </Grid>
+    <Row style={{ textAlign: 'center' }}>
+      <Col>
+        <LazyLoad>
+          <img
+            src={place.thumbnail}
+            alt={place.title}
+            className="responsive-img z-depth-2"
+          />
+        </LazyLoad>
+        <h6 style={{ textAlign: 'center' }}>{place.title}</h6>
+        <Col>
+          <a href="#edit-place-modal" onClick={() => setCurrent(place)}>
+            <Icon left>edit</Icon>
+          </a>
+          <a href="#!" onClick={onDelete} className="secondary-content">
+            <Icon right className="red-text text-darken-4">
+              delete
+            </Icon>
+          </a>
+        </Col>
+      </Col>
+    </Row>
   );
 };
 

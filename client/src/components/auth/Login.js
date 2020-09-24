@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Form } from 'react-bootstrap';
-import { TextInput, Button, Col, Row } from 'react-materialize';
+import { TextInput, Button, Icon, Col, Row } from 'react-materialize';
 import { login } from '../../actions/auth';
 
 const Login = ({ login, isAuthenticated }) => {
@@ -57,6 +57,7 @@ const Login = ({ login, isAuthenticated }) => {
               className="float-right"
             >
               Login
+              <Icon right>login</Icon>
             </Button>
           </Form>
         </Col>

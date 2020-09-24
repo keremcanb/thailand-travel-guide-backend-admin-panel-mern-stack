@@ -19,7 +19,7 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
           alt={location.title}
           className="responsive-img z-depth-2"
         />
-        <h5>{location.title}</h5>
+        <h5 style={{ textAlign: 'center' }}>{location.title}</h5>
         <Col>
           <a href="#edit-location-modal" onClick={() => setCurrent(location)}>
             <Icon left>edit</Icon>
