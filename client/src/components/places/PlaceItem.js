@@ -19,7 +19,11 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
       </LazyLoad>
       <h6 style={{ textAlign: 'center' }}>{place.title}</h6>
       <div>
-        <a href="#edit-place-modal" onClick={() => setCurrent(place)}>
+        <a
+          href="#edit-place-modal"
+          className="modal-trigger"
+          onClick={() => setCurrent(place)}
+        >
           <i className="material-icons blue-text">edit</i>
         </a>
         <a href="#!" onClick={onDelete} className="secondary-content">

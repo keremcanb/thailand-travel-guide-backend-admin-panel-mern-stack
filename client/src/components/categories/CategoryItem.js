@@ -21,7 +21,11 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
       />
       <h6 style={{ textAlign: 'center' }}>{category.title}</h6>
       <div>
-        <a href="#edit-category-modal" onClick={() => setCurrent(category)}>
+        <a
+          href="#edit-category-modal"
+          className="modal-trigger"
+          onClick={() => setCurrent(category)}
+        >
           <i className="material-icons blue-text">edit</i>
         </a>
         <a href="#!" onClick={onDelete} className="secondary-content">

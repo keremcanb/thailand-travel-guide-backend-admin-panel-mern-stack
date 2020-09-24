@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { deleteLocation, setCurrent } from '../../actions/location';
 
@@ -12,7 +11,7 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
   };
 
   return (
-    <Grid>
+    <div>
       <img
         src={location.thumbnail}
         alt={location.title}
@@ -21,14 +20,18 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
       />
       <h6 style={{ textAlign: 'center' }}>{location.title}</h6>
       <div>
-        <a href="#edit-location-modal" onClick={() => setCurrent(location)}>
+        <a
+          href="#edit-location-modal"
+          className="modal-trigger"
+          onClick={() => setCurrent(location)}
+        >
           <i className="material-icons blue-text">edit</i>
         </a>
         <a href="#!" onClick={onDelete} className="secondary-content">
           <i className="material-icons red-text">delete</i>
         </a>
       </div>
-    </Grid>
+    </div>
   );
 };
 
