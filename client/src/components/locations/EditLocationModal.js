@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { TextInput } from 'react-materialize';
 import PropTypes from 'prop-types';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { updateLocation } from '../../actions/location';
@@ -40,36 +41,19 @@ const EditLocationModal = ({ current, updateLocation }) => {
       className="modal"
       // style={{ width: '70%', height: '60%', marginTop: '50px' }}
     >
-      <div className="modal-content">
-        {/* <h4>Enter System Location</h4> */}
-        <div className="row">
-          <div className="input-field">
-            <input
-              type="text"
-              name="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <label htmlFor="title" className="active">
-              Title
-            </label>
-          </div>
-        </div>
+      <TextInput
+        type="text"
+        name="title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
 
-        <div className="row">
-          <div className="input-field">
-            <input
-              type="text"
-              name="thumbnail"
-              value={thumbnail}
-              onChange={(e) => setThumbnail(e.target.value)}
-            />
-            <label htmlFor="thumbnail" className="active">
-              Thumbnail
-            </label>
-          </div>
-        </div>
-      </div>
+      <TextInput
+        type="text"
+        name="thumbnail"
+        value={thumbnail}
+        onChange={(e) => setThumbnail(e.target.value)}
+      />
 
       <div className="modal-footer">
         <a

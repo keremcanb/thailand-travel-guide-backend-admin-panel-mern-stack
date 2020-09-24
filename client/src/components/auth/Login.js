@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Container, Form, Col, Row } from 'react-bootstrap';
-import Button from '@material-ui/core/Button';
+import { Form } from 'react-bootstrap';
+import { TextInput, Button, Col, Row } from 'react-materialize';
 import { login } from '../../actions/auth';
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     email: '',
-    password: '',
+    password: ''
   });
   const { email, password } = formData;
 
@@ -23,62 +23,55 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   if (isAuthenticated) {
-    return <Redirect to='/dashboard' />;
+    return <Redirect to="/dashboard" />;
   }
 
   return (
-    <Container className='mt-5'>
-      <Row className='justify-content-center'>
-        <Col md={4}>
-          <Form onSubmit={onSubmit} className='mt-5'>
-            <Form.Group>
-              <Form.Control
-                type='email'
-                placeholder='Email'
-                name='email'
-                value={email}
-                onChange={onChange}
-                required
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Control
-                type='password'
-                placeholder='Password'
-                name='password'
-                value={password}
-                onChange={onChange}
-                minLength='6'
-                required
-              />
-            </Form.Group>
-            <Container className='d-flex justify-content-center'>
-              <Button
-                type='submit'
-                value='Login'
-                variant='contained'
-                color='primary'
-              >
-                Login
-              </Button>
-            </Container>
+    <>
+      <Row className="mt-5 d-flex justify-content-center">
+        <Col m={4}>
+          <Form onSubmit={onSubmit} className="mt-5">
+            <TextInput
+              type="email"
+              placeholder="Email"
+              name="email"
+              value={email}
+              onChange={onChange}
+              required
+            />
+            <TextInput
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={password}
+              onChange={onChange}
+              minLength="6"
+              required
+            />
+            <Button
+              type="submit"
+              value="Login"
+              variant="contained"
+              color="primary"
+              onSubmit={onSubmit}
+              className="float-right"
+            >
+              Login
+            </Button>
           </Form>
-          {/* <p className='my-1'>
-            Do not have an account? <Link to='/register'>Sign Up</Link>
-          </p> */}
         </Col>
       </Row>
-    </Container>
+    </>
   );
 };
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool,
+  isAuthenticated: PropTypes.bool
 };
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated,
+  isAuthenticated: state.auth.isAuthenticated
 });
 
 export default connect(mapStateToProps, { login })(Login);

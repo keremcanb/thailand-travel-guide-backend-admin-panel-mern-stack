@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Container, Form } from 'react-bootstrap';
+import { Button, Icon, Modal, TextInput } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -25,47 +25,54 @@ const AddLocationModal = ({ addLocation }) => {
   };
 
   return (
-    <Container
-      id="add-location-modal"
-      className="modal"
-      // style={{ width: '70%', height: '60%', marginTop: '50px' }}
+    <Modal
+      header="Add Location"
+      trigger={
+        <Button
+          className="blue darken-2"
+          fab
+          floating
+          large
+          node="button"
+          icon={<Icon>add</Icon>}
+        />
+      }
+      actions={[
+        <>
+          <Button
+            href="#!"
+            onClick={onSubmit}
+            node="button"
+            waves="light"
+            style={{
+              marginRight: '10px'
+            }}
+          >
+            Submit
+          </Button>
+          <Button modal="close" node="button" waves="green">
+            Close
+          </Button>
+        </>
+      ]}
     >
-      <div className="modal-content">
-        {/* <h4>Enter Location</h4> */}
-        <Form>
-          <Form.Group>
-            <Form.Control
-              name="title"
-              placeholder="Title *"
-              value={title}
-              onChange={onChange}
-              type="text"
-              required
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Control
-              name="thumbnail"
-              placeholder="Thumbnail *"
-              value={thumbnail}
-              onChange={onChange}
-              type="text"
-              required
-            />
-          </Form.Group>
-        </Form>
-      </div>
-
-      <div className="modal-footer">
-        <a
-          href="#!"
-          onClick={onSubmit}
-          className="modal-close waves-effect blue waves-light btn"
-        >
-          Enter
-        </a>
-      </div>
-    </Container>
+      <TextInput
+        name="title"
+        placeholder="Title *"
+        value={location.title}
+        onChange={onChange}
+        type="text"
+        required
+      />
+      <TextInput
+        name="thumbnail"
+        placeholder="Thumbnail *"
+        value={location.thumbnail}
+        onChange={onChange}
+        type="text"
+        required
+      />
+    </Modal>
   );
 };
 

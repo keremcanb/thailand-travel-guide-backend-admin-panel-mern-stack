@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-import LinearProgress from '@material-ui/core/LinearProgress';
+import { ProgressBar, Row } from 'react-materialize';
 import LocationItem from './LocationItem';
 import { getLocations } from '../../actions/location';
 
@@ -13,19 +11,19 @@ const Locations = ({ getLocations, location: { locations, loading } }) => {
   }, [getLocations]);
 
   return loading || locations === null ? (
-    <LinearProgress />
+    <ProgressBar />
   ) : (
-    <Container>
+    <>
       {!loading && locations.length === 0 ? (
         <p className="center">No locations to show...</p>
       ) : (
-        <Grid style={gridStyle}>
+        <Row style={gridStyle}>
           {locations.map((location) => (
             <LocationItem key={location._id} location={location} />
           ))}
-        </Grid>
+        </Row>
       )}
-    </Container>
+    </>
   );
 };
 

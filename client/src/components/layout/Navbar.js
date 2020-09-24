@@ -1,58 +1,53 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Nav, Navbar, Container } from 'react-bootstrap';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { Navbar, NavItem, Icon, Row } from 'react-materialize';
 import { logout } from '../../actions/auth';
 
 const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
-    <>
-      <Nav.Link as={Link} to="/locations" href="/locations">
+    <Row>
+      <Link as={Link} to="/locations" href="/locations">
         Locations
-      </Nav.Link>
-      <Nav.Link as={Link} to="/categories" href="/categories">
+      </Link>
+      <Link as={Link} to="/categories" href="/categories">
         Categories
-      </Nav.Link>
-      <Nav.Link as={Link} to="/places" href="/places">
+      </Link>
+      <Link as={Link} to="/places" href="/places">
         Places
-      </Nav.Link>
-      <Nav.Link onClick={logout} href="#!">
-        <ExitToAppIcon />
-      </Nav.Link>
-    </>
+      </Link>
+      <NavItem onClick={logout}>
+        <Icon>logout</Icon>
+      </NavItem>
+    </Row>
   );
 
   return (
     <Navbar
-      bg="dark"
-      variant="dark"
-      expand="lg"
-      collapseOnSelect
-      style={{ boxShadow: '0 8px 6px -6px #999', opacity: '0.9' }}
-      fixed="top"
-    >
-      <Container>
-        <Navbar.Brand>
-          <img
-            src="/tgr-logo.png"
-            width="40"
-            height="30"
-            alt="logo"
-            className="mr-3"
-          />
+      // className="blue darken-3"
+      alignLinks="right"
+      brand={
+        <a className="brand-logo" href="/">
           TGR Admin
-        </Navbar.Brand>
-        {isAuthenticated && (
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        )}
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ml-auto">
-            {!loading && isAuthenticated && authLinks}
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
+        </a>
+      }
+      centerChildren
+      id="mobile-nav"
+      menuIcon={<Icon>menu</Icon>}
+      options={{
+        draggable: true,
+        edge: 'left',
+        inDuration: 250,
+        onCloseEnd: null,
+        onCloseStart: null,
+        onOpenEnd: null,
+        onOpenStart: null,
+        outDuration: 200,
+        preventScrolling: true
+      }}
+    >
+      {!loading && isAuthenticated && authLinks}
     </Navbar>
   );
 };
