@@ -33,9 +33,7 @@ const gridStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(4, 1fr)',
   justifyContent: 'center',
-  alignContent: 'center',
-  gridRowGap: '20px',
-  gridColumnGap: '50px',
+  gridGap: '3rem',
   marginTop: '40px'
 };
 

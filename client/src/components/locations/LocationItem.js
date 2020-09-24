@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import Grid from '@material-ui/core/Grid';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { deleteLocation, setCurrent } from '../../actions/location';
 
@@ -11,7 +12,7 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
   };
 
   return (
-    <div>
+    <Grid>
       <img
         src={location.thumbnail}
         alt={location.title}
@@ -31,7 +32,7 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
           <i className="material-icons red-text">delete</i>
         </a>
       </div>
-    </div>
+    </Grid>
   );
 };
 

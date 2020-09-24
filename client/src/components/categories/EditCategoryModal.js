@@ -9,12 +9,6 @@ const EditCategoryModal = ({ current, updateCategory }) => {
   const [title, setTitle] = useState('');
   const [thumbnail, setThumbnail] = useState('');
 
-  const modalStyle = {
-    width: '70%',
-    height: '60%',
-    marginTop: '100px'
-  };
-
   useEffect(() => {
     if (current) {
       setTitle(current.title);
@@ -41,7 +35,11 @@ const EditCategoryModal = ({ current, updateCategory }) => {
   };
 
   return (
-    <div id="edit-category-modal" className="modal" style={modalStyle}>
+    <div
+      id="edit-category-modal"
+      className="modal"
+      // style={{ width: '70%', height: '60%', marginTop: '50px' }}
+    >
       <div className="modal-content">
         {/* <h4>Enter System Category</h4> */}
         <div className="row">

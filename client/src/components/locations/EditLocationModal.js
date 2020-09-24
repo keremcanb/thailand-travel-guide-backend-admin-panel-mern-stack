@@ -9,12 +9,6 @@ const EditLocationModal = ({ current, updateLocation }) => {
   const [title, setTitle] = useState('');
   const [thumbnail, setThumbnail] = useState('');
 
-  const modalStyle = {
-    width: '70%',
-    height: '60%',
-    marginTop: '100px'
-  };
-
   useEffect(() => {
     if (current) {
       setTitle(current.title);
@@ -41,7 +35,11 @@ const EditLocationModal = ({ current, updateLocation }) => {
   };
 
   return (
-    <div id="edit-location-modal" className="modal" style={modalStyle}>
+    <div
+      id="edit-location-modal"
+      className="modal"
+      // style={{ width: '70%', height: '60%', marginTop: '50px' }}
+    >
       <div className="modal-content">
         {/* <h4>Enter System Location</h4> */}
         <div className="row">
