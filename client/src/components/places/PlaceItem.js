@@ -25,7 +25,7 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
       <a
         href="#edit-place-modal"
         className="modal-trigger"
-        nClick={() => setCurrent(place)}
+        onClick={() => setCurrent(place)}
         style={{
           marginRight: '1rem'
         }}

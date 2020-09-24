@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { ProgressBar, Row } from 'react-materialize';
+import { Row, Col, ProgressBar } from 'react-materialize';
 import CategoryItem from './CategoryItem';
 import { getCategories } from '../../actions/category';
 
@@ -13,17 +13,17 @@ const Categories = ({ getCategories, category: { categories, loading } }) => {
   return loading || categories === null ? (
     <ProgressBar />
   ) : (
-    <>
+    <Row>
       {!loading && categories.length === 0 ? (
         <p className="center">No categories to show...</p>
       ) : (
-        <Row style={gridStyle}>
+        <Col style={gridStyle}>
           {categories.map((category) => (
             <CategoryItem key={category._id} category={category} />
           ))}
-        </Row>
+        </Col>
       )}
-    </>
+    </Row>
   );
 };
 
@@ -32,8 +32,7 @@ const gridStyle = {
   gridTemplateColumns: 'repeat(4, 1fr)',
   justifyContent: 'center',
   alignContent: 'center',
-  gridRowGap: '20px',
-  gridColumnGap: '50px'
+  gridGap: '5rem'
 };
 
 Categories.propTypes = {

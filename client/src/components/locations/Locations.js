@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { ProgressBar, Row } from 'react-materialize';
+import { Row, Col, ProgressBar } from 'react-materialize';
 import LocationItem from './LocationItem';
 import { getLocations } from '../../actions/location';
 
@@ -13,17 +13,17 @@ const Locations = ({ getLocations, location: { locations, loading } }) => {
   return loading || locations === null ? (
     <ProgressBar />
   ) : (
-    <>
+    <Row>
       {!loading && locations.length === 0 ? (
         <p className="center">No locations to show...</p>
       ) : (
-        <Row style={gridStyle}>
+        <Col style={gridStyle}>
           {locations.map((location) => (
             <LocationItem key={location._id} location={location} />
           ))}
-        </Row>
+        </Col>
       )}
-    </>
+    </Row>
   );
 };
 
@@ -31,7 +31,8 @@ const gridStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(4, 1fr)',
   justifyContent: 'center',
-  gridGap: '2rem'
+  alignContent: 'center',
+  gridGap: '5rem'
 };
 
 Locations.propTypes = {
