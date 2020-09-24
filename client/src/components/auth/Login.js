@@ -6,30 +6,27 @@ import { TextInput, Button, Icon, Col, Row } from 'react-materialize';
 import { login } from '../../actions/auth';
 
 const Login = ({ login, isAuthenticated }) => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
+  const [formData, setFormData] = useState({ email: '', password: '' });
   const { email, password } = formData;
 
-  function onChange(e) {
+  const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  }
+  };
 
-  async function onSubmit(e) {
+  const onSubmit = (e) => {
     e.preventDefault();
     login(email, password);
-  }
+  };
 
   if (isAuthenticated) {
     return <Redirect to="/dashboard" />;
   }
 
   return (
-    <>
-      <Row style={rowStyle}>
-        <Col>
-          <div onSubmit={onSubmit}>
+    <Row style={rowStyle}>
+      <form onSubmit={onSubmit}>
+        <Row>
+          <Col s={12}>
             <TextInput
               type="email"
               placeholder="Email"
@@ -38,6 +35,11 @@ const Login = ({ login, isAuthenticated }) => {
               onChange={onChange}
               required
             />
+          </Col>
+        </Row>
+
+        <Row>
+          <Col s={12}>
             <TextInput
               type="password"
               placeholder="Password"
@@ -47,21 +49,25 @@ const Login = ({ login, isAuthenticated }) => {
               minLength="6"
               required
             />
+          </Col>
+        </Row>
+
+        <Row>
+          <Col s={12}>
             <Button
               type="submit"
               value="Login"
               variant="contained"
               color="primary"
-              onSubmit={onSubmit}
               className="float-right"
             >
               Login
               <Icon right>login</Icon>
             </Button>
-          </div>
-        </Col>
-      </Row>
-    </>
+          </Col>
+        </Row>
+      </form>
+    </Row>
   );
 };
 

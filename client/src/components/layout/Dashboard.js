@@ -10,10 +10,17 @@ const Dashboard = ({ getCurrentProfile, auth: { user } }) => {
   }, [getCurrentProfile]);
 
   return (
-    <Row className="mt-5 d-flex justify-content-center">
-      <h1 className="mt-5">Welcome {user && user.firstName}</h1>
+    <Row style={rowStyle}>
+      <h1>Welcome {user && user.firstName}</h1>
     </Row>
   );
+};
+
+const rowStyle = {
+  display: 'grid',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginTop: '30px'
 };
 
 Dashboard.propTypes = {
