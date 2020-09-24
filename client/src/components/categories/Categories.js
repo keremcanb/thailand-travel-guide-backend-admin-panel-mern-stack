@@ -35,8 +35,7 @@ const gridStyle = {
   justifyContent: 'center',
   alignContent: 'center',
   gridRowGap: '20px',
-  gridColumnGap: '50px',
-  marginTop: '40px'
+  gridColumnGap: '50px'
 };
 
 Categories.propTypes = {

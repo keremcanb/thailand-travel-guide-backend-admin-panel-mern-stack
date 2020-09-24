@@ -31,8 +31,7 @@ const gridStyle = {
   display: 'grid',
   gridTemplateColumns: 'repeat(4, 1fr)',
   justifyContent: 'center',
-  gridGap: '3rem',
-  marginTop: '40px'
+  gridGap: '2rem'
 };
 
 Locations.propTypes = {

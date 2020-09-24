@@ -12,10 +12,9 @@ const SearchBox = ({ onSearch }) => {
 };
 
 const rowStyle = {
-  display: 'grid',
+  display: 'flex',
   justifyContent: 'center',
-  alignItems: 'center',
-  marginTop: '30px'
+  alignItems: 'center'
 };
 
 export default SearchBox;

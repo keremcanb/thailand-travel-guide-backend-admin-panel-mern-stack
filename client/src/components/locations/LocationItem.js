@@ -12,27 +12,24 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
   };
 
   return (
-    <Row>
-      <Col style={{ textAlign: 'center' }}>
+    <Row style={{ textAlign: 'center' }}>
+      <Col>
         <img
           src={location.thumbnail}
           alt={location.title}
-          width={150}
-          height={75}
+          className="responsive-img z-depth-2"
         />
-        <h6>{location.title}</h6>
-      </Col>
-      <Col>
-        <a
-          href="#edit-location-modal"
-          className="modal-trigger"
-          onClick={() => setCurrent(location)}
-        >
-          <Icon>edit</Icon>
-        </a>
-        <a href="#!" onClick={onDelete} className="secondary-content">
-          <Icon>delete</Icon>
-        </a>
+        <h5>{location.title}</h5>
+        <Col>
+          <a href="#edit-location-modal" onClick={() => setCurrent(location)}>
+            <Icon left>edit</Icon>
+          </a>
+          <a href="#!" onClick={onDelete}>
+            <Icon right className="red-text text-darken-4">
+              delete
+            </Icon>
+          </a>
+        </Col>
       </Col>
     </Row>
   );
