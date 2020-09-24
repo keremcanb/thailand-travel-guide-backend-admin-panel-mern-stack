@@ -1,14 +1,21 @@
 import React from 'react';
-import { Form } from 'react-bootstrap';
+import { TextInput, Row, Col } from 'react-materialize';
 
 const SearchBox = ({ onSearch }) => {
   return (
-    <Form>
-      <Form.Group className="mt-3">
-        <Form.Control type="search" placeholder="Filter" onChange={onSearch} />
-      </Form.Group>
-    </Form>
+    <Row style={rowStyle}>
+      <Col>
+        <TextInput type="search" placeholder="Filter" onChange={onSearch} />
+      </Col>
+    </Row>
   );
+};
+
+const rowStyle = {
+  display: 'grid',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginTop: '30px'
 };
 
 export default SearchBox;

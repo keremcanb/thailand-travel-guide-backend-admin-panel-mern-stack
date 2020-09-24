@@ -28,9 +28,9 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <>
-      <Row className="mt-5 d-flex justify-content-center">
-        <Col m={4}>
-          <Form onSubmit={onSubmit} className="mt-5">
+      <Row style={rowStyle}>
+        <Col>
+          <Form onSubmit={onSubmit}>
             <TextInput
               type="email"
               placeholder="Email"
@@ -63,6 +63,13 @@ const Login = ({ login, isAuthenticated }) => {
       </Row>
     </>
   );
+};
+
+const rowStyle = {
+  display: 'grid',
+  justifyContent: 'center',
+  alignItems: 'center',
+  marginTop: '30px'
 };
 
 Login.propTypes = {
