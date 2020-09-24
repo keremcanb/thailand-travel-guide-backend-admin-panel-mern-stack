@@ -1,22 +1,22 @@
 import React, { useState } from 'react';
+import { Button, Icon, Modal, TextInput } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Form } from 'react-bootstrap';
 import makeAnimated from 'react-select/animated';
 import Select from 'react-select';
 import { addCategory } from '../../actions/category';
 import useResources from '../../utils/useResources';
 
 const AddCategoryModal = ({ addCategory }) => {
-  const initialFormState = { title: '', thumbnail: '' };
+  const initialFormState = { title: '', thumbnail: '', location: '' };
   const [category, setCategory] = useState(initialFormState);
-  const { title, thumbnail, location } = category;
-  const animatedComponents = makeAnimated();
+  const { title, thumbnail } = category;
   const locations = useResources('locations');
+  const animatedComponents = makeAnimated();
 
   const onSubmit = () => {
-    if (title === '' || thumbnail === '' || location === '') {
+    if (title === '' || thumbnail === '') {
       M.toast({ html: 'Please enter category' });
     } else {
       addCategory(category);
@@ -29,64 +29,71 @@ const AddCategoryModal = ({ addCategory }) => {
     setCategory({ ...category, [e.target.name]: e.target.value });
   };
 
-  function onSelect(value, action) {
+  const onSelect = (value, action) => {
     setCategory({ ...category, [action.name]: value });
-  }
+  };
 
   return (
-    <div
-      id="add-category-modal"
-      className="modal"
-      // style={{ width: '100%', height: '100%' }}
+    <Modal
+      header="Add Category"
+      trigger={
+        <Button
+          className="blue darken-2"
+          fab
+          floating
+          large
+          node="button"
+          icon={<Icon>add</Icon>}
+        />
+      }
+      actions={[
+        <>
+          <Button
+            onClick={onSubmit}
+            node="button"
+            waves="light"
+            type="submit"
+            style={{
+              marginRight: '10px'
+            }}
+          >
+            Submit
+            <Icon right>send</Icon>
+          </Button>
+          <Button modal="close" node="button" waves="green">
+            Close
+          </Button>
+        </>
+      ]}
     >
-      <div className="modal-content">
-        {/* <h4>Enter Category</h4> */}
-
-        <Form.Group>
-          <Form.Control
-            name="title"
-            placeholder="Title *"
-            value={category.title}
-            onChange={onChange}
-            type="text"
-            required
-          />
-        </Form.Group>
-        <Form.Group>
-          <Form.Control
-            name="thumbnail"
-            placeholder="Thumbnail *"
-            value={category.thumbnail}
-            onChange={onChange}
-            type="text"
-            required
-          />
-        </Form.Group>
-        <Form.Group>
-          <Select
-            name="location"
-            options={locations.map((loc) => ({
-              value: loc.title,
-              label: loc.title
-            }))}
-            onChange={onSelect}
-            closeMenuOnSelect={false}
-            components={animatedComponents}
-            isMulti
-          />
-        </Form.Group>
-      </div>
-
-      <div className="modal-footer">
-        <a
-          href="#!"
-          onClick={onSubmit}
-          className="modal-close waves-effect blue waves-light btn"
-        >
-          Enter
-        </a>
-      </div>
-    </div>
+      <TextInput
+        name="title"
+        placeholder="Title *"
+        value={category.title}
+        onChange={onChange}
+        type="text"
+        required
+      />
+      <TextInput
+        name="thumbnail"
+        placeholder="Thumbnail *"
+        value={category.thumbnail}
+        onChange={onChange}
+        type="text"
+        required
+      />
+      <Select
+        name="location"
+        options={locations.map((loc) => ({
+          value: loc.title,
+          label: loc.title
+        }))}
+        onChange={onSelect}
+        closeMenuOnSelect={false}
+        components={animatedComponents}
+        isMulti
+      />
+    </Modal>
   );
 };
 

@@ -14,19 +14,9 @@ const Place = () => {
   return (
     <>
       <SearchBar />
-      <div className="container">
-        <div className="fixed-action-btn">
-          <a
-            href="#add-place-modal"
-            className="btn-floating btn-large blue darken-2 modal-trigger"
-          >
-            <i className="large material-icons">add</i>
-          </a>
-        </div>
-        <AddPlaceModal />
-        <EditPlaceModal />
-        <Places />
-      </div>
+      <AddPlaceModal />
+      <EditPlaceModal />
+      <Places />
     </>
   );
 };

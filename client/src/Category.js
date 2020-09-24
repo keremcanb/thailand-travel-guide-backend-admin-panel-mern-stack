@@ -14,19 +14,9 @@ const Category = () => {
   return (
     <>
       <SearchBar />
-      <div className="container">
-        <div className="fixed-action-btn">
-          <a
-            href="#add-category-modal"
-            className="btn-floating btn-large blue darken-2 modal-trigger"
-          >
-            <i className="large material-icons">add</i>
-          </a>
-        </div>
-        <AddCategoryModal />
-        <EditCategoryModal />
-        <Categories />
-      </div>
+      <AddCategoryModal />
+      <EditCategoryModal />
+      <Categories />
     </>
   );
 };
