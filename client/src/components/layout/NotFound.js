@@ -1,15 +1,13 @@
 import React from 'react';
-import { Container, Col, Row } from 'react-bootstrap';
+import { Row, Col } from 'react-materialize';
 
 const NotFound = () => {
   return (
-    <Container className='mt-5'>
-      <Row className='justify-content-center'>
-        <Col md={5}>
-          <h1 className='x-large text-primary'>Page Not Found</h1>
-        </Col>
-      </Row>
-    </Container>
+    <Row className="justify-content-center mt-5">
+      <Col md={5}>
+        <h1 className="x-large text-primary">Page Not Found</h1>
+      </Col>
+    </Row>
   );
 };
 

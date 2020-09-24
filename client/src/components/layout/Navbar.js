@@ -7,7 +7,7 @@ import { logout } from '../../actions/auth';
 
 const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
   const authLinks = (
-    <Row>
+    <>
       <Link as={Link} to="/locations" href="/locations">
         Locations
       </Link>
@@ -20,7 +20,7 @@ const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
       <NavItem onClick={logout}>
         <Icon>logout</Icon>
       </NavItem>
-    </Row>
+    </>
   );
 
   return (

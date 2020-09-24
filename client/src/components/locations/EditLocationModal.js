@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { TextInput } from 'react-materialize';
 import PropTypes from 'prop-types';
+import { TextInput } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { updateLocation } from '../../actions/location';
 
@@ -40,20 +40,21 @@ const EditLocationModal = ({ current, updateLocation }) => {
       className="modal"
       // style={{ width: '70%', height: '60%', marginTop: '50px' }}
     >
-      <TextInput
-        type="text"
-        name="title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-
-      <TextInput
-        type="text"
-        name="thumbnail"
-        value={thumbnail}
-        onChange={(e) => setThumbnail(e.target.value)}
-      />
-
+      <div className="modal-content">
+        <h4>Edit Location</h4>
+        <TextInput
+          type="text"
+          name="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <TextInput
+          type="text"
+          name="thumbnail"
+          value={thumbnail}
+          onChange={(e) => setThumbnail(e.target.value)}
+        />
+      </div>
       <div className="modal-footer">
         <a
           href="#!"

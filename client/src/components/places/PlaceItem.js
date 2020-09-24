@@ -13,7 +13,7 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
   };
 
   return (
-    <Row style={{ textAlign: 'center' }}>
+    <Row>
       <Col>
         <LazyLoad>
           <img
@@ -24,7 +24,11 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
         </LazyLoad>
         <h6 style={{ textAlign: 'center' }}>{place.title}</h6>
         <Col>
-          <a href="#edit-place-modal" onClick={() => setCurrent(place)}>
+          <a
+            href="#edit-place-modal"
+            className="modal-trigger"
+            nClick={() => setCurrent(place)}
+          >
             <Icon left>edit</Icon>
           </a>
           <a href="#!" onClick={onDelete} className="secondary-content">

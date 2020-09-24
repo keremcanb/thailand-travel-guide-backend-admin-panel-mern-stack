@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Form } from 'react-bootstrap';
 import { TextInput, Button, Icon, Col, Row } from 'react-materialize';
 import { login } from '../../actions/auth';
 
@@ -30,7 +29,7 @@ const Login = ({ login, isAuthenticated }) => {
     <>
       <Row style={rowStyle}>
         <Col>
-          <Form onSubmit={onSubmit}>
+          <div onSubmit={onSubmit}>
             <TextInput
               type="email"
               placeholder="Email"
@@ -59,7 +58,7 @@ const Login = ({ login, isAuthenticated }) => {
               Login
               <Icon right>login</Icon>
             </Button>
-          </Form>
+          </div>
         </Col>
       </Row>
     </>

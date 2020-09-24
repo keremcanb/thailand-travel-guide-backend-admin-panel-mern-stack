@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
-import Container from '@material-ui/core/Container';
-import LinearProgress from '@material-ui/core/LinearProgress';
+import { ProgressBar, Row } from 'react-materialize';
 import CategoryItem from './CategoryItem';
 import { getCategories } from '../../actions/category';
 
@@ -13,19 +11,19 @@ const Categories = ({ getCategories, category: { categories, loading } }) => {
   }, [getCategories]);
 
   return loading || categories === null ? (
-    <LinearProgress />
+    <ProgressBar />
   ) : (
-    <Container>
+    <>
       {!loading && categories.length === 0 ? (
         <p className="center">No categories to show...</p>
       ) : (
-        <Grid style={gridStyle}>
+        <Row style={gridStyle}>
           {categories.map((category) => (
             <CategoryItem key={category._id} category={category} />
           ))}
-        </Grid>
+        </Row>
       )}
-    </Container>
+    </>
   );
 };
 

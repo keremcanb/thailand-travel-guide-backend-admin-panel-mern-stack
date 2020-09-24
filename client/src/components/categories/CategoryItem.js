@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Grid from '@material-ui/core/Grid';
+import { Col, Row, Icon } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { deleteCategory, setCurrent } from '../../actions/category';
 
@@ -12,27 +12,30 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
   };
 
   return (
-    <Grid>
-      <img
-        src={category.thumbnail}
-        alt={category.title}
-        width={150}
-        height={75}
-      />
-      <h6 style={{ textAlign: 'center' }}>{category.title}</h6>
-      <div>
-        <a
-          href="#edit-category-modal"
-          className="modal-trigger"
-          onClick={() => setCurrent(category)}
-        >
-          <i className="material-icons blue-text">edit</i>
-        </a>
-        <a href="#!" onClick={onDelete} className="secondary-content">
-          <i className="material-icons red-text">delete</i>
-        </a>
-      </div>
-    </Grid>
+    <Row>
+      <Col>
+        <img
+          src={category.thumbnail}
+          alt={category.title}
+          className="responsive-img z-depth-2"
+        />
+        <h6 style={{ textAlign: 'center' }}>{category.title}</h6>
+        <Col>
+          <a
+            href="#edit-category-modal"
+            className="modal-trigger"
+            onClick={() => setCurrent(category)}
+          >
+            <Icon left>edit</Icon>
+          </a>
+          <a href="#!" onClick={onDelete} className="secondary-content">
+            <Icon right className="red-text text-darken-4">
+              delete
+            </Icon>
+          </a>
+        </Col>
+      </Col>
+    </Row>
   );
 };
 

@@ -12,16 +12,20 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
   };
 
   return (
-    <Row style={{ textAlign: 'center' }}>
+    <Row>
       <Col>
         <img
           src={location.thumbnail}
           alt={location.title}
           className="responsive-img z-depth-2"
         />
-        <h5 style={{ textAlign: 'center' }}>{location.title}</h5>
+        <h6 style={{ textAlign: 'center' }}>{location.title}</h6>
         <Col>
-          <a href="#edit-location-modal" onClick={() => setCurrent(location)}>
+          <a
+            href="#edit-location-modal"
+            className="modal-trigger"
+            onClick={() => setCurrent(location)}
+          >
             <Icon left>edit</Icon>
           </a>
           <a href="#!" onClick={onDelete}>
