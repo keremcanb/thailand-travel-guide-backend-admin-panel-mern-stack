@@ -16,7 +16,8 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
       <img
         src={location.thumbnail}
         alt={location.title}
-        className="responsive-img z-depth-2"
+        className="z-depth-2"
+        width="150"
       />
       <h6>{location.title}</h6>
       <a

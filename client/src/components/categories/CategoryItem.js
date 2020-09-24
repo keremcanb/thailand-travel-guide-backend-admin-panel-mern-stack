@@ -16,7 +16,8 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
       <img
         src={category.thumbnail}
         alt={category.title}
-        className="responsive-img z-depth-2"
+        className="z-depth-2"
+        width="150"
       />
       <h6>{category.title}</h6>
       <a

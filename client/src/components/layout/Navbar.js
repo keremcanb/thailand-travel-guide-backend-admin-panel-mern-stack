@@ -15,7 +15,7 @@ const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
       menuIcon={<Icon>menu</Icon>}
       brand={
         <a className="brand-logo" href="/">
-          TGR Admin
+          TGR
         </a>
       }
       // className="blue darken-3"

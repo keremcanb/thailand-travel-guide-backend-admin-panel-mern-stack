@@ -18,7 +18,8 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
         <img
           src={place.thumbnail}
           alt={place.title}
-          className="responsive-img z-depth-2"
+          className="z-depth-2"
+          width="100"
         />
       </LazyLoad>
       <h6>{place.title}</h6>
