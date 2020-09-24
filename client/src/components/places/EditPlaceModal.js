@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { updatePlace } from '../../actions/place';
-// import TechSelectOptions from '../techs/TechSelectOptions';
 
 const EditPlaceModal = ({ current, updatePlace }) => {
   const [title, setTitle] = useState('');

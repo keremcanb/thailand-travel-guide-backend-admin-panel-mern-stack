@@ -4,9 +4,7 @@ import SearchBar from './components/layout/SearchBar';
 import Categories from './components/categories/Categories';
 import AddCategoryModal from './components/categories/AddCategoryModal';
 import EditCategoryModal from './components/categories/EditCategoryModal';
-import AddTechModal from './components/techs/AddTechModal';
 import 'materialize-css/dist/css/materialize.min.css';
-// import TechListModal from './components/techs/TechListModal';
 
 const Category = () => {
   useEffect(() => {
@@ -27,8 +25,6 @@ const Category = () => {
         </div>
         <AddCategoryModal />
         <EditCategoryModal />
-        <AddTechModal />
-        {/* <TechListModal /> */}
         <Categories />
       </div>
     </>

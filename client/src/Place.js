@@ -4,9 +4,7 @@ import SearchBar from './components/layout/SearchBar';
 import Places from './components/places/Places';
 import AddPlaceModal from './components/places/AddPlaceModal';
 import EditPlaceModal from './components/places/EditPlaceModal';
-import AddTechModal from './components/techs/AddTechModal';
 import 'materialize-css/dist/css/materialize.min.css';
-// import TechListModal from './components/techs/TechListModal';
 
 const Place = () => {
   useEffect(() => {
@@ -27,8 +25,6 @@ const Place = () => {
         </div>
         <AddPlaceModal />
         <EditPlaceModal />
-        <AddTechModal />
-        {/* <TechListModal /> */}
         <Places />
       </div>
     </>

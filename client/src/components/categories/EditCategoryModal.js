@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { updateCategory } from '../../actions/category';
-// import TechSelectOptions from '../techs/TechSelectOptions';
 
 const EditCategoryModal = ({ current, updateCategory }) => {
   const [title, setTitle] = useState('');

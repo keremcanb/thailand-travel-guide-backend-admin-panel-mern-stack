@@ -19,11 +19,6 @@ export const SET_LOADING = 'SET_LOADING';
 export const SET_CURRENT = 'SET_CURRENT';
 export const CLEAR_CURRENT = 'CLEAR_CURRENT';
 
-export const GET_TECHS = 'GET_TECHS';
-export const ADD_TECH = 'ADD_TECH';
-export const DELETE_TECH = 'DELETE_TECH';
-export const TECHS_ERROR = 'TECHS_ERROR';
-
 export const GET_LOCATIONS = 'GET_LOCATIONS';
 export const ADD_LOCATION = 'ADD_LOCATION';
 export const UPDATE_LOCATION = 'UPDATE_LOCATION';
