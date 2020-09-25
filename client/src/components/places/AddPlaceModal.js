@@ -1,48 +1,67 @@
 import React, { useState } from 'react';
-import { Button, Icon, Modal, TextInput } from 'react-materialize';
+import {
+  Button,
+  Icon,
+  Modal,
+  TextInput,
+  Textarea,
+  Row,
+  Col
+} from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+// import useResources from '../../utils/useResources';
 import { addPlace } from '../../actions/place';
 
 const AddPlaceModal = ({ addPlace }) => {
-  const initialFormState = { title: '', thumbnail: '' };
+  const initialFormState = {
+    title: '',
+    image: '',
+    thumbnail: '',
+    content: '',
+    location: '',
+    category: '',
+    info: '',
+    link: '',
+    lat: '',
+    lng: ''
+  };
   const [place, setPlace] = useState(initialFormState);
-  const { title, thumbnail } = place;
+  // const locations = useResources('locations');
+  // const categories = useResources('categories');
+  const {
+    title,
+    thumbnail,
+    image,
+    content,
+    location,
+    category,
+    info,
+    link,
+    lat,
+    lng
+  } = place;
 
   const onSubmit = () => {
-    if (title === '' || thumbnail === '') {
-      M.toast({ html: 'Please enter place' });
-    } else {
-      addPlace(place);
-      M.toast({ html: `Place added` });
-      setPlace(initialFormState);
-    }
+    addPlace(place);
+    M.toast({ html: `Place added` });
+    setPlace(initialFormState);
   };
 
   const onChange = (e) => {
-    setPlace({ ...place, [e.target.name]: e.target.value });
+    setPlace({ ...place, [e.target.id]: e.target.value });
   };
 
   return (
     <Modal
-      header="Add Place"
-      bottomSheet={false}
-      fixedFooter={false}
-      id="Modal-0"
-      options={{
-        dismissible: true,
-        endingTop: '10%',
-        inDuration: 250,
-        onCloseEnd: null,
-        onCloseStart: null,
-        onOpenEnd: null,
-        onOpenStart: null,
-        opacity: 0.5,
-        outDuration: 250,
-        preventScrolling: true,
-        startingTop: '4%'
-      }}
+      id="add-place-modal"
+      actions={[
+        <Button onClick={onSubmit} node="button" waves="light" type="submit">
+          Submit
+          <Icon right>send</Icon>
+        </Button>
+      ]}
       trigger={
         <Button
           className="blue darken-2"
@@ -53,42 +72,89 @@ const AddPlaceModal = ({ addPlace }) => {
           icon={<Icon>add</Icon>}
         />
       }
-      actions={[
-        <>
-          <Button
-            onClick={onSubmit}
-            node="button"
-            waves="light"
-            type="submit"
-            style={{
-              marginRight: '10px'
-            }}
-          >
-            Submit
-            <Icon right>send</Icon>
-          </Button>
-          <Button modal="close" node="button" waves="green">
-            Close
-          </Button>
-        </>
-      ]}
     >
       <TextInput
-        name="title"
-        placeholder="Title *"
-        value={place.title}
-        onChange={onChange}
+        id="title"
+        label="Title"
         type="text"
-        required
+        value={title}
+        onChange={onChange}
       />
       <TextInput
-        name="thumbnail"
-        placeholder="Thumbnail *"
-        value={place.thumbnail}
-        onChange={onChange}
+        id="thumbnail"
+        label="Thumbnail"
         type="text"
-        required
+        value={thumbnail}
+        onChange={onChange}
       />
+      <TextInput
+        id="image"
+        label="Image"
+        type="text"
+        value={image}
+        onChange={onChange}
+      />
+      <Textarea
+        id="content"
+        label="Content"
+        type="text"
+        value={content}
+        onChange={onChange}
+      />
+      <Row>
+        <Col m={6}>
+          <TextInput
+            id="location"
+            label="Location"
+            type="text"
+            value={location}
+            onChange={onChange}
+          />
+        </Col>
+        <Col m={6}>
+          <TextInput
+            id="category"
+            label="Category"
+            type="text"
+            value={category}
+            onChange={onChange}
+          />
+        </Col>
+      </Row>
+      <TextInput
+        id="info"
+        label="Info"
+        type="text"
+        value={info}
+        onChange={onChange}
+      />
+      <TextInput
+        id="link"
+        label="Link"
+        type="text"
+        value={link}
+        onChange={onChange}
+      />
+      <Row>
+        <Col m={6}>
+          <TextInput
+            id="lat"
+            label="Lat"
+            type="text"
+            value={lat}
+            onChange={onChange}
+          />
+        </Col>
+        <Col m={6}>
+          <TextInput
+            id="lng"
+            label="Lng"
+            type="text"
+            value={lng}
+            onChange={onChange}
+          />
+        </Col>
+      </Row>
     </Modal>
   );
 };

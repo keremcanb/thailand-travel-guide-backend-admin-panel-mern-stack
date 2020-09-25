@@ -1,70 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { TextInput } from 'react-materialize';
+import { Button, Icon, Modal, TextInput } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { updateLocation } from '../../actions/location';
 
 const EditLocationModal = ({ current, updateLocation }) => {
-  const [title, setTitle] = useState('');
-  const [thumbnail, setThumbnail] = useState('');
+  const [location, setLocation] = useState('');
+  const { title, thumbnail } = location;
 
   useEffect(() => {
     if (current) {
-      setTitle(current.title);
-      setThumbnail(current.thumbnail);
+      setLocation(current);
     }
   }, [current]);
 
+  const onChange = (e) => {
+    setLocation({ ...location, [e.target.id]: e.target.value });
+  };
+
   const onSubmit = () => {
-    if (title === '' || thumbnail === '') {
-      M.toast({ html: 'Please enter title and thumbnail' });
-    } else {
-      const updLocation = {
-        id: current.id,
-        title,
-        thumbnail
-      };
-
-      updateLocation(updLocation);
-      M.toast({ html: `Location updated` });
-
-      setTitle('');
-      setThumbnail('');
-    }
+    updateLocation(location);
+    M.toast({ html: 'Location updated' });
   };
 
   return (
-    <div
+    <Modal
       id="edit-location-modal"
-      className="modal"
-      // style={{ width: '70%', height: '60%', marginTop: '50px' }}
+      actions={[
+        <Button onClick={onSubmit} node="button" waves="light" type="submit">
+          Submit
+          <Icon right>send</Icon>
+        </Button>
+      ]}
     >
-      <div className="modal-content">
-        <h4>Edit Location</h4>
-        <TextInput
-          type="text"
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <TextInput
-          type="text"
-          name="thumbnail"
-          value={thumbnail}
-          onChange={(e) => setThumbnail(e.target.value)}
-        />
-      </div>
-      <div className="modal-footer">
-        <a
-          href="#!"
-          onClick={onSubmit}
-          className="modal-close waves-effect blue waves-light btn"
-        >
-          Enter
-        </a>
-      </div>
-    </div>
+      <TextInput
+        id="title"
+        label="Title"
+        type="text"
+        value={title}
+        onChange={onChange}
+      />
+      <TextInput
+        id="thumbnail"
+        label="Thumbnail"
+        type="text"
+        value={thumbnail}
+        onChange={onChange}
+      />
+    </Modal>
   );
 };
 

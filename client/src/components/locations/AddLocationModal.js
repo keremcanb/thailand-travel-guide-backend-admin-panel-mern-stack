@@ -11,41 +11,23 @@ const AddLocationModal = ({ addLocation }) => {
   const { title, thumbnail } = location;
 
   const onSubmit = () => {
-    if (title === '' || thumbnail === '') {
-      M.toast({ html: 'Please enter location' });
-    } else {
-      addLocation(location);
-      M.toast({ html: `Location added` });
-      setLocation(initialFormState);
-    }
+    addLocation(location);
+    M.toast({ html: `Location added` });
+    setLocation(initialFormState);
   };
 
   const onChange = (e) => {
-    setLocation({ ...location, [e.target.name]: e.target.value });
+    setLocation({ ...location, [e.target.id]: e.target.value });
   };
 
   return (
     <Modal
-      header="Add Location"
-      id="Modal-0"
-      options={{
-        dismissible: true
-      }}
+      id="add-location-modal"
       actions={[
-        <>
-          <Button
-            onClick={onSubmit}
-            node="button"
-            waves="light"
-            type="submit"
-            style={{
-              marginRight: '10px'
-            }}
-          >
-            Submit
-            <Icon right>send</Icon>
-          </Button>
-        </>
+        <Button onClick={onSubmit} node="button" waves="light" type="submit">
+          Submit
+          <Icon right>send</Icon>
+        </Button>
       ]}
       trigger={
         <Button
@@ -59,20 +41,20 @@ const AddLocationModal = ({ addLocation }) => {
       }
     >
       <TextInput
-        name="title"
-        placeholder="Title *"
-        value={location.title}
-        onChange={onChange}
+        id="title"
+        label="Title *"
         type="text"
         required
+        value={title}
+        onChange={onChange}
       />
       <TextInput
-        name="thumbnail"
-        placeholder="Thumbnail *"
-        value={location.thumbnail}
-        onChange={onChange}
+        id="thumbnail"
+        label="Thumbnail *"
         type="text"
         required
+        value={thumbnail}
+        onChange={onChange}
       />
     </Modal>
   );

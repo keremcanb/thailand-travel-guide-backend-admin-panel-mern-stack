@@ -31,6 +31,7 @@ const Login = ({ login, isAuthenticated }) => {
               type="email"
               placeholder="Email"
               name="email"
+              id="email"
               value={email}
               onChange={onChange}
               required
@@ -44,6 +45,7 @@ const Login = ({ login, isAuthenticated }) => {
               type="password"
               placeholder="Password"
               name="password"
+              id="password"
               value={password}
               onChange={onChange}
               minLength="6"

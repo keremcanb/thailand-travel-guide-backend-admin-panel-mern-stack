@@ -31,10 +31,10 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
             </a>
           </>
         ]}
-        closeIcon={<Icon>close</Icon>}
         header={
           <CardTitle image={location.thumbnail}>{location.title}</CardTitle>
         }
+        closeIcon={<Icon>close</Icon>}
         revealIcon={<Icon>more_vert</Icon>}
       />
       {/* <img

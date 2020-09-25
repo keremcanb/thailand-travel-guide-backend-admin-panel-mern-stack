@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { TextInput } from 'react-materialize';
+import { Button, Icon, Modal, TextInput } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
@@ -9,65 +9,67 @@ import useResources from '../../utils/useResources';
 import { updateCategory } from '../../actions/category';
 
 const EditCategoryModal = ({ current, updateCategory }) => {
-  const [title, setTitle] = useState('');
-  const [thumbnail, setThumbnail] = useState('');
+  const [category, setCategory] = useState('');
+  const { title, thumbnail, location } = category;
+  const locations = useResources('locations');
+  const animatedComponents = makeAnimated();
 
   useEffect(() => {
     if (current) {
-      setTitle(current.title);
-      setThumbnail(current.thumbnail);
+      setCategory(current);
     }
   }, [current]);
 
   const onSubmit = () => {
-    if (title === '' || thumbnail === '') {
-      M.toast({ html: 'Please enter title and thumbnail' });
-    } else {
-      const updCategory = {
-        id: current.id,
-        title,
-        thumbnail
-      };
+    updateCategory();
+    M.toast({ html: 'Category updated' });
+  };
 
-      updateCategory(updCategory);
-      M.toast({ html: `Location updated` });
+  const onChange = (e) => {
+    setCategory({ ...category, [e.target.name]: e.target.value });
+  };
 
-      setTitle('');
-      setThumbnail('');
-    }
+  const onSelect = (value, action) => {
+    setCategory({ ...category, [action.name]: value });
   };
 
   return (
-    <div
+    <Modal
       id="edit-category-modal"
-      className="modal"
-      // style={{ width: '70%', height: '60%', marginTop: '50px' }}
+      actions={[
+        <Button onClick={onSubmit} node="button" waves="light" type="submit">
+          Submit
+          <Icon right>send</Icon>
+        </Button>
+      ]}
     >
-      <div className="modal-content">
-        <h4>Edit Location</h4>
-        <TextInput
-          type="text"
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <TextInput
-          type="text"
-          name="thumbnail"
-          value={thumbnail}
-          onChange={(e) => setThumbnail(e.target.value)}
-        />
-      </div>
-      <div className="modal-footer">
-        <a
-          href="#!"
-          onClick={onSubmit}
-          className="modal-close waves-effect blue waves-light btn"
-        >
-          Enter
-        </a>
-      </div>
-    </div>
+      <TextInput
+        id="title"
+        label="Title"
+        type="text"
+        value={title}
+        onChange={onChange}
+      />
+      <TextInput
+        id="thumbnail"
+        label="Thumbnail"
+        type="text"
+        value={thumbnail}
+        onChange={onChange}
+      />
+      <Select
+        name="locations"
+        options={locations.map((loc) => ({
+          value: loc.title,
+          label: loc.title
+        }))}
+        value={location}
+        onChange={onSelect}
+        closeMenuOnSelect={false}
+        components={animatedComponents}
+        isMulti
+      />
+    </Modal>
   );
 };
 

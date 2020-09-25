@@ -26,16 +26,22 @@ const AddCategoryModal = ({ addCategory }) => {
   };
 
   const onChange = (e) => {
-    setCategory({ ...category, [e.target.name]: e.target.value });
+    setCategory({ ...category, [e.target.id]: e.target.value });
   };
 
   const onSelect = (value, action) => {
-    setCategory({ ...category, [action.name]: value });
+    setCategory({ ...category, [action.id]: value });
   };
 
   return (
     <Modal
-      header="Add Category"
+      id="add-category-modal"
+      actions={[
+        <Button onClick={onSubmit} node="button" waves="light" type="submit">
+          Submit
+          <Icon right>send</Icon>
+        </Button>
+      ]}
       trigger={
         <Button
           className="blue darken-2"
@@ -46,28 +52,9 @@ const AddCategoryModal = ({ addCategory }) => {
           icon={<Icon>add</Icon>}
         />
       }
-      actions={[
-        <>
-          <Button
-            onClick={onSubmit}
-            node="button"
-            waves="light"
-            type="submit"
-            style={{
-              marginRight: '10px'
-            }}
-          >
-            Submit
-            <Icon right>send</Icon>
-          </Button>
-          <Button modal="close" node="button" waves="green">
-            Close
-          </Button>
-        </>
-      ]}
     >
       <TextInput
-        name="title"
+        id="title"
         placeholder="Title *"
         value={title}
         onChange={onChange}
@@ -75,7 +62,7 @@ const AddCategoryModal = ({ addCategory }) => {
         required
       />
       <TextInput
-        name="thumbnail"
+        id="thumbnail"
         placeholder="Thumbnail *"
         value={thumbnail}
         onChange={onChange}
@@ -83,7 +70,7 @@ const AddCategoryModal = ({ addCategory }) => {
         required
       />
       <Select
-        name="location"
+        id="location"
         options={locations.map((loc) => ({
           value: loc.title,
           label: loc.title
