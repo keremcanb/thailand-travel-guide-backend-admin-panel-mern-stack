@@ -7,7 +7,7 @@ import {
   DELETE_PLACE,
   UPDATE_PLACE,
   SEARCH_PLACES,
-  SET_CURRENT,
+  CURRENT_PLACE,
   CLEAR_CURRENT
 } from './types';
 
@@ -64,7 +64,7 @@ export const updatePlace = (place) => async (dispatch) => {
   try {
     setLoading();
 
-    const res = await axios.put(`/api/places/${place.id}`, place);
+    const res = await axios.patch(`/api/places/${place._id}`, place);
     const data = await res.data;
 
     dispatch({
@@ -101,7 +101,7 @@ export const deletePlace = (id) => async (dispatch) => {
 // Set current place
 export const setCurrent = (place) => {
   return {
-    type: SET_CURRENT,
+    type: CURRENT_PLACE,
     payload: place
   };
 };

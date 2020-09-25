@@ -16,7 +16,7 @@ export const CLEAR_PROFILE = 'CLEAR_PROFILE';
 export const PROFILE_ERROR = 'PROFILE_ERROR';
 
 export const SET_LOADING = 'SET_LOADING';
-export const SET_CURRENT = 'SET_CURRENT';
+// export const SET_CURRENT = 'SET_CURRENT';
 export const CLEAR_CURRENT = 'CLEAR_CURRENT';
 
 export const GET_LOCATIONS = 'GET_LOCATIONS';
@@ -35,6 +35,7 @@ export const DELETE_CATEGORY = 'DELETE_CATEGORY';
 export const CLEAR_CATEGORIES = 'CLEAR_CATEGORIES';
 export const CATEGORIES_ERROR = 'CATEGORIES_ERROR';
 export const SEARCH_CATEGORIES = 'SEARCH_CATEGORIES';
+export const CURRENT_CATEGORY = 'CURRENT_CATEGORY';
 
 export const GET_PLACES = 'GET_PLACES';
 export const ADD_PLACE = 'ADD_PLACE';
@@ -43,3 +44,4 @@ export const DELETE_PLACE = 'DELETE_PLACE';
 export const CLEAR_PLACES = 'CLEAR_PLACES';
 export const PLACES_ERROR = 'PLACES_ERROR';
 export const SEARCH_PLACES = 'SEARCH_PLACES';
+export const CURRENT_PLACE = 'CURRENT_PLACE';

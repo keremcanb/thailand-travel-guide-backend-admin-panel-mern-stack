@@ -7,7 +7,7 @@ import {
   DELETE_CATEGORY,
   UPDATE_CATEGORY,
   SEARCH_CATEGORIES,
-  SET_CURRENT,
+  CURRENT_CATEGORY,
   CLEAR_CURRENT
 } from './types';
 
@@ -64,7 +64,7 @@ export const updateCategory = (category) => async (dispatch) => {
   try {
     setLoading();
 
-    const res = await axios.put(`/api/categories/${category.id}`, category);
+    const res = await axios.patch(`/api/categories/${category._id}`, category);
     const data = await res.data;
 
     dispatch({
@@ -101,7 +101,7 @@ export const deleteCategory = (id) => async (dispatch) => {
 // Set current category
 export const setCurrent = (category) => {
   return {
-    type: SET_CURRENT,
+    type: CURRENT_CATEGORY,
     payload: category
   };
 };

@@ -6,7 +6,7 @@ import {
   DELETE_PLACE,
   UPDATE_PLACE,
   SEARCH_PLACES,
-  SET_CURRENT,
+  CURRENT_PLACE,
   CLEAR_CURRENT
 } from '../actions/types';
 
@@ -21,8 +21,6 @@ export default function (state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case SET_LOADING:
-      return { ...state, loading: true };
     case GET_PLACES:
       return { ...state, places: payload, loading: false };
     case ADD_PLACE:
@@ -31,26 +29,28 @@ export default function (state = initialState, action) {
         places: [...state.places, payload],
         loading: false
       };
+    case UPDATE_PLACE:
+      return {
+        ...state,
+        places: state.places.map((place) =>
+          place._id === payload._id ? payload : place
+        ),
+        loading: false
+      };
     case DELETE_PLACE:
       return {
         ...state,
         places: state.places.filter((place) => place._id !== payload),
         loading: false
       };
-    case UPDATE_PLACE:
-      return {
-        ...state,
-        places: state.places.map((place) =>
-          place._id === payload.id ? payload : place
-        ),
-        loading: false
-      };
-    case SET_CURRENT:
+    case CURRENT_PLACE:
       return { ...state, current: payload };
     case CLEAR_CURRENT:
       return { ...state, current: null };
     case SEARCH_PLACES:
       return { ...state, places: payload };
+    case SET_LOADING:
+      return { ...state, loading: true };
     case PLACES_ERROR:
       console.error(payload);
       return {

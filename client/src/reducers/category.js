@@ -6,7 +6,7 @@ import {
   DELETE_CATEGORY,
   UPDATE_CATEGORY,
   SEARCH_CATEGORIES,
-  SET_CURRENT,
+  CURRENT_CATEGORY,
   CLEAR_CURRENT
 } from '../actions/types';
 
@@ -21,14 +21,20 @@ export default function (state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case SET_LOADING:
-      return { ...state, loading: true };
     case GET_CATEGORIES:
       return { ...state, categories: payload, loading: false };
     case ADD_CATEGORY:
       return {
         ...state,
         categories: [...state.categories, payload],
+        loading: false
+      };
+    case UPDATE_CATEGORY:
+      return {
+        ...state,
+        categories: state.categories.map((category) =>
+          category._id === payload._id ? payload : category
+        ),
         loading: false
       };
     case DELETE_CATEGORY:
@@ -39,20 +45,15 @@ export default function (state = initialState, action) {
         ),
         loading: false
       };
-    case UPDATE_CATEGORY:
-      return {
-        ...state,
-        categories: state.categories.map((category) =>
-          category._id === payload.id ? payload : category
-        ),
-        loading: false
-      };
-    case SET_CURRENT:
+
+    case CURRENT_CATEGORY:
       return { ...state, current: payload };
     case CLEAR_CURRENT:
       return { ...state, current: null };
     case SEARCH_CATEGORIES:
       return { ...state, categories: payload };
+    case SET_LOADING:
+      return { ...state, loading: true };
     case CATEGORIES_ERROR:
       console.error(payload);
       return {
