@@ -12,7 +12,7 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
   };
 
   return (
-    <Col style={{ textAlign: 'center' }}>
+    <Col className="center">
       <img
         src={location.thumbnail}
         alt={location.title}

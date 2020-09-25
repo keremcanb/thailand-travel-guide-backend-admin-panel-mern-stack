@@ -27,22 +27,7 @@ const AddLocationModal = ({ addLocation }) => {
   return (
     <Modal
       header="Add Location"
-      bottomSheet={false}
-      fixedFooter={false}
       id="Modal-0"
-      options={{
-        dismissible: true,
-        endingTop: '10%',
-        inDuration: 250,
-        onCloseEnd: null,
-        onCloseStart: null,
-        onOpenEnd: null,
-        onOpenStart: null,
-        opacity: 0.5,
-        outDuration: 250,
-        preventScrolling: true,
-        startingTop: '4%'
-      }}
       trigger={
         <Button
           className="blue darken-2"
@@ -66,9 +51,6 @@ const AddLocationModal = ({ addLocation }) => {
           >
             Submit
             <Icon right>send</Icon>
-          </Button>
-          <Button modal="close" node="button" waves="green">
-            Close
           </Button>
         </>
       ]}

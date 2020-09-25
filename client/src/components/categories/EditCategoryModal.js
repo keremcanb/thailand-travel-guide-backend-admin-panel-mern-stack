@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { TextInput } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { updateCategory } from '../../actions/category';
 
@@ -40,36 +41,20 @@ const EditCategoryModal = ({ current, updateCategory }) => {
       // style={{ width: '70%', height: '60%', marginTop: '50px' }}
     >
       <div className="modal-content">
-        {/* <h4>Enter System Category</h4> */}
-        <div className="row">
-          <div className="input-field">
-            <input
-              type="text"
-              name="title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
-            <label htmlFor="title" className="active">
-              Title
-            </label>
-          </div>
-        </div>
-
-        <div className="row">
-          <div className="input-field">
-            <input
-              type="text"
-              name="thumbnail"
-              value={thumbnail}
-              onChange={(e) => setThumbnail(e.target.value)}
-            />
-            <label htmlFor="thumbnail" className="active">
-              Thumbnail
-            </label>
-          </div>
-        </div>
+        <h4>Edit Location</h4>
+        <TextInput
+          type="text"
+          name="title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <TextInput
+          type="text"
+          name="thumbnail"
+          value={thumbnail}
+          onChange={(e) => setThumbnail(e.target.value)}
+        />
       </div>
-
       <div className="modal-footer">
         <a
           href="#!"

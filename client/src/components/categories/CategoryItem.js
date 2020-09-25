@@ -12,7 +12,7 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
   };
 
   return (
-    <Col style={{ textAlign: 'center' }}>
+    <Col className="center">
       <img
         src={category.thumbnail}
         alt={category.title}

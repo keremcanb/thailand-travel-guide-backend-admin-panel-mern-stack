@@ -13,13 +13,13 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
   };
 
   return (
-    <Col style={{ textAlign: 'center' }}>
+    <Col className="center">
       <LazyLoad>
         <img
           src={place.thumbnail}
           alt={place.title}
           className="z-depth-2"
-          width="100"
+          width="150"
         />
       </LazyLoad>
       <h6>{place.title}</h6>
