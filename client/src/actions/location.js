@@ -7,7 +7,7 @@ import {
   DELETE_LOCATION,
   UPDATE_LOCATION,
   SEARCH_LOCATIONS,
-  SET_CURRENT,
+  CURRENT_LOCATION,
   CLEAR_CURRENT
 } from './types';
 
@@ -64,7 +64,7 @@ export const updateLocation = (location) => async (dispatch) => {
   try {
     setLoading();
 
-    const res = await axios.put(`/api/locations/${location.id}`, location);
+    const res = await axios.patch(`/api/locations/${location._id}`, location);
     const data = await res.data;
 
     dispatch({
@@ -101,7 +101,7 @@ export const deleteLocation = (id) => async (dispatch) => {
 // Set current location
 export const setCurrent = (location) => {
   return {
-    type: SET_CURRENT,
+    type: CURRENT_LOCATION,
     payload: location
   };
 };

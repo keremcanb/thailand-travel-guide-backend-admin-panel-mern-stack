@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { TextInput, Button, Icon, Col, Row } from 'react-materialize';
+import { TextInput, Button, Icon, Row, Col } from 'react-materialize';
 import { login } from '../../actions/auth';
 
 const Login = ({ login, isAuthenticated }) => {
@@ -10,7 +10,7 @@ const Login = ({ login, isAuthenticated }) => {
   const { email, password } = formData;
 
   const onChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
   const onSubmit = (e) => {
@@ -24,51 +24,42 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <Row style={rowStyle}>
-      <form onSubmit={onSubmit}>
-        <Row>
-          <Col>
+      <Col>
+        <form onSubmit={onSubmit}>
+          <Row>
             <TextInput
-              type="email"
-              placeholder="Email"
-              name="email"
               id="email"
+              label="Email"
+              type="email"
               value={email}
               onChange={onChange}
               required
             />
-          </Col>
-        </Row>
-
-        <Row>
-          <Col>
+          </Row>
+          <Row>
             <TextInput
-              type="password"
-              placeholder="Password"
-              name="password"
               id="password"
+              label="Password"
+              type="password"
               value={password}
               onChange={onChange}
               minLength="6"
               required
             />
-          </Col>
-        </Row>
-
-        <Row>
-          <Col>
+          </Row>
+          <Row>
             <Button
               type="submit"
               value="Login"
               variant="contained"
               color="primary"
-              className="float-right"
             >
               Login
               <Icon right>login</Icon>
             </Button>
-          </Col>
-        </Row>
-      </form>
+          </Row>
+        </form>
+      </Col>
     </Row>
   );
 };

@@ -21,7 +21,7 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
               className="modal-trigger"
               onClick={() => setCurrent(location)}
               style={{
-                marginRight: '1rem'
+                marginRight: '3rem'
               }}
             >
               <Icon>edit</Icon>

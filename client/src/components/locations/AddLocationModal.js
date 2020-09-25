@@ -11,9 +11,13 @@ const AddLocationModal = ({ addLocation }) => {
   const { title, thumbnail } = location;
 
   const onSubmit = () => {
-    addLocation(location);
-    M.toast({ html: `Location added` });
-    setLocation(initialFormState);
+    if (title === '' || thumbnail === '') {
+      M.toast({ html: 'Please enter location' });
+    } else {
+      addLocation(location);
+      M.toast({ html: `Location added` });
+      setLocation(initialFormState);
+    }
   };
 
   const onChange = (e) => {

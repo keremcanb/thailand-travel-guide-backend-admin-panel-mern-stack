@@ -16,7 +16,7 @@ const AddCategoryModal = ({ addCategory }) => {
   const animatedComponents = makeAnimated();
 
   const onSubmit = () => {
-    if (title === '' || thumbnail === '') {
+    if (title === '' || thumbnail === '' || locations) {
       M.toast({ html: 'Please enter category' });
     } else {
       addCategory(category);
