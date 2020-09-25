@@ -69,7 +69,7 @@ const AddCategoryModal = ({ addCategory }) => {
       <TextInput
         name="title"
         placeholder="Title *"
-        value={category.title}
+        value={title}
         onChange={onChange}
         type="text"
         required
@@ -77,7 +77,7 @@ const AddCategoryModal = ({ addCategory }) => {
       <TextInput
         name="thumbnail"
         placeholder="Thumbnail *"
-        value={category.thumbnail}
+        value={thumbnail}
         onChange={onChange}
         type="text"
         required

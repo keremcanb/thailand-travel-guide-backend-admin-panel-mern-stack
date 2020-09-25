@@ -12,13 +12,13 @@ const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
       alignLinks="right"
       centerChildren
       id="mobile-nav"
+      className="indigo"
       menuIcon={<Icon>menu</Icon>}
       brand={
         <a className="brand-logo" href="/">
           TGR
         </a>
       }
-      className="indigo darken-4"
     >
       {/* {!loading && isAuthenticated && (
         <> */}
