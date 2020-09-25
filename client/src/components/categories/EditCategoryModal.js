@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { TextInput } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
+import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
+import useResources from '../../utils/useResources';
 import { updateCategory } from '../../actions/category';
 
 const EditCategoryModal = ({ current, updateCategory }) => {

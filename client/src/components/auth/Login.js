@@ -26,7 +26,7 @@ const Login = ({ login, isAuthenticated }) => {
     <Row style={rowStyle}>
       <form onSubmit={onSubmit}>
         <Row>
-          <Col s={12}>
+          <Col>
             <TextInput
               type="email"
               placeholder="Email"
@@ -39,7 +39,7 @@ const Login = ({ login, isAuthenticated }) => {
         </Row>
 
         <Row>
-          <Col s={12}>
+          <Col>
             <TextInput
               type="password"
               placeholder="Password"
@@ -53,7 +53,7 @@ const Login = ({ login, isAuthenticated }) => {
         </Row>
 
         <Row>
-          <Col s={12}>
+          <Col>
             <Button
               type="submit"
               value="Login"

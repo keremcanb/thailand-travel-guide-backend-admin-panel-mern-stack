@@ -28,16 +28,9 @@ const AddLocationModal = ({ addLocation }) => {
     <Modal
       header="Add Location"
       id="Modal-0"
-      trigger={
-        <Button
-          className="blue darken-2"
-          fab
-          floating
-          large
-          node="button"
-          icon={<Icon>add</Icon>}
-        />
-      }
+      options={{
+        dismissible: true
+      }}
       actions={[
         <>
           <Button
@@ -54,6 +47,16 @@ const AddLocationModal = ({ addLocation }) => {
           </Button>
         </>
       ]}
+      trigger={
+        <Button
+          className="blue darken-2"
+          fab
+          floating
+          large
+          node="button"
+          icon={<Icon>add</Icon>}
+        />
+      }
     >
       <TextInput
         name="title"

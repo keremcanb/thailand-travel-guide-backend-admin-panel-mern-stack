@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Col, Icon } from 'react-materialize';
+import { Col, Icon, Card, CardTitle } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { deleteLocation, setCurrent } from '../../actions/location';
 
@@ -12,8 +12,32 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
   };
 
   return (
-    <Col className="center">
-      <img
+    <Col m={3} s={12} className="center">
+      <Card
+        actions={[
+          <>
+            <a
+              href="#edit-location-modal"
+              className="modal-trigger"
+              onClick={() => setCurrent(location)}
+              style={{
+                marginRight: '1rem'
+              }}
+            >
+              <Icon>edit</Icon>
+            </a>
+            <a href="#!" onClick={onDelete}>
+              <Icon className="red-text text-darken-4">delete</Icon>
+            </a>
+          </>
+        ]}
+        closeIcon={<Icon>close</Icon>}
+        header={
+          <CardTitle image={location.thumbnail}>{location.title}</CardTitle>
+        }
+        revealIcon={<Icon>more_vert</Icon>}
+      />
+      {/* <img
         src={location.thumbnail}
         alt={location.title}
         className="z-depth-2"
@@ -32,7 +56,7 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
       </a>
       <a href="#!" onClick={onDelete}>
         <Icon className="red-text text-darken-4">delete</Icon>
-      </a>
+      </a> */}
     </Col>
   );
 };

@@ -18,7 +18,7 @@ const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
           TGR
         </a>
       }
-      // className="blue darken-3"
+      className="indigo darken-4"
     >
       {/* {!loading && isAuthenticated && (
         <> */}
