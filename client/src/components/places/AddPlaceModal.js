@@ -115,10 +115,13 @@ const AddPlaceModal = ({ addPlace }) => {
         <Col m={6}>
           <Select
             id="location"
-            label="Location"
+            // label="Location"
             value={location}
             onChange={onChange}
           >
+            <option disabled value="">
+              Location
+            </option>
             {locations.map((loc) => (
               <option key={loc._id} value={loc.title}>
                 {loc.title}
@@ -129,10 +132,13 @@ const AddPlaceModal = ({ addPlace }) => {
         <Col m={6}>
           <Select
             id="category"
-            label="Category"
+            // label="Category"
             value={category}
             onChange={onChange}
           >
+            <option disabled value="">
+              Category
+            </option>
             {categories.map((cat) => (
               <option key={cat._id} value={cat.title}>
                 {cat.title}
