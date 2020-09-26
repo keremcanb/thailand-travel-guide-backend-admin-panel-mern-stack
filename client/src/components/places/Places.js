@@ -1,47 +1,35 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Row, Col, ProgressBar } from 'react-materialize';
-import PlaceItem from './PlaceItem';
 import { getPlaces } from '../../actions/place';
-import SearchBar from '../layout/SearchBar';
+import PlaceList from './PlaceList';
 import AddPlaceModal from './AddPlaceModal';
 import EditPlaceModal from './EditPlaceModal';
 
-const Places = ({ getPlaces, place: { places, loading } }) => {
+const Places = ({ getPlaces, place: { places } }) => {
+  const [search, setSearch] = useState('');
+
   useEffect(() => {
     getPlaces();
   }, [getPlaces]);
 
-  return loading || places === null ? (
-    <ProgressBar className="blue" />
-  ) : (
+  const onSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const filterSearch =
+    places !== null &&
+    places.filter((plc) => {
+      return plc.title.toLowerCase().includes(search.toLowerCase());
+    });
+
+  return (
     <>
-      <SearchBar />
-      <Row>
-        {!loading && places.length === 0 ? (
-          <p className="center">No places to show...</p>
-        ) : (
-          <Col style={gridStyle}>
-            {places.map((place) => (
-              <PlaceItem key={place._id} place={place} />
-            ))}
-          </Col>
-        )}
-      </Row>
+      <PlaceList selectedItem={filterSearch} onSearch={onSearch} />
       <AddPlaceModal />
       <EditPlaceModal />
     </>
   );
-};
-
-const gridStyle = {
-  display: 'flex',
-  justifyContent: 'space-evenly',
-  flexWrap: 'wrap',
-  alignItems: 'space-evenly',
-  alignContent: 'space-evenly',
-  gridGap: '5px'
 };
 
 Places.propTypes = {
