@@ -4,7 +4,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Col, Row, Icon, Card, CardTitle } from 'react-materialize';
+import {
+  Col,
+  Row,
+  Icon,
+  Card,
+  CardTitle,
+  Modal,
+  Button
+} from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { deleteLocation, setCurrent } from '../../actions/location';
 
@@ -42,9 +50,28 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
             >
               <Icon>edit</Icon>
             </a>
-            <a className="btn-floating red" onClick={onDelete}>
-              <Icon>delete</Icon>
-            </a>
+            <Modal
+              actions={[
+                <Button
+                  className="red"
+                  modal="close"
+                  node="button"
+                  waves="green"
+                  onClick={onDelete}
+                >
+                  Delete
+                  <Icon right>delete</Icon>
+                </Button>
+              ]}
+              header="Are you sure?"
+              id="Modal-0"
+              open={false}
+              trigger={
+                <a className="btn-floating red">
+                  <Icon>delete</Icon>
+                </a>
+              }
+            />
           </div>
         </Card>
       </Col>

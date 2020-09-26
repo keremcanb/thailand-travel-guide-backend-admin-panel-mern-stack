@@ -40,6 +40,7 @@ const AddLocationModal = ({ addLocation }) => {
           floating
           large
           node="button"
+          waves="light"
           icon={<Icon>add</Icon>}
         />
       }

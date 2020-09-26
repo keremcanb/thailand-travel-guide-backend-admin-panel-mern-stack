@@ -36,6 +36,10 @@ const EditCategoryModal = ({ current, updateCategory }) => {
   return (
     <Modal
       id="edit-category-modal"
+      style={{
+        height: '100%',
+        width: '60%'
+      }}
       actions={[
         <Button onClick={onSubmit} node="button" waves="light" type="submit">
           Submit

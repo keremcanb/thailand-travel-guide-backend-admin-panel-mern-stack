@@ -36,6 +36,10 @@ const AddCategoryModal = ({ addCategory }) => {
   return (
     <Modal
       id="add-category-modal"
+      style={{
+        height: '100%',
+        width: '60%'
+      }}
       actions={[
         <Button onClick={onSubmit} node="button" waves="light" type="submit">
           Submit
@@ -49,6 +53,7 @@ const AddCategoryModal = ({ addCategory }) => {
           floating
           large
           node="button"
+          waves="light"
           icon={<Icon>add</Icon>}
         />
       }

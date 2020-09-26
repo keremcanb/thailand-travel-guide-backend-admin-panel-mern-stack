@@ -50,6 +50,10 @@ const EditPlaceModal = ({ current, updatePlace }) => {
   return (
     <Modal
       id="edit-place-modal"
+      style={{
+        height: '100%',
+        width: '60%'
+      }}
       actions={[
         <Button onClick={onSubmit} node="button" waves="light" type="submit">
           Submit

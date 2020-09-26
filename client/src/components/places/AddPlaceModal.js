@@ -60,6 +60,10 @@ const AddPlaceModal = ({ addPlace }) => {
 
   return (
     <Modal
+      style={{
+        height: '100%',
+        width: '60%'
+      }}
       id="add-place-modal"
       actions={[
         <Button onClick={onSubmit} node="button" waves="light" type="submit">
@@ -74,6 +78,7 @@ const AddPlaceModal = ({ addPlace }) => {
           floating
           large
           node="button"
+          waves="light"
           icon={<Icon>add</Icon>}
         />
       }
