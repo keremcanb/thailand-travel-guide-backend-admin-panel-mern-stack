@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Row } from 'react-materialize';
+import { Row, Col } from 'react-materialize';
 import { getCurrentProfile } from '../../actions/profile';
 
 const Dashboard = ({ getCurrentProfile, auth: { user } }) => {
@@ -11,7 +11,9 @@ const Dashboard = ({ getCurrentProfile, auth: { user } }) => {
 
   return (
     <Row style={rowStyle}>
-      <h1>Welcome {user && user.firstName}</h1>
+      <Col>
+        <h1>Welcome {user && user.firstName}</h1>
+      </Col>
     </Row>
   );
 };

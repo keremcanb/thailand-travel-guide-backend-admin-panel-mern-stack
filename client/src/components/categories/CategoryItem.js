@@ -48,7 +48,7 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
           <div className="center">
             <a
               href="#edit-category-modal"
-              className="modal-trigger btn-floating"
+              className="modal-trigger btn-floating blue"
               onClick={() => setCurrent(category)}
               style={{
                 marginRight: '3rem'

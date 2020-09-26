@@ -42,7 +42,7 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
           <div className="center">
             <a
               href="#edit-location-modal"
-              className="modal-trigger btn-floating"
+              className="modal-trigger btn-floating blue"
               onClick={() => setCurrent(location)}
               style={{
                 marginRight: '3rem'

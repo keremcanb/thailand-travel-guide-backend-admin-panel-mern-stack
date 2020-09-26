@@ -48,7 +48,7 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
           <div className="center">
             <a
               href="#edit-place-modal"
-              className="modal-trigger btn-floating"
+              className="modal-trigger btn-floating blue"
               onClick={() => setCurrent(place)}
               style={{
                 marginRight: '3rem'
