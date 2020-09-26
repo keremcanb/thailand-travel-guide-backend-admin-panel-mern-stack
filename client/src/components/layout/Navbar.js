@@ -15,9 +15,16 @@ const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
       className="indigo"
       menuIcon={<Icon>menu</Icon>}
       brand={
-        <a className="brand-logo" href="/">
-          TGR
-        </a>
+        <>
+          <img
+            src="/logo.png"
+            alt=""
+            style={{ marginRight: '10px', marginTop: '6px' }}
+          />
+          <a className="brand-logo" href="/">
+            TGR
+          </a>
+        </>
       }
     >
       {/* {!loading && isAuthenticated && (

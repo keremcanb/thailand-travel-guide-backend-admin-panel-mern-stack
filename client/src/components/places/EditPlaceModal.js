@@ -7,17 +7,18 @@ import {
   Modal,
   TextInput,
   Textarea,
+  Select,
   Row,
   Col
 } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
-// import useResources from '../../utils/useResources';
+import useResources from '../../utils/useResources';
 import { updatePlace } from '../../actions/place';
 
 const EditPlaceModal = ({ current, updatePlace }) => {
   const [place, setPlace] = useState('');
-  // const locations = useResources('locations');
-  // const categories = useResources('categories');
+  const locations = useResources('locations');
+  const categories = useResources('categories');
   const {
     title,
     thumbnail,
@@ -86,22 +87,32 @@ const EditPlaceModal = ({ current, updatePlace }) => {
       />
       <Row>
         <Col m={6}>
-          <TextInput
+          <Select
             id="location"
             label="Location"
-            type="text"
             value={location}
             onChange={onChange}
-          />
+          >
+            {locations.map((loc) => (
+              <option key={loc._id} value={loc.title}>
+                {loc.title}
+              </option>
+            ))}
+          </Select>
         </Col>
         <Col m={6}>
-          <TextInput
+          <Select
             id="category"
             label="Category"
-            type="text"
             value={category}
             onChange={onChange}
-          />
+          >
+            {categories.map((cat) => (
+              <option key={cat._id} value={cat.title}>
+                {cat.title}
+              </option>
+            ))}
+          </Select>
         </Col>
       </Row>
       <TextInput

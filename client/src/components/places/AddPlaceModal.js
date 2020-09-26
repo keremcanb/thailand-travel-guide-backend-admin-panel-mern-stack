@@ -5,13 +5,14 @@ import {
   Modal,
   TextInput,
   Textarea,
+  Select,
   Row,
   Col
 } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import useResources from '../../utils/useResources';
+import useResources from '../../utils/useResources';
 import { addPlace } from '../../actions/place';
 
 const AddPlaceModal = ({ addPlace }) => {
@@ -28,8 +29,8 @@ const AddPlaceModal = ({ addPlace }) => {
     lng: ''
   };
   const [place, setPlace] = useState(initialFormState);
-  // const locations = useResources('locations');
-  // const categories = useResources('categories');
+  const locations = useResources('locations');
+  const categories = useResources('categories');
   const {
     title,
     thumbnail,
@@ -103,22 +104,32 @@ const AddPlaceModal = ({ addPlace }) => {
       />
       <Row>
         <Col m={6}>
-          <TextInput
+          <Select
             id="location"
             label="Location"
-            type="text"
             value={location}
             onChange={onChange}
-          />
+          >
+            {locations.map((loc) => (
+              <option key={loc._id} value={loc.title}>
+                {loc.title}
+              </option>
+            ))}
+          </Select>
         </Col>
         <Col m={6}>
-          <TextInput
+          <Select
             id="category"
             label="Category"
-            type="text"
             value={category}
             onChange={onChange}
-          />
+          >
+            {categories.map((cat) => (
+              <option key={cat._id} value={cat.title}>
+                {cat.title}
+              </option>
+            ))}
+          </Select>
         </Col>
       </Row>
       <TextInput

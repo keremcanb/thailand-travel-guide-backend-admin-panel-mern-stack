@@ -25,7 +25,7 @@ const EditCategoryModal = ({ current, updateCategory }) => {
   };
 
   const onSelect = (value, action) => {
-    setCategory({ ...category, [action.name]: value });
+    setCategory({ ...category, [action.id]: value });
   };
 
   const onSubmit = () => {
@@ -58,7 +58,7 @@ const EditCategoryModal = ({ current, updateCategory }) => {
         onChange={onChange}
       />
       <Select
-        name="locations"
+        id="locations"
         options={locations.map((loc) => ({
           value: loc.title,
           label: loc.title
