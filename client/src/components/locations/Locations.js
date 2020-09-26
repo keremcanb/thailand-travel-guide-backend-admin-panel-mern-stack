@@ -29,16 +29,11 @@ const Locations = ({ getLocations, location: { locations, loading } }) => {
 
 const gridStyle = {
   display: 'flex',
-  flexDirection: 'row',
   justifyContent: 'space-evenly',
   flexWrap: 'wrap',
   alignItems: 'space-evenly',
-  alignContent: 'space-evenly'
-
-  // gridTemplateColumns: 'repeat(4, 1fr)',
-  // justifyContent: 'center',
-  // alignContent: 'center',
-  // gridGap: '5rem'
+  alignContent: 'space-evenly',
+  gridGap: '5px'
 };
 
 Locations.propTypes = {

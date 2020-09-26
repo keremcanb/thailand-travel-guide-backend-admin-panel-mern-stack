@@ -1,7 +1,10 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Col, Icon, Card, CardTitle } from 'react-materialize';
+import { Col, Row, Icon, Card, CardTitle } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { deleteCategory, setCurrent } from '../../actions/category';
 
@@ -12,52 +15,42 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
   };
 
   return (
-    <Col m={3} s={12} className="center">
-      <Card
-        actions={[
-          <>
+    <Row>
+      <Col>
+        <Card
+          className="hoverable"
+          header={
+            <>
+              <img
+                src={category.thumbnail}
+                alt={category.title}
+                width="200px"
+                height="150px"
+              />
+              <CardTitle>
+                <h5>{category.title}</h5>
+              </CardTitle>
+            </>
+          }
+        >
+          <div className="center">
             <a
               href="#edit-category-modal"
-              className="modal-trigger"
+              className="modal-trigger btn-floating"
               onClick={() => setCurrent(category)}
               style={{
-                marginRight: '2rem'
+                marginRight: '3rem'
               }}
             >
               <Icon>edit</Icon>
             </a>
-            <a href="#!" onClick={onDelete}>
-              <Icon className="red-text text-darken-4">delete</Icon>
+            <a className="btn-floating red" onClick={onDelete}>
+              <Icon>delete</Icon>
             </a>
-          </>
-        ]}
-        closeIcon={<Icon>close</Icon>}
-        header={<CardTitle image={category.thumbnail}></CardTitle>}
-        revealIcon={<Icon>more_vert</Icon>}
-      >
-        <h6>{category.title}</h6>
-      </Card>
-      {/* <img
-        src={category.thumbnail}
-        alt={category.title}
-        className="z-depth-2"
-        width="150"
-      />
-      <h6>{category.title}</h6>
-      <a
-        href="#edit-category-modal"
-        className="modal-trigger"
-        onClick={() => setCurrent(category)}
-        style={{
-          marginRight: '1rem'
-        }}
-      >
-        <Icon>edit</Icon>
-      </a>
-      <a href="#!" onClick={onDelete}>
-        <Icon className="red-text text-darken-4">delete</Icon>
-      </a> */}
-    </Col>
+          </div>
+        </Card>
+      </Col>
+    </Row>
   );
 };
 

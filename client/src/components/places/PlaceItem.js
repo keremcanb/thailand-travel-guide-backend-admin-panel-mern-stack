@@ -1,8 +1,10 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import LazyLoad from 'react-lazy-load';
-import { Col, Icon } from 'react-materialize';
+import { Col, Row, Icon, Card, CardTitle } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { deletePlace, setCurrent } from '../../actions/place';
 
@@ -13,30 +15,42 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
   };
 
   return (
-    <Col className="center">
-      <LazyLoad>
-        <img
-          src={place.thumbnail}
-          alt={place.title}
-          className="z-depth-2"
-          width="150"
-        />
-      </LazyLoad>
-      <h6>{place.title}</h6>
-      <a
-        href="#edit-place-modal"
-        className="modal-trigger"
-        onClick={() => setCurrent(place)}
-        style={{
-          marginRight: '1rem'
-        }}
-      >
-        <Icon>edit</Icon>
-      </a>
-      <a href="#!" onClick={onDelete}>
-        <Icon className="red-text text-darken-4">delete</Icon>
-      </a>
-    </Col>
+    <Row>
+      <Col>
+        <Card
+          className="hoverable"
+          header={
+            <>
+              <img
+                src={place.thumbnail}
+                alt={place.title}
+                width="200px"
+                height="150px"
+              />
+              <CardTitle>
+                <h5>{place.title}</h5>
+              </CardTitle>
+            </>
+          }
+        >
+          <div className="center">
+            <a
+              href="#edit-place-modal"
+              className="modal-trigger btn-floating"
+              onClick={() => setCurrent(place)}
+              style={{
+                marginRight: '3rem'
+              }}
+            >
+              <Icon>edit</Icon>
+            </a>
+            <a className="btn-floating red" onClick={onDelete}>
+              <Icon>delete</Icon>
+            </a>
+          </div>
+        </Card>
+      </Col>
+    </Row>
   );
 };
 
