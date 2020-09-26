@@ -118,8 +118,8 @@ export const searchLocations = (text) => async (dispatch) => {
   try {
     setLoading();
 
-    const res = await fetch(`/api/locations?q=${text}`);
-    const data = await res.json();
+    const res = await axios.get(`/api/locations?q=${text}`);
+    const data = await res.data;
 
     dispatch({
       type: SEARCH_LOCATIONS,

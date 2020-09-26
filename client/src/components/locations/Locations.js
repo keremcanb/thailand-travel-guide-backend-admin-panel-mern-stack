@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import { Row, Col, ProgressBar } from 'react-materialize';
 import LocationItem from './LocationItem';
 import { getLocations } from '../../actions/location';
+import SearchBar from '../layout/SearchBar';
+import AddLocationModal from './AddLocationModal';
+import EditLocationModal from './EditLocationModal';
 
 const Locations = ({ getLocations, location: { locations, loading } }) => {
   useEffect(() => {
@@ -13,17 +16,22 @@ const Locations = ({ getLocations, location: { locations, loading } }) => {
   return loading || locations === null ? (
     <ProgressBar className="blue" />
   ) : (
-    <Row>
-      {!loading && locations.length === 0 ? (
-        <p className="center">No locations to show...</p>
-      ) : (
-        <Col style={gridStyle}>
-          {locations.map((location) => (
-            <LocationItem key={location._id} location={location} />
-          ))}
-        </Col>
-      )}
-    </Row>
+    <>
+      <SearchBar />
+      <Row>
+        {!loading && locations.length === 0 ? (
+          <p className="center">No locations to show...</p>
+        ) : (
+          <Col style={gridStyle}>
+            {locations.map((location) => (
+              <LocationItem key={location._id} location={location} />
+            ))}
+          </Col>
+        )}
+      </Row>
+      <AddLocationModal />
+      <EditLocationModal />
+    </>
   );
 };
 
