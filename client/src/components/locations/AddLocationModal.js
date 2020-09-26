@@ -48,7 +48,6 @@ const AddLocationModal = ({ addLocation }) => {
         id="title"
         label="Title *"
         type="text"
-        required
         value={title}
         onChange={onChange}
       />
@@ -56,7 +55,6 @@ const AddLocationModal = ({ addLocation }) => {
         id="thumbnail"
         label="Thumbnail *"
         type="text"
-        required
         value={thumbnail}
         onChange={onChange}
       />

@@ -45,9 +45,13 @@ const AddPlaceModal = ({ addPlace }) => {
   } = place;
 
   const onSubmit = () => {
-    addPlace(place);
-    M.toast({ html: `Place added` });
-    setPlace(initialFormState);
+    if (title === '' || thumbnail === '' || image === '' || content === '') {
+      M.toast({ html: 'Please enter place' });
+    } else {
+      addPlace(place);
+      M.toast({ html: `Place added` });
+      setPlace(initialFormState);
+    }
   };
 
   const onChange = (e) => {

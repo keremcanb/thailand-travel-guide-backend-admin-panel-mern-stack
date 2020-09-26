@@ -1,4 +1,9 @@
 .card .card-image .card-title {
-  padding: 20px !important;
-  font-weight: 300;
+  padding: 18px !important;
+  font-weight: 400;
+  /* text-shadow: 2px 2px black; */
+}
+.modal {
+  height: 100% !important ;
+  /* width: 75% !important ; */
 }

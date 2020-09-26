@@ -59,7 +59,6 @@ const AddCategoryModal = ({ addCategory }) => {
         value={title}
         onChange={onChange}
         type="text"
-        required
       />
       <TextInput
         id="thumbnail"
@@ -67,7 +66,6 @@ const AddCategoryModal = ({ addCategory }) => {
         value={thumbnail}
         onChange={onChange}
         type="text"
-        required
       />
       <Select
         id="location"
