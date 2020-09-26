@@ -5,6 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Col, Row, Icon, Card, CardTitle } from 'react-materialize';
+import FadeIn from 'react-lazyload-fadein';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { deletePlace, setCurrent } from '../../actions/place';
 
@@ -21,12 +22,17 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
           className="hoverable"
           header={
             <>
-              <img
-                src={place.thumbnail}
-                alt={place.title}
-                width="200px"
-                height="150px"
-              />
+              <FadeIn>
+                {(onload) => (
+                  <img
+                    src={place.thumbnail}
+                    alt={place.title}
+                    width="200px"
+                    height="150px"
+                    onLoad={onload}
+                  />
+                )}
+              </FadeIn>
               <CardTitle>{place.title}</CardTitle>
             </>
           }

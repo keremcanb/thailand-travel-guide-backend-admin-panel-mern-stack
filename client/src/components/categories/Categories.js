@@ -11,7 +11,7 @@ const Categories = ({ getCategories, category: { categories, loading } }) => {
   }, [getCategories]);
 
   return loading || categories === null ? (
-    <ProgressBar />
+    <ProgressBar className="blue" />
   ) : (
     <Row>
       {!loading && categories.length === 0 ? (

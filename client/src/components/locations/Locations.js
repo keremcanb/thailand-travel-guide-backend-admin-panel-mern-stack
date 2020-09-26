@@ -11,7 +11,7 @@ const Locations = ({ getLocations, location: { locations, loading } }) => {
   }, [getLocations]);
 
   return loading || locations === null ? (
-    <ProgressBar />
+    <ProgressBar className="blue" />
   ) : (
     <Row>
       {!loading && locations.length === 0 ? (

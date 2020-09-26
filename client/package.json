@@ -5,12 +5,10 @@
   "dependencies": {
     "axios": "^0.19.2",
     "materialize-css": "^1.0.0-rc.2",
-    "moment": "^2.26.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-images-upload": "^1.2.8",
-    "react-lazy-load": "^3.0.13",
+    "react-lazyload-fadein": "^1.1.0",
     "react-materialize": "^3.9.3",
     "react-moment": "^0.9.7",
     "react-redux": "^7.2.0",

@@ -11,7 +11,7 @@ const Places = ({ getPlaces, place: { places, loading } }) => {
   }, [getPlaces]);
 
   return loading || places === null ? (
-    <ProgressBar />
+    <ProgressBar className="blue" />
   ) : (
     <Row>
       {!loading && places.length === 0 ? (
