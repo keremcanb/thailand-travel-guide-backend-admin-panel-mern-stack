@@ -1,47 +1,35 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Row, Col, ProgressBar } from 'react-materialize';
-import LocationItem from './LocationItem';
 import { getLocations } from '../../actions/location';
-import SearchBar from '../layout/SearchBar';
+import LocationList from './LocationList';
 import AddLocationModal from './AddLocationModal';
 import EditLocationModal from './EditLocationModal';
 
-const Locations = ({ getLocations, location: { locations, loading } }) => {
+const Locations = ({ getLocations, location: { locations } }) => {
+  const [search, setSearch] = useState('');
+
   useEffect(() => {
     getLocations();
   }, [getLocations]);
 
-  return loading || locations === null ? (
-    <ProgressBar className="blue" />
-  ) : (
+  const onSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const filterSearch =
+    locations !== null &&
+    locations.filter((loc) => {
+      return loc.title.toLowerCase().includes(search.toLowerCase());
+    });
+
+  return (
     <>
-      <SearchBar />
-      <Row>
-        {!loading && locations.length === 0 ? (
-          <p className="center">No locations to show...</p>
-        ) : (
-          <Col style={gridStyle}>
-            {locations.map((location) => (
-              <LocationItem key={location._id} location={location} />
-            ))}
-          </Col>
-        )}
-      </Row>
+      <LocationList selectedItem={filterSearch} onSearch={onSearch} />
       <AddLocationModal />
       <EditLocationModal />
     </>
   );
-};
-
-const gridStyle = {
-  display: 'flex',
-  justifyContent: 'space-evenly',
-  flexWrap: 'wrap',
-  alignItems: 'space-evenly',
-  alignContent: 'space-evenly',
-  gridGap: '5px'
 };
 
 Locations.propTypes = {
