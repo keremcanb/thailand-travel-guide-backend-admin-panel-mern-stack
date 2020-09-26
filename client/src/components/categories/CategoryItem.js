@@ -30,13 +30,13 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
           className="hoverable"
           header={
             <>
-              <FadeIn>
+              <FadeIn height={200}>
                 {(onload) => (
                   <img
                     src={category.thumbnail}
                     alt={category.title}
-                    width="200px"
-                    height="150px"
+                    width="200"
+                    height="150"
                     onLoad={onload}
                   />
                 )}

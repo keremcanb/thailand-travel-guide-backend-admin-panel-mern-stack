@@ -61,31 +61,17 @@ const EditPlaceModal = ({ current, updatePlace }) => {
         </Button>
       ]}
     >
-      <TextInput
-        id="title"
-        label="Title"
-        type="text"
-        value={title}
-        onChange={onChange}
-      />
+      <TextInput id="title" label="Title" value={title} onChange={onChange} />
       <TextInput
         id="thumbnail"
         label="Thumbnail"
-        type="text"
         value={thumbnail}
         onChange={onChange}
       />
-      <TextInput
-        id="image"
-        label="Image"
-        type="text"
-        value={image}
-        onChange={onChange}
-      />
+      <TextInput id="image" label="Image" value={image} onChange={onChange} />
       <Textarea
         id="content"
         label="Content"
-        type="text"
         value={content}
         onChange={onChange}
       />
@@ -119,38 +105,14 @@ const EditPlaceModal = ({ current, updatePlace }) => {
           </Select>
         </Col>
       </Row>
-      <TextInput
-        id="info"
-        label="Info"
-        type="text"
-        value={info}
-        onChange={onChange}
-      />
-      <TextInput
-        id="link"
-        label="Link"
-        type="text"
-        value={link}
-        onChange={onChange}
-      />
+      <TextInput id="info" label="Info" value={info} onChange={onChange} />
+      <TextInput id="link" label="Link" value={link} onChange={onChange} />
       <Row>
         <Col m={6}>
-          <TextInput
-            id="lat"
-            label="Lat"
-            type="text"
-            value={lat}
-            onChange={onChange}
-          />
+          <TextInput id="lat" label="Lat" value={lat} onChange={onChange} />
         </Col>
         <Col m={6}>
-          <TextInput
-            id="lng"
-            label="Lng"
-            type="text"
-            value={lng}
-            onChange={onChange}
-          />
+          <TextInput id="lng" label="Lng" value={lng} onChange={onChange} />
         </Col>
       </Row>
     </Modal>

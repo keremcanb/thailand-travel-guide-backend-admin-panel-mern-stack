@@ -63,14 +63,12 @@ const AddCategoryModal = ({ addCategory }) => {
         placeholder="Title *"
         value={title}
         onChange={onChange}
-        type="text"
       />
       <TextInput
         id="thumbnail"
         placeholder="Thumbnail *"
         value={thumbnail}
         onChange={onChange}
-        type="text"
       />
       <Select
         id="location"

@@ -45,17 +45,10 @@ const AddLocationModal = ({ addLocation }) => {
         />
       }
     >
-      <TextInput
-        id="title"
-        label="Title *"
-        type="text"
-        value={title}
-        onChange={onChange}
-      />
+      <TextInput id="title" label="Title *" value={title} onChange={onChange} />
       <TextInput
         id="thumbnail"
         label="Thumbnail *"
-        type="text"
         value={thumbnail}
         onChange={onChange}
       />
