@@ -18,7 +18,7 @@ const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
         <>
           <img
             src="/logo.png"
-            alt=""
+            alt="logo"
             style={{ marginRight: '10px', marginTop: '6px' }}
           />
           <a className="brand-logo" href="/">

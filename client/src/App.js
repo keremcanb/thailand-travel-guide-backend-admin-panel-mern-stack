@@ -7,6 +7,7 @@ import store from './store';
 import Routes from './components/routing/Routes';
 import Navbar from './components/layout/Navbar';
 import Login from './components/auth/Login';
+import './App.css';
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);

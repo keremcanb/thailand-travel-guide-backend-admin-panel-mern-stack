@@ -27,9 +27,7 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
                 width="200px"
                 height="150px"
               />
-              <CardTitle>
-                <h5>{location.title}</h5>
-              </CardTitle>
+              <CardTitle>{location.title}</CardTitle>
             </>
           }
         >

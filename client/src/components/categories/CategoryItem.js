@@ -27,9 +27,7 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
                 width="200px"
                 height="150px"
               />
-              <CardTitle>
-                <h5>{category.title}</h5>
-              </CardTitle>
+              <CardTitle>{category.title}</CardTitle>
             </>
           }
         >

@@ -27,9 +27,7 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
                 width="200px"
                 height="150px"
               />
-              <CardTitle>
-                <h5>{place.title}</h5>
-              </CardTitle>
+              <CardTitle>{place.title}</CardTitle>
             </>
           }
         >
