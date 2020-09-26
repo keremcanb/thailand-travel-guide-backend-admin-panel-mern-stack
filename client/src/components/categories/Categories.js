@@ -1,47 +1,35 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Row, Col, ProgressBar } from 'react-materialize';
-import CategoryItem from './CategoryItem';
 import { getCategories } from '../../actions/category';
-import SearchBar from '../layout/SearchBar';
+import CategoryList from './CategoryList';
 import AddCategoryModal from './AddCategoryModal';
 import EditCategoryModal from './EditCategoryModal';
 
-const Categories = ({ getCategories, category: { categories, loading } }) => {
+const Categories = ({ getCategories, category: { categories } }) => {
+  const [search, setSearch] = useState('');
+
   useEffect(() => {
     getCategories();
   }, [getCategories]);
 
-  return loading || categories === null ? (
-    <ProgressBar className="blue" />
-  ) : (
+  const onSearch = (e) => {
+    setSearch(e.target.value);
+  };
+
+  const filterSearch =
+    categories !== null &&
+    categories.filter((cat) => {
+      return cat.title.toLowerCase().includes(search.toLowerCase());
+    });
+
+  return (
     <>
-      <SearchBar />
-      <Row>
-        {!loading && categories.length === 0 ? (
-          <p className="center">No categories to show...</p>
-        ) : (
-          <Col style={gridStyle}>
-            {categories.map((category) => (
-              <CategoryItem key={category._id} category={category} />
-            ))}
-          </Col>
-        )}
-      </Row>
+      <CategoryList selectedItem={filterSearch} onSearch={onSearch} />
       <AddCategoryModal />
       <EditCategoryModal />
     </>
   );
-};
-
-const gridStyle = {
-  display: 'flex',
-  justifyContent: 'space-evenly',
-  flexWrap: 'wrap',
-  alignItems: 'space-evenly',
-  alignContent: 'space-evenly',
-  gridGap: '5px'
 };
 
 Categories.propTypes = {
