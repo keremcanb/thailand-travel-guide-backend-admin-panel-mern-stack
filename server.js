@@ -30,7 +30,9 @@ app.post('/upload', (req, res) => {
   if (req.files === null) {
     return res.status(400).json({ msg: 'No file uploaded' });
   }
+
   const { file } = req.files;
+
   file.mv(`${__dirname}/public/${file.name}`, (err) => {
     if (err) {
       console.error(err);
