@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const LocationSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
+    required: true
   },
-  thumbnail: { type: String },
+  thumbnail: { type: String }
   // thumbnail: { type: String, required: [true, 'Thumbnail is required'] },
 });
 

@@ -18,7 +18,7 @@ router.post(
     check(
       'password',
       'Please enter a password with 6 or more characters'
-    ).isLength({ min: 6 }),
+    ).isLength({ min: 6 })
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -41,7 +41,7 @@ router.post(
         firstName,
         lastName,
         email,
-        password,
+        password
       });
 
       const salt = await bcrypt.genSalt(10);
@@ -52,8 +52,8 @@ router.post(
 
       const payload = {
         user: {
-          id: user.id,
-        },
+          id: user.id
+        }
       };
 
       jwt.sign(
@@ -66,7 +66,7 @@ router.post(
             token,
             success: true,
             message: 'User created!',
-            errors: [],
+            errors: []
           });
         }
       );
