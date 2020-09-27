@@ -6,8 +6,7 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addLocation } from '../../actions/location';
-import Message from '../upload/Message';
-import Progress from '../upload/Progress';
+import Message from '../layout/Message';
 
 const AddLocationModal = ({ addLocation }) => {
   const initialFormState = { title: '', thumbnail: '' };
@@ -18,50 +17,33 @@ const AddLocationModal = ({ addLocation }) => {
   const [filename, setFilename] = useState('Choose File');
   const [uploadedFile, setUploadedFile] = useState({});
   const [message, setMessage] = useState('');
-  const [uploadPercentage, setUploadPercentage] = useState(0);
 
   const onSubmit = async (e) => {
-    // if (title === '' || thumbnail === '') {
-    //   M.toast({ html: 'Please enter location' });
-    // } else {
-    //   addLocation(location);
-    //   M.toast({ html: `Location added` });
-    //   setLocation(initialFormState);
-    // }
-    e.preventDefault();
-    addLocation(location);
-
-    const formData = new FormData();
-    formData.append('file', file);
-    try {
-      const res = await axios.post('/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        },
-        onUploadProgress: (progressEvent) => {
-          setUploadPercentage(
-            parseInt(
-              Math.round((progressEvent.loaded * 100) / progressEvent.total)
-            )
-          );
-          // Clear percentage
-          setTimeout(() => setUploadPercentage(0), 10000);
+    if (title === '') {
+      M.toast({ html: 'Please enter location' });
+    } else {
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append('file', file);
+      try {
+        const res = await axios.post('/upload', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+        const { fileName, filePath } = res.data;
+        setUploadedFile({ fileName, filePath });
+      } catch (err) {
+        if (err.response.status === 500) {
+          setMessage('There was a problem with the server');
+        } else {
+          setMessage(err.response.data.msg);
         }
-      });
-
-      const { fileName, filePath } = res.data;
-
-      setUploadedFile({ fileName, filePath });
-    } catch (err) {
-      if (err.response.status === 500) {
-        setMessage('There was a problem with the server');
-      } else {
-        setMessage(err.response.data.msg);
       }
+      addLocation(location);
+      M.toast({ html: 'Location added' });
+      setLocation(initialFormState);
     }
-
-    M.toast({ html: `Location added` });
-    setLocation(initialFormState);
   };
 
   const onChange = (e) => {
@@ -95,35 +77,27 @@ const AddLocationModal = ({ addLocation }) => {
       }
     >
       <TextInput id="title" label="Title *" value={title} onChange={onChange} />
-
-      <>
-        {message ? <Message msg={message} /> : null}
-
-        <TextInput
-          type="file"
-          id="custom-file"
-          name="thumbnail"
-          label={filename}
-          onChange={onChangeFile}
-          value={thumbnail}
-        />
-
-        <Progress percentage={uploadPercentage} />
-
-        {uploadedFile ? (
-          <Row>
-            <Col className="center">
-              <h6 className="text-center">{uploadedFile.fileName}</h6>
-              <img
-                style={{ width: '20%' }}
-                src={uploadedFile.filePath}
-                alt={uploadedFile.fileName}
-              />
-            </Col>
-          </Row>
-        ) : null}
-      </>
-
+      {message ? <Message msg={message} /> : null}
+      <TextInput
+        type="file"
+        id="thumbnail"
+        name="thumbnail"
+        label={filename}
+        onChange={onChangeFile}
+        value={thumbnail}
+      />
+      {uploadedFile ? (
+        <Row>
+          <Col className="center">
+            <p>{uploadedFile.fileName}</p>
+            <img
+              style={{ width: '20%' }}
+              src={uploadedFile.filePath}
+              alt={uploadedFile.fileName}
+            />
+          </Col>
+        </Row>
+      ) : null}
       {/* <TextInput
         id="thumbnail"
         label="Thumbnail *"
