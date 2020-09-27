@@ -4,6 +4,7 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addLocation } from '../../actions/location';
+import FileUpload from '../upload/FileUpload';
 
 const AddLocationModal = ({ addLocation }) => {
   const initialFormState = { title: '', thumbnail: '' };
@@ -11,13 +12,16 @@ const AddLocationModal = ({ addLocation }) => {
   const { title, thumbnail } = location;
 
   const onSubmit = () => {
-    if (title === '' || thumbnail === '') {
-      M.toast({ html: 'Please enter location' });
-    } else {
-      addLocation(location);
-      M.toast({ html: `Location added` });
-      setLocation(initialFormState);
-    }
+    // if (title === '' || thumbnail === '') {
+    //   M.toast({ html: 'Please enter location' });
+    // } else {
+    //   addLocation(location);
+    //   M.toast({ html: `Location added` });
+    //   setLocation(initialFormState);
+    // }
+    addLocation(location);
+    M.toast({ html: `Location added` });
+    setLocation(initialFormState);
   };
 
   const onChange = (e) => {
@@ -46,12 +50,13 @@ const AddLocationModal = ({ addLocation }) => {
       }
     >
       <TextInput id="title" label="Title *" value={title} onChange={onChange} />
-      <TextInput
+      <FileUpload />
+      {/* <TextInput
         id="thumbnail"
         label="Thumbnail *"
         value={thumbnail}
         onChange={onChange}
-      />
+      /> */}
     </Modal>
   );
 };
