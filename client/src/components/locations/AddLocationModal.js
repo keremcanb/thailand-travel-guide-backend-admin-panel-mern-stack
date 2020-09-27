@@ -6,7 +6,7 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addLocation } from '../../actions/location';
-import Message from '../layout/Message';
+import Message from '../layout/UploadMessage';
 
 const AddLocationModal = ({ addLocation }) => {
   const initialFormState = { title: '', thumbnail: '' };
@@ -23,15 +23,20 @@ const AddLocationModal = ({ addLocation }) => {
       M.toast({ html: 'Please enter location' });
     } else {
       e.preventDefault();
+
       const formData = new FormData();
-      formData.append('file', file);
+
+      formData.append('file', file, 'filename.png');
+
       try {
         const res = await axios.post('/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         });
+
         const { fileName, filePath } = res.data;
+
         setUploadedFile({ fileName, filePath });
       } catch (err) {
         if (err.response.status === 500) {
@@ -40,6 +45,7 @@ const AddLocationModal = ({ addLocation }) => {
           setMessage(err.response.data.msg);
         }
       }
+
       addLocation(location);
       M.toast({ html: 'Location added' });
       setLocation(initialFormState);
@@ -50,10 +56,11 @@ const AddLocationModal = ({ addLocation }) => {
     setLocation({ ...location, [e.target.id]: e.target.value });
   };
 
-  function onChangeFile(e) {
+  const onChangeFile = (e) => {
     setFile(e.target.files[0]);
     setFilename(e.target.files[0].name);
-  }
+    setLocation({ ...location, [e.target.name]: e.target.value });
+  };
 
   return (
     <Modal
@@ -79,14 +86,20 @@ const AddLocationModal = ({ addLocation }) => {
       <TextInput id="title" label="Title *" value={title} onChange={onChange} />
       {message ? <Message msg={message} /> : null}
       <TextInput
-        type="file"
         id="thumbnail"
         name="thumbnail"
+        type="file"
         label={filename}
         onChange={onChangeFile}
         value={thumbnail}
       />
-      {uploadedFile ? (
+      {/* <TextInput
+        id="thumbnail"
+        label="Thumbnail *"
+        value={thumbnail}
+        onChange={onChange}
+      /> */}
+      {uploadedFile && (
         <Row>
           <Col className="center">
             <p>{uploadedFile.fileName}</p>
@@ -97,13 +110,7 @@ const AddLocationModal = ({ addLocation }) => {
             />
           </Col>
         </Row>
-      ) : null}
-      {/* <TextInput
-        id="thumbnail"
-        label="Thumbnail *"
-        value={thumbnail}
-        onChange={onChange}
-      /> */}
+      )}
     </Modal>
   );
 };
