@@ -10,19 +10,19 @@
   "plugins": ["jsx-a11y", "prettier"],
   "rules": {
     "no-underscore-dangle": "off",
-    "no-use-before-define": "off",
     "no-console": "off",
     "no-shadow": "off",
     "import/extensions": "off",
-    "react/prop-types": "off",
     "react/forbid-prop-types": "off",
     "react/require-default-props": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/state-in-constructor": "off",
-    "react/static-property-placement": "off",
-    "react/jsx-props-no-spreading": "off",
-    "react/button-has-type": "off",
-    "jsx-a11y/label-has-associated-control": "off",
-    "jsx-a11y/no-onchange": "off"
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    // "no-use-before-define": "off",
+    // "react/prop-types": "off",
+    // "react/state-in-constructor": "off",
+    // "react/static-property-placement": "off",
+    // "react/jsx-props-no-spreading": "off",
+    // "react/button-has-type": "off",
+    // "jsx-a11y/label-has-associated-control": "off",
+    // "jsx-a11y/no-onchange": "off"
   }
 }

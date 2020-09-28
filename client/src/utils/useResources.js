@@ -4,10 +4,10 @@ import { get } from 'axios';
 const useResources = (resource) => {
   const [resources, setResources] = useState([]);
 
-  async function fetchResource(resource) {
+  const fetchResource = async (resource) => {
     const response = await get(`/api/${resource}`);
     setResources(response.data);
-  }
+  };
 
   useEffect(() => {
     fetchResource(resource);

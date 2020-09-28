@@ -9,6 +9,13 @@ const Dashboard = ({ getCurrentProfile, auth: { user } }) => {
     getCurrentProfile();
   }, [getCurrentProfile]);
 
+  const rowStyle = {
+    display: 'grid',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '30px'
+  };
+
   return (
     <Row style={rowStyle}>
       <Col>
@@ -16,13 +23,6 @@ const Dashboard = ({ getCurrentProfile, auth: { user } }) => {
       </Col>
     </Row>
   );
-};
-
-const rowStyle = {
-  display: 'grid',
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginTop: '30px'
 };
 
 Dashboard.propTypes = {

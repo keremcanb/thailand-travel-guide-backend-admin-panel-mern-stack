@@ -16,6 +16,15 @@ const Places = ({
     getPlaces();
   }, [getPlaces]);
 
+  const gridStyle = {
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    flexWrap: 'wrap',
+    alignItems: 'space-evenly',
+    alignContent: 'space-evenly',
+    gridGap: '5px'
+  };
+
   return loading || places === null ? (
     <ProgressBar className="blue" />
   ) : (
@@ -34,15 +43,6 @@ const Places = ({
       </Row>
     </>
   );
-};
-
-const gridStyle = {
-  display: 'flex',
-  justifyContent: 'space-evenly',
-  flexWrap: 'wrap',
-  alignItems: 'space-evenly',
-  alignContent: 'space-evenly',
-  gridGap: '5px'
 };
 
 Places.propTypes = {

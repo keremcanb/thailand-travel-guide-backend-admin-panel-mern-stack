@@ -14,7 +14,7 @@
     "no-console": "off",
     "comma-dangle": "off",
     "consistent-return": "off",
-    "array-callback-return": "off",
     "object-curly-newline": "off"
+    // "array-callback-return": "off",
   }
 }

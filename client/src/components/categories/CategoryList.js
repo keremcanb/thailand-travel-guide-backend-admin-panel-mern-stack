@@ -16,6 +16,15 @@ const Categories = ({
     getCategories();
   }, [getCategories]);
 
+  const gridStyle = {
+    display: 'flex',
+    justifyContent: 'space-evenly',
+    flexWrap: 'wrap',
+    alignItems: 'space-evenly',
+    alignContent: 'space-evenly',
+    gridGap: '5px'
+  };
+
   return loading || categories === null ? (
     <ProgressBar className="blue" />
   ) : (
@@ -34,15 +43,6 @@ const Categories = ({
       </Row>
     </>
   );
-};
-
-const gridStyle = {
-  display: 'flex',
-  justifyContent: 'space-evenly',
-  flexWrap: 'wrap',
-  alignItems: 'space-evenly',
-  alignContent: 'space-evenly',
-  gridGap: '5px'
 };
 
 Categories.propTypes = {

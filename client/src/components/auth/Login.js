@@ -22,6 +22,13 @@ const Login = ({ login, isAuthenticated }) => {
     return <Redirect to="/dashboard" />;
   }
 
+  const rowStyle = {
+    display: 'grid',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '30px'
+  };
+
   return (
     <Row style={rowStyle}>
       <Col>
@@ -62,13 +69,6 @@ const Login = ({ login, isAuthenticated }) => {
       </Col>
     </Row>
   );
-};
-
-const rowStyle = {
-  display: 'grid',
-  justifyContent: 'center',
-  alignItems: 'center',
-  marginTop: '30px'
 };
 
 Login.propTypes = {
