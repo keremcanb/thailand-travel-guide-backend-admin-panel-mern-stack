@@ -10,20 +10,35 @@ require('dotenv').config();
 const app = express();
 
 // Connect Database
-mongoose.connect(
-  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@devconnector-l78xb.mongodb.net/tgr?retryWrites=true&w=majority`,
-  // 'mongodb://localhost:27017/tgr',
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-  },
-  (err) => {
-    if (err) throw err;
-    console.log('Mongodb connected');
-  }
-);
+if (process.env.NODE_ENV === 'production') {
+  mongoose.connect(
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@devconnector-l78xb.mongodb.net/tgr?retryWrites=true&w=majority`,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
+    },
+    (err) => {
+      if (err) throw err;
+      console.log('Mongodb Atlas connected');
+    }
+  );
+} else {
+  mongoose.connect(
+    'mongodb://localhost:27017/tgr',
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useCreateIndex: true,
+      useFindAndModify: false
+    },
+    (err) => {
+      if (err) throw err;
+      console.log('Mongodb local connected');
+    }
+  );
+}
 
 // Init Middleware
 app.use(fileUpload());
