@@ -5,7 +5,6 @@ import {
   ADD_PLACE,
   DELETE_PLACE,
   UPDATE_PLACE,
-  SEARCH_PLACES,
   CURRENT_PLACE,
   CLEAR_CURRENT
 } from '../actions/types';
@@ -47,8 +46,6 @@ export default function (state = initialState, action) {
       return { ...state, current: payload };
     case CLEAR_CURRENT:
       return { ...state, current: null };
-    case SEARCH_PLACES:
-      return { ...state, places: payload };
     case SET_LOADING:
       return { ...state, loading: true };
     case PLACES_ERROR:

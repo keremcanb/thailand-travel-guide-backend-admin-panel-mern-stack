@@ -16,7 +16,6 @@ export const loadUser = () => async (dispatch) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
   }
-
   try {
     const res = await axios.get('/api/auth');
 
@@ -40,9 +39,7 @@ export const register = ({ firstName, lastName, email, password }) => async (
       'Content-Type': 'application/json'
     }
   };
-
   const body = JSON.stringify({ firstName, lastName, email, password });
-
   try {
     const res = await axios.post('/api/users', body, config);
 
@@ -52,7 +49,6 @@ export const register = ({ firstName, lastName, email, password }) => async (
     });
   } catch (err) {
     const { errors } = err.response.data;
-
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
@@ -70,25 +66,19 @@ export const login = (email, password) => async (dispatch) => {
       'Content-Type': 'application/json'
     }
   };
-
   const body = JSON.stringify({ email, password });
-
   try {
     const res = await axios.post('/api/auth', body, config);
-
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data
     });
-
     dispatch(loadUser());
   } catch (err) {
     const { errors } = err.response.data;
-
     if (errors) {
       errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
-
     dispatch({
       type: LOGIN_FAIL
     });

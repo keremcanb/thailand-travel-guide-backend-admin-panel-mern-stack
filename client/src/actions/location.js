@@ -6,7 +6,6 @@ import {
   ADD_LOCATION,
   DELETE_LOCATION,
   UPDATE_LOCATION,
-  SEARCH_LOCATIONS,
   CURRENT_LOCATION,
   CLEAR_CURRENT
 } from './types';
@@ -22,10 +21,8 @@ export const setLoading = () => {
 export const getLocations = () => async (dispatch) => {
   try {
     setLoading();
-
     const res = await axios.get('/api/locations');
     const data = await res.data;
-
     dispatch({
       type: GET_LOCATIONS,
       payload: data
@@ -42,10 +39,8 @@ export const getLocations = () => async (dispatch) => {
 export const addLocation = (location) => async (dispatch) => {
   try {
     setLoading();
-
     const res = await axios.post('/api/locations', location);
     const data = await res.data;
-
     dispatch({
       type: ADD_LOCATION,
       payload: data
@@ -63,10 +58,8 @@ export const addLocation = (location) => async (dispatch) => {
 export const updateLocation = (location) => async (dispatch) => {
   try {
     setLoading();
-
     const res = await axios.patch(`/api/locations/${location._id}`, location);
     const data = await res.data;
-
     dispatch({
       type: UPDATE_LOCATION,
       payload: data
@@ -83,9 +76,7 @@ export const updateLocation = (location) => async (dispatch) => {
 export const deleteLocation = (id) => async (dispatch) => {
   try {
     setLoading();
-
     await axios.delete(`/api/locations/${id}`);
-
     dispatch({
       type: DELETE_LOCATION,
       payload: id
@@ -111,24 +102,4 @@ export const clearCurrent = () => {
   return {
     type: CLEAR_CURRENT
   };
-};
-
-// Search locations
-export const searchLocations = (text) => async (dispatch) => {
-  try {
-    setLoading();
-
-    const res = await axios.get(`/api/locations?q=${text}`);
-    const data = await res.data;
-
-    dispatch({
-      type: SEARCH_LOCATIONS,
-      payload: data
-    });
-  } catch (err) {
-    dispatch({
-      type: LOCATIONS_ERROR,
-      payload: err.response.data
-    });
-  }
 };

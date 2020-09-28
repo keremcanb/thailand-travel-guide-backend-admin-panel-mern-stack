@@ -5,7 +5,6 @@ import {
   ADD_LOCATION,
   DELETE_LOCATION,
   UPDATE_LOCATION,
-  SEARCH_LOCATIONS,
   CURRENT_LOCATION,
   CLEAR_CURRENT
 } from '../actions/types';
@@ -49,8 +48,6 @@ export default function (state = initialState, action) {
       return { ...state, current: payload };
     case CLEAR_CURRENT:
       return { ...state, current: null };
-    case SEARCH_LOCATIONS:
-      return { ...state, locations: payload };
     case SET_LOADING:
       return { ...state, loading: true };
     case LOCATIONS_ERROR:

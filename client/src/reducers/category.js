@@ -5,7 +5,6 @@ import {
   ADD_CATEGORY,
   DELETE_CATEGORY,
   UPDATE_CATEGORY,
-  SEARCH_CATEGORIES,
   CURRENT_CATEGORY,
   CLEAR_CURRENT
 } from '../actions/types';
@@ -45,13 +44,10 @@ export default function (state = initialState, action) {
         ),
         loading: false
       };
-
     case CURRENT_CATEGORY:
       return { ...state, current: payload };
     case CLEAR_CURRENT:
       return { ...state, current: null };
-    case SEARCH_CATEGORIES:
-      return { ...state, categories: payload };
     case SET_LOADING:
       return { ...state, loading: true };
     case CATEGORIES_ERROR:

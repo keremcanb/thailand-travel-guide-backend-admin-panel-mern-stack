@@ -6,7 +6,6 @@ import {
   ADD_CATEGORY,
   DELETE_CATEGORY,
   UPDATE_CATEGORY,
-  SEARCH_CATEGORIES,
   CURRENT_CATEGORY,
   CLEAR_CURRENT
 } from './types';
@@ -22,10 +21,8 @@ export const setLoading = () => {
 export const getCategories = () => async (dispatch) => {
   try {
     setLoading();
-
     const res = await axios.get('/api/categories');
     const data = await res.data;
-
     dispatch({
       type: GET_CATEGORIES,
       payload: data
@@ -42,10 +39,8 @@ export const getCategories = () => async (dispatch) => {
 export const addCategory = (category) => async (dispatch) => {
   try {
     setLoading();
-
     const res = await axios.post('/api/categories', category);
     const data = await res.data;
-
     dispatch({
       type: ADD_CATEGORY,
       payload: data
@@ -63,10 +58,8 @@ export const addCategory = (category) => async (dispatch) => {
 export const updateCategory = (category) => async (dispatch) => {
   try {
     setLoading();
-
     const res = await axios.patch(`/api/categories/${category._id}`, category);
     const data = await res.data;
-
     dispatch({
       type: UPDATE_CATEGORY,
       payload: data
@@ -83,9 +76,7 @@ export const updateCategory = (category) => async (dispatch) => {
 export const deleteCategory = (id) => async (dispatch) => {
   try {
     setLoading();
-
     await axios.delete(`/api/categories/${id}`);
-
     dispatch({
       type: DELETE_CATEGORY,
       payload: id
@@ -111,24 +102,4 @@ export const clearCurrent = () => {
   return {
     type: CLEAR_CURRENT
   };
-};
-
-// Search categories
-export const searchCategories = (text) => async (dispatch) => {
-  try {
-    setLoading();
-
-    const res = await fetch(`/api/categories?q=${text}`);
-    const data = await res.json();
-
-    dispatch({
-      type: SEARCH_CATEGORIES,
-      payload: data
-    });
-  } catch (err) {
-    dispatch({
-      type: CATEGORIES_ERROR,
-      payload: err.response.data
-    });
-  }
 };

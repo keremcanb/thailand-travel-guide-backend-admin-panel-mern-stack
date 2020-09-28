@@ -6,7 +6,6 @@ import {
   ADD_PLACE,
   DELETE_PLACE,
   UPDATE_PLACE,
-  SEARCH_PLACES,
   CURRENT_PLACE,
   CLEAR_CURRENT
 } from './types';
@@ -22,10 +21,8 @@ export const setLoading = () => {
 export const getPlaces = () => async (dispatch) => {
   try {
     setLoading();
-
     const res = await axios.get('/api/places');
     const data = await res.data;
-
     dispatch({
       type: GET_PLACES,
       payload: data
@@ -42,10 +39,8 @@ export const getPlaces = () => async (dispatch) => {
 export const addPlace = (place) => async (dispatch) => {
   try {
     setLoading();
-
     const res = await axios.post('/api/places', place);
     const data = await res.data;
-
     dispatch({
       type: ADD_PLACE,
       payload: data
@@ -63,10 +58,8 @@ export const addPlace = (place) => async (dispatch) => {
 export const updatePlace = (place) => async (dispatch) => {
   try {
     setLoading();
-
     const res = await axios.patch(`/api/places/${place._id}`, place);
     const data = await res.data;
-
     dispatch({
       type: UPDATE_PLACE,
       payload: data
@@ -83,9 +76,7 @@ export const updatePlace = (place) => async (dispatch) => {
 export const deletePlace = (id) => async (dispatch) => {
   try {
     setLoading();
-
     await axios.delete(`/api/places/${id}`);
-
     dispatch({
       type: DELETE_PLACE,
       payload: id
@@ -111,24 +102,4 @@ export const clearCurrent = () => {
   return {
     type: CLEAR_CURRENT
   };
-};
-
-// Search places
-export const searchPlaces = (text) => async (dispatch) => {
-  try {
-    setLoading();
-
-    const res = await fetch(`/api/places?q=${text}`);
-    const data = await res.json();
-
-    dispatch({
-      type: SEARCH_PLACES,
-      payload: data
-    });
-  } catch (err) {
-    dispatch({
-      type: PLACES_ERROR,
-      payload: err.response.data
-    });
-  }
 };
