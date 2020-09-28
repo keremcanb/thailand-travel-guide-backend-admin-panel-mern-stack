@@ -84,7 +84,7 @@ const AddPlaceModal = ({ addPlace }) => {
       }
     >
       <TextInput
-        id="title"
+        id="add-place-title"
         name="title"
         label="Title"
         value={title}
@@ -92,15 +92,20 @@ const AddPlaceModal = ({ addPlace }) => {
       />
       <TextInput
         id="thumbnail"
-        name="thumbnail"
+        name="add-place-thumb"
         label="Thumbnail"
         value={thumbnail}
         onChange={onChange}
       />
-      <TextInput id="image" label="Image" value={image} onChange={onChange} />
+      <TextInput
+        id="add-place-image"
+        label="Image"
+        value={image}
+        onChange={onChange}
+      />
       <Textarea
         id="content"
-        name="content"
+        name="add-place-content"
         label="Content"
         value={content}
         onChange={onChange}
@@ -108,7 +113,7 @@ const AddPlaceModal = ({ addPlace }) => {
       <Row>
         <Col m={6}>
           <Select
-            id="location"
+            id="add-place-loc"
             name="location"
             value={location}
             onChange={onChange}
@@ -125,7 +130,7 @@ const AddPlaceModal = ({ addPlace }) => {
         </Col>
         <Col m={6}>
           <Select
-            id="category"
+            id="add-place-cat"
             name="category"
             value={category}
             onChange={onChange}
@@ -142,14 +147,14 @@ const AddPlaceModal = ({ addPlace }) => {
         </Col>
       </Row>
       <TextInput
-        id="info"
+        id="add-place-info"
         name="info"
         label="Info"
         value={info}
         onChange={onChange}
       />
       <TextInput
-        id="link"
+        id="add-place-link"
         name="link"
         label="Link"
         value={link}
@@ -158,7 +163,7 @@ const AddPlaceModal = ({ addPlace }) => {
       <Row>
         <Col m={6}>
           <TextInput
-            id="lat"
+            id="add-place-lat"
             name="lat"
             label="Lat"
             value={lat}
@@ -167,7 +172,7 @@ const AddPlaceModal = ({ addPlace }) => {
         </Col>
         <Col m={6}>
           <TextInput
-            id="lng"
+            id="add-place-lng"
             name="lng"
             label="Lng"
             value={lng}

@@ -35,14 +35,14 @@ const EditLocationModal = ({ current, updateLocation }) => {
       ]}
     >
       <TextInput
-        id="title"
+        id="edit-loc-title"
         name="title"
         label="Title"
         value={title}
         onChange={onChange}
       />
       <TextInput
-        id="thumbnail"
+        id="edit-loc-thumb"
         name="thumbnail"
         label="Thumbnail"
         value={thumbnail}

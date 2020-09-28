@@ -13,7 +13,7 @@ import {
   Modal,
   Button
 } from 'react-materialize';
-import FadeIn from 'react-lazyload-fadein';
+// import FadeIn from 'react-lazyload-fadein';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { deleteCategory, setCurrent } from '../../actions/category';
 
@@ -30,7 +30,7 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
           className="hoverable"
           header={
             <>
-              <FadeIn height={200}>
+              {/* <FadeIn height={200}>
                 {(onload) => (
                   <img
                     src={category.thumbnail}
@@ -40,8 +40,13 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
                     onLoad={onload}
                   />
                 )}
-              </FadeIn>
-              <CardTitle>{category.title}</CardTitle>
+              </FadeIn> */}
+              <CardTitle
+                image={category.thumbnail}
+                style={{ width: '200px', height: '150px' }}
+              >
+                {category.title}
+              </CardTitle>
             </>
           }
         >

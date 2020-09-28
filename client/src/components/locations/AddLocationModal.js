@@ -14,7 +14,7 @@ const AddLocationModal = ({ addLocation }) => {
   const { title, thumbnail } = location;
 
   const [file, setFile] = useState('');
-  const [filename, setFilename] = useState('Choose File');
+  const [filename, setFilename] = useState('Thumbnail');
   const [uploadedFile, setUploadedFile] = useState({});
   const [message, setMessage] = useState('');
 
@@ -84,7 +84,7 @@ const AddLocationModal = ({ addLocation }) => {
       }
     >
       <TextInput
-        id="title"
+        id="add-loc-title"
         name="title"
         label="Title *"
         value={title}
@@ -92,7 +92,7 @@ const AddLocationModal = ({ addLocation }) => {
       />
       {message ? <Message msg={message} /> : null}
       <TextInput
-        id="thumbnail"
+        id="add-loc-thumb"
         name="thumbnail"
         type="file"
         label={filename}

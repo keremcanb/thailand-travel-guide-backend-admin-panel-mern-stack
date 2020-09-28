@@ -61,17 +61,27 @@ const EditPlaceModal = ({ current, updatePlace }) => {
         </Button>
       ]}
     >
-      <TextInput id="title" label="Title" value={title} onChange={onChange} />
       <TextInput
-        id="thumbnail"
+        id="edit-place-title"
+        label="Title"
+        value={title}
+        onChange={onChange}
+      />
+      <TextInput
+        id="edit-place-thumb"
         name="thumbnail"
         label="Thumbnail"
         value={thumbnail}
         onChange={onChange}
       />
-      <TextInput id="image" label="Image" value={image} onChange={onChange} />
+      <TextInput
+        id="edit-place-image"
+        label="Image"
+        value={image}
+        onChange={onChange}
+      />
       <Textarea
-        id="content"
+        id="edit-place-content"
         name="content"
         label="Content"
         value={content}
@@ -80,7 +90,7 @@ const EditPlaceModal = ({ current, updatePlace }) => {
       <Row>
         <Col m={6}>
           <Select
-            id="location"
+            id="edit-place-loc"
             name="location"
             label="Location"
             value={location}
@@ -95,7 +105,7 @@ const EditPlaceModal = ({ current, updatePlace }) => {
         </Col>
         <Col m={6}>
           <Select
-            id="category"
+            id="edit-place-cat"
             name="category"
             label="Category"
             value={category}
@@ -110,14 +120,14 @@ const EditPlaceModal = ({ current, updatePlace }) => {
         </Col>
       </Row>
       <TextInput
-        id="info"
+        id="edit-place-info"
         name="info"
         label="Info"
         value={info}
         onChange={onChange}
       />
       <TextInput
-        id="link"
+        id="edit-place-link"
         name="link"
         label="Link"
         value={link}
@@ -126,7 +136,7 @@ const EditPlaceModal = ({ current, updatePlace }) => {
       <Row>
         <Col m={6}>
           <TextInput
-            id="lat"
+            id="edit-place-lat"
             name="lat"
             label="Lat"
             value={lat}
@@ -135,7 +145,7 @@ const EditPlaceModal = ({ current, updatePlace }) => {
         </Col>
         <Col m={6}>
           <TextInput
-            id="lng"
+            id="edit-place-lng"
             name="lng"
             label="Lng"
             value={lng}

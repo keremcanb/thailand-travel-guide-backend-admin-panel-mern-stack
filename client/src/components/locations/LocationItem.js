@@ -29,13 +29,18 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
           className="hoverable"
           header={
             <>
-              <img
+              {/* <img
                 src={location.thumbnail}
                 alt={location.title}
                 width="200px"
                 height="150px"
-              />
-              <CardTitle>{location.title}</CardTitle>
+              /> */}
+              <CardTitle
+                image={location.thumbnail}
+                style={{ width: '200px', height: '150px' }}
+              >
+                {location.title}
+              </CardTitle>
             </>
           }
         >

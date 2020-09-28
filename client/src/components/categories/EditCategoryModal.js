@@ -48,6 +48,7 @@ const EditCategoryModal = ({ current, updateCategory }) => {
       ]}
     >
       <Select
+        id="edit-cat-loc"
         name="locations"
         options={locations.map((loc) => ({
           value: loc.title,
@@ -60,14 +61,14 @@ const EditCategoryModal = ({ current, updateCategory }) => {
         isMulti
       />
       <TextInput
-        id="title"
-        name="title"
+        id="edit-cat-title"
+        name="edit-cat-title"
         label="Title"
         value={title}
         onChange={onChange}
       />
       <TextInput
-        id="thumbnail"
+        id="edit-cat-thumb"
         name="thumbnail"
         label="Thumbnail"
         value={thumbnail}

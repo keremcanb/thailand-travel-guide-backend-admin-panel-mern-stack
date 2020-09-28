@@ -59,8 +59,9 @@ const AddCategoryModal = ({ addCategory }) => {
       }
     >
       <Select
+        id="add-cat-loc"
         name="location"
-        placeholder="Location"
+        placeholder="Location *"
         options={locations.map((loc) => ({
           value: loc.title,
           label: loc.title
@@ -70,25 +71,9 @@ const AddCategoryModal = ({ addCategory }) => {
         components={animatedComponents}
         isMulti
       />
-      <TextInput
-        id="title"
-        name="title"
-        placeholder="Title *"
-        value={title}
-        onChange={onChange}
-      />
-      <TextInput
-        id="thumbnail"
-        name="thumbnail"
-        placeholder="Thumbnail *"
-        value={thumbnail}
-        onChange={onChange}
-      />
-
       {/* <Select
         id="location"
         name="location"
-        value={location}
         onChange={onChange}
         multiple
       >
@@ -101,6 +86,20 @@ const AddCategoryModal = ({ addCategory }) => {
           </option>
         ))}
       </Select> */}
+      <TextInput
+        id="add-cat-title"
+        name="title"
+        placeholder="Title *"
+        value={title}
+        onChange={onChange}
+      />
+      <TextInput
+        id="add-cat-thumb"
+        name="thumbnail"
+        placeholder="Thumbnail *"
+        value={thumbnail}
+        onChange={onChange}
+      />
     </Modal>
   );
 };
