@@ -1,16 +1,29 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const compression = require('compression');
 const helmet = require('helmet');
 const cors = require('cors');
 const path = require('path');
 const fileUpload = require('express-fileupload');
-const connectDB = require('./config/db');
 require('dotenv').config();
 
 const app = express();
 
 // Connect Database
-connectDB();
+mongoose.connect(
+  // `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@devconnector-l78xb.mongodb.net/tgr?retryWrites=true&w=majority`,
+  'mongodb://localhost:27017/tgr',
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: false
+  },
+  (err) => {
+    if (err) throw err;
+    console.log('Mongodb connected');
+  }
+);
 
 // Init Middleware
 app.use(fileUpload());
