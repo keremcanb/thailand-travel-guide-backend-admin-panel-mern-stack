@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
-import { Button, Icon, Modal, TextInput, Select } from 'react-materialize';
+import { Button, Icon, Modal, TextInput } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// import makeAnimated from 'react-select/animated';
-// import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
+import Select from 'react-select';
 import { addCategory } from '../../actions/category';
 import useResources from '../../utils/useResources';
 
 const AddCategoryModal = ({ addCategory }) => {
   const initialFormState = { title: '', thumbnail: '', location: '' };
   const [category, setCategory] = useState(initialFormState);
-  const { title, thumbnail, location } = category;
+  const { title, thumbnail } = category;
   const locations = useResources('locations');
-  // const animatedComponents = makeAnimated();
+  const animatedComponents = makeAnimated();
 
   const onSubmit = () => {
     if (title === '' || thumbnail === '') {
@@ -26,12 +26,12 @@ const AddCategoryModal = ({ addCategory }) => {
   };
 
   const onChange = (e) => {
-    setCategory({ ...category, [e.target.id]: e.target.value });
+    setCategory({ ...category, [e.target.name]: e.target.value });
   };
 
-  // const onSelect = (value, action) => {
-  //   setCategory({ ...category, [action.id]: value });
-  // };
+  function onSelect(value, action) {
+    setCategory({ ...category, [action.name]: value });
+  }
 
   return (
     <Modal
@@ -58,19 +58,34 @@ const AddCategoryModal = ({ addCategory }) => {
         />
       }
     >
+      <Select
+        name="location"
+        placeholder="Location"
+        options={locations.map((loc) => ({
+          value: loc.title,
+          label: loc.title
+        }))}
+        onChange={onSelect}
+        closeMenuOnSelect={false}
+        components={animatedComponents}
+        isMulti
+      />
       <TextInput
         id="title"
+        name="title"
         placeholder="Title *"
         value={title}
         onChange={onChange}
       />
       <TextInput
         id="thumbnail"
+        name="thumbnail"
         placeholder="Thumbnail *"
         value={thumbnail}
         onChange={onChange}
       />
-      <Select
+
+      {/* <Select
         id="location"
         name="location"
         value={location}
@@ -85,31 +100,7 @@ const AddCategoryModal = ({ addCategory }) => {
             {location.title}
           </option>
         ))}
-      </Select>
-      {/* <select
-            name='location'
-            // defaultValue={[category.location]}
-            onChange={handleInputChange}
-            size={locations.length}
-            multiple
-          >
-            {locations.map((location) => (
-              <option key={location._id} value={location.title}>
-                {location.title}
-              </option>
-            ))}
-          </select> */}
-      {/* <Select
-        id="location"
-        options={locations.map((loc) => ({
-          value: loc.title,
-          label: loc.title
-        }))}
-        onChange={onSelect}
-        closeMenuOnSelect={false}
-        components={animatedComponents}
-        isMulti
-      /> */}
+      </Select> */}
     </Modal>
   );
 };

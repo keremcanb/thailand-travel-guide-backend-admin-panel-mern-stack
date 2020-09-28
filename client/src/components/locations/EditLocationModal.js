@@ -21,7 +21,7 @@ const EditLocationModal = ({ current, updateLocation }) => {
   };
 
   const onChange = (e) => {
-    setLocation({ ...location, [e.target.id]: e.target.value });
+    setLocation({ ...location, [e.target.name]: e.target.value });
   };
 
   return (
@@ -34,9 +34,16 @@ const EditLocationModal = ({ current, updateLocation }) => {
         </Button>
       ]}
     >
-      <TextInput id="title" label="Title" value={title} onChange={onChange} />
+      <TextInput
+        id="title"
+        name="title"
+        label="Title"
+        value={title}
+        onChange={onChange}
+      />
       <TextInput
         id="thumbnail"
+        name="thumbnail"
         label="Thumbnail"
         value={thumbnail}
         onChange={onChange}

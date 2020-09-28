@@ -53,7 +53,7 @@ const AddLocationModal = ({ addLocation }) => {
   };
 
   const onChange = (e) => {
-    setLocation({ ...location, [e.target.id]: e.target.value });
+    setLocation({ ...location, [e.target.name]: e.target.value });
   };
 
   const onChangeFile = (e) => {
@@ -83,7 +83,13 @@ const AddLocationModal = ({ addLocation }) => {
         />
       }
     >
-      <TextInput id="title" label="Title *" value={title} onChange={onChange} />
+      <TextInput
+        id="title"
+        name="title"
+        label="Title *"
+        value={title}
+        onChange={onChange}
+      />
       {message ? <Message msg={message} /> : null}
       <TextInput
         id="thumbnail"

@@ -44,7 +44,7 @@ const EditPlaceModal = ({ current, updatePlace }) => {
   };
 
   const onChange = (e) => {
-    setPlace({ ...place, [e.target.id]: e.target.value });
+    setPlace({ ...place, [e.target.name]: e.target.value });
   };
 
   return (
@@ -64,6 +64,7 @@ const EditPlaceModal = ({ current, updatePlace }) => {
       <TextInput id="title" label="Title" value={title} onChange={onChange} />
       <TextInput
         id="thumbnail"
+        name="thumbnail"
         label="Thumbnail"
         value={thumbnail}
         onChange={onChange}
@@ -71,6 +72,7 @@ const EditPlaceModal = ({ current, updatePlace }) => {
       <TextInput id="image" label="Image" value={image} onChange={onChange} />
       <Textarea
         id="content"
+        name="content"
         label="Content"
         value={content}
         onChange={onChange}
@@ -79,6 +81,7 @@ const EditPlaceModal = ({ current, updatePlace }) => {
         <Col m={6}>
           <Select
             id="location"
+            name="location"
             label="Location"
             value={location}
             onChange={onChange}
@@ -93,6 +96,7 @@ const EditPlaceModal = ({ current, updatePlace }) => {
         <Col m={6}>
           <Select
             id="category"
+            name="category"
             label="Category"
             value={category}
             onChange={onChange}
@@ -105,14 +109,38 @@ const EditPlaceModal = ({ current, updatePlace }) => {
           </Select>
         </Col>
       </Row>
-      <TextInput id="info" label="Info" value={info} onChange={onChange} />
-      <TextInput id="link" label="Link" value={link} onChange={onChange} />
+      <TextInput
+        id="info"
+        name="info"
+        label="Info"
+        value={info}
+        onChange={onChange}
+      />
+      <TextInput
+        id="link"
+        name="link"
+        label="Link"
+        value={link}
+        onChange={onChange}
+      />
       <Row>
         <Col m={6}>
-          <TextInput id="lat" label="Lat" value={lat} onChange={onChange} />
+          <TextInput
+            id="lat"
+            name="lat"
+            label="Lat"
+            value={lat}
+            onChange={onChange}
+          />
         </Col>
         <Col m={6}>
-          <TextInput id="lng" label="Lng" value={lng} onChange={onChange} />
+          <TextInput
+            id="lng"
+            name="lng"
+            label="Lng"
+            value={lng}
+            onChange={onChange}
+          />
         </Col>
       </Row>
     </Modal>

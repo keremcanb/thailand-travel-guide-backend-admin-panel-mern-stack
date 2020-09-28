@@ -26,11 +26,11 @@ const EditCategoryModal = ({ current, updateCategory }) => {
   };
 
   const onChange = (e) => {
-    setCategory({ ...category, [e.target.id]: e.target.value });
+    setCategory({ ...category, [e.target.name]: e.target.value });
   };
 
   const onSelect = (value, action) => {
-    setCategory({ ...category, [action.id]: value });
+    setCategory({ ...category, [action.name]: value });
   };
 
   return (
@@ -47,15 +47,8 @@ const EditCategoryModal = ({ current, updateCategory }) => {
         </Button>
       ]}
     >
-      <TextInput id="title" label="Title" value={title} onChange={onChange} />
-      <TextInput
-        id="thumbnail"
-        label="Thumbnail"
-        value={thumbnail}
-        onChange={onChange}
-      />
       <Select
-        id="locations"
+        name="locations"
         options={locations.map((loc) => ({
           value: loc.title,
           label: loc.title
@@ -65,6 +58,20 @@ const EditCategoryModal = ({ current, updateCategory }) => {
         closeMenuOnSelect={false}
         components={animatedComponents}
         isMulti
+      />
+      <TextInput
+        id="title"
+        name="title"
+        label="Title"
+        value={title}
+        onChange={onChange}
+      />
+      <TextInput
+        id="thumbnail"
+        name="thumbnail"
+        label="Thumbnail"
+        value={thumbnail}
+        onChange={onChange}
       />
     </Modal>
   );
