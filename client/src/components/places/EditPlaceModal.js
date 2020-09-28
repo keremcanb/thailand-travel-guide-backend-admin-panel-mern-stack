@@ -63,6 +63,7 @@ const EditPlaceModal = ({ current, updatePlace }) => {
     >
       <TextInput
         id="edit-place-title"
+        name="title"
         label="Title"
         value={title}
         onChange={onChange}

@@ -62,7 +62,7 @@ const EditCategoryModal = ({ current, updateCategory }) => {
       />
       <TextInput
         id="edit-cat-title"
-        name="edit-cat-title"
+        name="title"
         label="Title"
         value={title}
         onChange={onChange}

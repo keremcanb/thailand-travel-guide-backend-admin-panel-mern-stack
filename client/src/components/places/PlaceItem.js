@@ -13,7 +13,7 @@ import {
   Modal,
   Button
 } from 'react-materialize';
-// import FadeIn from 'react-lazyload-fadein';
+import FadeIn from 'react-lazyload-fadein';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { deletePlace, setCurrent } from '../../actions/place';
 
@@ -30,7 +30,7 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
           className="hoverable"
           header={
             <>
-              {/* <FadeIn height={150}>
+              <FadeIn height={150}>
                 {(onload) => (
                   <img
                     src={place.thumbnail}
@@ -40,13 +40,8 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
                     onLoad={onload}
                   />
                 )}
-              </FadeIn> */}
-              <CardTitle
-                image={place.thumbnail}
-                style={{ width: '200px', height: '150px' }}
-              >
-                {place.title}
-              </CardTitle>
+              </FadeIn>
+              <CardTitle>{place.title}</CardTitle>
             </>
           }
         >
