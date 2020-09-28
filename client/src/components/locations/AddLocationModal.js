@@ -26,7 +26,7 @@ const AddLocationModal = ({ addLocation }) => {
 
       const formData = new FormData();
 
-      formData.append('file', file, 'filename.png');
+      formData.append('file', file);
 
       try {
         const res = await axios.post('/upload', formData, {
