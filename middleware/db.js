@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const connectDB = async () => {
   try {
     if (process.env.NODE_ENV === 'production') {
-      mongoose.connect(
+      await mongoose.connect(
         `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@devconnector-l78xb.mongodb.net/tgr?retryWrites=true&w=majority`,
         {
           useNewUrlParser: true,
@@ -14,7 +14,7 @@ const connectDB = async () => {
       );
       console.log('MongoDB Atlas Connected');
     } else {
-      mongoose.connect('mongodb://localhost:27017/tgr', {
+      await mongoose.connect('mongodb://localhost:27017/tgr', {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         useCreateIndex: true,

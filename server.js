@@ -3,7 +3,6 @@ const compression = require('compression');
 const helmet = require('helmet');
 const cors = require('cors');
 const path = require('path');
-const fileUpload = require('express-fileupload');
 const connectDB = require('./middleware/db');
 require('dotenv').config();
 
@@ -13,7 +12,6 @@ const app = express();
 connectDB();
 
 // Init Middleware
-app.use(fileUpload());
 app.use(compression());
 app.use(cors());
 app.use(helmet());
@@ -24,21 +22,6 @@ app.use(express.static('public'));
 app.use('/api', require('./routes/api/items'));
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/auth', require('./routes/api/auth'));
-
-// Upload
-app.post('/upload', (req, res) => {
-  if (req.files === null) {
-    return res.status(400).json({ msg: 'No file uploaded' });
-  }
-  const { file } = req.files;
-  file.mv(`${__dirname}/public/${file.name}`, (err) => {
-    if (err) {
-      console.error(err);
-      return res.status(500).send(err);
-    }
-    res.json({ fileName: file.name, filePath: `/${file.name}` });
-  });
-});
 
 // Serve static assets in production
 if (process.env.NODE_ENV === 'production') {
