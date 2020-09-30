@@ -22,16 +22,9 @@ const Login = ({ login, isAuthenticated }) => {
     return <Redirect to="/dashboard" />;
   }
 
-  const rowStyle = {
-    display: 'grid',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: '30px'
-  };
-
   return (
-    <Row style={rowStyle}>
-      <Col>
+    <Row className="center">
+      <Col className="col s12 m6 offset-m3 l4 offset-l4">
         <form onSubmit={onSubmit}>
           <Row>
             <TextInput
@@ -56,6 +49,7 @@ const Login = ({ login, isAuthenticated }) => {
           </Row>
           <Row>
             <Button
+              waves="light"
               type="submit"
               value="Login"
               variant="contained"

@@ -12,7 +12,6 @@ const AddLocationModal = ({ addLocation }) => {
   const initialFormState = { title: '', thumbnail: '' };
   const [location, setLocation] = useState(initialFormState);
   const { title, thumbnail } = location;
-
   const [file, setFile] = useState('');
   const [filename, setFilename] = useState('Thumbnail');
   const [uploadedFile, setUploadedFile] = useState({});
@@ -23,20 +22,15 @@ const AddLocationModal = ({ addLocation }) => {
       M.toast({ html: 'Please enter location' });
     } else {
       e.preventDefault();
-
       const formData = new FormData();
-
       formData.append('file', file);
-
       try {
         const res = await axios.post('/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         });
-
         const { fileName, filePath } = res.data;
-
         setUploadedFile({ fileName, filePath });
       } catch (err) {
         if (err.response.status === 500) {
@@ -45,7 +39,6 @@ const AddLocationModal = ({ addLocation }) => {
           setMessage(err.response.data.msg);
         }
       }
-
       addLocation(location);
       M.toast({ html: 'Location added' });
       setLocation(initialFormState);
