@@ -44,6 +44,10 @@ const AddPlaceModal = ({ addPlace }) => {
     lng
   } = place;
 
+  const onChange = (e) => {
+    setPlace({ ...place, [e.target.name]: e.target.value });
+  };
+
   const onSubmit = () => {
     if (title === '' || thumbnail === '' || image === '' || content === '') {
       M.toast({ html: 'Please enter place' });
@@ -52,10 +56,6 @@ const AddPlaceModal = ({ addPlace }) => {
       M.toast({ html: `Place added` });
       setPlace(initialFormState);
     }
-  };
-
-  const onChange = (e) => {
-    setPlace({ ...place, [e.target.name]: e.target.value });
   };
 
   return (

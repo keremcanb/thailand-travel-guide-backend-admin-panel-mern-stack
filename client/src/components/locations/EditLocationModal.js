@@ -15,13 +15,13 @@ const EditLocationModal = ({ current, updateLocation }) => {
     }
   }, [current]);
 
+  const onChange = (e) => {
+    setLocation({ ...location, [e.target.name]: e.target.value });
+  };
+
   const onSubmit = () => {
     updateLocation(location);
     M.toast({ html: 'Location updated' });
-  };
-
-  const onChange = (e) => {
-    setLocation({ ...location, [e.target.name]: e.target.value });
   };
 
   return (

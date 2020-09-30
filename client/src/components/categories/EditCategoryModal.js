@@ -20,17 +20,17 @@ const EditCategoryModal = ({ current, updateCategory }) => {
     }
   }, [current]);
 
-  const onSubmit = () => {
-    updateCategory(category);
-    M.toast({ html: 'Category updated' });
-  };
-
   const onChange = (e) => {
     setCategory({ ...category, [e.target.name]: e.target.value });
   };
 
   const onSelect = (value, action) => {
     setCategory({ ...category, [action.name]: value });
+  };
+
+  const onSubmit = () => {
+    updateCategory(category);
+    M.toast({ html: 'Category updated' });
   };
 
   return (

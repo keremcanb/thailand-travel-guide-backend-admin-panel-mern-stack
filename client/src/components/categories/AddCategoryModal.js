@@ -15,6 +15,14 @@ const AddCategoryModal = ({ addCategory }) => {
   const locations = useResources('locations');
   const animatedComponents = makeAnimated();
 
+  const onChange = (e) => {
+    setCategory({ ...category, [e.target.name]: e.target.value });
+  };
+
+  const onSelect = (value, action) => {
+    setCategory({ ...category, [action.name]: value });
+  };
+
   const onSubmit = () => {
     if (title === '' || thumbnail === '') {
       M.toast({ html: 'Please enter category' });
@@ -24,14 +32,6 @@ const AddCategoryModal = ({ addCategory }) => {
       setCategory(initialFormState);
     }
   };
-
-  const onChange = (e) => {
-    setCategory({ ...category, [e.target.name]: e.target.value });
-  };
-
-  function onSelect(value, action) {
-    setCategory({ ...category, [action.name]: value });
-  }
 
   return (
     <Modal

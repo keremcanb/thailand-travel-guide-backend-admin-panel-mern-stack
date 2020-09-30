@@ -17,6 +17,15 @@ const AddLocationModal = ({ addLocation }) => {
   const [uploadedFile, setUploadedFile] = useState({});
   const [message, setMessage] = useState('');
 
+  const onChange = (e) => {
+    setLocation({ ...location, [e.target.name]: e.target.value });
+  };
+
+  const onChangeFile = (e) => {
+    setFile(e.target.files[0]);
+    setFilename(e.target.files[0].name);
+  };
+
   const onSubmit = async (e) => {
     if (title === '') {
       M.toast({ html: 'Please enter location' });
@@ -31,6 +40,7 @@ const AddLocationModal = ({ addLocation }) => {
           }
         });
         const { fileName, filePath } = res.data;
+        console.log(res.data.filename);
         setUploadedFile({ fileName, filePath });
       } catch (err) {
         if (err.response.status === 500) {
@@ -43,15 +53,6 @@ const AddLocationModal = ({ addLocation }) => {
       M.toast({ html: 'Location added' });
       setLocation(initialFormState);
     }
-  };
-
-  const onChange = (e) => {
-    setLocation({ ...location, [e.target.name]: e.target.value });
-  };
-
-  const onChangeFile = (e) => {
-    setFile(e.target.files[0]);
-    setFilename(e.target.files[0].name);
   };
 
   return (

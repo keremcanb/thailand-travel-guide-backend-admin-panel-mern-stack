@@ -38,13 +38,13 @@ const EditPlaceModal = ({ current, updatePlace }) => {
     }
   }, [current]);
 
+  const onChange = (e) => {
+    setPlace({ ...place, [e.target.name]: e.target.value });
+  };
+
   const onSubmit = () => {
     updatePlace(place);
     M.toast({ html: 'Place updated' });
-  };
-
-  const onChange = (e) => {
-    setPlace({ ...place, [e.target.name]: e.target.value });
   };
 
   return (
