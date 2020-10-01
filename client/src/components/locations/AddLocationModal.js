@@ -1,7 +1,7 @@
 /* eslint-disable radix */
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Button, Icon, Modal, TextInput, Row, Col } from 'react-materialize';
+import { Button, Icon, Modal, TextInput } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -14,7 +14,6 @@ const AddLocationModal = ({ addLocation }) => {
   const { title, thumbnail } = location;
   const [file, setFile] = useState('');
   const [filename, setFilename] = useState('Thumbnail');
-  const [uploadedFile, setUploadedFile] = useState({});
   const [message, setMessage] = useState('');
 
   const onChange = (e) => {
@@ -34,14 +33,11 @@ const AddLocationModal = ({ addLocation }) => {
       const formData = new FormData();
       formData.append('file', file);
       try {
-        const res = await axios.post('/upload', formData, {
+        await axios.post('/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }
         });
-        const { fileName, filePath } = res.data;
-        console.log(res.data.filename);
-        setUploadedFile({ fileName, filePath });
       } catch (err) {
         if (err.response.status === 500) {
           setMessage('There was a problem with the server');
@@ -49,7 +45,10 @@ const AddLocationModal = ({ addLocation }) => {
           setMessage(err.response.data.msg);
         }
       }
-      addLocation(location);
+      addLocation({
+        ...location,
+        thumbnail: filename
+      });
       M.toast({ html: 'Location added' });
       setLocation(initialFormState);
     }
@@ -83,7 +82,7 @@ const AddLocationModal = ({ addLocation }) => {
         value={title}
         onChange={onChange}
       />
-      {message ? <Message msg={message} /> : null}
+      {message && <Message msg={message} />}
       <TextInput
         id="add-loc-thumb"
         name="thumbnail"
@@ -92,24 +91,6 @@ const AddLocationModal = ({ addLocation }) => {
         onChange={onChangeFile}
         value={thumbnail}
       />
-      {/* <TextInput
-        id="thumbnail"
-        label="Thumbnail *"
-        value={thumbnail}
-        onChange={onChange}
-      /> */}
-      {uploadedFile && (
-        <Row>
-          <Col className="center">
-            <p>{uploadedFile.fileName}</p>
-            <img
-              style={{ width: '20%' }}
-              src={uploadedFile.filePath}
-              alt={uploadedFile.fileName}
-            />
-          </Col>
-        </Row>
-      )}
     </Modal>
   );
 };
