@@ -55,7 +55,7 @@ const EditPlaceModal = ({ current, updatePlace }) => {
         width: '60%'
       }}
       actions={[
-        <Button onClick={onSubmit} node="button" waves="light" type="submit">
+        <Button onClick={onSubmit} node="button" type="submit">
           Update
           <Icon right>send</Icon>
         </Button>

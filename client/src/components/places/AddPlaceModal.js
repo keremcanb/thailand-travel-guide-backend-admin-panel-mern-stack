@@ -95,7 +95,7 @@ const AddPlaceModal = ({ addPlace }) => {
       }}
       id="add-place-modal"
       actions={[
-        <Button onClick={onSubmit} node="button" waves="light" type="submit">
+        <Button onClick={onSubmit} node="button" type="submit">
           Submit
           <Icon right>send</Icon>
         </Button>
@@ -107,7 +107,6 @@ const AddPlaceModal = ({ addPlace }) => {
           floating
           large
           node="button"
-          waves="light"
           icon={<Icon>add</Icon>}
         />
       }

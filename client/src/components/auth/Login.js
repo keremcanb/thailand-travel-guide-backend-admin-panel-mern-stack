@@ -61,7 +61,6 @@ const Login = ({ login, isAuthenticated }) => {
               variant="contained"
               color="primary"
               className="right"
-              waves="light"
             >
               Login
               <Icon right>login</Icon>
