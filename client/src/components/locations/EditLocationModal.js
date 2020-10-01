@@ -29,7 +29,7 @@ const EditLocationModal = ({ current, updateLocation }) => {
       id="edit-location-modal"
       actions={[
         <Button onClick={onSubmit} node="button" waves="light" type="submit">
-          Submit
+          Update
           <Icon right>send</Icon>
         </Button>
       ]}
