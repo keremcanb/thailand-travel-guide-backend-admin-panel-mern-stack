@@ -47,7 +47,9 @@ const Locations = ({
 
 Locations.propTypes = {
   getLocations: PropTypes.func.isRequired,
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
+  selectedItem: PropTypes.array.isRequired,
+  onSearch: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({

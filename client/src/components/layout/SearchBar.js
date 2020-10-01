@@ -6,7 +6,8 @@ const SearchBox = ({ onSearch }) => {
   const rowStyle = {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginBottom: '5px'
   };
 
   return (

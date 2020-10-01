@@ -48,7 +48,8 @@ const Places = ({
 Places.propTypes = {
   getPlaces: PropTypes.func.isRequired,
   onSearch: PropTypes.func.isRequired,
-  place: PropTypes.object.isRequired
+  place: PropTypes.object.isRequired,
+  selectedItem: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state) => ({

@@ -3,6 +3,9 @@
   font-weight: 400;
   /* text-shadow: 2px 2px black; */
 }
+.card .card-content {
+  padding: 10px !important;
+}
 /* .modal {
   height: 100% !important ;
   width: 75% !important ;

@@ -48,7 +48,8 @@ const Categories = ({
 Categories.propTypes = {
   category: PropTypes.object.isRequired,
   getCategories: PropTypes.func.isRequired,
-  onSearch: PropTypes.func.isRequired
+  onSearch: PropTypes.func.isRequired,
+  selectedItem: PropTypes.array.isRequired
 };
 
 const mapStateToProps = (state) => ({
