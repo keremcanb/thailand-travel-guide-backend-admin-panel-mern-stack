@@ -91,30 +91,16 @@ const AddCategoryModal = ({ addCategory }) => {
         id="add-cat-loc"
         name="location"
         placeholder="Location *"
+        value={location}
+        onChange={onSelect}
+        components={animatedComponents}
+        closeMenuOnSelect={false}
+        isMulti
         options={locations.map((loc) => ({
           value: loc.title,
           label: loc.title
         }))}
-        onChange={onSelect}
-        closeMenuOnSelect={false}
-        components={animatedComponents}
-        isMulti
       />
-      {/* <Select
-        id="location"
-        name="location"
-        onChange={onChange}
-        multiple
-      >
-        <option disabled value="">
-          Location
-        </option>
-        {locations.map((location) => (
-          <option key={location._id} value={location.title}>
-            {location.title}
-          </option>
-        ))}
-      </Select> */}
       <TextInput
         id="add-cat-title"
         name="title"

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import {
   Button,
   Icon,
@@ -14,6 +15,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import useResources from '../../utils/useResources';
 import { addPlace } from '../../actions/place';
+import Message from '../layout/UploadMessage';
 
 const AddPlaceModal = ({ addPlace }) => {
   const initialFormState = {
@@ -43,16 +45,43 @@ const AddPlaceModal = ({ addPlace }) => {
     lat,
     lng
   } = place;
+  const [file, setFile] = useState('');
+  const [filename, setFilename] = useState('Thumbnail');
+  const [message, setMessage] = useState('');
 
   const onChange = (e) => {
     setPlace({ ...place, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = () => {
-    if (title === '' || thumbnail === '' || image === '' || content === '') {
+  const onChangeFile = (e) => {
+    setFile(e.target.files[0]);
+    setFilename(e.target.files[0].name);
+  };
+
+  const onSubmit = async (e) => {
+    if (title === '') {
       M.toast({ html: 'Please enter place' });
     } else {
-      addPlace(place);
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append('file', file);
+      try {
+        await axios.post('/upload', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+      } catch (err) {
+        if (err.response.status === 500) {
+          setMessage('There was a problem with the server');
+        } else {
+          setMessage(err.response.data.msg);
+        }
+      }
+      addPlace({
+        ...place,
+        thumbnail: filename
+      });
       M.toast({ html: `Place added` });
       setPlace(initialFormState);
     }
@@ -90,22 +119,25 @@ const AddPlaceModal = ({ addPlace }) => {
         value={title}
         onChange={onChange}
       />
+      {message && <Message msg={message} />}
       <TextInput
-        id="thumbnail"
-        name="add-place-thumb"
-        label="Thumbnail"
+        id="add-place-thumb"
+        name="thumbnail"
+        type="file"
+        label={filename}
         value={thumbnail}
-        onChange={onChange}
+        onChange={onChangeFile}
       />
       <TextInput
         id="add-place-image"
+        name="image"
         label="Image"
         value={image}
         onChange={onChange}
       />
       <Textarea
-        id="content"
-        name="add-place-content"
+        id="add-place-content"
+        name="content"
         label="Content"
         value={content}
         onChange={onChange}

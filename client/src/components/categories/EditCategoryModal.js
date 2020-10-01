@@ -10,7 +10,7 @@ import { updateCategory } from '../../actions/category';
 
 const EditCategoryModal = ({ current, updateCategory }) => {
   const [category, setCategory] = useState('');
-  const { title, thumbnail, location } = category;
+  const { title, thumbnail } = category;
   const locations = useResources('locations');
   const animatedComponents = makeAnimated();
 
@@ -50,15 +50,14 @@ const EditCategoryModal = ({ current, updateCategory }) => {
       <Select
         id="edit-cat-loc"
         name="locations"
+        onChange={onSelect}
+        components={animatedComponents}
+        closeMenuOnSelect={false}
+        isMulti
         options={locations.map((loc) => ({
           value: loc.title,
           label: loc.title
         }))}
-        value={location}
-        onChange={onSelect}
-        closeMenuOnSelect={false}
-        components={animatedComponents}
-        isMulti
       />
       <TextInput
         id="edit-cat-title"
