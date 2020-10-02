@@ -8,7 +8,6 @@ import {
   Textarea,
   Select,
   Row,
-  Col,
   Container
 } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
@@ -49,7 +48,7 @@ const EditPlace = ({ current, updatePlace, history }) => {
   };
 
   return (
-    <Container className="cont-main">
+    <Container className="center margin-top">
       <Row>
         <form onSubmit={onSubmit}>
           <TextInput

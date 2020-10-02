@@ -65,7 +65,7 @@ const AddCategory = ({ addCategory, history }) => {
   };
 
   return (
-    <Container className="cont-main">
+    <Container className="center margin-top">
       <Row>
         <form onSubmit={onSubmit}>
           <Select

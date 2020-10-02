@@ -26,7 +26,7 @@ const EditLocation = ({ current, updateLocation, history }) => {
   };
 
   return (
-    <Container className="cont-main">
+    <Container className="center margin-top">
       <Row>
         <form onSubmit={onSubmit}>
           <TextInput
