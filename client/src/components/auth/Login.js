@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { TextInput, Button, Icon, Row, Col } from 'react-materialize';
+import { TextInput, Button, Icon, Row } from 'react-materialize';
 import { login } from '../../actions/auth';
 
 const Login = ({ login, isAuthenticated }) => {
@@ -23,37 +23,43 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <Row className="rowStyle">
-      <form onSubmit={onSubmit}>
-        <TextInput
-          id="email"
-          label="Email"
-          type="email"
-          value={email}
-          onChange={onChange}
-          s={12}
-        />
-        <TextInput
-          id="password"
-          label="Password"
-          type="password"
-          value={password}
-          onChange={onChange}
-          minLength="6"
-          s={12}
-        />
-        <Button
-          type="submit"
-          value="Login"
-          variant="contained"
-          color="primary"
-          className="right"
-        >
-          Login
-          <Icon right>login</Icon>
-        </Button>
-      </form>
-    </Row>
+    <div className="container row-style">
+      <Row>
+        <form onSubmit={onSubmit}>
+          <TextInput
+            id="email"
+            label="Email"
+            type="email"
+            value={email}
+            onChange={onChange}
+            s={12}
+          />
+          <TextInput
+            id="password"
+            label="Password"
+            type="password"
+            value={password}
+            onChange={onChange}
+            minLength="6"
+            s={12}
+          />
+          <Row className="right" s={12} m={12}>
+            <Button
+              type="submit"
+              value="Login"
+              variant="contained"
+              color="primary"
+            >
+              Login
+              <Icon right>login</Icon>
+            </Button>
+            <p>
+              Do not have an account? <Link to="/register">Register</Link>
+            </p>
+          </Row>
+        </form>
+      </Row>
+    </div>
   );
 };
 

@@ -3,15 +3,8 @@ import React from 'react';
 import { TextInput, Row, Col } from 'react-materialize';
 
 const SearchBox = ({ onSearch }) => {
-  const rowStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom: '5px'
-  };
-
   return (
-    <Row className="rowStyle">
+    <Row className="row-grid">
       <Col>
         <TextInput type="search" placeholder="Filter" onChange={onSearch} />
       </Col>

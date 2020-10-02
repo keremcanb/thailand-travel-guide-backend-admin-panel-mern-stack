@@ -64,53 +64,54 @@ const AddCategory = ({ addCategory, history }) => {
   };
 
   return (
-    <Row className="rowStyle">
-      <form>
-        <Select
-          id="add-cat-loc"
-          name="location"
-          placeholder="Location *"
-          value={location}
-          onChange={onSelect}
-          components={animatedComponents}
-          closeMenuOnSelect={false}
-          isMulti
-          options={locations.map((loc) => ({
-            value: loc.title,
-            label: loc.title
-          }))}
-        />
-
-        <TextInput
-          id="add-cat-title"
-          name="title"
-          placeholder="Title *"
-          value={title}
-          onChange={onChange}
-          s={12}
-        />
-        {message && <Message msg={message} />}
-        <TextInput
-          id="add-cat-thumb"
-          name="thumbnail"
-          type="file"
-          label={filename}
-          value={thumbnail}
-          onChange={onChangeFile}
-          s={12}
-        />
-        <Button
-          onClick={onSubmit}
-          variant="contained"
-          color="primary"
-          className="right"
-          type="submit"
-        >
-          Submit
-          <Icon right>send</Icon>
-        </Button>
-      </form>
-    </Row>
+    <div className="container row-style">
+      <Row>
+        <form>
+          <TextInput
+            id="add-cat-title"
+            name="title"
+            placeholder="Title *"
+            value={title}
+            onChange={onChange}
+            s={12}
+          />
+          <Select
+            id="add-cat-loc"
+            name="location"
+            placeholder="Location *"
+            value={location}
+            onChange={onSelect}
+            components={animatedComponents}
+            closeMenuOnSelect={false}
+            isMulti
+            options={locations.map((loc) => ({
+              value: loc.title,
+              label: loc.title
+            }))}
+          />
+          {message && <Message msg={message} />}
+          <TextInput
+            id="add-cat-thumb"
+            name="thumbnail"
+            type="file"
+            label={filename}
+            value={thumbnail}
+            onChange={onChangeFile}
+            s={12}
+          />
+          <Button
+            onClick={onSubmit}
+            variant="contained"
+            color="primary"
+            className="right"
+            type="submit"
+          >
+            Submit
+            <Icon right>send</Icon>
+          </Button>
+        </form>
+      </Row>
+    </div>
   );
 };
 

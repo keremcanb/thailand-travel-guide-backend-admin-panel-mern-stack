@@ -26,36 +26,38 @@ const EditLocation = ({ current, updateLocation, history }) => {
   };
 
   return (
-    <Row className="rowStyle">
-      <form>
-        <TextInput
-          id="edit-loc-title"
-          name="title"
-          label="Title"
-          value={title}
-          onChange={onChange}
-          s={12}
-        />
-        <TextInput
-          id="edit-loc-thumb"
-          name="thumbnail"
-          label="Thumbnail"
-          value={thumbnail}
-          onChange={onChange}
-          s={12}
-        />
-        <Button
-          onClick={onSubmit}
-          variant="contained"
-          color="primary"
-          className="right"
-          type="submit"
-        >
-          Update
-          <Icon right>send</Icon>
-        </Button>
-      </form>
-    </Row>
+    <div className="container row-style">
+      <Row>
+        <form>
+          <TextInput
+            id="edit-loc-title"
+            name="title"
+            label="Title"
+            value={title}
+            onChange={onChange}
+            s={12}
+          />
+          <TextInput
+            id="edit-loc-thumb"
+            name="thumbnail"
+            label="Thumbnail"
+            value={thumbnail}
+            onChange={onChange}
+            s={12}
+          />
+          <Button
+            onClick={onSubmit}
+            variant="contained"
+            color="primary"
+            className="right"
+            type="submit"
+          >
+            Update
+            <Icon right>send</Icon>
+          </Button>
+        </form>
+      </Row>
+    </div>
   );
 };
 

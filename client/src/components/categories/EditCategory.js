@@ -35,60 +35,59 @@ const EditCategory = ({ current, updateCategory, history }) => {
   };
 
   return (
-    <Row className="rowStyle">
-      <form>
-        <Select
-          id="edit-cat-loc"
-          name="locations"
-          placeholder="Location"
-          onChange={onSelect}
-          components={animatedComponents}
-          closeMenuOnSelect={false}
-          isMulti
-          options={locations.map((loc) => ({
-            value: loc.title,
-            label: loc.title
-          }))}
-        />
-
-        {location &&
-          location.map((loc) => {
-            return (
-              <li style={{ display: 'inline' }} key={loc.value}>
-                {loc.label},{' '}
-              </li>
-            );
-          })}
-
-        <TextInput
-          id="edit-cat-title"
-          name="title"
-          label="Title"
-          value={title}
-          onChange={onChange}
-          s={12}
-        />
-
-        <TextInput
-          id="edit-cat-thumb"
-          name="thumbnail"
-          label="Thumbnail"
-          value={thumbnail}
-          onChange={onChange}
-          s={12}
-        />
-        <Button
-          onClick={onSubmit}
-          variant="contained"
-          color="primary"
-          className="right"
-          type="submit"
-        >
-          Update
-          <Icon right>send</Icon>
-        </Button>
-      </form>
-    </Row>
+    <div className="container row-style">
+      <Row>
+        <form>
+          <TextInput
+            id="edit-cat-title"
+            name="title"
+            label="Title"
+            value={title}
+            onChange={onChange}
+            s={12}
+          />
+          {location &&
+            location.map((loc) => {
+              return (
+                <li style={{ display: 'inline' }} key={loc.value}>
+                  {loc.label},{' '}
+                </li>
+              );
+            })}
+          <Select
+            id="edit-cat-loc"
+            name="locations"
+            placeholder="Location"
+            onChange={onSelect}
+            components={animatedComponents}
+            closeMenuOnSelect={false}
+            isMulti
+            options={locations.map((loc) => ({
+              value: loc.title,
+              label: loc.title
+            }))}
+          />
+          <TextInput
+            id="edit-cat-thumb"
+            name="thumbnail"
+            label="Thumbnail"
+            value={thumbnail}
+            onChange={onChange}
+            s={12}
+          />
+          <Button
+            onClick={onSubmit}
+            variant="contained"
+            color="primary"
+            className="right"
+            type="submit"
+          >
+            Update
+            <Icon right>send</Icon>
+          </Button>
+        </form>
+      </Row>
+    </div>
   );
 };
 

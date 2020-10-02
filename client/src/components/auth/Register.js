@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import { TextInput, Button, Row, Col } from 'react-materialize';
+import { TextInput, Button, Row, Icon } from 'react-materialize';
 import PropTypes from 'prop-types';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
@@ -33,67 +33,71 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   }
 
   return (
-    <Row className="rowStyle">
-      <form onSubmit={onSubmit}>
-        <TextInput
-          type="text"
-          label="Name"
-          name="firstName"
-          value={firstName}
-          onChange={onChange}
-          s={6}
-        />
-
-        <TextInput
-          type="text"
-          label="Surname"
-          name="lastName"
-          value={lastName}
-          onChange={onChange}
-          s={6}
-        />
-
-        <TextInput
-          type="email"
-          label="Email"
-          name="email"
-          value={email}
-          onChange={onChange}
-          s={12}
-        />
-
-        <TextInput
-          type="password"
-          label="Password"
-          name="password"
-          value={password}
-          onChange={onChange}
-          s={6}
-        />
-
-        <TextInput
-          type="password"
-          label="Confirm Password"
-          name="password2"
-          value={password2}
-          onChange={onChange}
-          s={6}
-        />
-        <Row className="right">
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            value="Register"
-          >
-            Register
-          </Button>
-          <p>
-            Already have an account? <Link to="/login">Sign In</Link>
-          </p>
-        </Row>
-      </form>
-    </Row>
+    <div className="container row-style">
+      <Row>
+        <form onSubmit={onSubmit}>
+          <TextInput
+            type="text"
+            label="Name"
+            name="firstName"
+            value={firstName}
+            onChange={onChange}
+            s={12}
+            m={6}
+          />
+          <TextInput
+            type="text"
+            label="Surname"
+            name="lastName"
+            value={lastName}
+            onChange={onChange}
+            s={12}
+            m={6}
+          />
+          <TextInput
+            type="email"
+            label="Email"
+            name="email"
+            value={email}
+            onChange={onChange}
+            s={12}
+            m={12}
+          />
+          <TextInput
+            type="password"
+            label="Password"
+            name="password"
+            value={password}
+            onChange={onChange}
+            s={12}
+            m={6}
+          />
+          <TextInput
+            type="password"
+            label="Confirm Password"
+            name="password2"
+            value={password2}
+            onChange={onChange}
+            s={12}
+            m={6}
+          />
+          <Row className="right" s={12} m={12}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              value="Register"
+            >
+              Register
+              <Icon right>add</Icon>
+            </Button>
+            <p>
+              Already have an account? <Link to="/login">Sign In</Link>
+            </p>
+          </Row>
+        </form>
+      </Row>
+    </div>
   );
 };
 

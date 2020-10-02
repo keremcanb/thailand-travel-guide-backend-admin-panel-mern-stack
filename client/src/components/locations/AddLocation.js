@@ -56,38 +56,40 @@ const AddLocation = ({ addLocation, history }) => {
   };
 
   return (
-    <Row className="rowStyle">
-      <form>
-        <TextInput
-          id="add-loc-title"
-          name="title"
-          label="Title *"
-          value={title}
-          onChange={onChange}
-          s={12}
-        />
-        {message && <Message msg={message} />}
-        <TextInput
-          id="add-loc-thumb"
-          name="thumbnail"
-          type="file"
-          label={filename}
-          onChange={onChangeFile}
-          value={thumbnail}
-          s={12}
-        />
-        <Button
-          onClick={onSubmit}
-          variant="contained"
-          color="primary"
-          className="right"
-          type="submit"
-        >
-          Submit
-          <Icon right>send</Icon>
-        </Button>
-      </form>
-    </Row>
+    <div className="container row-style">
+      <Row>
+        <form>
+          <TextInput
+            id="add-loc-title"
+            name="title"
+            label="Title *"
+            value={title}
+            onChange={onChange}
+            s={12}
+          />
+          {message && <Message msg={message} />}
+          <TextInput
+            id="add-loc-thumb"
+            name="thumbnail"
+            type="file"
+            label={filename}
+            onChange={onChangeFile}
+            value={thumbnail}
+            s={12}
+          />
+          <Button
+            onClick={onSubmit}
+            variant="contained"
+            color="primary"
+            className="right"
+            type="submit"
+          >
+            Submit
+            <Icon right>send</Icon>
+          </Button>
+        </form>
+      </Row>
+    </div>
   );
 };
 

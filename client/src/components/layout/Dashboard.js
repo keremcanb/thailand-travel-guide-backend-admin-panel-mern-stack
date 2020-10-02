@@ -5,11 +5,11 @@ import { Row, Col } from 'react-materialize';
 
 const Dashboard = ({ auth: { user } }) => {
   return (
-    <Row className="rowStyle">
-      <Col>
+    <div className="container row-style">
+      <Row>
         <h1>Welcome {user && user.firstName}</h1>
-      </Col>
-    </Row>
+      </Row>
+    </div>
   );
 };
 
