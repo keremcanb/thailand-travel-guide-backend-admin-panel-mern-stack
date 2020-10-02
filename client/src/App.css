@@ -13,3 +13,11 @@
 .margin-top {
   margin-top: 30px;
 }
+.grid-style {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: space-evenly;
+  align-content: space-evenly;
+  grid-gap: 5px;
+}

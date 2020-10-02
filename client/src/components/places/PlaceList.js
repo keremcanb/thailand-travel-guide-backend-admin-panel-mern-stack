@@ -16,25 +16,14 @@ const Places = ({
     getPlaces();
   }, [getPlaces]);
 
-  const gridStyle = {
-    display: 'flex',
-    justifyContent: 'space-evenly',
-    flexWrap: 'wrap',
-    alignItems: 'space-evenly',
-    alignContent: 'space-evenly',
-    gridGap: '5px'
-  };
-
-  return loading || places === null ? (
-    <ProgressBar className="blue" />
-  ) : (
+  return !(loading || places === null) ? (
     <>
       <SearchBar onSearch={onSearch} />
       <Row>
         {!loading && selectedItem.length === 0 ? (
           <p className="center">No places to show...</p>
         ) : (
-          <Col style={gridStyle}>
+          <Col className="grid-style">
             {selectedItem.map((place) => (
               <PlaceItem key={place._id} place={place} />
             ))}
@@ -42,6 +31,8 @@ const Places = ({
         )}
       </Row>
     </>
+  ) : (
+    <ProgressBar className="blue" />
   );
 };
 

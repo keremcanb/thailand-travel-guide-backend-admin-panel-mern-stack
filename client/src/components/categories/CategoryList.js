@@ -16,25 +16,14 @@ const Categories = ({
     getCategories();
   }, [getCategories]);
 
-  const gridStyle = {
-    display: 'flex',
-    justifyContent: 'space-evenly',
-    flexWrap: 'wrap',
-    alignItems: 'space-evenly',
-    alignContent: 'space-evenly',
-    gridGap: '5px'
-  };
-
-  return loading || categories === null ? (
-    <ProgressBar className="blue" />
-  ) : (
+  return !(loading || categories === null) ? (
     <>
       <SearchBar onSearch={onSearch} />
       <Row>
         {!loading && selectedItem.length === 0 ? (
           <p className="center">No categories to show...</p>
         ) : (
-          <Col style={gridStyle}>
+          <Col className="grid-style">
             {selectedItem.map((category) => (
               <CategoryItem key={category._id} category={category} />
             ))}
@@ -42,6 +31,8 @@ const Categories = ({
         )}
       </Row>
     </>
+  ) : (
+    <ProgressBar className="blue" />
   );
 };
 
