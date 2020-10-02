@@ -4,6 +4,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import {
   Col,
   Row,
@@ -46,16 +47,17 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
           }
         >
           <div className="center">
-            <a
-              href="#edit-category-modal"
-              className="modal-trigger btn-floating blue"
-              onClick={() => setCurrent(category)}
-              style={{
-                marginRight: '3rem'
-              }}
-            >
-              <Icon>edit</Icon>
-            </a>
+            <Link to="editcategory">
+              <a
+                className="modal-trigger btn-floating blue"
+                onClick={() => setCurrent(category)}
+                style={{
+                  marginRight: '3rem'
+                }}
+              >
+                <Icon>edit</Icon>
+              </a>
+            </Link>
             <Modal
               actions={[
                 <Button

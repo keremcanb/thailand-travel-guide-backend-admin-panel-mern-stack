@@ -6,9 +6,16 @@ import { Navbar, NavItem, Icon } from 'react-materialize';
 import { logout } from '../../actions/auth';
 
 const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
-  const links = [];
+  const guestLinks = [
+    <NavLink key={1} to="/login" href="/login" className="sidenav-close">
+      Login
+    </NavLink>,
+    <NavLink key={2} to="/register" href="/register" className="sidenav-close">
+      Register
+    </NavLink>
+  ];
 
-  const privateLinks = [
+  const authLinks = [
     <NavLink
       key={1}
       to="/locations"
@@ -33,10 +40,6 @@ const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
     </NavItem>
   ];
 
-  if (!loading && isAuthenticated) {
-    links.push(...privateLinks);
-  }
-
   return (
     <Navbar
       fixed
@@ -58,7 +61,7 @@ const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
         </>
       }
     >
-      {links}
+      {!loading && isAuthenticated ? authLinks : guestLinks}
     </Navbar>
   );
 };

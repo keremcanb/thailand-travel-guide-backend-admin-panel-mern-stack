@@ -1,14 +1,14 @@
 /* eslint-disable radix */
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Button, Icon, Modal, TextInput } from 'react-materialize';
+import { Button, Icon, TextInput, Row } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addLocation } from '../../actions/location';
 import Message from '../layout/UploadMessage';
 
-const AddLocationModal = ({ addLocation }) => {
+const AddLocation = ({ addLocation, history }) => {
   const initialFormState = { title: '', thumbnail: '' };
   const [location, setLocation] = useState(initialFormState);
   const { title, thumbnail } = location;
@@ -51,51 +51,51 @@ const AddLocationModal = ({ addLocation }) => {
       });
       M.toast({ html: 'Location added' });
       setLocation(initialFormState);
+      history.push('locations');
     }
   };
 
   return (
-    <Modal
-      id="add-location-modal"
-      actions={[
-        <Button onClick={onSubmit} node="button" type="submit">
+    <Row className="rowStyle">
+      <form>
+        <TextInput
+          id="add-loc-title"
+          name="title"
+          label="Title *"
+          value={title}
+          onChange={onChange}
+          s={12}
+        />
+        {message && <Message msg={message} />}
+        <TextInput
+          id="add-loc-thumb"
+          name="thumbnail"
+          type="file"
+          label={filename}
+          onChange={onChangeFile}
+          value={thumbnail}
+          s={12}
+        />
+        <Button
+          onClick={onSubmit}
+          variant="contained"
+          color="primary"
+          className="right"
+          type="submit"
+        >
           Submit
           <Icon right>send</Icon>
         </Button>
-      ]}
-      trigger={
-        <Button
-          className="blue darken-2"
-          fab
-          floating
-          large
-          node="button"
-          icon={<Icon>add</Icon>}
-        />
-      }
-    >
-      <TextInput
-        id="add-loc-title"
-        name="title"
-        label="Title *"
-        value={title}
-        onChange={onChange}
-      />
-      {message && <Message msg={message} />}
-      <TextInput
-        id="add-loc-thumb"
-        name="thumbnail"
-        type="file"
-        label={filename}
-        onChange={onChangeFile}
-        value={thumbnail}
-      />
-    </Modal>
+      </form>
+    </Row>
   );
 };
 
-AddLocationModal.propTypes = {
-  addLocation: PropTypes.func.isRequired
+AddLocation.propTypes = {
+  addLocation: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func
+  }).isRequired
 };
 
-export default connect(null, { addLocation })(AddLocationModal);
+export default connect(null, { addLocation })(AddLocation);

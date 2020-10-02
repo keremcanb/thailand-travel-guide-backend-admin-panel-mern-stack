@@ -11,7 +11,7 @@ const SearchBox = ({ onSearch }) => {
   };
 
   return (
-    <Row style={rowStyle}>
+    <Row className="rowStyle">
       <Col>
         <TextInput type="search" placeholder="Filter" onChange={onSearch} />
       </Col>

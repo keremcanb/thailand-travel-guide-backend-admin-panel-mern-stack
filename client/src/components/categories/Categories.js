@@ -1,10 +1,10 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { getCategories } from '../../actions/category';
 import CategoryList from './CategoryList';
-import AddCategoryModal from './AddCategoryModal';
-import EditCategoryModal from './EditCategoryModal';
 
 const Categories = ({ getCategories, category: { categories } }) => {
   const [search, setSearch] = useState('');
@@ -26,8 +26,13 @@ const Categories = ({ getCategories, category: { categories } }) => {
   return (
     <>
       <CategoryList selectedItem={filterSearch} onSearch={onSearch} />
-      <AddCategoryModal />
-      <EditCategoryModal />
+      <div className="fixed-action-btn">
+        <Link to="addcategory">
+          <a className="btn-floating btn-large blue darken-2">
+            <i className="large material-icons">add</i>
+          </a>
+        </Link>
+      </div>
     </>
   );
 };

@@ -6,6 +6,12 @@
 .card .card-content {
   padding: 10px !important;
 }
+.rowStyle {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
 /* .modal {
   height: 100% !important ;
   width: 75% !important ;

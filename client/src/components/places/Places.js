@@ -1,10 +1,10 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { getPlaces } from '../../actions/place';
 import PlaceList from './PlaceList';
-import AddPlaceModal from './AddPlaceModal';
-import EditPlaceModal from './EditPlaceModal';
 
 const Places = ({ getPlaces, place: { places } }) => {
   const [search, setSearch] = useState('');
@@ -26,8 +26,13 @@ const Places = ({ getPlaces, place: { places } }) => {
   return (
     <>
       <PlaceList selectedItem={filterSearch} onSearch={onSearch} />
-      <AddPlaceModal />
-      <EditPlaceModal />
+      <div className="fixed-action-btn">
+        <Link to="addplace">
+          <a className="btn-floating btn-large blue darken-2">
+            <i className="large material-icons">add</i>
+          </a>
+        </Link>
+      </div>
     </>
   );
 };

@@ -4,15 +4,8 @@ import { connect } from 'react-redux';
 import { Row, Col } from 'react-materialize';
 
 const Dashboard = ({ auth: { user } }) => {
-  const rowStyle = {
-    display: 'grid',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: '30px'
-  };
-
   return (
-    <Row style={rowStyle}>
+    <Row className="rowStyle">
       <Col>
         <h1>Welcome {user && user.firstName}</h1>
       </Col>

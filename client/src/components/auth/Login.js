@@ -22,52 +22,37 @@ const Login = ({ login, isAuthenticated }) => {
     return <Redirect to="/dashboard" />;
   }
 
-  const rowStyle = {
-    display: 'grid',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: '30px'
-  };
-
   return (
-    <Row style={rowStyle}>
-      <Col>
-        <form onSubmit={onSubmit}>
-          <Row>
-            <TextInput
-              id="email"
-              label="Email"
-              type="email"
-              value={email}
-              onChange={onChange}
-              required
-            />
-          </Row>
-          <Row>
-            <TextInput
-              id="password"
-              label="Password"
-              type="password"
-              value={password}
-              onChange={onChange}
-              minLength="6"
-              required
-            />
-          </Row>
-          <Row>
-            <Button
-              type="submit"
-              value="Login"
-              variant="contained"
-              color="primary"
-              className="right"
-            >
-              Login
-              <Icon right>login</Icon>
-            </Button>
-          </Row>
-        </form>
-      </Col>
+    <Row className="rowStyle">
+      <form onSubmit={onSubmit}>
+        <TextInput
+          id="email"
+          label="Email"
+          type="email"
+          value={email}
+          onChange={onChange}
+          s={12}
+        />
+        <TextInput
+          id="password"
+          label="Password"
+          type="password"
+          value={password}
+          onChange={onChange}
+          minLength="6"
+          s={12}
+        />
+        <Button
+          type="submit"
+          value="Login"
+          variant="contained"
+          color="primary"
+          className="right"
+        >
+          Login
+          <Icon right>login</Icon>
+        </Button>
+      </form>
     </Row>
   );
 };

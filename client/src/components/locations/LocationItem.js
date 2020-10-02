@@ -4,6 +4,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import {
   Col,
   Row,
@@ -40,16 +41,17 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
           }
         >
           <div className="center">
-            <a
-              href="#edit-location-modal"
-              className="modal-trigger btn-floating blue"
-              onClick={() => setCurrent(location)}
-              style={{
-                marginRight: '3rem'
-              }}
-            >
-              <Icon>edit</Icon>
-            </a>
+            <Link to="editlocation">
+              <a
+                className="modal-trigger btn-floating blue"
+                onClick={() => setCurrent(location)}
+                style={{
+                  marginRight: '3rem'
+                }}
+              >
+                <Icon>edit</Icon>
+              </a>
+            </Link>
             <Modal
               actions={[
                 <Button
