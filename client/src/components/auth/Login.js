@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { TextInput, Button, Icon, Row } from 'react-materialize';
+import { TextInput, Button, Icon, Row, Container } from 'react-materialize';
 import { login } from '../../actions/auth';
 
 const Login = ({ login, isAuthenticated }) => {
@@ -23,13 +23,13 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <div className="container row-style">
+    <Container className="cont-main">
       <Row>
         <form onSubmit={onSubmit}>
           <TextInput
             id="email"
             label="Email"
-            type="email"
+            email
             value={email}
             onChange={onChange}
             s={12}
@@ -37,18 +37,18 @@ const Login = ({ login, isAuthenticated }) => {
           <TextInput
             id="password"
             label="Password"
-            type="password"
             value={password}
             onChange={onChange}
             minLength="6"
+            password
             s={12}
           />
           <Row className="right" s={12} m={12}>
             <Button
+              className="blue darken-2"
               type="submit"
               value="Login"
               variant="contained"
-              color="primary"
             >
               Login
               <Icon right>login</Icon>
@@ -59,7 +59,7 @@ const Login = ({ login, isAuthenticated }) => {
           </Row>
         </form>
       </Row>
-    </div>
+    </Container>
   );
 };
 

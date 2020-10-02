@@ -55,7 +55,7 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
                   marginRight: '3rem'
                 }}
               >
-                <Icon>edit</Icon>
+                <Icon className="blue darken-2">edit</Icon>
               </a>
             </Link>
             <Modal

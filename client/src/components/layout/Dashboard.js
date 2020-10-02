@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Row, Col } from 'react-materialize';
+import { Row } from 'react-materialize';
 
 const Dashboard = ({ auth: { user } }) => {
   return (
-    <div className="container row-style">
-      <Row>
-        <h1>Welcome {user && user.firstName}</h1>
-      </Row>
-    </div>
+    <Row className="row-grid">
+      <h1>Welcome {user && user.firstName}</h1>
+    </Row>
   );
 };
 

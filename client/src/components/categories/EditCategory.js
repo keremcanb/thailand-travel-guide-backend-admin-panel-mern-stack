@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Icon, TextInput, Row } from 'react-materialize';
+import { Button, Icon, TextInput, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
@@ -35,9 +35,9 @@ const EditCategory = ({ current, updateCategory, history }) => {
   };
 
   return (
-    <div className="container row-style">
+    <Container className="cont-main">
       <Row>
-        <form>
+        <form onSubmit={onSubmit}>
           <TextInput
             id="edit-cat-title"
             name="title"
@@ -76,10 +76,8 @@ const EditCategory = ({ current, updateCategory, history }) => {
             s={12}
           />
           <Button
-            onClick={onSubmit}
             variant="contained"
-            color="primary"
-            className="right"
+            className="right blue darken-2"
             type="submit"
           >
             Update
@@ -87,7 +85,7 @@ const EditCategory = ({ current, updateCategory, history }) => {
           </Button>
         </form>
       </Row>
-    </div>
+    </Container>
   );
 };
 

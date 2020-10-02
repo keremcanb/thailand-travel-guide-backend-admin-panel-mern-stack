@@ -7,7 +7,8 @@ import {
   Textarea,
   Select,
   Row,
-  Col
+  Col,
+  Container
 } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
@@ -60,6 +61,7 @@ const AddPlace = ({ addPlace, history }) => {
   const onSubmit = async (e) => {
     if (title === '') {
       M.toast({ html: 'Please enter place' });
+      history.push('places');
     } else {
       e.preventDefault();
       const formData = new FormData();
@@ -88,9 +90,9 @@ const AddPlace = ({ addPlace, history }) => {
   };
 
   return (
-    <div className="container row-style">
+    <Container className="cont-main">
       <Row>
-        <form>
+        <form onSubmit={onSubmit}>
           <TextInput
             id="add-place-title"
             name="title"
@@ -190,10 +192,8 @@ const AddPlace = ({ addPlace, history }) => {
             s={6}
           />
           <Button
-            onClick={onSubmit}
             variant="contained"
-            color="primary"
-            className="right"
+            className="right blue darken-2"
             type="submit"
           >
             Submit
@@ -201,7 +201,7 @@ const AddPlace = ({ addPlace, history }) => {
           </Button>
         </form>
       </Row>
-    </div>
+    </Container>
   );
 };
 

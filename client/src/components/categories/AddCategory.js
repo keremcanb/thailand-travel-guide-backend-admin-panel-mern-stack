@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Button, Icon, TextInput, Row } from 'react-materialize';
+import { Button, Icon, TextInput, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -36,6 +36,7 @@ const AddCategory = ({ addCategory, history }) => {
   const onSubmit = async (e) => {
     if (title === '' || location === '') {
       M.toast({ html: 'Please enter category' });
+      history.push('categories');
     } else {
       e.preventDefault();
       const formData = new FormData();
@@ -64,17 +65,9 @@ const AddCategory = ({ addCategory, history }) => {
   };
 
   return (
-    <div className="container row-style">
+    <Container className="cont-main">
       <Row>
-        <form>
-          <TextInput
-            id="add-cat-title"
-            name="title"
-            placeholder="Title *"
-            value={title}
-            onChange={onChange}
-            s={12}
-          />
+        <form onSubmit={onSubmit}>
           <Select
             id="add-cat-loc"
             name="location"
@@ -89,6 +82,14 @@ const AddCategory = ({ addCategory, history }) => {
               label: loc.title
             }))}
           />
+          <TextInput
+            id="add-cat-title"
+            name="title"
+            placeholder="Title *"
+            value={title}
+            onChange={onChange}
+            s={12}
+          />
           {message && <Message msg={message} />}
           <TextInput
             id="add-cat-thumb"
@@ -100,10 +101,8 @@ const AddCategory = ({ addCategory, history }) => {
             s={12}
           />
           <Button
-            onClick={onSubmit}
             variant="contained"
-            color="primary"
-            className="right"
+            className="right blue darken-2"
             type="submit"
           >
             Submit
@@ -111,7 +110,7 @@ const AddCategory = ({ addCategory, history }) => {
           </Button>
         </form>
       </Row>
-    </div>
+    </Container>
   );
 };
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Icon, TextInput, Row } from 'react-materialize';
+import { Button, Icon, TextInput, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { updateLocation } from '../../actions/location';
 
@@ -26,9 +26,9 @@ const EditLocation = ({ current, updateLocation, history }) => {
   };
 
   return (
-    <div className="container row-style">
+    <Container className="cont-main">
       <Row>
-        <form>
+        <form onSubmit={onSubmit}>
           <TextInput
             id="edit-loc-title"
             name="title"
@@ -46,10 +46,8 @@ const EditLocation = ({ current, updateLocation, history }) => {
             s={12}
           />
           <Button
-            onClick={onSubmit}
             variant="contained"
-            color="primary"
-            className="right"
+            className="right blue darken-2"
             type="submit"
           >
             Update
@@ -57,7 +55,7 @@ const EditLocation = ({ current, updateLocation, history }) => {
           </Button>
         </form>
       </Row>
-    </div>
+    </Container>
   );
 };
 

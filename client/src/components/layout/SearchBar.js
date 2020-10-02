@@ -1,13 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { TextInput, Row, Col } from 'react-materialize';
+import { TextInput, Row } from 'react-materialize';
 
 const SearchBox = ({ onSearch }) => {
   return (
-    <Row className="row-grid">
-      <Col>
-        <TextInput type="search" placeholder="Filter" onChange={onSearch} />
-      </Col>
+    <Row className="row-grid" style={{ marginBottom: '5px' }}>
+      <TextInput type="search" placeholder="Filter" onChange={onSearch} />
     </Row>
   );
 };

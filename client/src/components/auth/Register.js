@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
-import { TextInput, Button, Row, Icon } from 'react-materialize';
+import { TextInput, Button, Row, Icon, Container } from 'react-materialize';
 import PropTypes from 'prop-types';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
@@ -33,11 +33,10 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   }
 
   return (
-    <div className="container row-style">
+    <Container className="cont-main">
       <Row>
         <form onSubmit={onSubmit}>
           <TextInput
-            type="text"
             label="Name"
             name="firstName"
             value={firstName}
@@ -46,7 +45,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             m={6}
           />
           <TextInput
-            type="text"
             label="Surname"
             name="lastName"
             value={lastName}
@@ -55,7 +53,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             m={6}
           />
           <TextInput
-            type="email"
+            email
             label="Email"
             name="email"
             value={email}
@@ -64,7 +62,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             m={12}
           />
           <TextInput
-            type="password"
+            password
             label="Password"
             name="password"
             value={password}
@@ -73,7 +71,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             m={6}
           />
           <TextInput
-            type="password"
+            password
             label="Confirm Password"
             name="password2"
             value={password2}
@@ -83,9 +81,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
           />
           <Row className="right" s={12} m={12}>
             <Button
+              className="blue darken-2"
               type="submit"
               variant="contained"
-              color="primary"
               value="Register"
             >
               Register
@@ -97,7 +95,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
           </Row>
         </form>
       </Row>
-    </div>
+    </Container>
   );
 };
 

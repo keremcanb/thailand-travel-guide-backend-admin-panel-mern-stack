@@ -8,7 +8,8 @@ import {
   Textarea,
   Select,
   Row,
-  Col
+  Col,
+  Container
 } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import useResources from '../../utils/useResources';
@@ -48,9 +49,9 @@ const EditPlace = ({ current, updatePlace, history }) => {
   };
 
   return (
-    <div className="container row-style">
+    <Container className="cont-main">
       <Row>
-        <form>
+        <form onSubmit={onSubmit}>
           <TextInput
             id="edit-place-title"
             name="title"
@@ -144,10 +145,8 @@ const EditPlace = ({ current, updatePlace, history }) => {
             s={6}
           />
           <Button
-            onClick={onSubmit}
             variant="contained"
-            color="primary"
-            className="right"
+            className="right blue darken-2"
             type="submit"
           >
             Update
@@ -155,7 +154,7 @@ const EditPlace = ({ current, updatePlace, history }) => {
           </Button>
         </form>
       </Row>
-    </div>
+    </Container>
   );
 };
 

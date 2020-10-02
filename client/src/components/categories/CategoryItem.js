@@ -55,7 +55,7 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
                   marginRight: '3rem'
                 }}
               >
-                <Icon>edit</Icon>
+                <Icon className="blue darken-2">edit</Icon>
               </a>
             </Link>
             <Modal

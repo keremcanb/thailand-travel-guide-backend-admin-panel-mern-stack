@@ -1,12 +1,11 @@
 .card .card-image .card-title {
-  padding: 18px !important;
+  padding: 18px;
   font-weight: 400;
-  /* text-shadow: 2px 2px black; */
 }
 .card .card-content {
-  padding: 10px !important;
+  padding: 10px;
 }
-.row-style {
+.cont-main {
   margin-top: 30px;
 }
 .row-grid {

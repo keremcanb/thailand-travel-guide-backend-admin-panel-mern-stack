@@ -1,7 +1,7 @@
 /* eslint-disable radix */
 import React, { useState } from 'react';
 import axios from 'axios';
-import { Button, Icon, TextInput, Row } from 'react-materialize';
+import { Button, Icon, TextInput, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -26,45 +26,47 @@ const AddLocation = ({ addLocation, history }) => {
   };
 
   const onSubmit = async (e) => {
-    if (title === '') {
-      M.toast({ html: 'Please enter location' });
-    } else {
-      e.preventDefault();
-      const formData = new FormData();
-      formData.append('file', file);
-      try {
-        await axios.post('/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
-      } catch (err) {
-        if (err.response.status === 500) {
-          setMessage('There was a problem with the server');
-        } else {
-          setMessage(err.response.data.msg);
+    // if (title === '') {
+    //   M.toast({ html: 'Please enter location' });
+    //   history.push('locations');
+    // } else {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('file', file);
+    try {
+      await axios.post('/upload', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
         }
-      }
-      addLocation({
-        ...location,
-        thumbnail: filename
       });
-      M.toast({ html: 'Location added' });
-      setLocation(initialFormState);
-      history.push('locations');
+    } catch (err) {
+      if (err.response.status === 500) {
+        setMessage('There was a problem with the server');
+      } else {
+        setMessage(err.response.data.msg);
+      }
     }
+    addLocation({
+      ...location,
+      thumbnail: filename
+    });
+    M.toast({ html: 'Location added' });
+    setLocation(initialFormState);
+    history.push('locations');
+    // }
   };
 
   return (
-    <div className="container row-style">
+    <Container className="cont-main">
       <Row>
-        <form>
+        <form onSubmit={onSubmit}>
           <TextInput
             id="add-loc-title"
             name="title"
             label="Title *"
             value={title}
             onChange={onChange}
+            error="Enter title"
             s={12}
           />
           {message && <Message msg={message} />}
@@ -78,10 +80,8 @@ const AddLocation = ({ addLocation, history }) => {
             s={12}
           />
           <Button
-            onClick={onSubmit}
             variant="contained"
-            color="primary"
-            className="right"
+            className="right blue darken-2"
             type="submit"
           >
             Submit
@@ -89,7 +89,7 @@ const AddLocation = ({ addLocation, history }) => {
           </Button>
         </form>
       </Row>
-    </div>
+    </Container>
   );
 };
 
