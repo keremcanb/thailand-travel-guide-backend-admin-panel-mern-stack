@@ -38,19 +38,11 @@ const EditCategory = ({ current, updateCategory, history }) => {
     <Container className="center margin-top">
       <Row>
         <form onSubmit={onSubmit}>
-          <TextInput
-            id="edit-cat-title"
-            name="title"
-            label="Title"
-            value={title}
-            onChange={onChange}
-            s={12}
-          />
           {location &&
             location.map((loc) => {
               return (
                 <li style={{ display: 'inline' }} key={loc.value}>
-                  {loc.label},{' '}
+                  Current: {loc.label},{' '}
                 </li>
               );
             })}
@@ -66,6 +58,14 @@ const EditCategory = ({ current, updateCategory, history }) => {
               value: loc.title,
               label: loc.title
             }))}
+          />
+          <TextInput
+            id="edit-cat-title"
+            name="title"
+            label="Title"
+            value={title}
+            onChange={onChange}
+            s={12}
           />
           <TextInput
             id="edit-cat-thumb"
