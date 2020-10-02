@@ -6,6 +6,37 @@ import { Navbar, NavItem, Icon } from 'react-materialize';
 import { logout } from '../../actions/auth';
 
 const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
+  const links = [];
+
+  const privateLinks = [
+    <NavLink
+      key={1}
+      to="/locations"
+      href="/locations"
+      className="sidenav-close"
+    >
+      Locations
+    </NavLink>,
+    <NavLink
+      key={2}
+      to="/categories"
+      href="/categories"
+      className="sidenav-close"
+    >
+      Categories
+    </NavLink>,
+    <NavLink key={3} to="/places" href="/places" className="sidenav-close">
+      Places
+    </NavLink>,
+    <NavItem key={4} onClick={logout}>
+      <Icon>logout</Icon>
+    </NavItem>
+  ];
+
+  if (!loading && isAuthenticated) {
+    links.push(...privateLinks);
+  }
+
   return (
     <Navbar
       fixed
@@ -27,22 +58,7 @@ const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
         </>
       }
     >
-      {/* {!loading && isAuthenticated && (
-        <> */}
-      <NavLink to="/locations" href="/locations">
-        Locations
-      </NavLink>
-      <NavLink to="/categories" href="/categories">
-        Categories
-      </NavLink>
-      <NavLink to="/places" href="/places">
-        Places
-      </NavLink>
-      <NavItem onClick={logout}>
-        <Icon>logout</Icon>
-      </NavItem>
-      {/* </>
-      )} */}
+      {links}
     </Navbar>
   );
 };
