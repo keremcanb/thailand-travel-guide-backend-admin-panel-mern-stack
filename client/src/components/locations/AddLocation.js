@@ -26,34 +26,34 @@ const AddLocation = ({ addLocation, history }) => {
   };
 
   const onSubmit = async (e) => {
-    // if (title === '') {
-    //   M.toast({ html: 'Please enter location' });
-    //   history.push('locations');
-    // } else {
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append('file', file);
-    try {
-      await axios.post('/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
+    if (title === '') {
+      M.toast({ html: 'Please enter location' });
+      history.push('locations');
+    } else {
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append('file', file);
+      try {
+        await axios.post('/upload', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+      } catch (err) {
+        if (err.response.status === 500) {
+          setMessage('There was a problem with the server');
+        } else {
+          setMessage(err.response.data.msg);
         }
-      });
-    } catch (err) {
-      if (err.response.status === 500) {
-        setMessage('There was a problem with the server');
-      } else {
-        setMessage(err.response.data.msg);
       }
+      addLocation({
+        ...location,
+        thumbnail: filename
+      });
+      M.toast({ html: 'Location added' });
+      setLocation(initialFormState);
+      history.push('locations');
     }
-    addLocation({
-      ...location,
-      thumbnail: filename
-    });
-    M.toast({ html: 'Location added' });
-    setLocation(initialFormState);
-    history.push('locations');
-    // }
   };
 
   return (
