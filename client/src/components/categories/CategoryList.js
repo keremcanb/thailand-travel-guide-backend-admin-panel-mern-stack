@@ -21,7 +21,7 @@ const Categories = ({
       <SearchBar onSearch={onSearch} />
       <Row>
         {!loading && selectedItem.length === 0 ? (
-          <p className="center">No categories to show...</p>
+          <p className="center">No categories to show</p>
         ) : (
           <Col className="grid-style">
             {selectedItem.map((category) => (

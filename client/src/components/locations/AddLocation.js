@@ -58,6 +58,8 @@ const AddLocation = ({ addLocation, history }) => {
     }
   };
 
+  console.log(filename);
+
   return (
     <Container className="center mt form-container">
       <Row className="card">
