@@ -14,11 +14,13 @@ import {
   Modal,
   Button
 } from 'react-materialize';
-// import FadeIn from 'react-lazyload-fadein';
+import FadeIn from 'react-lazyload-fadein';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { deletePlace, setCurrent } from '../../actions/place';
 
 const PlaceItem = ({ deletePlace, setCurrent, place }) => {
+  const { thumbnail, title } = place;
+
   const onDelete = () => {
     deletePlace(place._id);
     M.toast({ html: 'Place Deleted' });
@@ -31,18 +33,18 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
           className="hoverable"
           header={
             <>
-              {/* <FadeIn height={150}>
-                {(onload) => ( */}
-              <img
-                src={place.thumbnail}
-                alt={place.title}
-                width="200"
-                height="150"
-                // onLoad={onload}
-              />
-              {/* )}
-              </FadeIn> */}
-              <CardTitle>{place.title}</CardTitle>
+              <FadeIn height={150}>
+                {(onload) => (
+                  <img
+                    src={thumbnail}
+                    alt={title}
+                    width="200"
+                    height="150"
+                    onLoad={onload}
+                  />
+                )}
+              </FadeIn>
+              <CardTitle>{title}</CardTitle>
             </>
           }
         >

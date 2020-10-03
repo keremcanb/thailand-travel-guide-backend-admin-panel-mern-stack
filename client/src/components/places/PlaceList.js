@@ -20,14 +20,14 @@ const Places = ({
     <>
       <SearchBar onSearch={onSearch} />
       <Row>
-        {!loading && selectedItem.length === 0 ? (
-          <p className="center">No places to show</p>
-        ) : (
+        {!loading && selectedItem.length !== 0 ? (
           <Col className="grid-style">
             {selectedItem.map((place) => (
               <PlaceItem key={place._id} place={place} />
             ))}
           </Col>
+        ) : (
+          <p className="center">No places to show</p>
         )}
       </Row>
     </>

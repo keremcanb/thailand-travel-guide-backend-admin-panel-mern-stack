@@ -14,11 +14,13 @@ import {
   Modal,
   Button
 } from 'react-materialize';
-// import FadeIn from 'react-lazyload-fadein';
+import FadeIn from 'react-lazyload-fadein';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { deleteCategory, setCurrent } from '../../actions/category';
 
 const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
+  const { thumbnail, title } = category;
+
   const onDelete = () => {
     deleteCategory(category._id);
     M.toast({ html: 'Category Deleted' });
@@ -31,18 +33,18 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
           className="hoverable"
           header={
             <>
-              {/* <FadeIn height={200}>
-                {(onload) => ( */}
-              <img
-                src={category.thumbnail}
-                alt={category.title}
-                width="200"
-                height="150"
-                // onLoad={onload}
-              />
-              {/* )}
-              </FadeIn> */}
-              <CardTitle>{category.title}</CardTitle>
+              <FadeIn height={200}>
+                {(onload) => (
+                  <img
+                    src={thumbnail}
+                    alt={title}
+                    width="200"
+                    height="150"
+                    onLoad={onload}
+                  />
+                )}
+              </FadeIn>
+              <CardTitle>{title}</CardTitle>
             </>
           }
         >

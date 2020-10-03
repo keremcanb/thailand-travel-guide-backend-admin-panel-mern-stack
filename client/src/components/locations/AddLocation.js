@@ -29,8 +29,8 @@ const AddLocation = ({ addLocation, history }) => {
     e.preventDefault();
     if (!title) {
       M.toast({ html: 'Please enter title' });
-    } else if (!thumbnail) {
-      M.toast({ html: 'Please enter thumbnail' });
+      // } else if (!thumbnail) {
+      //   M.toast({ html: 'Please enter thumbnail' });
     } else {
       const formData = new FormData();
       formData.append('file', file);

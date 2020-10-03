@@ -67,6 +67,8 @@ const AddPlace = ({ addPlace, history }) => {
       M.toast({ html: 'Please enter category' });
     } else if (!location) {
       M.toast({ html: 'Please enter location' });
+      // } else if (!thumbnail) {
+      //   M.toast({ html: 'Please enter thumbnail' });
     } else {
       const formData = new FormData();
       formData.append('file', file);

@@ -18,6 +18,8 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import { deleteLocation, setCurrent } from '../../actions/location';
 
 const LocationItem = ({ deleteLocation, setCurrent, location }) => {
+  const { thumbnail, title } = location;
+
   const onDelete = () => {
     deleteLocation(location._id);
     M.toast({ html: 'Location Deleted' });
@@ -30,13 +32,8 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
           className="hoverable"
           header={
             <>
-              <img
-                src={location.thumbnail}
-                alt={location.title}
-                width="200px"
-                height="150px"
-              />
-              <CardTitle>{location.title}</CardTitle>
+              <img src={thumbnail} alt={title} width="200px" height="150px" />
+              <CardTitle>{title}</CardTitle>
             </>
           }
         >

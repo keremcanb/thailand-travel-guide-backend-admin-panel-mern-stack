@@ -37,6 +37,8 @@ const AddCategory = ({ addCategory, history }) => {
     e.preventDefault();
     if (!title) {
       M.toast({ html: 'Please enter title' });
+      // } else if (!thumbnail) {
+      //   M.toast({ html: 'Please enter thumbnail' });
     } else if (!location) {
       M.toast({ html: 'Please enter location' });
     } else {
