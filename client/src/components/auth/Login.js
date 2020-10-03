@@ -31,7 +31,7 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <Container className="center mt form-container">
-      <Row>
+      <Row className="card">
         <form onSubmit={onSubmit}>
           <TextInput
             id="email"

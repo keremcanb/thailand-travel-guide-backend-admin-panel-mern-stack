@@ -34,14 +34,12 @@ const AddCategory = ({ addCategory, history }) => {
   };
 
   const onSubmit = async (e) => {
+    e.preventDefault();
     if (!title) {
       M.toast({ html: 'Please enter title' });
-      history.push('categories');
     } else if (!location) {
       M.toast({ html: 'Please enter location' });
-      history.push('categories');
     } else {
-      e.preventDefault();
       const formData = new FormData();
       formData.append('file', file);
       try {

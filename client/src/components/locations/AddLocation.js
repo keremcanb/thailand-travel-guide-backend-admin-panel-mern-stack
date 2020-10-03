@@ -26,13 +26,12 @@ const AddLocation = ({ addLocation, history }) => {
   };
 
   const onSubmit = async (e) => {
+    e.preventDefault();
     if (!title) {
       M.toast({ html: 'Please enter title' });
-      history.push('locations');
       // } else if (!thumbnail) {
       //   M.toast({ html: 'Please enter thumbnail' });
     } else {
-      e.preventDefault();
       const formData = new FormData();
       formData.append('file', file);
       try {
