@@ -89,7 +89,7 @@ const AddPlace = ({ addPlace, history }) => {
       });
       M.toast({ html: `Place added` });
       setPlace(initialFormState);
-      history.push('categories');
+      history.push('places');
     }
   };
 

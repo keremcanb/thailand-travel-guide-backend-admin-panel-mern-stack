@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Row, Col, ProgressBar } from 'react-materialize';
+import { Row, Col, Preloader } from 'react-materialize';
 import CategoryItem from './CategoryItem';
 import { getCategories } from '../../actions/category';
 import SearchBar from '../layout/SearchBar';
@@ -32,7 +32,13 @@ const Categories = ({
       </Row>
     </>
   ) : (
-    <ProgressBar className="blue" />
+    <Preloader
+      className="loader"
+      active
+      color="blue"
+      flashing={false}
+      size="big"
+    />
   );
 };
 

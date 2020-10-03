@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Row, ProgressBar } from 'react-materialize';
+import { Row, Preloader } from 'react-materialize';
 
 const Dashboard = ({ auth: { user, loading } }) => {
   return !loading && user ? (
@@ -10,7 +10,13 @@ const Dashboard = ({ auth: { user, loading } }) => {
       <img className="circle" src={user.avatar} alt="" />
     </Row>
   ) : (
-    <ProgressBar className="blue" />
+    <Preloader
+      className="loader"
+      active
+      color="blue"
+      flashing={false}
+      size="big"
+    />
   );
 };
 
