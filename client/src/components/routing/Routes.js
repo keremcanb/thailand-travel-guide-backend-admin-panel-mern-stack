@@ -8,7 +8,6 @@ import PrivateRoute from './PrivateRoute';
 import Locations from '../locations/Locations';
 import Categories from '../categories/Categories';
 import Places from '../places/Places';
-import Alert from '../layout/Alert';
 import AddLocation from '../locations/AddLocation';
 import AddCategory from '../categories/AddCategory';
 import AddPlace from '../places/AddPlace';
@@ -19,7 +18,6 @@ import EditPlace from '../places/EditPlace';
 const Routes = () => {
   return (
     <section className="container">
-      <Alert />
       <Switch>
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />

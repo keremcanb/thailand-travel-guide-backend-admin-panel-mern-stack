@@ -58,16 +58,22 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
             </Link>
             <Modal
               actions={[
-                <Button
-                  className="red"
-                  modal="close"
-                  node="button"
-                  waves="green"
-                  onClick={onDelete}
-                >
-                  Delete
-                  <Icon right>delete</Icon>
-                </Button>
+                <>
+                  <Button
+                    className="red"
+                    modal="close"
+                    node="button"
+                    onClick={onDelete}
+                    style={{ marginRight: '1rem' }}
+                  >
+                    Delete
+                    <Icon right>delete</Icon>
+                  </Button>
+                  <Button modal="close" node="button" className="blue darken-2">
+                    Close
+                    <Icon right>close</Icon>
+                  </Button>
+                </>
               ]}
               header="Are you sure?"
               id="Modal-0"

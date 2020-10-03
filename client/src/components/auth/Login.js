@@ -3,6 +3,7 @@ import { Redirect, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { TextInput, Button, Icon, Row, Container } from 'react-materialize';
+import M from 'materialize-css/dist/js/materialize.min.js';
 import { login } from '../../actions/auth';
 
 const Login = ({ login, isAuthenticated }) => {
@@ -15,7 +16,11 @@ const Login = ({ login, isAuthenticated }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    login(email, password);
+    if (!email || !password) {
+      M.toast({ html: 'Please enter email and password' });
+    } else {
+      login(email, password);
+    }
   };
 
   if (isAuthenticated) {

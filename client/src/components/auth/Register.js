@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { TextInput, Button, Row, Icon, Container } from 'react-materialize';
 import PropTypes from 'prop-types';
-import { setAlert } from '../../actions/alert';
+import M from 'materialize-css/dist/js/materialize.min.js';
 import { register } from '../../actions/auth';
 
-const Register = ({ setAlert, register, isAuthenticated }) => {
+const Register = ({ register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -22,7 +22,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      setAlert('Passwords do not match', 'danger');
+      M.toast({ html: 'Passwords do not match' });
+    } else if (!firstName || !lastName || !email) {
+      M.toast({ html: 'Please enter name, surname and email' });
     } else {
       register({ firstName, lastName, email, password });
     }
@@ -105,7 +107,6 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 };
 
 Register.propTypes = {
-  setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool
 };
@@ -114,4 +115,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { setAlert, register })(Register);
+export default connect(mapStateToProps, { register })(Register);
