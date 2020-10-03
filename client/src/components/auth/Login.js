@@ -16,8 +16,10 @@ const Login = ({ login, isAuthenticated }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (!email || !password) {
-      M.toast({ html: 'Please enter email and password' });
+    if (!email) {
+      M.toast({ html: 'Please enter email' });
+    } else if (!password) {
+      M.toast({ html: 'Please enter password' });
     } else {
       login(email, password);
     }

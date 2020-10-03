@@ -34,8 +34,11 @@ const AddCategory = ({ addCategory, history }) => {
   };
 
   const onSubmit = async (e) => {
-    if (title === '' || location === '') {
-      M.toast({ html: 'Please enter category' });
+    if (!title) {
+      M.toast({ html: 'Please enter title' });
+      history.push('categories');
+    } else if (!location) {
+      M.toast({ html: 'Please enter location' });
       history.push('categories');
     } else {
       e.preventDefault();

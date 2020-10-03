@@ -58,8 +58,17 @@ const AddPlace = ({ addPlace, history }) => {
   };
 
   const onSubmit = async (e) => {
-    if (title === '') {
-      M.toast({ html: 'Please enter place' });
+    if (!title) {
+      M.toast({ html: 'Please enter title' });
+      history.push('places');
+    } else if (!content) {
+      M.toast({ html: 'Please enter content' });
+      history.push('places');
+    } else if (!category) {
+      M.toast({ html: 'Please enter category' });
+      history.push('places');
+    } else if (!location) {
+      M.toast({ html: 'Please enter location' });
       history.push('places');
     } else {
       e.preventDefault();

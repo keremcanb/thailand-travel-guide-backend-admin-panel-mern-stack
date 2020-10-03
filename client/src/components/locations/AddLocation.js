@@ -26,9 +26,11 @@ const AddLocation = ({ addLocation, history }) => {
   };
 
   const onSubmit = async (e) => {
-    if (title === '') {
-      M.toast({ html: 'Please enter location' });
+    if (!title) {
+      M.toast({ html: 'Please enter title' });
       history.push('locations');
+      // } else if (!thumbnail) {
+      //   M.toast({ html: 'Please enter thumbnail' });
     } else {
       e.preventDefault();
       const formData = new FormData();

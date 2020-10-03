@@ -21,10 +21,16 @@ const Register = ({ register, isAuthenticated }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (password !== password2) {
+    if (!firstName) {
+      M.toast({ html: 'Please enter name' });
+    } else if (!lastName) {
+      M.toast({ html: 'Please enter surname' });
+    } else if (!email) {
+      M.toast({ html: 'Please enter email' });
+    } else if (!password || !password2) {
+      M.toast({ html: 'Please enter password' });
+    } else if (password !== password2) {
       M.toast({ html: 'Passwords do not match' });
-    } else if (!firstName || !lastName || !email) {
-      M.toast({ html: 'Please enter name, surname and email' });
     } else {
       register({ firstName, lastName, email, password });
     }
