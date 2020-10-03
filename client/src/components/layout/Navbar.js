@@ -9,10 +9,10 @@ const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
   const guestLinks = [
     <NavLink key={1} to="/login" href="/login" className="sidenav-close">
       Login
-    </NavLink>,
-    <NavLink key={2} to="/register" href="/register" className="sidenav-close">
-      Register
     </NavLink>
+    // <NavLink key={2} to="/register" href="/register" className="sidenav-close">
+    //   Register
+    // </NavLink>
   ];
 
   const authLinks = [

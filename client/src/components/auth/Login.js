@@ -60,9 +60,9 @@ const Login = ({ login, isAuthenticated }) => {
               Login
               <Icon right>login</Icon>
             </Button>
-            <p>
+            {/* <p>
               Do not have an account? <Link to="/register">Register</Link>
-            </p>
+            </p> */}
           </Row>
         </form>
       </Row>
