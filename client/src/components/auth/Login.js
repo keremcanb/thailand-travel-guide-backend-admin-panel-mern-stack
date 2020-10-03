@@ -30,7 +30,7 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <Container className="center mt" style={{ width: '30%' }}>
+    <Container className="center mt form-container">
       <Row>
         <form onSubmit={onSubmit}>
           <TextInput
@@ -50,7 +50,7 @@ const Login = ({ login, isAuthenticated }) => {
             password
             s={12}
           />
-          <Row className="right" s={12} m={12}>
+          <Row s={12} m={12}>
             <Button
               className="blue darken-2"
               type="submit"

@@ -41,7 +41,7 @@ const Register = ({ register, isAuthenticated }) => {
   }
 
   return (
-    <Container className="center mt" style={{ width: '50%' }}>
+    <Container className="center mt form-container">
       <Row>
         <form onSubmit={onSubmit}>
           <TextInput
@@ -92,7 +92,7 @@ const Register = ({ register, isAuthenticated }) => {
             s={12}
             m={6}
           />
-          <Row className="right" s={12} m={12}>
+          <Row s={12} m={12}>
             <Button
               className="blue darken-2"
               type="submit"

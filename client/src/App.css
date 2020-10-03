@@ -16,6 +16,9 @@
 .mr {
   margin-right: 3rem;
 }
+.mb {
+  margin-bottom: 1rem;
+}
 .grid-style {
   display: flex;
   justify-content: space-evenly;
@@ -25,5 +28,17 @@
   grid-gap: 5px;
 }
 .form-container {
-  width: 50%;
+  width: 60%;
+}
+.input-field {
+  margin-top: 0;
+  margin-bottom: 10;
+}
+.row {
+  margin-bottom: 5px;
+}
+@media (max-width: 700px) {
+  .form-container {
+    width: 100%;
+  }
 }

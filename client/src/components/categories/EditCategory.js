@@ -36,7 +36,7 @@ const EditCategory = ({ current, updateCategory, history }) => {
 
   return (
     <Container className="center mt form-container">
-      <Row>
+      <Row className="card">
         <form onSubmit={onSubmit}>
           {location &&
             location.map((loc) => {
@@ -77,7 +77,7 @@ const EditCategory = ({ current, updateCategory, history }) => {
           />
           <Button
             variant="contained"
-            className="right blue darken-2"
+            className="blue darken-2 mb"
             type="submit"
           >
             Update

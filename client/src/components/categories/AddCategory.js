@@ -69,7 +69,7 @@ const AddCategory = ({ addCategory, history }) => {
 
   return (
     <Container className="center mt form-container">
-      <Row>
+      <Row className="card">
         <form onSubmit={onSubmit}>
           <Select
             id="add-cat-loc"
@@ -105,7 +105,7 @@ const AddCategory = ({ addCategory, history }) => {
           />
           <Button
             variant="contained"
-            className="right blue darken-2"
+            className="blue darken-2 mb"
             type="submit"
           >
             Submit

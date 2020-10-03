@@ -27,7 +27,7 @@ const EditLocation = ({ current, updateLocation, history }) => {
 
   return (
     <Container className="center mt form-container">
-      <Row>
+      <Row className="card">
         <form onSubmit={onSubmit}>
           <TextInput
             id="edit-loc-title"
@@ -47,7 +47,7 @@ const EditLocation = ({ current, updateLocation, history }) => {
           />
           <Button
             variant="contained"
-            className="right blue darken-2"
+            className="blue darken-2 mb"
             type="submit"
           >
             Update
