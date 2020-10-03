@@ -24,3 +24,6 @@
   align-content: space-evenly;
   grid-gap: 5px;
 }
+.form-container {
+  width: 50%;
+}

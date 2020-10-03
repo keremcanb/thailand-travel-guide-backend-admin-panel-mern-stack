@@ -34,7 +34,7 @@ const Categories = ({ getCategories, category: { categories } }) => {
           floating
           large
           node="button"
-          icon={<Icon>edit</Icon>}
+          icon={<Icon>add</Icon>}
         />
       </Link>
     </>

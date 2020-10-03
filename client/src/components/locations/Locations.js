@@ -34,7 +34,7 @@ const Locations = ({ getLocations, location: { locations } }) => {
           floating
           large
           node="button"
-          icon={<Icon>edit</Icon>}
+          icon={<Icon>add</Icon>}
         />
       </Link>
     </>

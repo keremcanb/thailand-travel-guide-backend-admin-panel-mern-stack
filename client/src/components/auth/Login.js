@@ -30,7 +30,7 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <Container className="center mt">
+    <Container className="center mt" style={{ width: '30%' }}>
       <Row>
         <form onSubmit={onSubmit}>
           <TextInput

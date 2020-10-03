@@ -48,7 +48,7 @@ const EditPlace = ({ current, updatePlace, history }) => {
   };
 
   return (
-    <Container className="center mt">
+    <Container className="center mt form-container">
       <Row>
         <form onSubmit={onSubmit}>
           <TextInput

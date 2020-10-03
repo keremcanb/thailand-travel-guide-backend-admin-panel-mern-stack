@@ -41,7 +41,7 @@ const Register = ({ register, isAuthenticated }) => {
   }
 
   return (
-    <Container className="center mt">
+    <Container className="center mt" style={{ width: '50%' }}>
       <Row>
         <form onSubmit={onSubmit}>
           <TextInput

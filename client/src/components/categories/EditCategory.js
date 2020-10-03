@@ -35,14 +35,14 @@ const EditCategory = ({ current, updateCategory, history }) => {
   };
 
   return (
-    <Container className="center mt">
+    <Container className="center mt form-container">
       <Row>
         <form onSubmit={onSubmit}>
           {location &&
             location.map((loc) => {
               return (
                 <li style={{ display: 'inline' }} key={loc.value}>
-                  Current: {loc.label},{' '}
+                  {loc.label},{' '}
                 </li>
               );
             })}
