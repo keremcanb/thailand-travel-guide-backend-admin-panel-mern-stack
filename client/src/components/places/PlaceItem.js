@@ -46,17 +46,15 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
             </>
           }
         >
-          <div className="center">
+          <Row className="center">
             <Link to="editplace">
-              <a
-                className="modal-trigger btn-floating blue"
+              <Button
+                className="blue darken-2 mr"
+                floating
+                node="button"
+                icon={<Icon>edit</Icon>}
                 onClick={() => setCurrent(place)}
-                style={{
-                  marginRight: '3rem'
-                }}
-              >
-                <Icon className="blue darken-2">edit</Icon>
-              </a>
+              />
             </Link>
             <Modal
               actions={[
@@ -75,12 +73,12 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
               id="Modal-0"
               open={false}
               trigger={
-                <a className="btn-floating red">
-                  <Icon>delete</Icon>
-                </a>
+                <Button className="red" node="button" floating>
+                  <Icon right>delete</Icon>
+                </Button>
               }
             />
-          </div>
+          </Row>
         </Card>
       </Col>
     </Row>

@@ -57,7 +57,7 @@ const AddLocation = ({ addLocation, history }) => {
   };
 
   return (
-    <Container className="center margin-top">
+    <Container className="center mt">
       <Row>
         <form onSubmit={onSubmit}>
           <TextInput

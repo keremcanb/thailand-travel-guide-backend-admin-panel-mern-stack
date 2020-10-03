@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { Button, Icon } from 'react-materialize';
 import { getPlaces } from '../../actions/place';
 import PlaceList from './PlaceList';
 
@@ -26,13 +27,16 @@ const Places = ({ getPlaces, place: { places } }) => {
   return (
     <>
       <PlaceList selectedItem={filterSearch} onSearch={onSearch} />
-      <div className="fixed-action-btn">
-        <Link to="addplace">
-          <a className="btn-floating btn-large blue darken-2">
-            <i className="large material-icons">add</i>
-          </a>
-        </Link>
-      </div>
+      <Link to="addplace">
+        <Button
+          className="blue darken-2"
+          fab
+          floating
+          large
+          node="button"
+          icon={<Icon>edit</Icon>}
+        />
+      </Link>
     </>
   );
 };

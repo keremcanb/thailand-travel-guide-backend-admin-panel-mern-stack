@@ -46,17 +46,15 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
             </>
           }
         >
-          <div className="center">
+          <Row className="center">
             <Link to="editcategory">
-              <a
-                className="modal-trigger btn-floating blue"
+              <Button
+                className="blue darken-2 mr"
+                floating
+                node="button"
+                icon={<Icon>edit</Icon>}
                 onClick={() => setCurrent(category)}
-                style={{
-                  marginRight: '3rem'
-                }}
-              >
-                <Icon className="blue darken-2">edit</Icon>
-              </a>
+              />
             </Link>
             <Modal
               actions={[
@@ -75,12 +73,12 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
               id="Modal-0"
               open={false}
               trigger={
-                <a className="btn-floating red">
-                  <Icon>delete</Icon>
-                </a>
+                <Button className="red" node="button" floating>
+                  <Icon right>delete</Icon>
+                </Button>
               }
             />
-          </div>
+          </Row>
         </Card>
       </Col>
     </Row>

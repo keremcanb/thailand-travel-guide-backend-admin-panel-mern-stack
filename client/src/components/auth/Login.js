@@ -23,7 +23,7 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <Container className="center margin-top">
+    <Container className="center mt">
       <Row>
         <form onSubmit={onSubmit}>
           <TextInput

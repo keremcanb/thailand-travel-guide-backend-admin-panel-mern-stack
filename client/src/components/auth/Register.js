@@ -33,10 +33,11 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
   }
 
   return (
-    <Container className="center margin-top">
+    <Container className="center mt">
       <Row>
         <form onSubmit={onSubmit}>
           <TextInput
+            id="register-name"
             label="Name"
             name="firstName"
             value={firstName}
@@ -45,6 +46,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             m={6}
           />
           <TextInput
+            id="register-surname"
             label="Surname"
             name="lastName"
             value={lastName}
@@ -53,6 +55,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             m={6}
           />
           <TextInput
+            id="register-email"
             email
             label="Email"
             name="email"
@@ -62,6 +65,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             m={12}
           />
           <TextInput
+            id="register-password"
             password
             label="Password"
             name="password"
@@ -71,6 +75,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
             m={6}
           />
           <TextInput
+            id="register-password2"
             password
             label="Confirm Password"
             name="password2"

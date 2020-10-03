@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import { Row, ProgressBar } from 'react-materialize';
 
 const Dashboard = ({ auth: { user, loading } }) => {
-  return !loading ? (
+  return !loading && user ? (
     <Row className="center">
-      <h1>Welcome {user && user.firstName}</h1>
-      {user && <img className="circle" src={user.avatar} alt="" />}
+      <h1>Welcome {user.firstName}</h1>
+      <img className="circle" src={user.avatar} alt="" />
     </Row>
   ) : (
     <ProgressBar className="blue" />
