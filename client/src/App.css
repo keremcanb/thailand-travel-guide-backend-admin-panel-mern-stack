@@ -30,6 +30,9 @@
 .form-container {
   width: 60%;
 }
+.auth-container {
+  width: 40%;
+}
 .input-field {
   margin-top: 0;
   margin-bottom: 10;

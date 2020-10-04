@@ -36,7 +36,7 @@ const EditCategory = ({ current, updateCategory, history }) => {
 
   return (
     <Container className="center mt form-container">
-      <Row className="card">
+      <Row>
         <form onSubmit={onSubmit}>
           {/* {location &&
             location.map((loc) => {

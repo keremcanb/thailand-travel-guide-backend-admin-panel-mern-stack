@@ -30,7 +30,7 @@ const Login = ({ login, isAuthenticated }) => {
   }
 
   return (
-    <Container className="center mt form-container">
+    <Container className="center mt auth-container">
       <Row>
         <form onSubmit={onSubmit}>
           <TextInput

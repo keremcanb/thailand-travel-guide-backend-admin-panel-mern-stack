@@ -97,7 +97,7 @@ const AddPlace = ({ addPlace, history }) => {
 
   return (
     <Container className="center mt form-container">
-      <Row className="card">
+      <Row>
         <form onSubmit={onSubmit}>
           <TextInput
             id="add-place-title"

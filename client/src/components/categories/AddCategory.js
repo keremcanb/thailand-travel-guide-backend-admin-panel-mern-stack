@@ -69,7 +69,7 @@ const AddCategory = ({ addCategory, history }) => {
 
   return (
     <Container className="center mt form-container">
-      <Row className="card">
+      <Row>
         <form onSubmit={onSubmit}>
           <Select
             id="add-cat-loc"

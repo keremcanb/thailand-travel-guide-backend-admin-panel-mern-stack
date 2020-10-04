@@ -61,7 +61,7 @@ const AddLocation = ({ addLocation, history }) => {
 
   return (
     <Container className="center mt form-container">
-      <Row className="card">
+      <Row>
         <form onSubmit={onSubmit}>
           <TextInput
             id="add-loc-title"
