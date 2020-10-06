@@ -9,6 +9,11 @@ export const LOGOUT = 'LOGOUT';
 export const SET_LOADING = 'SET_LOADING';
 export const CLEAR_CURRENT = 'CLEAR_CURRENT';
 
+export const FILE_UPLOAD = 'FILE_UPLOAD';
+export const FILE_NAME = 'FILE_NAME';
+export const UPLOAD_MESSAGE = 'UPLOAD_MESSAGE';
+export const UPLOAD_ERROR = 'UPLOAD_ERROR';
+
 export const GET_LOCATIONS = 'GET_LOCATIONS';
 export const ADD_LOCATION = 'ADD_LOCATION';
 export const UPDATE_LOCATION = 'UPDATE_LOCATION';

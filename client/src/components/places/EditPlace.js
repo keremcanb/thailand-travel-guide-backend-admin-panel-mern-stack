@@ -143,13 +143,9 @@ const EditPlace = ({ current, updatePlace, history }) => {
             onChange={onChange}
             s={6}
           />
-          <Button
-            variant="contained"
-            className="blue darken-2 mb"
-            type="submit"
-          >
+          <Button variant="contained" className="blue darken-2" type="submit">
             Update
-            <Icon right>send</Icon>
+            <Icon right>update</Icon>
           </Button>
         </form>
       </Row>

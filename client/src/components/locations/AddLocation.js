@@ -57,8 +57,6 @@ const AddLocation = ({ addLocation, history }) => {
     }
   };
 
-  console.log(filename);
-
   return (
     <Container className="center mt form-container">
       <Row>
@@ -82,11 +80,7 @@ const AddLocation = ({ addLocation, history }) => {
             value={thumbnail}
             s={12}
           />
-          <Button
-            variant="contained"
-            className="blue darken-2 mb"
-            type="submit"
-          >
+          <Button variant="contained" className="blue darken-2" type="submit">
             Submit
             <Icon right>send</Icon>
           </Button>

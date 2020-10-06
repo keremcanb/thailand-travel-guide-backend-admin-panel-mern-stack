@@ -197,11 +197,7 @@ const AddPlace = ({ addPlace, history }) => {
             onChange={onChange}
             s={6}
           />
-          <Button
-            variant="contained"
-            className="blue darken-2 mb"
-            type="submit"
-          >
+          <Button variant="contained" className="blue darken-2" type="submit">
             Submit
             <Icon right>send</Icon>
           </Button>

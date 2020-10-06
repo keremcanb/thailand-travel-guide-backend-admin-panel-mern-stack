@@ -38,14 +38,14 @@ const EditCategory = ({ current, updateCategory, history }) => {
     <Container className="center mt form-container">
       <Row>
         <form onSubmit={onSubmit}>
-          {/* {location &&
+          {location &&
             location.map((loc) => {
               return (
                 <li style={{ display: 'inline' }} key={loc.value}>
                   {loc.label},{' '}
                 </li>
               );
-            })} */}
+            })}
           <Select
             id="edit-cat-loc"
             name="locations"
@@ -54,7 +54,7 @@ const EditCategory = ({ current, updateCategory, history }) => {
             components={animatedComponents}
             closeMenuOnSelect={false}
             isMulti
-            value={location}
+            // value={location}
             options={locations.map((loc) => ({
               value: loc.title,
               label: loc.title
@@ -76,13 +76,9 @@ const EditCategory = ({ current, updateCategory, history }) => {
             onChange={onChange}
             s={12}
           />
-          <Button
-            variant="contained"
-            className="blue darken-2 mb"
-            type="submit"
-          >
+          <Button variant="contained" className="blue darken-2" type="submit">
             Update
-            <Icon right>send</Icon>
+            <Icon right>update</Icon>
           </Button>
         </form>
       </Row>
