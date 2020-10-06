@@ -75,9 +75,8 @@ const AddLocation = ({ addLocation, history }) => {
             id="add-loc-thumb"
             name="thumbnail"
             type="file"
-            label={filename}
+            label="Thumbnail"
             onChange={onChangeFile}
-            value={thumbnail}
             s={12}
           />
           <Button variant="contained" className="blue darken-2" type="submit">

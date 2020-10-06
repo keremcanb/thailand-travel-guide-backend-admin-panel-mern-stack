@@ -72,7 +72,7 @@ const EditLocation = ({ current, updateLocation, history }) => {
             id="edit-loc-thumb"
             name="thumbnail"
             type="file"
-            label={filename}
+            label="Thumbnail"
             onChange={onChangeFile}
             s={12}
           />
