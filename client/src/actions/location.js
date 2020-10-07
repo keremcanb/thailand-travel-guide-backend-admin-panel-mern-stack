@@ -7,7 +7,9 @@ import {
   DELETE_LOCATION,
   UPDATE_LOCATION,
   CURRENT_LOCATION,
-  CLEAR_CURRENT
+  CLEAR_CURRENT,
+  FILTER_LOCATIONS,
+  CLEAR_FILTER
 } from './types';
 
 // Set loading to true
@@ -102,4 +104,14 @@ export const clearCurrent = () => {
   return {
     type: CLEAR_CURRENT
   };
+};
+
+// Filter Contacts
+export const filterLocations = (text) => {
+  return { type: FILTER_LOCATIONS, payload: text };
+};
+
+// Clear Filter
+export const clearFilter = () => {
+  return { type: CLEAR_FILTER };
 };

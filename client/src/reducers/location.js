@@ -6,13 +6,16 @@ import {
   DELETE_LOCATION,
   UPDATE_LOCATION,
   CURRENT_LOCATION,
-  CLEAR_CURRENT
+  CLEAR_CURRENT,
+  FILTER_LOCATIONS,
+  CLEAR_FILTER
 } from '../actions/types';
 
 const initialState = {
   locations: null,
   current: null,
   loading: false,
+  filtered: null,
   error: null
 };
 
@@ -43,6 +46,19 @@ export default function (state = initialState, action) {
           (location) => location._id !== payload
         ),
         loading: false
+      };
+    case FILTER_LOCATIONS:
+      return {
+        ...state,
+        filtered: state.locations.filter((location) => {
+          const regex = new RegExp(`${action.payload}`, 'gi');
+          return location.title.match(regex);
+        })
+      };
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        filtered: null
       };
     case CURRENT_LOCATION:
       return { ...state, current: payload };

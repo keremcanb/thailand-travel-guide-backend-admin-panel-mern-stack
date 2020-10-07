@@ -9,6 +9,9 @@ export const LOGOUT = 'LOGOUT';
 export const SET_LOADING = 'SET_LOADING';
 export const CLEAR_CURRENT = 'CLEAR_CURRENT';
 
+export const FILTER_LOCATIONS = 'FILTER_LOCATIONS';
+export const CLEAR_FILTER = 'CLEAR_FILTER,';
+
 export const FILE_UPLOAD = 'FILE_UPLOAD';
 export const FILE_NAME = 'FILE_NAME';
 export const UPLOAD_MESSAGE = 'UPLOAD_MESSAGE';
