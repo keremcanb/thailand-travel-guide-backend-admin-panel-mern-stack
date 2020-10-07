@@ -6,13 +6,16 @@ import {
   DELETE_CATEGORY,
   UPDATE_CATEGORY,
   CURRENT_CATEGORY,
-  CLEAR_CURRENT
+  CLEAR_CURRENT,
+  FILTER_CATEGORIES,
+  CLEAR_FILTER
 } from '../actions/types';
 
 const initialState = {
   categories: null,
   current: null,
   loading: false,
+  filtered: null,
   error: null
 };
 
@@ -43,6 +46,19 @@ export default function (state = initialState, action) {
           (category) => category._id !== payload
         ),
         loading: false
+      };
+    case FILTER_CATEGORIES:
+      return {
+        ...state,
+        filtered: state.categories.filter((category) => {
+          const regex = new RegExp(`${action.payload}`, 'gi');
+          return category.title.match(regex);
+        })
+      };
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        filtered: null
       };
     case CURRENT_CATEGORY:
       return { ...state, current: payload };

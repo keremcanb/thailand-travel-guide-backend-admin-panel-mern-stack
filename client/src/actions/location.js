@@ -106,7 +106,7 @@ export const clearCurrent = () => {
   };
 };
 
-// Filter Contacts
+// Filter
 export const filterLocations = (text) => {
   return { type: FILTER_LOCATIONS, payload: text };
 };

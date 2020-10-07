@@ -7,7 +7,9 @@ import {
   DELETE_CATEGORY,
   UPDATE_CATEGORY,
   CURRENT_CATEGORY,
-  CLEAR_CURRENT
+  CLEAR_CURRENT,
+  FILTER_CATEGORIES,
+  CLEAR_FILTER
 } from './types';
 
 // Set loading to true
@@ -102,4 +104,14 @@ export const clearCurrent = () => {
   return {
     type: CLEAR_CURRENT
   };
+};
+
+// Filter
+export const filterCategories = (text) => {
+  return { type: FILTER_CATEGORIES, payload: text };
+};
+
+// Clear Filter
+export const clearFilter = () => {
+  return { type: CLEAR_FILTER };
 };

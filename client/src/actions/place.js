@@ -7,7 +7,9 @@ import {
   DELETE_PLACE,
   UPDATE_PLACE,
   CURRENT_PLACE,
-  CLEAR_CURRENT
+  CLEAR_CURRENT,
+  FILTER_PLACES,
+  CLEAR_FILTER
 } from './types';
 
 // Set loading to true
@@ -102,4 +104,14 @@ export const clearCurrent = () => {
   return {
     type: CLEAR_CURRENT
   };
+};
+
+// Filter
+export const filterPlaces = (text) => {
+  return { type: FILTER_PLACES, payload: text };
+};
+
+// Clear Filter
+export const clearFilter = () => {
+  return { type: CLEAR_FILTER };
 };

@@ -1,32 +1,42 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useEffect, useState } from 'react';
+/* eslint-disable react/prop-types */
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Row, Col, Preloader, Button, Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
-import { Button, Icon } from 'react-materialize';
+import PlaceItem from './PlaceItem';
 import { getPlaces } from '../../actions/place';
-import PlaceList from './PlaceList';
+import PlaceFilter from './PlaceFilter';
 
-const Places = ({ getPlaces, place: { places } }) => {
-  const [search, setSearch] = useState('');
-
+const Places = ({ getPlaces, filtered, place: { places, loading } }) => {
   useEffect(() => {
     getPlaces();
   }, [getPlaces]);
 
-  const onSearch = (e) => {
-    setSearch(e.target.value);
-  };
-
-  const filterSearch =
-    places !== null &&
-    places.filter((plc) => {
-      return plc.title.toLowerCase().includes(search.toLowerCase());
-    });
-
   return (
     <>
-      <PlaceList selectedItem={filterSearch} onSearch={onSearch} />
+      <PlaceFilter />
+      {places !== null && !loading ? (
+        <Row>
+          <Col className="grid-style">
+            {filtered !== null
+              ? filtered.map((place) => (
+                  <PlaceItem key={place._id} place={place} />
+                ))
+              : places.map((place) => (
+                  <PlaceItem key={place._id} place={place} />
+                ))}
+          </Col>
+        </Row>
+      ) : (
+        <Preloader
+          className="loader"
+          active
+          color="blue"
+          flashing={false}
+          size="big"
+        />
+      )}
       <Link to="addplace">
         <Button
           className="blue darken-2"
@@ -42,12 +52,13 @@ const Places = ({ getPlaces, place: { places } }) => {
 };
 
 Places.propTypes = {
-  place: PropTypes.object.isRequired,
-  getPlaces: PropTypes.func.isRequired
+  getPlaces: PropTypes.func.isRequired,
+  place: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  place: state.place
+  place: state.place,
+  filtered: state.place.filtered
 });
 
 export default connect(mapStateToProps, { getPlaces })(Places);
