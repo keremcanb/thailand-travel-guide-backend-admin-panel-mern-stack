@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -10,8 +9,7 @@ import CategoryFilter from './CategoryFilter';
 
 const Categories = ({
   getCategories,
-  filtered,
-  category: { categories, loading }
+  category: { categories, loading, filtered }
 }) => {
   useEffect(() => {
     getCategories();
@@ -20,10 +18,10 @@ const Categories = ({
   return (
     <>
       <CategoryFilter />
-      {categories !== null && !loading ? (
+      {categories && !loading ? (
         <Row>
           <Col className="grid-style">
-            {filtered !== null
+            {filtered
               ? filtered.map((category) => (
                   <CategoryItem key={category._id} category={category} />
                 ))
@@ -62,7 +60,7 @@ Categories.propTypes = {
 
 const mapStateToProps = (state) => ({
   category: state.category,
-  filtered: state.category.filtered
+  filtered: state.filtered
 });
 
 export default connect(mapStateToProps, { getCategories })(Categories);

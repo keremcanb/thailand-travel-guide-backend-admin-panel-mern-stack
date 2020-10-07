@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -8,7 +7,7 @@ import PlaceItem from './PlaceItem';
 import { getPlaces } from '../../actions/place';
 import PlaceFilter from './PlaceFilter';
 
-const Places = ({ getPlaces, filtered, place: { places, loading } }) => {
+const Places = ({ getPlaces, place: { places, loading, filtered } }) => {
   useEffect(() => {
     getPlaces();
   }, [getPlaces]);
@@ -16,10 +15,10 @@ const Places = ({ getPlaces, filtered, place: { places, loading } }) => {
   return (
     <>
       <PlaceFilter />
-      {places !== null && !loading ? (
+      {places && !loading ? (
         <Row>
           <Col className="grid-style">
-            {filtered !== null
+            {filtered
               ? filtered.map((place) => (
                   <PlaceItem key={place._id} place={place} />
                 ))
@@ -58,7 +57,7 @@ Places.propTypes = {
 
 const mapStateToProps = (state) => ({
   place: state.place,
-  filtered: state.place.filtered
+  filtered: state.filtered
 });
 
 export default connect(mapStateToProps, { getPlaces })(Places);

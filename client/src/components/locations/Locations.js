@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -10,8 +9,7 @@ import LocationFilter from './LocationFilter';
 
 const Locations = ({
   getLocations,
-  filtered,
-  location: { locations, loading }
+  location: { locations, loading, filtered }
 }) => {
   useEffect(() => {
     getLocations();
@@ -20,10 +18,10 @@ const Locations = ({
   return (
     <>
       <LocationFilter />
-      {locations !== null && !loading ? (
+      {locations && !loading ? (
         <Row>
           <Col className="grid-style">
-            {filtered !== null
+            {filtered
               ? filtered.map((location) => (
                   <LocationItem key={location._id} location={location} />
                 ))
@@ -62,7 +60,7 @@ Locations.propTypes = {
 
 const mapStateToProps = (state) => ({
   location: state.location,
-  filtered: state.location.filtered
+  filtered: state.filtered
 });
 
 export default connect(mapStateToProps, { getLocations })(Locations);

@@ -11,7 +11,7 @@ import Message from '../layout/UploadMessage';
 const AddLocation = ({ addLocation, history }) => {
   const initialFormState = { title: '', thumbnail: '' };
   const [location, setLocation] = useState(initialFormState);
-  const { title, thumbnail } = location;
+  const { title } = location;
   const [file, setFile] = useState('');
   const [filename, setFilename] = useState('Thumbnail');
   const [message, setMessage] = useState('');
