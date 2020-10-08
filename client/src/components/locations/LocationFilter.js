@@ -8,7 +8,7 @@ const LocationFilter = ({ filterLocations, clearFilter, filtered }) => {
   const text = useRef('');
 
   useEffect(() => {
-    if (filtered === null) {
+    if (!filtered) {
       text.current.value = '';
     }
   });
@@ -22,7 +22,7 @@ const LocationFilter = ({ filterLocations, clearFilter, filtered }) => {
   };
 
   return (
-    <Row className="row-grid" style={{ marginBottom: '5px', marginTop: '5px' }}>
+    <Row className="row-grid filter">
       <TextInput ref={text} placeholder="Filter" onChange={onChange} />
     </Row>
   );

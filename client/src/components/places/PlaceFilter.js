@@ -22,7 +22,7 @@ const PlaceFilter = ({ filterPlaces, clearFilter, filtered }) => {
   };
 
   return (
-    <Row className="row-grid" style={{ marginBottom: '5px', marginTop: '5px' }}>
+    <Row className="row-grid filter">
       <TextInput ref={text} placeholder="Filter" onChange={onChange} />
     </Row>
   );
