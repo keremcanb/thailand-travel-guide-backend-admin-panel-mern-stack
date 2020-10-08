@@ -14,11 +14,6 @@ export const FILTER_CATEGORIES = 'FILTER_CATEGORIES';
 export const FILTER_PLACES = 'FILTER_PLACES';
 export const CLEAR_FILTER = 'CLEAR_FILTER,';
 
-export const FILE_UPLOAD = 'FILE_UPLOAD';
-export const FILE_NAME = 'FILE_NAME';
-export const UPLOAD_MESSAGE = 'UPLOAD_MESSAGE';
-export const UPLOAD_ERROR = 'UPLOAD_ERROR';
-
 export const GET_LOCATIONS = 'GET_LOCATIONS';
 export const ADD_LOCATION = 'ADD_LOCATION';
 export const UPDATE_LOCATION = 'UPDATE_LOCATION';
