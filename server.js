@@ -5,7 +5,7 @@ const cors = require('cors');
 const path = require('path');
 const fileUpload = require('express-fileupload');
 const connectDB = require('./middleware/db');
-require('dotenv').config();
+// require('dotenv').config();
 
 const app = express();
 
@@ -27,7 +27,7 @@ app.use('/api/auth', require('./routes/api/auth'));
 
 // Upload
 app.post('/upload', (req, res) => {
-  if (req.files === null) {
+  if (!req.files) {
     return res.status(400).json({ msg: 'No file uploaded' });
   }
   const { file } = req.files;

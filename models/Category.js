@@ -5,8 +5,7 @@ const CategorySchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  thumbnail: { type: String },
-  // thumbnail: { type: String, required: true},
+  thumbnail: { type: String, required: true },
   location: { type: Array, required: true }
 });
 

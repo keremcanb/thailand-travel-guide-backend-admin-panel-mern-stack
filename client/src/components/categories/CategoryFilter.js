@@ -8,7 +8,7 @@ const CategoryFilter = ({ filterCategories, clearFilter, filtered }) => {
   const text = useRef('');
 
   useEffect(() => {
-    if (filtered === null) {
+    if (!filtered) {
       text.current.value = '';
     }
   });
