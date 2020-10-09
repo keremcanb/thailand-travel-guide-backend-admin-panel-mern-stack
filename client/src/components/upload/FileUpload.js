@@ -6,7 +6,7 @@ import Message from './Message';
 
 const FileUpload = ({ updateFileNameToParent }) => {
   const [file, setFile] = useState('');
-  const [filename, setFilename] = useState('Choose File');
+  const [filename, setFilename] = useState('Thumbnail *');
   const [message, setMessage] = useState('');
 
   const onChange = (e) => {
