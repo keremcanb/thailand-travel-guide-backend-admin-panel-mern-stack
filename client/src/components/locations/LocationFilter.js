@@ -31,7 +31,7 @@ const LocationFilter = ({ filterLocations, clearFilter, filtered }) => {
 LocationFilter.propTypes = {
   clearFilter: PropTypes.func.isRequired,
   filterLocations: PropTypes.func.isRequired,
-  filtered: PropTypes.any.isRequired
+  filtered: PropTypes.any
 };
 
 const mapStateToProps = (state) => ({

@@ -31,7 +31,7 @@ const CategoryFilter = ({ filterCategories, clearFilter, filtered }) => {
 CategoryFilter.propTypes = {
   clearFilter: PropTypes.func.isRequired,
   filterCategories: PropTypes.func.isRequired,
-  filtered: PropTypes.any.isRequired
+  filtered: PropTypes.any
 };
 
 const mapStateToProps = (state) => ({
