@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Button, Icon, TextInput, Row, Container } from 'react-materialize';
+import { TextInput, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
 import useResources from '../../utils/useResources';
 import { updateCategory } from '../../actions/category';
+import FileUpload from '../upload/FileUpload';
 
 const EditCategory = ({ current, updateCategory, history }) => {
   const [category, setCategory] = useState('');
-  const { title, thumbnail, location } = category;
+  const { title, location } = category;
   const locations = useResources('locations');
   const animatedComponents = makeAnimated();
+  const [submittedFileName, setSubmittedFileName] = useState('');
 
   useEffect(() => {
     if (current) {
@@ -29,7 +31,7 @@ const EditCategory = ({ current, updateCategory, history }) => {
   };
 
   const onSubmit = () => {
-    updateCategory(category);
+    updateCategory({ ...category, thumbnail: submittedFileName });
     M.toast({ html: 'Category updated' });
     history.push('categories');
   };
@@ -68,18 +70,7 @@ const EditCategory = ({ current, updateCategory, history }) => {
             onChange={onChange}
             s={12}
           />
-          <TextInput
-            id="edit-cat-thumb"
-            name="thumbnail"
-            label="Thumbnail"
-            value={thumbnail}
-            onChange={onChange}
-            s={12}
-          />
-          <Button variant="contained" className="blue darken-2" type="submit">
-            Update
-            <Icon right>update</Icon>
-          </Button>
+          <FileUpload updateFileNameToParent={setSubmittedFileName} />
         </form>
       </Row>
     </Container>

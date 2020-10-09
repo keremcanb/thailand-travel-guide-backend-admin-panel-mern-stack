@@ -1,35 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  Button,
-  Icon,
-  TextInput,
-  Textarea,
-  Select,
-  Row,
-  Container
-} from 'react-materialize';
+import { TextInput, Textarea, Select, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import useResources from '../../utils/useResources';
 import { updatePlace } from '../../actions/place';
+import FileUpload from '../upload/FileUpload';
 
 const EditPlace = ({ current, updatePlace, history }) => {
   const [place, setPlace] = useState('');
   const locations = useResources('locations');
   const categories = useResources('categories');
-  const {
-    title,
-    thumbnail,
-    image,
-    content,
-    location,
-    category,
-    info,
-    link,
-    lat,
-    lng
-  } = place;
+  const { title, content, location, category, info, link, lat, lng } = place;
+  const [submittedFileName, setSubmittedFileName] = useState('');
 
   useEffect(() => {
     if (current) {
@@ -42,7 +25,7 @@ const EditPlace = ({ current, updatePlace, history }) => {
   };
 
   const onSubmit = () => {
-    updatePlace(place);
+    updatePlace({ ...place, thumbnail: submittedFileName });
     M.toast({ html: 'Place updated' });
     history.push('places');
   };
@@ -56,22 +39,6 @@ const EditPlace = ({ current, updatePlace, history }) => {
             name="title"
             label="Title"
             value={title}
-            onChange={onChange}
-            s={12}
-          />
-
-          <TextInput
-            id="edit-place-thumb"
-            name="thumbnail"
-            label="Thumbnail"
-            value={thumbnail}
-            onChange={onChange}
-            s={12}
-          />
-          <TextInput
-            id="edit-place-image"
-            label="Image"
-            value={image}
             onChange={onChange}
             s={12}
           />
@@ -143,10 +110,7 @@ const EditPlace = ({ current, updatePlace, history }) => {
             onChange={onChange}
             s={6}
           />
-          <Button variant="contained" className="blue darken-2" type="submit">
-            Update
-            <Icon right>update</Icon>
-          </Button>
+          <FileUpload updateFileNameToParent={setSubmittedFileName} />
         </form>
       </Row>
     </Container>

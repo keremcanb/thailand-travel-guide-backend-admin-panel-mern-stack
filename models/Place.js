@@ -5,7 +5,7 @@ const PlaceSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  image: { type: String, required: true },
+  image: { type: String },
   thumbnail: { type: String, required: true },
   content: {
     type: String,

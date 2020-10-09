@@ -1,32 +1,24 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import { Button, Icon, TextInput, Row, Container } from 'react-materialize';
+import { TextInput, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import makeAnimated from 'react-select/animated';
 import Select from 'react-select';
 import { addCategory } from '../../actions/category';
-import Message from '../layout/UploadMessage';
+import FileUpload from '../upload/FileUpload';
 import useResources from '../../utils/useResources';
 
 const AddCategory = ({ addCategory, history }) => {
   const initialFormState = { title: '', thumbnail: '', location: '' };
   const [category, setCategory] = useState(initialFormState);
-  const { title, thumbnail, location } = category;
+  const { title, location } = category;
   const locations = useResources('locations');
   const animatedComponents = makeAnimated();
-  const [file, setFile] = useState('');
-  const [filename, setFilename] = useState('Thumbnail');
-  const [message, setMessage] = useState('');
+  const [submittedFileName, setSubmittedFileName] = useState('');
 
   const onChange = (e) => {
     setCategory({ ...category, [e.target.name]: e.target.value });
-  };
-
-  const onChangeFile = (e) => {
-    setFile(e.target.files[0]);
-    setFilename(e.target.files[0].name);
   };
 
   const onSelect = (value, action) => {
@@ -37,29 +29,12 @@ const AddCategory = ({ addCategory, history }) => {
     e.preventDefault();
     if (!title) {
       M.toast({ html: 'Please enter title' });
-      // } else if (!thumbnail) {
-      //   M.toast({ html: 'Please enter thumbnail' });
     } else if (!location) {
       M.toast({ html: 'Please enter location' });
     } else {
-      const formData = new FormData();
-      formData.append('file', file);
-      try {
-        await axios.post('/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
-      } catch (err) {
-        if (err.response.status === 500) {
-          setMessage('There was a problem with the server');
-        } else {
-          setMessage(err.response.data.msg);
-        }
-      }
       addCategory({
         ...category,
-        thumbnail: filename
+        thumbnail: submittedFileName
       });
       M.toast({ html: `Category added` });
       setCategory(initialFormState);
@@ -93,24 +68,7 @@ const AddCategory = ({ addCategory, history }) => {
             onChange={onChange}
             s={12}
           />
-          {message && <Message msg={message} />}
-          <TextInput
-            id="add-cat-thumb"
-            name="thumbnail"
-            type="file"
-            label={filename}
-            value={thumbnail}
-            onChange={onChangeFile}
-            s={12}
-          />
-          <Button
-            variant="contained"
-            className="blue darken-2 mb"
-            type="submit"
-          >
-            Submit
-            <Icon right>send</Icon>
-          </Button>
+          <FileUpload updateFileNameToParent={setSubmittedFileName} />
         </form>
       </Row>
     </Container>

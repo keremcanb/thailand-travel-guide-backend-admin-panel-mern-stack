@@ -1,20 +1,11 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-import {
-  Button,
-  Icon,
-  TextInput,
-  Textarea,
-  Select,
-  Row,
-  Container
-} from 'react-materialize';
+import { TextInput, Textarea, Select, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import useResources from '../../utils/useResources';
 import { addPlace } from '../../actions/place';
-import Message from '../layout/UploadMessage';
+import FileUpload from '../upload/FileUpload';
 
 const AddPlace = ({ addPlace, history }) => {
   const initialFormState = {
@@ -32,29 +23,11 @@ const AddPlace = ({ addPlace, history }) => {
   const [place, setPlace] = useState(initialFormState);
   const locations = useResources('locations');
   const categories = useResources('categories');
-  const {
-    title,
-    thumbnail,
-    image,
-    content,
-    location,
-    category,
-    info,
-    link,
-    lat,
-    lng
-  } = place;
-  const [file, setFile] = useState('');
-  const [filename, setFilename] = useState('Thumbnail');
-  const [message, setMessage] = useState('');
+  const { title, content, location, category, info, link, lat, lng } = place;
+  const [submittedFileName, setSubmittedFileName] = useState('');
 
   const onChange = (e) => {
     setPlace({ ...place, [e.target.name]: e.target.value });
-  };
-
-  const onChangeFile = (e) => {
-    setFile(e.target.files[0]);
-    setFilename(e.target.files[0].name);
   };
 
   const onSubmit = async (e) => {
@@ -67,27 +40,10 @@ const AddPlace = ({ addPlace, history }) => {
       M.toast({ html: 'Please enter category' });
     } else if (!location) {
       M.toast({ html: 'Please enter location' });
-      // } else if (!thumbnail) {
-      //   M.toast({ html: 'Please enter thumbnail' });
     } else {
-      const formData = new FormData();
-      formData.append('file', file);
-      try {
-        await axios.post('/upload', formData, {
-          headers: {
-            'Content-Type': 'multipart/form-data'
-          }
-        });
-      } catch (err) {
-        if (err.response.status === 500) {
-          setMessage('There was a problem with the server');
-        } else {
-          setMessage(err.response.data.msg);
-        }
-      }
       addPlace({
         ...place,
-        thumbnail: filename
+        thumbnail: submittedFileName
       });
       M.toast({ html: `Place added` });
       setPlace(initialFormState);
@@ -107,24 +63,14 @@ const AddPlace = ({ addPlace, history }) => {
             onChange={onChange}
             s={12}
           />
-          {message && <Message msg={message} />}
-          <TextInput
-            id="add-place-thumb"
-            name="thumbnail"
-            type="file"
-            label={filename}
-            value={thumbnail}
-            onChange={onChangeFile}
-            s={12}
-          />
-          <TextInput
+          {/* <TextInput
             id="add-place-image"
             name="image"
             label="Image"
             value={image}
             onChange={onChange}
             s={12}
-          />
+          /> */}
           <Textarea
             id="add-place-content"
             name="content"
@@ -197,10 +143,7 @@ const AddPlace = ({ addPlace, history }) => {
             onChange={onChange}
             s={6}
           />
-          <Button variant="contained" className="blue darken-2" type="submit">
-            Submit
-            <Icon right>send</Icon>
-          </Button>
+          <FileUpload updateFileNameToParent={setSubmittedFileName} />
         </form>
       </Row>
     </Container>
