@@ -1,4 +1,4 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
 import React, { useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { TextInput, Row } from 'react-materialize';
@@ -26,6 +26,12 @@ const LocationFilter = ({ filterLocations, clearFilter, filtered }) => {
       <TextInput ref={text} placeholder="Filter" onChange={onChange} />
     </Row>
   );
+};
+
+LocationFilter.propTypes = {
+  clearFilter: PropTypes.func.isRequired,
+  filterLocations: PropTypes.func.isRequired,
+  filtered: PropTypes.any.isRequired
 };
 
 const mapStateToProps = (state) => ({

@@ -1,4 +1,3 @@
-/* eslint-disable radix */
 import React, { useState } from 'react';
 import { TextInput, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
