@@ -37,7 +37,6 @@ const FileUpload = ({ updateFileNameToParent }) => {
 
   return (
     <>
-      {message ? <Message msg={message} /> : null}
       <form onSubmit={onSubmit}>
         <TextInput
           id="add-cat-thumb"
@@ -47,6 +46,7 @@ const FileUpload = ({ updateFileNameToParent }) => {
           onChange={onChange}
           s={12}
         />
+        {message && <Message msg={message} />}
         <Button variant="contained" className="blue darken-2 mb" type="submit">
           Submit
           <Icon right>send</Icon>

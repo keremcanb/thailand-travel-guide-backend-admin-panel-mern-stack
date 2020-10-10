@@ -43,10 +43,10 @@ const EditLocation = ({ current, updateLocation, history }) => {
             onChange={onChange}
             s={12}
           />
-          <FileUpload updateFileNameToParent={setSubmittedFileName} />
           <Row>
             <img src={thumbnail} alt="" width="200" />
           </Row>
+          <FileUpload updateFileNameToParent={setSubmittedFileName} />
         </form>
       </Row>
     </Container>

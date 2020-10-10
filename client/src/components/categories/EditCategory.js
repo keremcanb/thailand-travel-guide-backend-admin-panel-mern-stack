@@ -11,7 +11,7 @@ import FileUpload from '../upload/FileUpload';
 
 const EditCategory = ({ current, updateCategory, history }) => {
   const [category, setCategory] = useState('');
-  const { title, location } = category;
+  const { title, thumbnail, location } = category;
   const locations = useResources('locations');
   const animatedComponents = makeAnimated();
   const [submittedFileName, setSubmittedFileName] = useState('');
@@ -70,6 +70,9 @@ const EditCategory = ({ current, updateCategory, history }) => {
             onChange={onChange}
             s={12}
           />
+          <Row>
+            <img src={thumbnail} alt="" width="200" />
+          </Row>
           <FileUpload updateFileNameToParent={setSubmittedFileName} />
         </form>
       </Row>

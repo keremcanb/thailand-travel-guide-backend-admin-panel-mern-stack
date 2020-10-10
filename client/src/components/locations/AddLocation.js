@@ -16,8 +16,7 @@ const AddLocation = ({ addLocation, history }) => {
     setLocation({ ...location, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = () => {
     if (!title) {
       M.toast({ html: 'Please enter title' });
     } else {

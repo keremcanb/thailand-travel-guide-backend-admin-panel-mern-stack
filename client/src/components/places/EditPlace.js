@@ -11,7 +11,17 @@ const EditPlace = ({ current, updatePlace, history }) => {
   const [place, setPlace] = useState('');
   const locations = useResources('locations');
   const categories = useResources('categories');
-  const { title, content, location, category, info, link, lat, lng } = place;
+  const {
+    title,
+    thumbnail,
+    content,
+    location,
+    category,
+    info,
+    link,
+    lat,
+    lng
+  } = place;
   const [submittedFileName, setSubmittedFileName] = useState('');
 
   useEffect(() => {
@@ -110,6 +120,9 @@ const EditPlace = ({ current, updatePlace, history }) => {
             onChange={onChange}
             s={6}
           />
+          <Row>
+            <img src={thumbnail} alt="" width="200" />
+          </Row>
           <FileUpload updateFileNameToParent={setSubmittedFileName} />
         </form>
       </Row>
