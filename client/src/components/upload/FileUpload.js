@@ -31,8 +31,9 @@ const FileUpload = ({ updateFileNameToParent }) => {
         setMessage(err.response.data.msg);
       }
     }
-    await updateFileNameToParent(filename);
   };
+
+  updateFileNameToParent(filename);
 
   return (
     <>
