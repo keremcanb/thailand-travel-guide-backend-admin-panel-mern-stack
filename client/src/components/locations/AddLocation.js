@@ -16,11 +16,11 @@ const AddLocation = ({ addLocation, history }) => {
     setLocation({ ...location, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     if (!title) {
       M.toast({ html: 'Please enter title' });
     } else {
-      addLocation({
+      await addLocation({
         ...location,
         thumbnail: submittedFileName
       });
