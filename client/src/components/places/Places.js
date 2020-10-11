@@ -10,6 +10,7 @@ import PlaceFilter from './PlaceFilter';
 const Places = ({ getPlaces, place: { places, loading, filtered } }) => {
   useEffect(() => {
     getPlaces();
+    document.title = 'Places';
   }, [getPlaces]);
 
   return (

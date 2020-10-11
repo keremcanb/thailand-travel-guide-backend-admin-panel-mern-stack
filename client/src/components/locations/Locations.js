@@ -13,6 +13,7 @@ const Locations = ({
 }) => {
   useEffect(() => {
     getLocations();
+    document.title = 'Locations';
   }, [getLocations]);
 
   return (

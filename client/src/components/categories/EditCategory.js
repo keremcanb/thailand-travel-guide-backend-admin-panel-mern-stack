@@ -20,6 +20,7 @@ const EditCategory = ({ current, updateCategory, history }) => {
     if (current) {
       setCategory(current);
     }
+    document.title = 'Edit Category';
   }, [current]);
 
   const onChange = (e) => {
@@ -32,7 +33,7 @@ const EditCategory = ({ current, updateCategory, history }) => {
 
   const onSubmit = () => {
     updateCategory({ ...category, thumbnail: submittedFileName });
-    M.toast({ html: 'Category updated' });
+    M.toast({ html: `${title} updated` });
     history.push('categories');
   };
 

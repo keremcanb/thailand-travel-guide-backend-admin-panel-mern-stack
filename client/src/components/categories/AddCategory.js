@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextInput, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
@@ -10,6 +10,10 @@ import FileUpload from '../upload/FileUpload';
 import useResources from '../../utils/useResources';
 
 const AddCategory = ({ addCategory, history }) => {
+  useEffect(() => {
+    document.title = 'Add Category';
+  }, []);
+
   const initialFormState = { title: '', thumbnail: '', location: '' };
   const [category, setCategory] = useState(initialFormState);
   const { title, location } = category;
@@ -36,7 +40,7 @@ const AddCategory = ({ addCategory, history }) => {
         ...category,
         thumbnail: submittedFileName
       });
-      M.toast({ html: `Category added` });
+      M.toast({ html: `${title} added` });
       setCategory(initialFormState);
       history.push('categories');
     }

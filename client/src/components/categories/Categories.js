@@ -13,6 +13,7 @@ const Categories = ({
 }) => {
   useEffect(() => {
     getCategories();
+    document.title = 'Categories';
   }, [getCategories]);
 
   return (

@@ -28,6 +28,7 @@ const EditPlace = ({ current, updatePlace, history }) => {
     if (current) {
       setPlace(current);
     }
+    document.title = 'Edit Place';
   }, [current]);
 
   const onChange = (e) => {
@@ -36,7 +37,7 @@ const EditPlace = ({ current, updatePlace, history }) => {
 
   const onSubmit = () => {
     updatePlace({ ...place, thumbnail: submittedFileName });
-    M.toast({ html: 'Place updated' });
+    M.toast({ html: `${title} updated` });
     history.push('places');
   };
 

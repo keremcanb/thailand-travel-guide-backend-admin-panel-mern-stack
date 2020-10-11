@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TextInput, Textarea, Select, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { connect } from 'react-redux';
@@ -8,6 +8,10 @@ import { addPlace } from '../../actions/place';
 import FileUpload from '../upload/FileUpload';
 
 const AddPlace = ({ addPlace, history }) => {
+  useEffect(() => {
+    document.title = 'Add Place';
+  }, []);
+
   const initialFormState = {
     title: '',
     image: '',
@@ -45,7 +49,7 @@ const AddPlace = ({ addPlace, history }) => {
         ...place,
         thumbnail: submittedFileName
       });
-      M.toast({ html: `Place added` });
+      M.toast({ html: `${title} added` });
       setPlace(initialFormState);
       history.push('places');
     }

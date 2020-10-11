@@ -20,7 +20,7 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
 
   const onDelete = () => {
     deletePlace(place._id);
-    M.toast({ html: 'Place Deleted' });
+    M.toast({ html: `${title} deleted` });
   };
 
   return (
@@ -74,7 +74,7 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
                   </Button>
                 </>
               ]}
-              header="Are you sure?"
+              header={`Delete ${title}?`}
               id="Modal-0"
               open={false}
               trigger={

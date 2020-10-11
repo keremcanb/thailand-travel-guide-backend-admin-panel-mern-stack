@@ -15,6 +15,7 @@ const EditLocation = ({ current, updateLocation, history }) => {
     if (current) {
       setLocation(current);
     }
+    document.title = 'Edit Location';
   }, [current]);
 
   const onChange = (e) => {
@@ -27,7 +28,7 @@ const EditLocation = ({ current, updateLocation, history }) => {
       ...location,
       thumbnail: submittedFileName
     });
-    M.toast({ html: 'Location updated' });
+    M.toast({ html: `${title} updated` });
     history.push('locations');
   };
 

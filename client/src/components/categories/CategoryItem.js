@@ -20,7 +20,7 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
 
   const onDelete = () => {
     deleteCategory(category._id);
-    M.toast({ html: 'Category Deleted' });
+    M.toast({ html: `${title} deleted` });
   };
 
   return (
@@ -74,7 +74,7 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
                   </Button>
                 </>
               ]}
-              header="Are you sure?"
+              header={`Delete ${title}?`}
               id="Modal-0"
               open={false}
               trigger={
