@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { TextInput, Row, Container } from 'react-materialize';
-import M from 'materialize-css/dist/js/materialize.min.js';
+import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
-import useResources from '../../utils/useResources';
+import { TextInput, Row, Container } from 'react-materialize';
+import M from 'materialize-css/dist/js/materialize.min.js';
 import { updateCategory } from '../../actions/category';
+import useResources from '../../utils/useResources';
 import FileUpload from '../upload/FileUpload';
 
-const EditCategory = ({ current, updateCategory, history }) => {
+const EditCategory = ({ history }) => {
+  const dispatch = useDispatch();
+
+  const current = useSelector((state) => state.category.current);
+
   const [category, setCategory] = useState('');
   const { title, thumbnail, location } = category;
+
   const locations = useResources('locations');
+
   const animatedComponents = makeAnimated();
+
   const [submittedFileName, setSubmittedFileName] = useState('');
 
   useEffect(() => {
@@ -32,7 +38,7 @@ const EditCategory = ({ current, updateCategory, history }) => {
   };
 
   const onSubmit = () => {
-    updateCategory({ ...category, thumbnail: submittedFileName });
+    dispatch(updateCategory({ ...category, thumbnail: submittedFileName }));
     M.toast({ html: `${title} updated` });
     history.push('categories');
   };
@@ -81,16 +87,4 @@ const EditCategory = ({ current, updateCategory, history }) => {
   );
 };
 
-EditCategory.propTypes = {
-  current: PropTypes.object.isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func
-  }).isRequired,
-  updateCategory: PropTypes.func.isRequired
-};
-
-const mapStateToProps = (state) => ({
-  current: state.category.current
-});
-
-export default connect(mapStateToProps, { updateCategory })(EditCategory);
+export default EditCategory;

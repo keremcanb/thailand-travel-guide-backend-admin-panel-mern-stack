@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { Row, Col, Preloader, Button, Icon } from 'react-materialize';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import CategoryItem from './CategoryItem';
+import { Row, Col, Preloader, Button, Icon } from 'react-materialize';
 import { getCategories } from '../../actions/category';
+import CategoryItem from './CategoryItem';
 import CategoryFilter from './CategoryFilter';
 
-const Categories = ({
-  getCategories,
-  category: { categories, loading, filtered }
-}) => {
+const Categories = () => {
+  const dispatch = useDispatch();
+
+  const category = useSelector((state) => state.category);
+  const { categories, loading, filtered } = category;
+
   useEffect(() => {
-    getCategories();
+    dispatch(getCategories());
     document.title = 'Categories';
-  }, [getCategories]);
+  }, [dispatch]);
 
   return (
     <>
@@ -23,11 +24,11 @@ const Categories = ({
         <Row>
           <Col className="grid-style">
             {filtered
-              ? filtered.map((category) => (
-                  <CategoryItem key={category._id} category={category} />
+              ? filtered.map((cat) => (
+                  <CategoryItem key={cat._id} category={cat} />
                 ))
-              : categories.map((category) => (
-                  <CategoryItem key={category._id} category={category} />
+              : categories.map((cat) => (
+                  <CategoryItem key={category._id} category={cat} />
                 ))}
           </Col>
         </Row>
@@ -54,14 +55,4 @@ const Categories = ({
   );
 };
 
-Categories.propTypes = {
-  getCategories: PropTypes.func.isRequired,
-  category: PropTypes.object.isRequired
-};
-
-const mapStateToProps = (state) => ({
-  category: state.category,
-  filtered: state.filtered
-});
-
-export default connect(mapStateToProps, { getCategories })(Categories);
+export default Categories;

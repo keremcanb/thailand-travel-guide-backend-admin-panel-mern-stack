@@ -1,10 +1,13 @@
-import PropTypes from 'prop-types';
 import React, { useRef, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { TextInput, Row } from 'react-materialize';
 import { filterCategories, clearFilter } from '../../actions/category';
 
-const CategoryFilter = ({ filterCategories, clearFilter, filtered }) => {
+const CategoryFilter = () => {
+  const dispatch = useDispatch();
+
+  const filtered = useSelector((state) => state.filtered);
+
   const text = useRef('');
 
   useEffect(() => {
@@ -15,9 +18,9 @@ const CategoryFilter = ({ filterCategories, clearFilter, filtered }) => {
 
   const onChange = (e) => {
     if (text.current.value !== '') {
-      filterCategories(e.target.value);
+      dispatch(filterCategories(e.target.value));
     } else {
-      clearFilter();
+      dispatch(clearFilter());
     }
   };
 
@@ -28,16 +31,4 @@ const CategoryFilter = ({ filterCategories, clearFilter, filtered }) => {
   );
 };
 
-CategoryFilter.propTypes = {
-  clearFilter: PropTypes.func.isRequired,
-  filterCategories: PropTypes.func.isRequired,
-  filtered: PropTypes.any
-};
-
-const mapStateToProps = (state) => ({
-  filtered: state.filtered
-});
-
-export default connect(mapStateToProps, { filterCategories, clearFilter })(
-  CategoryFilter
-);
+export default CategoryFilter;

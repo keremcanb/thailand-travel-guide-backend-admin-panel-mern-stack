@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import PropTypes from 'prop-types';
 import { TextInput, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { updateLocation } from '../../actions/location';
@@ -27,8 +26,7 @@ const EditLocation = ({ history }) => {
     setLocation({ ...location, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async () => {
     dispatch(
       updateLocation({
         ...location,
@@ -59,12 +57,6 @@ const EditLocation = ({ history }) => {
       </Row>
     </Container>
   );
-};
-
-EditLocation.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func
-  }).isRequired
 };
 
 export default EditLocation;

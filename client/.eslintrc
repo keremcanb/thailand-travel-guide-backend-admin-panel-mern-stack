@@ -15,9 +15,9 @@
     "import/extensions": "off",
     "react/forbid-prop-types": "off",
     "react/require-default-props": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/prop-types": "off"
     // "no-use-before-define": "off",
-    // "react/prop-types": "off",
     // "react/state-in-constructor": "off",
     // "react/static-property-placement": "off",
     // "react/jsx-props-no-spreading": "off",

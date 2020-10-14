@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col, Preloader, Button, Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
-import LocationItem from './LocationItem';
+import { Row, Col, Preloader, Button, Icon } from 'react-materialize';
 import { getLocations } from '../../actions/location';
+import LocationItem from './LocationItem';
 import LocationFilter from './LocationFilter';
 
 const Locations = () => {

@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { TextInput, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 import { addLocation } from '../../actions/location';
 import FileUpload from '../upload/FileUpload';
 
@@ -55,12 +54,6 @@ const AddLocation = ({ history }) => {
       </Row>
     </Container>
   );
-};
-
-AddLocation.propTypes = {
-  history: PropTypes.shape({
-    push: PropTypes.func
-  }).isRequired
 };
 
 export default AddLocation;

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
   Col,
@@ -18,6 +17,10 @@ const LocationItem = ({ location }) => {
   const dispatch = useDispatch();
 
   const { thumbnail, title } = location;
+
+  const onClick = () => {
+    dispatch(setCurrent(location));
+  };
 
   const onDelete = () => {
     dispatch(deleteLocation(location._id));
@@ -43,7 +46,7 @@ const LocationItem = ({ location }) => {
                 floating
                 node="button"
                 icon={<Icon>edit</Icon>}
-                onClick={() => dispatch(setCurrent(location))}
+                onClick={onClick}
               />
             </Link>
             <Modal
@@ -79,10 +82,6 @@ const LocationItem = ({ location }) => {
       </Col>
     </Row>
   );
-};
-
-LocationItem.propTypes = {
-  location: PropTypes.object.isRequired
 };
 
 export default LocationItem;

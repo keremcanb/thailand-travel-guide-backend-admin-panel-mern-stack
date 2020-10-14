@@ -1,24 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import { TextInput, Row, Container } from 'react-materialize';
-import M from 'materialize-css/dist/js/materialize.min.js';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import makeAnimated from 'react-select/animated';
 import Select from 'react-select';
+import { TextInput, Row, Container } from 'react-materialize';
+import M from 'materialize-css/dist/js/materialize.min.js';
 import { addCategory } from '../../actions/category';
 import FileUpload from '../upload/FileUpload';
 import useResources from '../../utils/useResources';
 
-const AddCategory = ({ addCategory, history }) => {
+const AddCategory = ({ history }) => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     document.title = 'Add Category';
   }, []);
 
-  const initialFormState = { title: '', thumbnail: '', location: '' };
-  const [category, setCategory] = useState(initialFormState);
+  const [category, setCategory] = useState({
+    title: '',
+    thumbnail: '',
+    location: ''
+  });
   const { title, location } = category;
+
   const locations = useResources('locations');
+
   const animatedComponents = makeAnimated();
+
   const [submittedFileName, setSubmittedFileName] = useState('');
 
   const onChange = (e) => {
@@ -36,12 +43,13 @@ const AddCategory = ({ addCategory, history }) => {
     } else if (!location) {
       M.toast({ html: 'Please enter location' });
     } else {
-      addCategory({
-        ...category,
-        thumbnail: submittedFileName
-      });
+      dispatch(
+        addCategory({
+          ...category,
+          thumbnail: submittedFileName
+        })
+      );
       M.toast({ html: `${title} added` });
-      setCategory(initialFormState);
       history.push('categories');
     }
   };
@@ -79,11 +87,4 @@ const AddCategory = ({ addCategory, history }) => {
   );
 };
 
-AddCategory.propTypes = {
-  addCategory: PropTypes.func.isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func
-  }).isRequired
-};
-
-export default connect(null, { addCategory })(AddCategory);
+export default AddCategory;

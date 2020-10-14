@@ -1,6 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
   Col,
@@ -14,11 +13,17 @@ import {
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { deleteCategory, setCurrent } from '../../actions/category';
 
-const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
+const CategoryItem = ({ category }) => {
+  const dispatch = useDispatch();
+
   const { thumbnail, title } = category;
 
+  const onClick = () => {
+    dispatch(setCurrent(category));
+  };
+
   const onDelete = () => {
-    deleteCategory(category._id);
+    dispatch(deleteCategory(category._id));
     M.toast({ html: `${title} deleted` });
   };
 
@@ -41,7 +46,7 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
                 floating
                 node="button"
                 icon={<Icon>edit</Icon>}
-                onClick={() => setCurrent(category)}
+                onClick={onClick}
               />
             </Link>
             <Modal
@@ -79,10 +84,4 @@ const CategoryItem = ({ deleteCategory, setCurrent, category }) => {
   );
 };
 
-CategoryItem.propTypes = {
-  category: PropTypes.object.isRequired,
-  deleteCategory: PropTypes.func.isRequired,
-  setCurrent: PropTypes.func.isRequired
-};
-
-export default connect(null, { deleteCategory, setCurrent })(CategoryItem);
+export default CategoryItem;
