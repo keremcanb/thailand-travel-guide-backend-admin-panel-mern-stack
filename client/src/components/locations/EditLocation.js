@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { TextInput, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { updateLocation } from '../../actions/location';
 import FileUpload from '../upload/FileUpload';
 
-const EditLocation = ({ current, updateLocation, history }) => {
+const EditLocation = ({ history }) => {
+  const dispatch = useDispatch();
+
+  const current = useSelector((state) => state.location.current);
+
   const [location, setLocation] = useState('');
   const { title, thumbnail } = location;
+
   const [submittedFileName, setSubmittedFileName] = useState('');
 
   useEffect(() => {
@@ -24,10 +29,12 @@ const EditLocation = ({ current, updateLocation, history }) => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    updateLocation({
-      ...location,
-      thumbnail: submittedFileName
-    });
+    dispatch(
+      updateLocation({
+        ...location,
+        thumbnail: submittedFileName
+      })
+    );
     M.toast({ html: `${title} updated` });
     history.push('locations');
   };
@@ -55,15 +62,9 @@ const EditLocation = ({ current, updateLocation, history }) => {
 };
 
 EditLocation.propTypes = {
-  current: PropTypes.object.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func
-  }).isRequired,
-  updateLocation: PropTypes.func.isRequired
+  }).isRequired
 };
 
-const mapStateToProps = (state) => ({
-  current: state.location.current
-});
-
-export default connect(mapStateToProps, { updateLocation })(EditLocation);
+export default EditLocation;

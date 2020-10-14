@@ -1,20 +1,21 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Preloader, Button, Icon } from 'react-materialize';
 import { Link } from 'react-router-dom';
 import LocationItem from './LocationItem';
 import { getLocations } from '../../actions/location';
 import LocationFilter from './LocationFilter';
 
-const Locations = ({
-  getLocations,
-  location: { locations, loading, filtered }
-}) => {
+const Locations = () => {
+  const dispatch = useDispatch();
+
+  const location = useSelector((state) => state.location);
+  const { locations, loading, filtered } = location;
+
   useEffect(() => {
-    getLocations();
+    dispatch(getLocations());
     document.title = 'Locations';
-  }, [getLocations]);
+  }, [dispatch]);
 
   return (
     <>
@@ -23,11 +24,11 @@ const Locations = ({
         <Row>
           <Col className="grid-style">
             {filtered
-              ? filtered.map((location) => (
-                  <LocationItem key={location._id} location={location} />
+              ? filtered.map((loc) => (
+                  <LocationItem key={loc._id} location={loc} />
                 ))
-              : locations.map((location) => (
-                  <LocationItem key={location._id} location={location} />
+              : locations.map((loc) => (
+                  <LocationItem key={loc._id} location={loc} />
                 ))}
           </Col>
         </Row>
@@ -54,14 +55,4 @@ const Locations = ({
   );
 };
 
-Locations.propTypes = {
-  getLocations: PropTypes.func.isRequired,
-  location: PropTypes.object.isRequired
-};
-
-const mapStateToProps = (state) => ({
-  location: state.location,
-  filtered: state.filtered
-});
-
-export default connect(mapStateToProps, { getLocations })(Locations);
+export default Locations;

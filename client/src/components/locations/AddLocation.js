@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { TextInput, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addLocation } from '../../actions/location';
 import FileUpload from '../upload/FileUpload';
 
-const AddLocation = ({ addLocation, history }) => {
+const AddLocation = ({ history }) => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     document.title = 'Add Location';
   }, []);
 
-  const initialFormState = { title: '', thumbnail: '' };
-  const [location, setLocation] = useState(initialFormState);
+  const [location, setLocation] = useState({ title: '', thumbnail: '' });
   const { title } = location;
+
   const [submittedFileName, setSubmittedFileName] = useState('');
 
   const onChange = (e) => {
@@ -24,12 +26,13 @@ const AddLocation = ({ addLocation, history }) => {
     if (!title) {
       M.toast({ html: 'Please enter title' });
     } else {
-      addLocation({
-        ...location,
-        thumbnail: submittedFileName
-      });
+      dispatch(
+        addLocation({
+          ...location,
+          thumbnail: submittedFileName
+        })
+      );
       M.toast({ html: `${title} added` });
-      setLocation(initialFormState);
       history.push('locations');
     }
   };
@@ -55,10 +58,9 @@ const AddLocation = ({ addLocation, history }) => {
 };
 
 AddLocation.propTypes = {
-  addLocation: PropTypes.func.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func
   }).isRequired
 };
 
-export default connect(null, { addLocation })(AddLocation);
+export default AddLocation;

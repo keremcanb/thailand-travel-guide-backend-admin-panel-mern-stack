@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
@@ -14,11 +14,13 @@ import {
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { deleteLocation, setCurrent } from '../../actions/location';
 
-const LocationItem = ({ deleteLocation, setCurrent, location }) => {
+const LocationItem = ({ location }) => {
+  const dispatch = useDispatch();
+
   const { thumbnail, title } = location;
 
   const onDelete = () => {
-    deleteLocation(location._id);
+    dispatch(deleteLocation(location._id));
     M.toast({ html: `${title} deleted` });
   };
 
@@ -41,7 +43,7 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
                 floating
                 node="button"
                 icon={<Icon>edit</Icon>}
-                onClick={() => setCurrent(location)}
+                onClick={() => dispatch(setCurrent(location))}
               />
             </Link>
             <Modal
@@ -80,9 +82,7 @@ const LocationItem = ({ deleteLocation, setCurrent, location }) => {
 };
 
 LocationItem.propTypes = {
-  location: PropTypes.object.isRequired,
-  deleteLocation: PropTypes.func.isRequired,
-  setCurrent: PropTypes.func.isRequired
+  location: PropTypes.object.isRequired
 };
 
-export default connect(null, { deleteLocation, setCurrent })(LocationItem);
+export default LocationItem;

@@ -1,10 +1,13 @@
-import PropTypes from 'prop-types';
 import React, { useRef, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { TextInput, Row } from 'react-materialize';
 import { filterLocations, clearFilter } from '../../actions/location';
 
-const LocationFilter = ({ filterLocations, clearFilter, filtered }) => {
+const LocationFilter = () => {
+  const dispatch = useDispatch();
+
+  const filtered = useSelector((state) => state.filtered);
+
   const text = useRef('');
 
   useEffect(() => {
@@ -15,9 +18,9 @@ const LocationFilter = ({ filterLocations, clearFilter, filtered }) => {
 
   const onChange = (e) => {
     if (text.current.value !== '') {
-      filterLocations(e.target.value);
+      dispatch(filterLocations(e.target.value));
     } else {
-      clearFilter();
+      dispatch(clearFilter());
     }
   };
 
@@ -28,16 +31,4 @@ const LocationFilter = ({ filterLocations, clearFilter, filtered }) => {
   );
 };
 
-LocationFilter.propTypes = {
-  clearFilter: PropTypes.func.isRequired,
-  filterLocations: PropTypes.func.isRequired,
-  filtered: PropTypes.any
-};
-
-const mapStateToProps = (state) => ({
-  filtered: state.filtered
-});
-
-export default connect(mapStateToProps, { filterLocations, clearFilter })(
-  LocationFilter
-);
+export default LocationFilter;
