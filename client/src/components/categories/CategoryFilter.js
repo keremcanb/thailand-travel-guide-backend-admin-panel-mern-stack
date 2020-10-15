@@ -6,7 +6,7 @@ import { filterCategories, clearFilter } from '../../actions/category';
 const CategoryFilter = () => {
   const dispatch = useDispatch();
 
-  const filtered = useSelector((state) => state.filtered);
+  const filtered = useSelector((state) => state.category.filtered);
 
   const text = useRef('');
 

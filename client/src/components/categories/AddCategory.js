@@ -11,10 +11,6 @@ import useResources from '../../utils/useResources';
 const AddCategory = ({ history }) => {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    document.title = 'Add Category';
-  }, []);
-
   const [category, setCategory] = useState({
     title: '',
     thumbnail: '',
@@ -27,6 +23,10 @@ const AddCategory = ({ history }) => {
   const animatedComponents = makeAnimated();
 
   const [submittedFileName, setSubmittedFileName] = useState('');
+
+  useEffect(() => {
+    document.title = 'Add Category';
+  }, []);
 
   const onChange = (e) => {
     setCategory({ ...category, [e.target.name]: e.target.value });

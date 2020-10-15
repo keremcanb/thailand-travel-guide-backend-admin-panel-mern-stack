@@ -20,6 +20,7 @@ const Locations = () => {
   return (
     <>
       <LocationFilter />
+
       {locations && !loading ? (
         <Row>
           <Col className="grid-style">

@@ -8,8 +8,8 @@ const Dashboard = () => {
 
   return !loading && user ? (
     <Row className="center">
-      <h1>Welcome {user.firstName}</h1>
-      <img className="circle" src={user.avatar} alt="" />
+      {user.firstName && <h1>Welcome {user.firstName}</h1>}
+      {user.avatar && <img className="circle" src={user.avatar} alt="" />}
     </Row>
   ) : (
     <Preloader

@@ -6,7 +6,7 @@ import { filterPlaces, clearFilter } from '../../actions/place';
 const PlaceFilter = () => {
   const dispatch = useDispatch();
 
-  const filtered = useSelector((state) => state.filtered);
+  const filtered = useSelector((state) => state.place.filtered);
 
   const text = useRef('');
 

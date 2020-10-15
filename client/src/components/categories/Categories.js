@@ -20,6 +20,7 @@ const Categories = () => {
   return (
     <>
       <CategoryFilter />
+
       {categories && !loading ? (
         <Row>
           <Col className="grid-style">
