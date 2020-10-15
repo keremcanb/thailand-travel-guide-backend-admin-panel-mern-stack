@@ -1,7 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+// import FadeIn from 'react-lazyload-fadein';
 import {
   Col,
   Row,
@@ -11,15 +11,20 @@ import {
   Modal,
   Button
 } from 'react-materialize';
-// import FadeIn from 'react-lazyload-fadein';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { deletePlace, setCurrent } from '../../actions/place';
 
-const PlaceItem = ({ deletePlace, setCurrent, place }) => {
+const PlaceItem = ({ place }) => {
+  const dispatch = useDispatch();
+
   const { thumbnail, title } = place;
 
+  const onClick = () => {
+    dispatch(setCurrent(place));
+  };
+
   const onDelete = () => {
-    deletePlace(place._id);
+    dispatch(deletePlace(place._id));
     M.toast({ html: `${title} deleted` });
   };
 
@@ -52,7 +57,7 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
                 floating
                 node="button"
                 icon={<Icon>edit</Icon>}
-                onClick={() => setCurrent(place)}
+                onClick={onClick}
               />
             </Link>
             <Modal
@@ -90,10 +95,4 @@ const PlaceItem = ({ deletePlace, setCurrent, place }) => {
   );
 };
 
-PlaceItem.propTypes = {
-  place: PropTypes.object.isRequired,
-  deletePlace: PropTypes.func.isRequired,
-  setCurrent: PropTypes.func.isRequired
-};
-
-export default connect(null, { deletePlace, setCurrent })(PlaceItem);
+export default PlaceItem;

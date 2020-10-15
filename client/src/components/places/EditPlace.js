@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { TextInput, Textarea, Select, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import useResources from '../../utils/useResources';
 import { updatePlace } from '../../actions/place';
+import useResources from '../../utils/useResources';
 import FileUpload from '../upload/FileUpload';
 
-const EditPlace = ({ current, updatePlace, history }) => {
+const EditPlace = ({ history }) => {
+  const dispatch = useDispatch();
+
+  const current = useSelector((state) => state.place.current);
+
   const [place, setPlace] = useState('');
-  const locations = useResources('locations');
-  const categories = useResources('categories');
   const {
     title,
     thumbnail,
@@ -22,6 +23,10 @@ const EditPlace = ({ current, updatePlace, history }) => {
     lat,
     lng
   } = place;
+
+  const locations = useResources('locations');
+  const categories = useResources('categories');
+
   const [submittedFileName, setSubmittedFileName] = useState('');
 
   useEffect(() => {
@@ -36,7 +41,7 @@ const EditPlace = ({ current, updatePlace, history }) => {
   };
 
   const onSubmit = () => {
-    updatePlace({ ...place, thumbnail: submittedFileName });
+    dispatch(updatePlace({ ...place, thumbnail: submittedFileName }));
     M.toast({ html: `${title} updated` });
     history.push('places');
   };
@@ -131,16 +136,4 @@ const EditPlace = ({ current, updatePlace, history }) => {
   );
 };
 
-EditPlace.propTypes = {
-  current: PropTypes.object.isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func
-  }).isRequired,
-  updatePlace: PropTypes.func.isRequired
-};
-
-const mapStateToProps = (state) => ({
-  current: state.place.current
-});
-
-export default connect(mapStateToProps, { updatePlace })(EditPlace);
+export default EditPlace;

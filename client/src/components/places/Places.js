@@ -1,17 +1,21 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { Row, Col, Preloader, Button, Icon } from 'react-materialize';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import PlaceItem from './PlaceItem';
+import { Row, Col, Preloader, Button, Icon } from 'react-materialize';
 import { getPlaces } from '../../actions/place';
+import PlaceItem from './PlaceItem';
 import PlaceFilter from './PlaceFilter';
 
-const Places = ({ getPlaces, place: { places, loading, filtered } }) => {
+const Places = () => {
+  const dispatch = useDispatch();
+
+  const place = useSelector((state) => state.place);
+  const { places, loading, filtered } = place;
+
   useEffect(() => {
-    getPlaces();
+    dispatch(getPlaces());
     document.title = 'Places';
-  }, [getPlaces]);
+  }, [dispatch]);
 
   return (
     <>
@@ -51,14 +55,4 @@ const Places = ({ getPlaces, place: { places, loading, filtered } }) => {
   );
 };
 
-Places.propTypes = {
-  getPlaces: PropTypes.func.isRequired,
-  place: PropTypes.object.isRequired
-};
-
-const mapStateToProps = (state) => ({
-  place: state.place,
-  filtered: state.filtered
-});
-
-export default connect(mapStateToProps, { getPlaces })(Places);
+export default Places;

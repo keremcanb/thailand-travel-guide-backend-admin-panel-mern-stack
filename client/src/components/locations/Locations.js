@@ -24,11 +24,11 @@ const Locations = () => {
         <Row>
           <Col className="grid-style">
             {filtered
-              ? filtered.map((loc) => (
-                  <LocationItem key={loc._id} location={loc} />
+              ? filtered.map((item) => (
+                  <LocationItem key={item._id} location={item} />
                 ))
-              : locations.map((loc) => (
-                  <LocationItem key={loc._id} location={loc} />
+              : locations.map((item) => (
+                  <LocationItem key={item._id} location={item} />
                 ))}
           </Col>
         </Row>

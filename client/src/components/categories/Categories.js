@@ -24,11 +24,11 @@ const Categories = () => {
         <Row>
           <Col className="grid-style">
             {filtered
-              ? filtered.map((cat) => (
-                  <CategoryItem key={cat._id} category={cat} />
+              ? filtered.map((item) => (
+                  <CategoryItem key={item._id} category={item} />
                 ))
-              : categories.map((cat) => (
-                  <CategoryItem key={category._id} category={cat} />
+              : categories.map((item) => (
+                  <CategoryItem key={category._id} category={item} />
                 ))}
           </Col>
         </Row>

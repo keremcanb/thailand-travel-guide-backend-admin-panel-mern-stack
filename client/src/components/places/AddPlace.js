@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { TextInput, Textarea, Select, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import useResources from '../../utils/useResources';
 import { addPlace } from '../../actions/place';
 import FileUpload from '../upload/FileUpload';
+import useResources from '../../utils/useResources';
 
-const AddPlace = ({ addPlace, history }) => {
+const AddPlace = ({ history }) => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
     document.title = 'Add Place';
   }, []);
 
-  const initialFormState = {
+  const [place, setPlace] = useState({
     title: '',
     image: '',
     thumbnail: '',
@@ -23,19 +24,19 @@ const AddPlace = ({ addPlace, history }) => {
     link: '',
     lat: '',
     lng: ''
-  };
-  const [place, setPlace] = useState(initialFormState);
+  });
+  const { title, content, location, category, info, link, lat, lng } = place;
+
   const locations = useResources('locations');
   const categories = useResources('categories');
-  const { title, content, location, category, info, link, lat, lng } = place;
+
   const [submittedFileName, setSubmittedFileName] = useState('');
 
   const onChange = (e) => {
     setPlace({ ...place, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async () => {
     if (!title) {
       M.toast({ html: 'Please enter title' });
     } else if (!content) {
@@ -45,12 +46,13 @@ const AddPlace = ({ addPlace, history }) => {
     } else if (!location) {
       M.toast({ html: 'Please enter location' });
     } else {
-      addPlace({
-        ...place,
-        thumbnail: submittedFileName
-      });
+      dispatch(
+        addPlace({
+          ...place,
+          thumbnail: submittedFileName
+        })
+      );
       M.toast({ html: `${title} added` });
-      setPlace(initialFormState);
       history.push('places');
     }
   };
@@ -154,11 +156,4 @@ const AddPlace = ({ addPlace, history }) => {
   );
 };
 
-AddPlace.propTypes = {
-  addPlace: PropTypes.func.isRequired,
-  history: PropTypes.shape({
-    push: PropTypes.func
-  }).isRequired
-};
-
-export default connect(null, { addPlace })(AddPlace);
+export default AddPlace;
