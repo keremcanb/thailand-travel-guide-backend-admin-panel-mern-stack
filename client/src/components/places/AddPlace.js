@@ -7,12 +7,6 @@ import FileUpload from '../upload/FileUpload';
 import useResources from '../../utils/useResources';
 
 const AddPlace = ({ history }) => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    document.title = 'Add Place';
-  }, []);
-
   const [place, setPlace] = useState({
     title: '',
     image: '',
@@ -27,10 +21,16 @@ const AddPlace = ({ history }) => {
   });
   const { title, content, location, category, info, link, lat, lng } = place;
 
+  const [submittedFileName, setSubmittedFileName] = useState('');
+
   const locations = useResources('locations');
   const categories = useResources('categories');
 
-  const [submittedFileName, setSubmittedFileName] = useState('');
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    document.title = 'Add Place';
+  }, []);
 
   const onChange = (e) => {
     setPlace({ ...place, [e.target.name]: e.target.value });

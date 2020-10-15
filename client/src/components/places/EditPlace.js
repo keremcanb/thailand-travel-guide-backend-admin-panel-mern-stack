@@ -7,10 +7,6 @@ import useResources from '../../utils/useResources';
 import FileUpload from '../upload/FileUpload';
 
 const EditPlace = ({ history }) => {
-  const dispatch = useDispatch();
-
-  const current = useSelector((state) => state.place.current);
-
   const [place, setPlace] = useState('');
   const {
     title,
@@ -24,10 +20,14 @@ const EditPlace = ({ history }) => {
     lng
   } = place;
 
+  const [submittedFileName, setSubmittedFileName] = useState('');
+
+  const current = useSelector((state) => state.place.current);
+
   const locations = useResources('locations');
   const categories = useResources('categories');
 
-  const [submittedFileName, setSubmittedFileName] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (current) {

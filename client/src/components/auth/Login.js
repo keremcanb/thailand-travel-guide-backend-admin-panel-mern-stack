@@ -6,12 +6,12 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import { login } from '../../actions/auth';
 
 const Login = () => {
-  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const { email, password } = formData;
 
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  const [formData, setFormData] = useState({ email: '', password: '' });
-  const { email, password } = formData;
+  const dispatch = useDispatch();
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });

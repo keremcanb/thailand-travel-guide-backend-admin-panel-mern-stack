@@ -6,10 +6,6 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import { register } from '../../actions/auth';
 
 const Register = () => {
-  const dispatch = useDispatch();
-
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -18,6 +14,10 @@ const Register = () => {
     password2: ''
   });
   const { firstName, lastName, email, password, password2 } = formData;
+
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  const dispatch = useDispatch();
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });

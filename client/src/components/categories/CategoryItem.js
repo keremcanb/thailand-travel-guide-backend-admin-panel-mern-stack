@@ -14,9 +14,9 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import { deleteCategory, setCurrent } from '../../actions/category';
 
 const CategoryItem = ({ category }) => {
-  const dispatch = useDispatch();
-
   const { thumbnail, title } = category;
+
+  const dispatch = useDispatch();
 
   const onClick = () => {
     dispatch(setCurrent(category));

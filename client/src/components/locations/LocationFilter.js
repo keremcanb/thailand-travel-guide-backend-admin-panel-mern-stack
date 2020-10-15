@@ -4,11 +4,11 @@ import { TextInput, Row } from 'react-materialize';
 import { filterLocations, clearFilter } from '../../actions/location';
 
 const LocationFilter = () => {
-  const dispatch = useDispatch();
-
   const filtered = useSelector((state) => state.location.filtered);
 
   const text = useRef('');
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!filtered) {

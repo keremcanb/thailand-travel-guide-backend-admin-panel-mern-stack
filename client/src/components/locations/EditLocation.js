@@ -6,14 +6,14 @@ import { updateLocation } from '../../actions/location';
 import FileUpload from '../upload/FileUpload';
 
 const EditLocation = ({ history }) => {
-  const dispatch = useDispatch();
-
-  const current = useSelector((state) => state.location.current);
-
   const [location, setLocation] = useState('');
   const { title, thumbnail } = location;
 
   const [submittedFileName, setSubmittedFileName] = useState('');
+
+  const current = useSelector((state) => state.location.current);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (current) {

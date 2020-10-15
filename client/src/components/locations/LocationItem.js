@@ -14,9 +14,9 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import { deleteLocation, setCurrent } from '../../actions/location';
 
 const LocationItem = ({ location }) => {
-  const dispatch = useDispatch();
-
   const { thumbnail, title } = location;
+
+  const dispatch = useDispatch();
 
   const onClick = () => {
     dispatch(setCurrent(location));

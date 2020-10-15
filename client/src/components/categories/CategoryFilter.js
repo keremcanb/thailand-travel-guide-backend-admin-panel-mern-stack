@@ -4,11 +4,11 @@ import { TextInput, Row } from 'react-materialize';
 import { filterCategories, clearFilter } from '../../actions/category';
 
 const CategoryFilter = () => {
-  const dispatch = useDispatch();
-
   const filtered = useSelector((state) => state.category.filtered);
 
   const text = useRef('');
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!filtered) {

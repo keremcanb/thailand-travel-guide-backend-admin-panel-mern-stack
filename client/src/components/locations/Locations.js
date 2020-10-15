@@ -9,10 +9,10 @@ import Loader from '../layout/Loader';
 import Fab from '../layout/Fab';
 
 const Locations = () => {
-  const dispatch = useDispatch();
-
   const location = useSelector((state) => state.location);
   const { locations, loading, filtered } = location;
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getLocations());

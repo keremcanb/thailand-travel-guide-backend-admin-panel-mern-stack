@@ -9,18 +9,18 @@ import useResources from '../../utils/useResources';
 import FileUpload from '../upload/FileUpload';
 
 const EditCategory = ({ history }) => {
-  const dispatch = useDispatch();
-
-  const current = useSelector((state) => state.category.current);
-
   const [category, setCategory] = useState('');
   const { title, thumbnail, location } = category;
+
+  const [submittedFileName, setSubmittedFileName] = useState('');
 
   const locations = useResources('locations');
 
   const animatedComponents = makeAnimated();
 
-  const [submittedFileName, setSubmittedFileName] = useState('');
+  const current = useSelector((state) => state.category.current);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (current) {

@@ -5,10 +5,10 @@ import { Navbar, NavItem, Icon } from 'react-materialize';
 import { logout } from '../../actions/auth';
 
 const Navigation = () => {
-  const dispatch = useDispatch();
-
   const auth = useSelector((state) => state.auth);
   const { isAuthenticated, loading } = auth;
+
+  const dispatch = useDispatch();
 
   const logOut = () => {
     dispatch(logout());

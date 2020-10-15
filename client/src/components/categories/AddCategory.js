@@ -9,8 +9,6 @@ import FileUpload from '../upload/FileUpload';
 import useResources from '../../utils/useResources';
 
 const AddCategory = ({ history }) => {
-  const dispatch = useDispatch();
-
   const [category, setCategory] = useState({
     title: '',
     thumbnail: '',
@@ -18,11 +16,13 @@ const AddCategory = ({ history }) => {
   });
   const { title, location } = category;
 
-  const locations = useResources('locations');
-
   const [submittedFileName, setSubmittedFileName] = useState('');
 
+  const locations = useResources('locations');
+
   const animatedComponents = makeAnimated();
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     document.title = 'Add Category';

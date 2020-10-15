@@ -15,9 +15,9 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import { deletePlace, setCurrent } from '../../actions/place';
 
 const PlaceItem = ({ place }) => {
-  const dispatch = useDispatch();
-
   const { thumbnail, title } = place;
+
+  const dispatch = useDispatch();
 
   const onClick = () => {
     dispatch(setCurrent(place));

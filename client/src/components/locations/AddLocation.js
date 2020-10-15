@@ -6,12 +6,12 @@ import { addLocation } from '../../actions/location';
 import FileUpload from '../upload/FileUpload';
 
 const AddLocation = ({ history }) => {
-  const dispatch = useDispatch();
-
   const [location, setLocation] = useState({ title: '', thumbnail: '' });
   const { title } = location;
 
   const [submittedFileName, setSubmittedFileName] = useState('');
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     document.title = 'Add Location';
