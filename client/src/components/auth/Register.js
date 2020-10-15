@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { TextInput, Button, Row, Icon, Container } from 'react-materialize';
-import PropTypes from 'prop-types';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { register } from '../../actions/auth';
 
-const Register = ({ register, isAuthenticated }) => {
+const Register = () => {
+  const dispatch = useDispatch();
+
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -32,7 +35,7 @@ const Register = ({ register, isAuthenticated }) => {
     } else if (password !== password2) {
       M.toast({ html: 'Passwords do not match' });
     } else {
-      register({ firstName, lastName, email, password });
+      dispatch(register({ firstName, lastName, email, password }));
     }
   };
 
@@ -112,13 +115,4 @@ const Register = ({ register, isAuthenticated }) => {
   );
 };
 
-Register.propTypes = {
-  register: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
-};
-
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated
-});
-
-export default connect(mapStateToProps, { register })(Register);
+export default Register;

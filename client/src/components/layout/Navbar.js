@@ -1,11 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Navbar, NavItem, Icon } from 'react-materialize';
 import { logout } from '../../actions/auth';
 
-const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
+const Navigation = () => {
+  const dispatch = useDispatch();
+
+  const auth = useSelector((state) => state.auth);
+  const { isAuthenticated, loading } = auth;
+
+  const logOut = () => {
+    dispatch(logout());
+  };
+
   const guestLinks = [
     <NavLink key={1} to="/login" href="/login" className="sidenav-close">
       Login
@@ -35,7 +43,7 @@ const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
     <NavLink key={3} to="/places" href="/places" className="sidenav-close">
       Places
     </NavLink>,
-    <NavItem key={4} onClick={logout}>
+    <NavItem key={4} onClick={logOut}>
       <Icon>logout</Icon>
     </NavItem>
   ];
@@ -66,13 +74,4 @@ const Navigation = ({ auth: { isAuthenticated, loading }, logout }) => {
   );
 };
 
-Navigation.propTypes = {
-  logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired
-};
-
-const mapStateToProps = (state) => ({
-  auth: state.auth
-});
-
-export default connect(mapStateToProps, { logout })(Navigation);
+export default Navigation;

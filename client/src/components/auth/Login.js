@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { TextInput, Button, Icon, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { login } from '../../actions/auth';
 
-const Login = ({ login, isAuthenticated }) => {
+const Login = () => {
+  const dispatch = useDispatch();
+
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
   const [formData, setFormData] = useState({ email: '', password: '' });
   const { email, password } = formData;
 
@@ -21,7 +24,7 @@ const Login = ({ login, isAuthenticated }) => {
     } else if (!password) {
       M.toast({ html: 'Please enter password' });
     } else {
-      login(email, password);
+      dispatch(login(email, password));
     }
   };
 
@@ -70,13 +73,4 @@ const Login = ({ login, isAuthenticated }) => {
   );
 };
 
-Login.propTypes = {
-  login: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
-};
-
-const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated
-});
-
-export default connect(mapStateToProps, { login })(Login);
+export default Login;
