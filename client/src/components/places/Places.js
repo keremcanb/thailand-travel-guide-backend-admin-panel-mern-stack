@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Row, Col, Preloader, Button, Icon } from 'react-materialize';
+import { Row, Col } from 'react-materialize';
 import { getPlaces } from '../../actions/place';
 import PlaceItem from './PlaceItem';
 import PlaceFilter from './PlaceFilter';
+import Loader from '../layout/Loader';
+import Fab from '../layout/Fab';
 
 const Places = () => {
   const dispatch = useDispatch();
@@ -20,7 +22,6 @@ const Places = () => {
   return (
     <>
       <PlaceFilter />
-
       {places && !loading ? (
         <Row>
           <Col className="grid-style">
@@ -34,23 +35,10 @@ const Places = () => {
           </Col>
         </Row>
       ) : (
-        <Preloader
-          className="loader"
-          active
-          color="blue"
-          flashing={false}
-          size="big"
-        />
+        <Loader />
       )}
       <Link to="addplace">
-        <Button
-          className="blue darken-2"
-          fab
-          floating
-          large
-          node="button"
-          icon={<Icon>add</Icon>}
-        />
+        <Fab />
       </Link>
     </>
   );

@@ -5,7 +5,7 @@ import { TextInput, Button, Row, Icon, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { register } from '../../actions/auth';
 
-const Register = ({ history }) => {
+const Register = () => {
   const dispatch = useDispatch();
 
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -36,7 +36,6 @@ const Register = ({ history }) => {
       M.toast({ html: 'Passwords do not match' });
     } else {
       dispatch(register({ firstName, lastName, email, password }));
-      history.push('dashboard');
     }
   };
 

@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Row, Col, Preloader, Button, Icon } from 'react-materialize';
+import { Row, Col } from 'react-materialize';
 import { getCategories } from '../../actions/category';
 import CategoryItem from './CategoryItem';
 import CategoryFilter from './CategoryFilter';
+import Loader from '../layout/Loader';
+import Fab from '../layout/Fab';
 
 const Categories = () => {
   const dispatch = useDispatch();
@@ -20,7 +22,6 @@ const Categories = () => {
   return (
     <>
       <CategoryFilter />
-
       {categories && !loading ? (
         <Row>
           <Col className="grid-style">
@@ -34,23 +35,10 @@ const Categories = () => {
           </Col>
         </Row>
       ) : (
-        <Preloader
-          className="loader"
-          active
-          color="blue"
-          flashing={false}
-          size="big"
-        />
+        <Loader />
       )}
       <Link to="addcategory">
-        <Button
-          className="blue darken-2"
-          fab
-          floating
-          large
-          node="button"
-          icon={<Icon>add</Icon>}
-        />
+        <Fab />
       </Link>
     </>
   );

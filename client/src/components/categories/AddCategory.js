@@ -20,9 +20,9 @@ const AddCategory = ({ history }) => {
 
   const locations = useResources('locations');
 
-  const animatedComponents = makeAnimated();
-
   const [submittedFileName, setSubmittedFileName] = useState('');
+
+  const animatedComponents = makeAnimated();
 
   useEffect(() => {
     document.title = 'Add Category';
@@ -36,8 +36,7 @@ const AddCategory = ({ history }) => {
     setCategory({ ...category, [action.name]: value });
   };
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async () => {
     if (!title) {
       M.toast({ html: 'Please enter title' });
     } else if (!location) {
