@@ -9,4 +9,9 @@ Libraries used for the back end are Express, Mongoose, Express Fileupload, Expre
 [Heroku Demo](https://tgradmin.herokuapp.com/)
 
 User: admin@example.com
+
 Password: 123456
+
+![alt text](https://tgr-admin.herokuapp.com/tn/bangkok.jpg/ss1.jpg)
+
+![alt text](https://tgr-admin.herokuapp.com/tn/bangkok.jpg/ss2.jpg)
