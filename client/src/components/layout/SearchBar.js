@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React from 'react';
 import { TextInput, Row } from 'react-materialize';
 
@@ -8,10 +7,6 @@ const SearchBox = ({ onSearch }) => {
       <TextInput type="search" placeholder="Filter" onChange={onSearch} />
     </Row>
   );
-};
-
-SearchBox.propTypes = {
-  onSearch: PropTypes.func.isRequired
 };
 
 export default SearchBox;

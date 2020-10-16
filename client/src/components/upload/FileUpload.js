@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, Icon, TextInput } from 'react-materialize';
@@ -54,10 +53,6 @@ const FileUpload = ({ updateFileNameToParent }) => {
       </form>
     </>
   );
-};
-
-FileUpload.propTypes = {
-  updateFileNameToParent: PropTypes.func.isRequired
 };
 
 export default FileUpload;
