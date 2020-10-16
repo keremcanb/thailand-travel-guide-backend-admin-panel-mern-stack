@@ -12,6 +12,6 @@ User: admin@example.com
 
 Password: 123456
 
-![alt text](https://tgr-admin.herokuapp.com/tn/bangkok.jpg/ss1.jpg)
+![alt text](https://raw.githubusercontent.com/keremcanb/thailand-travel-guide-dashboard-backend-mern-stack/master/public/ss1.jpg)
 
-![alt text](https://tgr-admin.herokuapp.com/tn/bangkok.jpg/ss2.jpg)
+![alt text](https://raw.githubusercontent.com/keremcanb/thailand-travel-guide-dashboard-backend-mern-stack/master/public/ss2.jpg)
