@@ -4,7 +4,7 @@ const connectDB = async () => {
   try {
     if (process.env.NODE_ENV === 'production') {
       await mongoose.connect(
-        `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@devconnector-l78xb.mongodb.net/tgr?retryWrites=true&w=majority`,
+        `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@devconnector-l78xb.mongodb.net/tgr-demo?retryWrites=true&w=majority`,
         {
           useNewUrlParser: true,
           useUnifiedTopology: true,
