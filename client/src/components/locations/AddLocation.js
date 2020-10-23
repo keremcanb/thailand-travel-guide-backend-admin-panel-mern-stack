@@ -8,10 +8,7 @@ import FileUpload from '../upload/FileUpload';
 const AddLocation = ({ history }) => {
   const [location, setLocation] = useState({ title: '', thumbnail: '' });
   const { title } = location;
-
   const [submittedFileName, setSubmittedFileName] = useState('');
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     document.title = 'Add Location';
@@ -20,6 +17,8 @@ const AddLocation = ({ history }) => {
   const onChange = (e) => {
     setLocation({ ...location, [e.target.name]: e.target.value });
   };
+
+  const dispatch = useDispatch();
 
   const onSubmit = () => {
     if (!title) {
