@@ -1,6 +1,6 @@
-# Thailand Travel Guide Dashboard & Back End
+# Thailand Travel Guide Admin Panel & Backend
 
-Dashboard & back end developed using MERN stack for my React Native mobile app
+Backend & responsive admin panel developed using MERN stack for my React Native mobile app
 
 Libraries used for the dashboard are React, Redux, Redux Thunk, React Router, Axios, Materialize
 
@@ -9,3 +9,9 @@ Libraries used for the back end are Express, Mongoose, Express Fileupload, Expre
 ![alt text](https://raw.githubusercontent.com/keremcanb/thailand-travel-guide-dashboard-backend-mern-stack/master/public/ss1.jpg)
 
 ![alt text](https://raw.githubusercontent.com/keremcanb/thailand-travel-guide-dashboard-backend-mern-stack/master/public/ss2.jpg)
+
+![alt text](https://raw.githubusercontent.com/keremcanb/thailand-travel-guide-dashboard-backend-mern-stack/master/public/ss3.jpg)
+
+![alt text](https://raw.githubusercontent.com/keremcanb/thailand-travel-guide-dashboard-backend-mern-stack/master/public/ss4.jpg)
+
+![alt text](https://raw.githubusercontent.com/keremcanb/thailand-travel-guide-dashboard-backend-mern-stack/master/public/ss5.jpg)

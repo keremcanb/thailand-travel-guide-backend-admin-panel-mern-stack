@@ -3,9 +3,9 @@ const compression = require('compression');
 const helmet = require('helmet');
 const cors = require('cors');
 const path = require('path');
+const morgan = require('morgan');
 const fileUpload = require('express-fileupload');
 const connectDB = require('./middleware/db');
-// require('dotenv').config();
 
 const app = express();
 
@@ -19,6 +19,9 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json({ extended: false }));
 app.use(express.static('public'));
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 // Define Routes
 app.use('/api', require('./routes/api/items'));
