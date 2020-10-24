@@ -8,10 +8,20 @@ Libraries used for the back end are Express, Mongoose, Express Fileupload, Expre
 
 ![alt text](https://raw.githubusercontent.com/keremcanb/thailand-travel-guide-dashboard-backend-mern-stack/master/public/ss1.jpg)
 
+---
+
 ![alt text](https://raw.githubusercontent.com/keremcanb/thailand-travel-guide-dashboard-backend-mern-stack/master/public/ss2.jpg)
+
+---
 
 ![alt text](https://raw.githubusercontent.com/keremcanb/thailand-travel-guide-dashboard-backend-mern-stack/master/public/ss3.jpg)
 
+---
+
 ![alt text](https://raw.githubusercontent.com/keremcanb/thailand-travel-guide-dashboard-backend-mern-stack/master/public/ss4.jpg)
 
+---
+
 ![alt text](https://raw.githubusercontent.com/keremcanb/thailand-travel-guide-dashboard-backend-mern-stack/master/public/ss5.jpg)
+
+---
