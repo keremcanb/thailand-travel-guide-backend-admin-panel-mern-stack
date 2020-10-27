@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import { TextInput, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { addLocation } from '../../actions/location';
@@ -9,10 +10,6 @@ const AddLocation = ({ history }) => {
   const [location, setLocation] = useState({ title: '', thumbnail: '' });
   const { title } = location;
   const [submittedFileName, setSubmittedFileName] = useState('');
-
-  useEffect(() => {
-    document.title = 'Add Location';
-  }, []);
 
   const onChange = (e) => {
     setLocation({ ...location, [e.target.name]: e.target.value });
@@ -36,22 +33,27 @@ const AddLocation = ({ history }) => {
   };
 
   return (
-    <Container className="center mt form-container">
-      <Row>
-        <form onSubmit={onSubmit}>
-          <TextInput
-            id="add-loc-title"
-            name="title"
-            label="Title *"
-            value={title}
-            onChange={onChange}
-            error="Enter title"
-            s={12}
-          />
-          <FileUpload updateFileNameToParent={setSubmittedFileName} />
-        </form>
-      </Row>
-    </Container>
+    <Helmet>
+      <Helmet>
+        <title>Add Location</title>
+      </Helmet>
+      <Container className="center mt form-container">
+        <Row>
+          <form onSubmit={onSubmit}>
+            <TextInput
+              id="add-loc-title"
+              name="title"
+              label="Title *"
+              value={title}
+              onChange={onChange}
+              error="Enter title"
+              s={12}
+            />
+            <FileUpload updateFileNameToParent={setSubmittedFileName} />
+          </form>
+        </Row>
+      </Container>
+    </Helmet>
   );
 };
 

@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import makeAnimated from 'react-select/animated';
 import Select from 'react-select';
+import { Helmet } from 'react-helmet';
 import { TextInput, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { addCategory } from '../../actions/category';
@@ -23,10 +24,6 @@ const AddCategory = ({ history }) => {
   const animatedComponents = makeAnimated();
 
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    document.title = 'Add Category';
-  }, []);
 
   const onChange = (e) => {
     setCategory({ ...category, [e.target.name]: e.target.value });
@@ -54,35 +51,40 @@ const AddCategory = ({ history }) => {
   };
 
   return (
-    <Container className="center mt form-container">
-      <Row>
-        <form onSubmit={onSubmit}>
-          <Select
-            id="add-cat-loc"
-            name="location"
-            placeholder="Location *"
-            value={location}
-            onChange={onSelect}
-            components={animatedComponents}
-            closeMenuOnSelect={false}
-            isMulti
-            options={locations.map((loc) => ({
-              value: loc.title,
-              label: loc.title
-            }))}
-          />
-          <TextInput
-            id="add-cat-title"
-            name="title"
-            placeholder="Title *"
-            value={title}
-            onChange={onChange}
-            s={12}
-          />
-          <FileUpload updateFileNameToParent={setSubmittedFileName} />
-        </form>
-      </Row>
-    </Container>
+    <>
+      <Helmet>
+        <title>Add Category</title>
+      </Helmet>
+      <Container className="center mt form-container">
+        <Row>
+          <form onSubmit={onSubmit}>
+            <Select
+              id="add-cat-loc"
+              name="location"
+              placeholder="Location *"
+              value={location}
+              onChange={onSelect}
+              components={animatedComponents}
+              closeMenuOnSelect={false}
+              isMulti
+              options={locations.map((loc) => ({
+                value: loc.title,
+                label: loc.title
+              }))}
+            />
+            <TextInput
+              id="add-cat-title"
+              name="title"
+              placeholder="Title *"
+              value={title}
+              onChange={onChange}
+              s={12}
+            />
+            <FileUpload updateFileNameToParent={setSubmittedFileName} />
+          </form>
+        </Row>
+      </Container>
+    </>
   );
 };
 

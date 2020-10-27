@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import { TextInput, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { updateLocation } from '../../actions/location';
@@ -19,7 +20,6 @@ const EditLocation = ({ history }) => {
     if (current) {
       setLocation(current);
     }
-    document.title = 'Edit Location';
   }, [current]);
 
   const onChange = (e) => {
@@ -38,24 +38,29 @@ const EditLocation = ({ history }) => {
   };
 
   return (
-    <Container className="center mt form-container">
-      <Row>
-        <form onSubmit={onSubmit}>
-          <TextInput
-            id="edit-loc-title"
-            name="title"
-            label="Title"
-            value={title}
-            onChange={onChange}
-            s={12}
-          />
-          <Row>
-            <img src={thumbnail} alt="" width="200" />
-          </Row>
-          <FileUpload updateFileNameToParent={setSubmittedFileName} />
-        </form>
-      </Row>
-    </Container>
+    <>
+      <Helmet>
+        <title>Edit Location</title>
+      </Helmet>
+      <Container className="center mt form-container">
+        <Row>
+          <form onSubmit={onSubmit}>
+            <TextInput
+              id="edit-loc-title"
+              name="title"
+              label="Title"
+              value={title}
+              onChange={onChange}
+              s={12}
+            />
+            <Row>
+              <img src={thumbnail} alt="" width="200" />
+            </Row>
+            <FileUpload updateFileNameToParent={setSubmittedFileName} />
+          </form>
+        </Row>
+      </Container>
+    </>
   );
 };
 

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-materialize';
+import { Helmet } from 'react-helmet';
 import { getCategories } from '../../actions/category';
 import CategoryItem from './CategoryItem';
 import CategoryFilter from './CategoryFilter';
@@ -16,11 +17,13 @@ const Categories = () => {
 
   useEffect(() => {
     dispatch(getCategories());
-    document.title = 'Categories';
   }, [dispatch]);
 
   return (
     <>
+      <Helmet>
+        <title>Categories</title>
+      </Helmet>
       <CategoryFilter />
       {categories && !loading ? (
         <Row>

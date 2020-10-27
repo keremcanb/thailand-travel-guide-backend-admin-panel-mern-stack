@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-materialize';
+import { Helmet } from 'react-helmet';
 import { getLocations } from '../../actions/location';
 import LocationItem from './LocationItem';
 import LocationFilter from './LocationFilter';
@@ -16,11 +17,13 @@ const Locations = () => {
 
   useEffect(() => {
     dispatch(getLocations());
-    document.title = 'Locations';
   }, [dispatch]);
 
   return (
     <>
+      <Helmet>
+        <title>Locations</title>
+      </Helmet>
       <LocationFilter />
       {locations && !loading ? (
         <Row>

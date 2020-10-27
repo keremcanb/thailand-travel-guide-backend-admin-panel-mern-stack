@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-materialize';
+import { Helmet } from 'react-helmet';
 import { getPlaces } from '../../actions/place';
 import PlaceItem from './PlaceItem';
 import PlaceFilter from './PlaceFilter';
@@ -16,11 +17,13 @@ const Places = () => {
 
   useEffect(() => {
     dispatch(getPlaces());
-    document.title = 'Places';
   }, [dispatch]);
 
   return (
     <>
+      <Helmet>
+        <title>Places</title>
+      </Helmet>
       <PlaceFilter />
       {places && !loading ? (
         <Row>
