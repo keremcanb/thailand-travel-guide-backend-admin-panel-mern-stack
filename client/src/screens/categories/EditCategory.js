@@ -1,21 +1,17 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import makeAnimated from 'react-select/animated';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
+import makeAnimated from 'react-select/animated';
 import { Helmet } from 'react-helmet';
 import { TextInput, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { addCategory } from '../../actions/category';
-import FileUpload from '../upload/FileUpload';
+import { updateCategory } from '../../store/actions/category';
 import useResources from '../../utils/useResources';
+import FileUpload from '../../components/upload/FileUpload';
 
-const AddCategory = ({ history }) => {
-  const [category, setCategory] = useState({
-    title: '',
-    thumbnail: '',
-    location: ''
-  });
-  const { title, location } = category;
+const EditCategory = ({ history }) => {
+  const [category, setCategory] = useState('');
+  const { title, thumbnail, location } = category;
 
   const [submittedFileName, setSubmittedFileName] = useState('');
 
@@ -23,7 +19,15 @@ const AddCategory = ({ history }) => {
 
   const animatedComponents = makeAnimated();
 
+  const current = useSelector((state) => state.category.current);
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (current) {
+      setCategory(current);
+    }
+  }, [current]);
 
   const onChange = (e) => {
     setCategory({ ...category, [e.target.name]: e.target.value });
@@ -33,53 +37,53 @@ const AddCategory = ({ history }) => {
     setCategory({ ...category, [action.name]: value });
   };
 
-  const onSubmit = async () => {
-    if (!title) {
-      M.toast({ html: 'Please enter title' });
-    } else if (!location) {
-      M.toast({ html: 'Please enter location' });
-    } else {
-      dispatch(
-        addCategory({
-          ...category,
-          thumbnail: submittedFileName
-        })
-      );
-      M.toast({ html: `${title} added` });
-      history.push('categories');
-    }
+  const onSubmit = () => {
+    dispatch(updateCategory({ ...category, thumbnail: submittedFileName }));
+    M.toast({ html: `${title} updated` });
+    history.push('categories');
   };
 
   return (
     <>
       <Helmet>
-        <title>Add Category</title>
+        <title>Edit Category</title>
       </Helmet>
       <Container className="center mt form-container">
         <Row>
           <form onSubmit={onSubmit}>
+            {location &&
+              location.map((loc) => {
+                return (
+                  <li style={{ display: 'inline' }} key={loc.value}>
+                    {loc.label},{' '}
+                  </li>
+                );
+              })}
             <Select
-              id="add-cat-loc"
-              name="location"
-              placeholder="Location *"
-              value={location}
+              id="edit-cat-loc"
+              name="locations"
+              placeholder="Location"
               onChange={onSelect}
               components={animatedComponents}
               closeMenuOnSelect={false}
               isMulti
+              // value={location}
               options={locations.map((loc) => ({
                 value: loc.title,
                 label: loc.title
               }))}
             />
             <TextInput
-              id="add-cat-title"
+              id="edit-cat-title"
               name="title"
-              placeholder="Title *"
+              label="Title"
               value={title}
               onChange={onChange}
               s={12}
             />
+            <Row>
+              <img src={thumbnail} alt="" width="200" />
+            </Row>
             <FileUpload updateFileNameToParent={setSubmittedFileName} />
           </form>
         </Row>
@@ -88,4 +92,4 @@ const AddCategory = ({ history }) => {
   );
 };
 
-export default AddCategory;
+export default EditCategory;

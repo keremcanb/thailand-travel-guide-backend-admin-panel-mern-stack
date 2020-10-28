@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+// import FadeIn from 'react-lazyload-fadein';
 import {
   Col,
   Row,
@@ -11,19 +12,19 @@ import {
   Button
 } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { deleteLocation, setCurrent } from '../../actions/location';
+import { deletePlace, setCurrent } from '../../store/actions/place';
 
-const LocationItem = ({ location }) => {
-  const { thumbnail, title } = location;
+const PlaceItem = ({ place }) => {
+  const { thumbnail, title } = place;
 
   const dispatch = useDispatch();
 
   const onClick = () => {
-    dispatch(setCurrent(location));
+    dispatch(setCurrent(place));
   };
 
   const onDelete = () => {
-    dispatch(deleteLocation(location._id));
+    dispatch(deletePlace(place._id));
     M.toast({ html: `${title} deleted` });
   };
 
@@ -34,13 +35,23 @@ const LocationItem = ({ location }) => {
           className="hoverable"
           header={
             <>
-              <img src={thumbnail} alt={title} width="200px" height="150px" />
+              {/* <FadeIn height={150}>
+                {(onload) => ( */}
+              <img
+                src={thumbnail}
+                alt={title}
+                width="200"
+                height="150"
+                // onLoad={onload}
+              />
+              {/* )}
+              </FadeIn> */}
               <CardTitle>{title}</CardTitle>
             </>
           }
         >
           <Row className="center">
-            <Link to="editlocation">
+            <Link to="editplace">
               <Button
                 className="blue darken-2 mr"
                 floating
@@ -84,4 +95,4 @@ const LocationItem = ({ location }) => {
   );
 };
 
-export default LocationItem;
+export default PlaceItem;

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { TextInput, Button, Row, Icon, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { register } from '../../actions/auth';
+import { register } from '../../store/actions/auth';
 
 const Register = () => {
   const [formData, setFormData] = useState({

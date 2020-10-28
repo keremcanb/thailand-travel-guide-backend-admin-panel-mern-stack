@@ -1,26 +1,26 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import Login from '../auth/Login';
-import Register from '../auth/Register';
+import Login from '../../screens/auth/Login';
+// import Register from '../../screens/auth/Register';
 import Dashboard from '../layout/Dashboard';
 import NotFound from '../layout/NotFound';
 import PrivateRoute from './PrivateRoute';
-import Locations from '../locations/Locations';
-import Categories from '../categories/Categories';
-import Places from '../places/Places';
-import AddLocation from '../locations/AddLocation';
-import AddCategory from '../categories/AddCategory';
-import AddPlace from '../places/AddPlace';
-import EditLocation from '../locations/EditLocation';
-import EditCategory from '../categories/EditCategory';
-import EditPlace from '../places/EditPlace';
+import Locations from '../../screens/locations/Locations';
+import Categories from '../../screens/categories/Categories';
+import Places from '../../screens/places/Places';
+import AddLocation from '../../screens/locations/AddLocation';
+import AddCategory from '../../screens/categories/AddCategory';
+import AddPlace from '../../screens/places/AddPlace';
+import EditLocation from '../../screens/locations/EditLocation';
+import EditCategory from '../../screens/categories/EditCategory';
+import EditPlace from '../../screens/places/EditPlace';
 
 const Routes = () => {
   return (
     <section className="container">
       <Switch>
         <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
+        {/* <Route exact path="/register" component={Register} /> */}
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/locations" component={Locations} />
         <PrivateRoute exact path="/categories" component={Categories} />

@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { TextInput, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { updateLocation } from '../../actions/location';
-import FileUpload from '../upload/FileUpload';
+import { updateLocation } from '../../store/actions/location';
+import FileUpload from '../../components/upload/FileUpload';
 
 const EditLocation = ({ history }) => {
   const [location, setLocation] = useState('');

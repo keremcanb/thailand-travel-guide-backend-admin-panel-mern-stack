@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { TextInput, Button, Icon, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { login } from '../../actions/auth';
+import { login } from '../../store/actions/auth';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });

@@ -1,69 +1,85 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { TextInput, Textarea, Select, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { updatePlace } from '../../actions/place';
+import { addPlace } from '../../store/actions/place';
+import FileUpload from '../../components/upload/FileUpload';
 import useResources from '../../utils/useResources';
-import FileUpload from '../upload/FileUpload';
 
-const EditPlace = ({ history }) => {
-  const [place, setPlace] = useState('');
-  const {
-    title,
-    thumbnail,
-    content,
-    location,
-    category,
-    info,
-    link,
-    lat,
-    lng
-  } = place;
+const AddPlace = ({ history }) => {
+  const [place, setPlace] = useState({
+    title: '',
+    image: '',
+    thumbnail: '',
+    content: '',
+    location: '',
+    category: '',
+    info: '',
+    link: '',
+    lat: '',
+    lng: ''
+  });
+  const { title, content, location, category, info, link, lat, lng } = place;
 
   const [submittedFileName, setSubmittedFileName] = useState('');
-
-  const current = useSelector((state) => state.place.current);
 
   const locations = useResources('locations');
   const categories = useResources('categories');
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (current) {
-      setPlace(current);
-    }
-  }, [current]);
-
   const onChange = (e) => {
     setPlace({ ...place, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = () => {
-    dispatch(updatePlace({ ...place, thumbnail: submittedFileName }));
-    M.toast({ html: `${title} updated` });
-    history.push('places');
+  const onSubmit = async () => {
+    if (!title) {
+      M.toast({ html: 'Please enter title' });
+    } else if (!content) {
+      M.toast({ html: 'Please enter content' });
+    } else if (!category) {
+      M.toast({ html: 'Please enter category' });
+    } else if (!location) {
+      M.toast({ html: 'Please enter location' });
+    } else {
+      dispatch(
+        addPlace({
+          ...place,
+          thumbnail: submittedFileName
+        })
+      );
+      M.toast({ html: `${title} added` });
+      history.push('places');
+    }
   };
 
   return (
     <>
       <Helmet>
-        <title>Edit Place</title>
+        <title>Add Place</title>
       </Helmet>
       <Container className="center mt form-container">
         <Row>
           <form onSubmit={onSubmit}>
             <TextInput
-              id="edit-place-title"
+              id="add-place-title"
               name="title"
               label="Title"
               value={title}
               onChange={onChange}
               s={12}
             />
+            {/* <TextInput
+              id="add-place-image"
+              name="image"
+              label="Image"
+              value={image}
+              onChange={onChange}
+              s={12}
+            /> */}
             <Textarea
-              id="edit-place-content"
+              id="add-place-content"
               name="content"
               label="Content"
               value={content}
@@ -71,13 +87,15 @@ const EditPlace = ({ history }) => {
               s={12}
             />
             <Select
-              id="edit-place-loc"
+              id="add-place-loc"
               name="location"
-              label="Location"
               value={location}
               onChange={onChange}
               s={6}
             >
+              <option disabled value="">
+                Location
+              </option>
               {locations.map((loc) => (
                 <option key={loc._id} value={loc.title}>
                   {loc.title}
@@ -85,13 +103,15 @@ const EditPlace = ({ history }) => {
               ))}
             </Select>
             <Select
-              id="edit-place-cat"
+              id="add-place-cat"
               name="category"
-              label="Category"
               value={category}
               onChange={onChange}
               s={6}
             >
+              <option disabled value="">
+                Category
+              </option>
               {categories.map((cat) => (
                 <option key={cat._id} value={cat.title}>
                   {cat.title}
@@ -99,7 +119,7 @@ const EditPlace = ({ history }) => {
               ))}
             </Select>
             <TextInput
-              id="edit-place-info"
+              id="add-place-info"
               name="info"
               label="Info"
               value={info}
@@ -107,7 +127,7 @@ const EditPlace = ({ history }) => {
               s={12}
             />
             <TextInput
-              id="edit-place-link"
+              id="add-place-link"
               name="link"
               label="Link"
               value={link}
@@ -115,7 +135,7 @@ const EditPlace = ({ history }) => {
               s={12}
             />
             <TextInput
-              id="edit-place-lat"
+              id="add-place-lat"
               name="lat"
               label="Lat"
               value={lat}
@@ -123,16 +143,13 @@ const EditPlace = ({ history }) => {
               s={6}
             />
             <TextInput
-              id="edit-place-lng"
+              id="add-place-lng"
               name="lng"
               label="Lng"
               value={lng}
               onChange={onChange}
               s={6}
             />
-            <Row>
-              <img src={thumbnail} alt="" width="200" />
-            </Row>
             <FileUpload updateFileNameToParent={setSubmittedFileName} />
           </form>
         </Row>
@@ -141,4 +158,4 @@ const EditPlace = ({ history }) => {
   );
 };
 
-export default EditPlace;
+export default AddPlace;

@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Navbar, NavItem, Icon } from 'react-materialize';
-import { logout } from '../../actions/auth';
+import { logout } from '../../store/actions/auth';
 
 const Navigation = () => {
   const auth = useSelector((state) => state.auth);

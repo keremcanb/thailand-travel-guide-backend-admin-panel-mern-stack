@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-materialize';
 import { Helmet } from 'react-helmet';
-import { getPlaces } from '../../actions/place';
+import { getPlaces } from '../../store/actions/place';
 import PlaceItem from './PlaceItem';
 import PlaceFilter from './PlaceFilter';
-import Loader from '../layout/Loader';
-import Fab from '../layout/Fab';
+import Loader from '../../components/layout/Loader';
+import Fab from '../../components/layout/Fab';
 
 const Places = () => {
   const place = useSelector((state) => state.place);

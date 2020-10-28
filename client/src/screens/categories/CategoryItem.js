@@ -11,7 +11,7 @@ import {
   Button
 } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { deleteCategory, setCurrent } from '../../actions/category';
+import { deleteCategory, setCurrent } from '../../store/actions/category';
 
 const CategoryItem = ({ category }) => {
   const { thumbnail, title } = category;

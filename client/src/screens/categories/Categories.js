@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-materialize';
 import { Helmet } from 'react-helmet';
-import { getCategories } from '../../actions/category';
+import { getCategories } from '../../store/actions/category';
 import CategoryItem from './CategoryItem';
 import CategoryFilter from './CategoryFilter';
-import Loader from '../layout/Loader';
-import Fab from '../layout/Fab';
+import Loader from '../../components/layout/Loader';
+import Fab from '../../components/layout/Fab';
 
 const Categories = () => {
   const category = useSelector((state) => state.category);

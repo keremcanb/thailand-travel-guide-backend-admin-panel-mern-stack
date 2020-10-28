@@ -3,8 +3,8 @@ import { useDispatch } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { TextInput, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { addLocation } from '../../actions/location';
-import FileUpload from '../upload/FileUpload';
+import { addLocation } from '../../store/actions/location';
+import FileUpload from '../../components/upload/FileUpload';
 
 const AddLocation = ({ history }) => {
   const [location, setLocation] = useState({ title: '', thumbnail: '' });

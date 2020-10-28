@@ -3,11 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-materialize';
 import { Helmet } from 'react-helmet';
-import { getLocations } from '../../actions/location';
+import { getLocations } from '../../store/actions/location';
 import LocationItem from './LocationItem';
 import LocationFilter from './LocationFilter';
-import Loader from '../layout/Loader';
-import Fab from '../layout/Fab';
+import Loader from '../../components/layout/Loader';
+import Fab from '../../components/layout/Fab';
 
 const Locations = () => {
   const location = useSelector((state) => state.location);

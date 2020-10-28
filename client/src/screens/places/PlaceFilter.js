@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TextInput, Row } from 'react-materialize';
-import { filterPlaces, clearFilter } from '../../actions/place';
+import { filterPlaces, clearFilter } from '../../store/actions/place';
 
 const PlaceFilter = () => {
   const filtered = useSelector((state) => state.place.filtered);

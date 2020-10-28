@@ -1,10 +1,10 @@
 import React, { useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TextInput, Row } from 'react-materialize';
-import { filterCategories, clearFilter } from '../../actions/category';
+import { filterLocations, clearFilter } from '../../store/actions/location';
 
-const CategoryFilter = () => {
-  const filtered = useSelector((state) => state.category.filtered);
+const LocationFilter = () => {
+  const filtered = useSelector((state) => state.location.filtered);
 
   const text = useRef('');
 
@@ -18,7 +18,7 @@ const CategoryFilter = () => {
 
   const onChange = (e) => {
     if (text.current.value !== '') {
-      dispatch(filterCategories(e.target.value));
+      dispatch(filterLocations(e.target.value));
     } else {
       dispatch(clearFilter());
     }
@@ -31,4 +31,4 @@ const CategoryFilter = () => {
   );
 };
 
-export default CategoryFilter;
+export default LocationFilter;
