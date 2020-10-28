@@ -1,9 +1,9 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Login from '../../screens/auth/Login';
-// import Register from '../../screens/auth/Register';
-import Dashboard from '../layout/Dashboard';
-import NotFound from '../layout/NotFound';
+import Register from '../../screens/auth/Register';
+import Dashboard from '../../components/layout/Dashboard';
+import NotFound from '../../components/layout/NotFound';
 import PrivateRoute from './PrivateRoute';
 import Locations from '../../screens/locations/Locations';
 import Categories from '../../screens/categories/Categories';
@@ -20,7 +20,7 @@ const Routes = () => {
     <section className="container">
       <Switch>
         <Route exact path="/login" component={Login} />
-        {/* <Route exact path="/register" component={Register} /> */}
+        <Route exact path="/register" component={Register} />
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <PrivateRoute exact path="/locations" component={Locations} />
         <PrivateRoute exact path="/categories" component={Categories} />
