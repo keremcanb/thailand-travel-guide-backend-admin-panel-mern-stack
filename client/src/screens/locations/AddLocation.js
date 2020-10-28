@@ -33,7 +33,7 @@ const AddLocation = ({ history }) => {
   };
 
   return (
-    <Helmet>
+    <>
       <Helmet>
         <title>Add Location</title>
       </Helmet>
@@ -53,7 +53,7 @@ const AddLocation = ({ history }) => {
           </form>
         </Row>
       </Container>
-    </Helmet>
+    </>
   );
 };
 
