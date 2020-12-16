@@ -19,18 +19,19 @@ const Routes = () => {
   return (
     <section className="container">
       <Switch>
-        <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        <PrivateRoute exact path="/dashboard" component={Dashboard} />
-        <PrivateRoute exact path="/locations" component={Locations} />
-        <PrivateRoute exact path="/categories" component={Categories} />
-        <PrivateRoute exact path="/places" component={Places} />
-        <PrivateRoute exact path="/addlocation" component={AddLocation} />
-        <PrivateRoute exact path="/addcategory" component={AddCategory} />
-        <PrivateRoute exact path="/addplace" component={AddPlace} />
-        <PrivateRoute exact path="/editlocation" component={EditLocation} />
-        <PrivateRoute exact path="/editcategory" component={EditCategory} />
-        <PrivateRoute exact path="/editplace" component={EditPlace} />
+        <Route path="/" component={Dashboard} exact />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <PrivateRoute path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/locations" component={Locations} />
+        <PrivateRoute path="/categories" component={Categories} />
+        <PrivateRoute path="/places" component={Places} />
+        <PrivateRoute path="/addlocation" component={AddLocation} />
+        <PrivateRoute path="/addcategory" component={AddCategory} />
+        <PrivateRoute path="/addplace" component={AddPlace} />
+        <PrivateRoute path="/editlocation" component={EditLocation} />
+        <PrivateRoute path="/editcategory" component={EditCategory} />
+        <PrivateRoute path="/editplace" component={EditPlace} />
         <Route component={NotFound} />
       </Switch>
     </section>
