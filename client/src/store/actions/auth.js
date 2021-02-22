@@ -1,6 +1,12 @@
-import axios from 'axios';
-import { REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from './types';
+import { get, post } from 'axios';
+import { REGISTER_SUCCESS, REGISTER_FAIL, USER_LOADED, AUTH_ERROR, LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from '../types';
 import setAuthToken from '../../utils/setAuthToken';
+
+const headers = {
+  headers: {
+    'Content-Type': 'application/json'
+  }
+};
 
 // Load User
 export const loadUser = () => async (dispatch) => {
@@ -8,10 +14,10 @@ export const loadUser = () => async (dispatch) => {
     setAuthToken(localStorage.token);
   }
   try {
-    const res = await axios.get('/api/auth');
+    const { data } = await get('/api/auth');
     dispatch({
       type: USER_LOADED,
-      payload: res.data
+      payload: data
     });
   } catch (err) {
     dispatch({
@@ -29,18 +35,17 @@ export const register = ({ firstName, lastName, email, password }) => async (dis
   };
   const body = JSON.stringify({ firstName, lastName, email, password });
   try {
-    const res = await axios.post('/api/users', body, config);
+    const { data } = await post('/api/users', body, config);
 
     dispatch({
       type: REGISTER_SUCCESS,
-      payload: res.data
+      payload: data
     });
   } catch (err) {
     const { errors } = err.response.data;
     if (errors) {
       // errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
     }
-
     dispatch({
       type: REGISTER_FAIL
     });
@@ -49,17 +54,12 @@ export const register = ({ firstName, lastName, email, password }) => async (dis
 
 // Login User
 export const login = (email, password) => async (dispatch) => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  };
   const body = JSON.stringify({ email, password });
   try {
-    const res = await axios.post('/api/auth', body, config);
+    const { data } = await post('/api/auth', body, headers);
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: res.data
+      payload: data
     });
     dispatch(loadUser());
   } catch (err) {

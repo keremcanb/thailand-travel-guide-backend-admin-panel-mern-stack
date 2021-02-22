@@ -5,8 +5,8 @@ const useResources = (resource) => {
   const [resources, setResources] = useState([]);
 
   const fetchResource = async (resource) => {
-    const response = await get(`/api/${resource}`);
-    setResources(response.data);
+    const { data } = await get(`/api/${resource}`);
+    setResources(data);
   };
 
   useEffect(() => {

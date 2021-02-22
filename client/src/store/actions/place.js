@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { get, post, patch } from 'axios';
 import {
   GET_PLACES,
   SET_LOADING,
@@ -10,7 +10,7 @@ import {
   CLEAR_CURRENT,
   FILTER_PLACES,
   CLEAR_FILTER
-} from './types';
+} from '../types';
 
 // Set loading to true
 export const setLoading = () => ({
@@ -21,8 +21,7 @@ export const setLoading = () => ({
 export const getPlaces = () => async (dispatch) => {
   try {
     setLoading();
-    const res = await axios.get('/api/places');
-    const data = await res.data;
+    const { data } = await get('/api/places');
     dispatch({
       type: GET_PLACES,
       payload: data
@@ -39,8 +38,7 @@ export const getPlaces = () => async (dispatch) => {
 export const addPlace = (place) => async (dispatch) => {
   try {
     setLoading();
-    const res = await axios.post('/api/places', place);
-    const data = await res.data;
+    const { data } = await post('/api/places', place);
     dispatch({
       type: ADD_PLACE,
       payload: data
@@ -58,8 +56,7 @@ export const addPlace = (place) => async (dispatch) => {
 export const updatePlace = (place) => async (dispatch) => {
   try {
     setLoading();
-    const res = await axios.patch(`/api/places/${place._id}`, place);
-    const data = await res.data;
+    const { data } = await patch(`/api/places/${place._id}`, place);
     dispatch({
       type: UPDATE_PLACE,
       payload: data

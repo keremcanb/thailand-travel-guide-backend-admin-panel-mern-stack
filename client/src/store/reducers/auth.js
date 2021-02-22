@@ -1,4 +1,4 @@
-import { REGISTER_SUCCESS, USER_LOADED, LOGIN_SUCCESS, LOGOUT } from '../actions/types';
+import { REGISTER_SUCCESS, USER_LOADED, LOGIN_SUCCESS, LOGOUT } from '../types';
 
 const initialState = {
   token: localStorage.getItem('token'),
@@ -7,7 +7,6 @@ const initialState = {
   user: null
 };
 
-// eslint-disable-next-line
 export default function (state = initialState, action) {
   const { type, payload } = action;
 

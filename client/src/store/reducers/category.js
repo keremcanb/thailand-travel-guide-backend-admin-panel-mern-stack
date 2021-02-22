@@ -9,7 +9,7 @@ import {
   CLEAR_CURRENT,
   FILTER_CATEGORIES,
   CLEAR_FILTER
-} from '../actions/types';
+} from '../types';
 
 const initialState = {
   categories: null,
@@ -19,9 +19,9 @@ const initialState = {
   error: null
 };
 
-// eslint-disable-next-line
 export default function (state = initialState, action) {
   const { type, payload } = action;
+  const { categories } = state;
 
   switch (type) {
     case GET_CATEGORIES:
@@ -29,25 +29,25 @@ export default function (state = initialState, action) {
     case ADD_CATEGORY:
       return {
         ...state,
-        categories: [...state.categories, payload],
+        categories: [...categories, payload],
         loading: false
       };
     case UPDATE_CATEGORY:
       return {
         ...state,
-        categories: state.categories.map((category) => (category._id === payload._id ? payload : category)),
+        categories: categories.map((category) => (category._id === payload._id ? payload : category)),
         loading: false
       };
     case DELETE_CATEGORY:
       return {
         ...state,
-        categories: state.categories.filter((category) => category._id !== payload),
+        categories: categories.filter((category) => category._id !== payload),
         loading: false
       };
     case FILTER_CATEGORIES:
       return {
         ...state,
-        filtered: state.categories.filter((category) => {
+        filtered: categories.filter((category) => {
           const regex = new RegExp(`${action.payload}`, 'gi');
           return category.title.match(regex);
         })

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { loadUser } from './store/actions/auth';
 import setAuthToken from './utils/setAuthToken';
-import store from './store';
+import store from './store/store';
 import Routes from './components/routing/Routes';
 import Navbar from './components/layout/Navbar';
 import Login from './screens/auth/Login';

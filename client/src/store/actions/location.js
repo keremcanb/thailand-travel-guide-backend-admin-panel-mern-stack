@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { get, post, patch } from 'axios';
 import {
   GET_LOCATIONS,
   SET_LOADING,
@@ -10,7 +10,7 @@ import {
   CLEAR_CURRENT,
   FILTER_LOCATIONS,
   CLEAR_FILTER
-} from './types';
+} from '../types';
 
 // Set loading to true
 export const setLoading = () => ({
@@ -21,9 +21,7 @@ export const setLoading = () => ({
 export const getLocations = () => async (dispatch) => {
   try {
     setLoading();
-
-    const { data } = await axios.get('/api/locations');
-
+    const { data } = await get('/api/locations');
     dispatch({
       type: GET_LOCATIONS,
       payload: data
@@ -40,9 +38,7 @@ export const getLocations = () => async (dispatch) => {
 export const addLocation = (location) => async (dispatch) => {
   try {
     setLoading();
-
-    const { data } = await axios.post('/api/locations', location);
-
+    const { data } = await post('/api/locations', location);
     dispatch({
       type: ADD_LOCATION,
       payload: data
@@ -60,9 +56,7 @@ export const addLocation = (location) => async (dispatch) => {
 export const updateLocation = (location) => async (dispatch) => {
   try {
     setLoading();
-
-    const { data } = await axios.patch(`/api/locations/${location._id}`, location);
-
+    const { data } = await patch(`/api/locations/${location._id}`, location);
     dispatch({
       type: UPDATE_LOCATION,
       payload: data
@@ -79,9 +73,7 @@ export const updateLocation = (location) => async (dispatch) => {
 export const deleteLocation = (id) => async (dispatch) => {
   try {
     setLoading();
-
     await axios.delete(`/api/locations/${id}`);
-
     dispatch({
       type: DELETE_LOCATION,
       payload: id

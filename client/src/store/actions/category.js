@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { get, post, patch } from 'axios';
 import {
   GET_CATEGORIES,
   SET_LOADING,
@@ -10,7 +10,7 @@ import {
   CLEAR_CURRENT,
   FILTER_CATEGORIES,
   CLEAR_FILTER
-} from './types';
+} from '../types';
 
 // Set loading to true
 export const setLoading = () => ({
@@ -21,8 +21,7 @@ export const setLoading = () => ({
 export const getCategories = () => async (dispatch) => {
   try {
     setLoading();
-    const res = await axios.get('/api/categories');
-    const data = await res.data;
+    const { data } = await get('/api/categories');
     dispatch({
       type: GET_CATEGORIES,
       payload: data
@@ -39,8 +38,7 @@ export const getCategories = () => async (dispatch) => {
 export const addCategory = (category) => async (dispatch) => {
   try {
     setLoading();
-    const res = await axios.post('/api/categories', category);
-    const data = await res.data;
+    const { data } = await post('/api/categories', category);
     dispatch({
       type: ADD_CATEGORY,
       payload: data
@@ -58,8 +56,7 @@ export const addCategory = (category) => async (dispatch) => {
 export const updateCategory = (category) => async (dispatch) => {
   try {
     setLoading();
-    const res = await axios.patch(`/api/categories/${category._id}`, category);
-    const data = await res.data;
+    const { data } = await patch(`/api/categories/${category._id}`, category);
     dispatch({
       type: UPDATE_CATEGORY,
       payload: data

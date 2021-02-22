@@ -9,7 +9,7 @@ import {
   CLEAR_CURRENT,
   FILTER_LOCATIONS,
   CLEAR_FILTER
-} from '../actions/types';
+} from '../types';
 
 const initialState = {
   locations: null,
@@ -19,9 +19,9 @@ const initialState = {
   error: null
 };
 
-// eslint-disable-next-line
 export default function (state = initialState, action) {
   const { type, payload } = action;
+  const { locations } = state;
 
   switch (type) {
     case GET_LOCATIONS:
@@ -29,25 +29,25 @@ export default function (state = initialState, action) {
     case ADD_LOCATION:
       return {
         ...state,
-        locations: [...state.locations, payload],
+        locations: [...locations, payload],
         loading: false
       };
     case UPDATE_LOCATION:
       return {
         ...state,
-        locations: state.locations.map((location) => (location._id === payload._id ? payload : location)),
+        locations: locations.map((location) => (location._id === payload._id ? payload : location)),
         loading: false
       };
     case DELETE_LOCATION:
       return {
         ...state,
-        locations: state.locations.filter((location) => location._id !== payload),
+        locations: locations.filter((location) => location._id !== payload),
         loading: false
       };
     case FILTER_LOCATIONS:
       return {
         ...state,
-        filtered: state.locations.filter((location) => {
+        filtered: locations.filter((location) => {
           const regex = new RegExp(`${action.payload}`, 'gi');
           return location.title.match(regex);
         })
