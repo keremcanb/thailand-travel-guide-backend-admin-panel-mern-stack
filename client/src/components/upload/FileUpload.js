@@ -18,7 +18,7 @@ const FileUpload = ({ updateFileNameToParent }) => {
     const formData = new FormData();
     formData.append('file', file);
     try {
-      await post('/upload', formData, {
+      await api.post('/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

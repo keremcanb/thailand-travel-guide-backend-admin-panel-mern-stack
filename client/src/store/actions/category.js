@@ -1,4 +1,4 @@
-import axios, { get, post, patch } from 'axios';
+import api from '../../utils/api';
 import {
   GET_CATEGORIES,
   SET_LOADING,
@@ -19,7 +19,7 @@ export const setLoading = () => ({
 export const getCategories = () => async (dispatch) => {
   try {
     setLoading();
-    const { data } = await get('/api/categories');
+    const { data } = await api.get('/categories');
     dispatch({
       type: GET_CATEGORIES,
       payload: data
@@ -35,7 +35,7 @@ export const getCategories = () => async (dispatch) => {
 export const addCategory = (category) => async (dispatch) => {
   try {
     setLoading();
-    const { data } = await post('/api/categories', category);
+    const { data } = await api.post('/categories', category);
     dispatch({
       type: ADD_CATEGORY,
       payload: data
@@ -52,7 +52,7 @@ export const addCategory = (category) => async (dispatch) => {
 export const updateCategory = (category) => async (dispatch) => {
   try {
     setLoading();
-    const { data } = await patch(`/api/categories/${category._id}`, category);
+    const { data } = await api.patch(`/categories/${category._id}`, category);
     dispatch({
       type: UPDATE_CATEGORY,
       payload: data
@@ -68,7 +68,7 @@ export const updateCategory = (category) => async (dispatch) => {
 export const deleteCategory = (id) => async (dispatch) => {
   try {
     setLoading();
-    await axios.delete(`/api/categories/${id}`);
+    await api.delete(`/categories/${id}`);
     dispatch({
       type: DELETE_CATEGORY,
       payload: id

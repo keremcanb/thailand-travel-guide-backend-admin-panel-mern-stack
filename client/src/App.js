@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { loadUser } from './store/actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import store from './store/store';
+import { LOGOUT } from './store/types';
 import Routes from './components/routing/Routes';
 import Navbar from './components/layout/Navbar';
 import Login from './screens/auth/Login';
@@ -15,7 +16,16 @@ if (localStorage.token) {
 
 const App = () => {
   useEffect(() => {
+    // check for token in LS
+    if (localStorage.token) {
+      setAuthToken(localStorage.token);
+    }
     store.dispatch(loadUser());
+
+    // log user out from all tabs if they log out in one tab
+    window.addEventListener('storage', () => {
+      if (!localStorage.token) store.dispatch({ type: LOGOUT });
+    });
   }, []);
 
   return (

@@ -1,4 +1,4 @@
-import axios, { get, post, patch } from 'axios';
+import api from '../../utils/api';
 import {
   GET_PLACES,
   SET_LOADING,
@@ -19,7 +19,7 @@ export const setLoading = () => ({
 export const getPlaces = () => async (dispatch) => {
   try {
     setLoading();
-    const { data } = await get('/api/places');
+    const { data } = await api.get('/places');
     dispatch({
       type: GET_PLACES,
       payload: data
@@ -35,7 +35,7 @@ export const getPlaces = () => async (dispatch) => {
 export const addPlace = (place) => async (dispatch) => {
   try {
     setLoading();
-    const { data } = await post('/api/places', place);
+    const { data } = await api.post('/places', place);
     dispatch({
       type: ADD_PLACE,
       payload: data
@@ -52,7 +52,7 @@ export const addPlace = (place) => async (dispatch) => {
 export const updatePlace = (place) => async (dispatch) => {
   try {
     setLoading();
-    const { data } = await patch(`/api/places/${place._id}`, place);
+    const { data } = await api.patch(`/places/${place._id}`, place);
     dispatch({
       type: UPDATE_PLACE,
       payload: data
@@ -68,7 +68,7 @@ export const updatePlace = (place) => async (dispatch) => {
 export const deletePlace = (id) => async (dispatch) => {
   try {
     setLoading();
-    await axios.delete(`/api/places/${id}`);
+    await api.delete(`/places/${id}`);
     dispatch({
       type: DELETE_PLACE,
       payload: id
