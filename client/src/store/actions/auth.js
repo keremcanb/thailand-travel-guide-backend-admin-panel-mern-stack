@@ -8,7 +8,6 @@ const headers = {
   }
 };
 
-// Load User
 export const loadUser = () => async (dispatch) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -26,17 +25,10 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
-// Register User
 export const register = ({ firstName, lastName, email, password }) => async (dispatch) => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  };
   const body = JSON.stringify({ firstName, lastName, email, password });
   try {
-    const { data } = await post('/api/users', body, config);
-
+    const { data } = await post('/api/users', body, headers);
     dispatch({
       type: REGISTER_SUCCESS,
       payload: data
@@ -52,7 +44,6 @@ export const register = ({ firstName, lastName, email, password }) => async (dis
   }
 };
 
-// Login User
 export const login = (email, password) => async (dispatch) => {
   const body = JSON.stringify({ email, password });
   try {
@@ -73,7 +64,6 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
-// Logout / Clear Profile
 export const logout = () => (dispatch) => {
   dispatch({ type: LOGOUT });
 };

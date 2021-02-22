@@ -12,12 +12,10 @@ import {
   CLEAR_FILTER
 } from '../types';
 
-// Set loading to true
 export const setLoading = () => ({
   type: SET_LOADING
 });
 
-// Get places
 export const getPlaces = () => async (dispatch) => {
   try {
     setLoading();
@@ -34,7 +32,6 @@ export const getPlaces = () => async (dispatch) => {
   }
 };
 
-// Add place
 export const addPlace = (place) => async (dispatch) => {
   try {
     setLoading();
@@ -52,7 +49,6 @@ export const addPlace = (place) => async (dispatch) => {
   }
 };
 
-// Update place
 export const updatePlace = (place) => async (dispatch) => {
   try {
     setLoading();
@@ -69,7 +65,6 @@ export const updatePlace = (place) => async (dispatch) => {
   }
 };
 
-// Delete place
 export const deletePlace = (id) => async (dispatch) => {
   try {
     setLoading();
@@ -86,19 +81,15 @@ export const deletePlace = (id) => async (dispatch) => {
   }
 };
 
-// Set current place
 export const setCurrent = (place) => ({
   type: CURRENT_PLACE,
   payload: place
 });
 
-// Clear current place
 export const clearCurrent = () => ({
   type: CLEAR_CURRENT
 });
 
-// Filter
 export const filterPlaces = (text) => ({ type: FILTER_PLACES, payload: text });
 
-// Clear Filter
 export const clearFilter = () => ({ type: CLEAR_FILTER });

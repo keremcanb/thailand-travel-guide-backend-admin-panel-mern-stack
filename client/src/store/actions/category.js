@@ -12,12 +12,10 @@ import {
   CLEAR_FILTER
 } from '../types';
 
-// Set loading to true
 export const setLoading = () => ({
   type: SET_LOADING
 });
 
-// Get categories
 export const getCategories = () => async (dispatch) => {
   try {
     setLoading();
@@ -34,7 +32,6 @@ export const getCategories = () => async (dispatch) => {
   }
 };
 
-// Add category
 export const addCategory = (category) => async (dispatch) => {
   try {
     setLoading();
@@ -52,7 +49,6 @@ export const addCategory = (category) => async (dispatch) => {
   }
 };
 
-// Update category
 export const updateCategory = (category) => async (dispatch) => {
   try {
     setLoading();
@@ -69,7 +65,6 @@ export const updateCategory = (category) => async (dispatch) => {
   }
 };
 
-// Delete category
 export const deleteCategory = (id) => async (dispatch) => {
   try {
     setLoading();
@@ -86,19 +81,15 @@ export const deleteCategory = (id) => async (dispatch) => {
   }
 };
 
-// Set current category
 export const setCurrent = (category) => ({
   type: CURRENT_CATEGORY,
   payload: category
 });
 
-// Clear current category
 export const clearCurrent = () => ({
   type: CLEAR_CURRENT
 });
 
-// Filter
 export const filterCategories = (text) => ({ type: FILTER_CATEGORIES, payload: text });
 
-// Clear Filter
 export const clearFilter = () => ({ type: CLEAR_FILTER });

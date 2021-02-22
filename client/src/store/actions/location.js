@@ -12,12 +12,10 @@ import {
   CLEAR_FILTER
 } from '../types';
 
-// Set loading to true
 export const setLoading = () => ({
   type: SET_LOADING
 });
 
-// Get locations
 export const getLocations = () => async (dispatch) => {
   try {
     setLoading();
@@ -34,7 +32,6 @@ export const getLocations = () => async (dispatch) => {
   }
 };
 
-// Add location
 export const addLocation = (location) => async (dispatch) => {
   try {
     setLoading();
@@ -52,7 +49,6 @@ export const addLocation = (location) => async (dispatch) => {
   }
 };
 
-// Update location
 export const updateLocation = (location) => async (dispatch) => {
   try {
     setLoading();
@@ -69,7 +65,6 @@ export const updateLocation = (location) => async (dispatch) => {
   }
 };
 
-// Delete location
 export const deleteLocation = (id) => async (dispatch) => {
   try {
     setLoading();
@@ -86,19 +81,15 @@ export const deleteLocation = (id) => async (dispatch) => {
   }
 };
 
-// Set current location
 export const setCurrent = (location) => ({
   type: CURRENT_LOCATION,
   payload: location
 });
 
-// Clear current location
 export const clearCurrent = () => ({
   type: CLEAR_CURRENT
 });
 
-// Filter
 export const filterLocations = (text) => ({ type: FILTER_LOCATIONS, payload: text });
 
-// Clear Filter
 export const clearFilter = () => ({ type: CLEAR_FILTER });
