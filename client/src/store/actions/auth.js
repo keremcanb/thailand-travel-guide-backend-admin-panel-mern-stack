@@ -15,7 +15,7 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
-export const register = (formData) => async (dispatch) => {
+export const registerUser = (formData) => async (dispatch) => {
   try {
     const { data } = await api.post('/users', formData);
     dispatch({
@@ -33,7 +33,7 @@ export const register = (formData) => async (dispatch) => {
   }
 };
 
-export const login = (email, password) => async (dispatch) => {
+export const loginUser = (email, password) => async (dispatch) => {
   const body = { email, password };
   try {
     const { data } = await api.post('/auth', body);
@@ -53,4 +53,4 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
-export const logout = () => ({ type: LOGOUT });
+export const logoutUser = () => ({ type: LOGOUT });

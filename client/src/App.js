@@ -4,9 +4,10 @@ import { Provider } from 'react-redux';
 import { loadUser } from './store/actions/auth';
 import setAuthToken from './utils/setAuthToken';
 import store from './store/store';
-import { LOGOUT } from './store/types';
+import { logoutUser } from './store/types';
 import Routes from './components/routing/Routes';
 import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
 import Login from './screens/auth/Login';
 import './App.css';
 
@@ -36,6 +37,7 @@ const App = () => {
           <Route exact path="/" component={Login} />
           <Route component={Routes} />
         </Switch>
+        <Footer />
       </Router>
     </Provider>
   );

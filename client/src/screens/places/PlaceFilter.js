@@ -14,7 +14,7 @@ const PlaceFilter = () => {
     }
   });
 
-  const onChange = (e) => {
+  const onChangeHandler = (e) => {
     if (text.current.value !== '') {
       dispatch(filterPlaces(e.target.value));
     } else {
@@ -24,7 +24,7 @@ const PlaceFilter = () => {
 
   return (
     <Row className="row-grid filter">
-      <TextInput ref={text} placeholder="Filter" onChange={onChange} />
+      <TextInput ref={text} placeholder="Filter" onChange={onChangeHandler} />
     </Row>
   );
 };

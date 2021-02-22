@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { TextInput, Button, Row, Icon, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { register } from '../../store/actions/auth';
+import { registerUser } from '../../store/actions/auth';
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -17,9 +17,9 @@ const Register = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSubmit = async (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
     if (!firstName) {
       M.toast({ html: 'Please enter name' });
@@ -32,7 +32,7 @@ const Register = () => {
     } else if (password !== password2) {
       M.toast({ html: 'Passwords do not match' });
     } else {
-      dispatch(register({ firstName, lastName, email, password }));
+      dispatch(registerUser({ firstName, lastName, email, password }));
     }
   };
 
@@ -42,13 +42,13 @@ const Register = () => {
   return (
     <Container className="center mt auth-container">
       <Row>
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmitHandler}>
           <TextInput
             id="register-name"
             label="Name"
             name="firstName"
             value={firstName}
-            onChange={onChange}
+            onChange={onChangeHandler}
             s={12}
             m={6}
           />
@@ -57,7 +57,7 @@ const Register = () => {
             label="Surname"
             name="lastName"
             value={lastName}
-            onChange={onChange}
+            onChange={onChangeHandler}
             s={12}
             m={6}
           />
@@ -67,7 +67,7 @@ const Register = () => {
             label="Email"
             name="email"
             value={email}
-            onChange={onChange}
+            onChange={onChangeHandler}
             s={12}
             m={12}
           />
@@ -77,7 +77,7 @@ const Register = () => {
             label="Password"
             name="password"
             value={password}
-            onChange={onChange}
+            onChange={onChangeHandler}
             s={12}
             m={6}
           />
@@ -87,7 +87,7 @@ const Register = () => {
             label="Confirm Password"
             name="password2"
             value={password2}
-            onChange={onChange}
+            onChange={onChangeHandler}
             s={12}
             m={6}
           />

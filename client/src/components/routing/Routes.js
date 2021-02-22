@@ -15,7 +15,7 @@ import EditCategory from '../../screens/categories/EditCategory';
 import EditPlace from '../../screens/places/EditPlace';
 
 const Routes = () => (
-  <section className="container">
+  <main className="container">
     <Switch>
       <Route path="/" component={Dashboard} exact />
       <Route path="/login" component={Login} />
@@ -32,7 +32,7 @@ const Routes = () => (
       <PrivateRoute path="/editplace" component={EditPlace} />
       <Route component={NotFound} />
     </Switch>
-  </section>
+  </main>
 );
 
 export default Routes;

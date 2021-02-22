@@ -21,7 +21,7 @@ const AddCategory = ({ history }) => {
   const dispatch = useDispatch();
   const animatedComponents = makeAnimated();
 
-  const onChange = (e) => {
+  const onChangeHandler = (e) => {
     setCategory({ ...category, [e.target.name]: e.target.value });
   };
 
@@ -29,7 +29,7 @@ const AddCategory = ({ history }) => {
     setCategory({ ...category, [action.name]: value });
   };
 
-  const onSubmit = async () => {
+  const onSubmitHandler = async () => {
     if (!title) {
       M.toast({ html: 'Please enter title' });
     } else if (!location) {
@@ -53,7 +53,7 @@ const AddCategory = ({ history }) => {
       </Helmet>
       <Container className="center mt form-container">
         <Row>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmitHandler}>
             <Select
               id="add-cat-loc"
               name="location"
@@ -68,7 +68,14 @@ const AddCategory = ({ history }) => {
                 label: loc.title
               }))}
             />
-            <TextInput id="add-cat-title" name="title" placeholder="Title *" value={title} onChange={onChange} s={12} />
+            <TextInput
+              id="add-cat-title"
+              name="title"
+              placeholder="Title *"
+              value={title}
+              onChange={onChangeHandler}
+              s={12}
+            />
             <FileUpload updateFileNameToParent={setSubmittedFileName} />
           </form>
         </Row>

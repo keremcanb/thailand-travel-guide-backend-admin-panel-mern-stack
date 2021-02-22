@@ -12,11 +12,11 @@ const AddLocation = ({ history }) => {
   const [submittedFileName, setSubmittedFileName] = useState('');
   const dispatch = useDispatch();
 
-  const onChange = (e) => {
+  const onChangeHandler = (e) => {
     setLocation({ ...location, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = () => {
+  const onSubmitHandler = () => {
     if (!title) {
       M.toast({ html: 'Please enter title' });
     } else {
@@ -38,13 +38,13 @@ const AddLocation = ({ history }) => {
       </Helmet>
       <Container className="center mt form-container">
         <Row>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmitHandler}>
             <TextInput
               id="add-loc-title"
               name="title"
               label="Title *"
               value={title}
-              onChange={onChange}
+              onChange={onChangeHandler}
               error="Enter title"
               s={12}
             />

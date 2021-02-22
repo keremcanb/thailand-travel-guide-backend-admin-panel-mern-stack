@@ -14,7 +14,7 @@ const LocationFilter = () => {
     }
   });
 
-  const onChange = (e) => {
+  const onChangeHandler = (e) => {
     if (text.current.value !== '') {
       dispatch(filterLocations(e.target.value));
     } else {
@@ -24,7 +24,7 @@ const LocationFilter = () => {
 
   return (
     <Row className="row-grid filter">
-      <TextInput ref={text} placeholder="Filter" onChange={onChange} />
+      <TextInput ref={text} placeholder="Filter" onChange={onChangeHandler} />
     </Row>
   );
 };

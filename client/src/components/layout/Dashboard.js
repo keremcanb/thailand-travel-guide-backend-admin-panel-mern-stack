@@ -7,7 +7,7 @@ const Dashboard = () => {
   const { user, loading } = auth;
 
   return !loading && user ? (
-    <Row className="center">
+    <Row className="center" style={{ height: '75vh' }}>
       <h1>Welcome {user.firstName}</h1>
       {user.avatar && <img className="circle" src={user.avatar} alt="" />}
     </Row>

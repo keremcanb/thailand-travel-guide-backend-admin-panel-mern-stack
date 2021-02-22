@@ -19,11 +19,11 @@ const EditLocation = ({ history }) => {
     }
   }, [current]);
 
-  const onChange = (e) => {
+  const onChangeHandler = (e) => {
     setLocation({ ...location, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = async () => {
+  const onSubmitHandler = async () => {
     dispatch(
       updateLocation({
         ...location,
@@ -41,8 +41,8 @@ const EditLocation = ({ history }) => {
       </Helmet>
       <Container className="center mt form-container">
         <Row>
-          <form onSubmit={onSubmit}>
-            <TextInput id="edit-loc-title" name="title" label="Title" value={title} onChange={onChange} s={12} />
+          <form onSubmit={onSubmitHandler}>
+            <TextInput id="edit-loc-title" name="title" label="Title" value={title} onChange={onChangeHandler} s={12} />
             <Row>
               <img src={thumbnail} alt="" width="200" />
             </Row>

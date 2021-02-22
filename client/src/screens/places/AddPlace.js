@@ -26,11 +26,11 @@ const AddPlace = ({ history }) => {
   const categories = useResources('categories');
   const dispatch = useDispatch();
 
-  const onChange = (e) => {
+  const onChangeHandler = (e) => {
     setPlace({ ...place, [e.target.name]: e.target.value });
   };
 
-  const onSubmit = async () => {
+  const onSubmitHandler = async () => {
     if (!title) {
       M.toast({ html: 'Please enter title' });
     } else if (!content) {
@@ -58,14 +58,21 @@ const AddPlace = ({ history }) => {
       </Helmet>
       <Container className="center mt form-container">
         <Row>
-          <form onSubmit={onSubmit}>
-            <TextInput id="add-place-title" name="title" label="Title" value={title} onChange={onChange} s={12} />
+          <form onSubmit={onSubmitHandler}>
+            <TextInput
+              id="add-place-title"
+              name="title"
+              label="Title"
+              value={title}
+              onChange={onChangeHandler}
+              s={12}
+            />
             {/* <TextInput
               id="add-place-image"
               name="image"
               label="Image"
               value={image}
-              onChange={onChange}
+              onChange={onChangeHandler}
               s={12}
             /> */}
             <Textarea
@@ -73,10 +80,10 @@ const AddPlace = ({ history }) => {
               name="content"
               label="Content"
               value={content}
-              onChange={onChange}
+              onChange={onChangeHandler}
               s={12}
             />
-            <Select id="add-place-loc" name="location" value={location} onChange={onChange} s={6}>
+            <Select id="add-place-loc" name="location" value={location} onChange={onChangeHandler} s={6}>
               <option disabled value="">
                 Location
               </option>
@@ -86,7 +93,7 @@ const AddPlace = ({ history }) => {
                 </option>
               ))}
             </Select>
-            <Select id="add-place-cat" name="category" value={category} onChange={onChange} s={6}>
+            <Select id="add-place-cat" name="category" value={category} onChange={onChangeHandler} s={6}>
               <option disabled value="">
                 Category
               </option>
@@ -96,10 +103,10 @@ const AddPlace = ({ history }) => {
                 </option>
               ))}
             </Select>
-            <TextInput id="add-place-info" name="info" label="Info" value={info} onChange={onChange} s={12} />
-            <TextInput id="add-place-link" name="link" label="Link" value={link} onChange={onChange} s={12} />
-            <TextInput id="add-place-lat" name="lat" label="Lat" value={lat} onChange={onChange} s={6} />
-            <TextInput id="add-place-lng" name="lng" label="Lng" value={lng} onChange={onChange} s={6} />
+            <TextInput id="add-place-info" name="info" label="Info" value={info} onChange={onChangeHandler} s={12} />
+            <TextInput id="add-place-link" name="link" label="Link" value={link} onChange={onChangeHandler} s={12} />
+            <TextInput id="add-place-lat" name="lat" label="Lat" value={lat} onChange={onChangeHandler} s={6} />
+            <TextInput id="add-place-lng" name="lng" label="Lng" value={lng} onChange={onChangeHandler} s={6} />
             <FileUpload updateFileNameToParent={setSubmittedFileName} />
           </form>
         </Row>

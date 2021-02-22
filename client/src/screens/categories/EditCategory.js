@@ -24,7 +24,7 @@ const EditCategory = ({ history }) => {
     }
   }, [current]);
 
-  const onChange = (e) => {
+  const onChangeHandler = (e) => {
     setCategory({ ...category, [e.target.name]: e.target.value });
   };
 
@@ -32,7 +32,7 @@ const EditCategory = ({ history }) => {
     setCategory({ ...category, [action.name]: value });
   };
 
-  const onSubmit = () => {
+  const onSubmitHandler = () => {
     dispatch(updateCategory({ ...category, thumbnail: submittedFileName }));
     M.toast({ html: `${title} updated` });
     history.push('categories');
@@ -45,7 +45,7 @@ const EditCategory = ({ history }) => {
       </Helmet>
       <Container className="center mt form-container">
         <Row>
-          <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmitHandler}>
             {location &&
               location.map((loc) => (
                 <li style={{ display: 'inline' }} key={loc.value}>
@@ -66,7 +66,7 @@ const EditCategory = ({ history }) => {
                 label: loc.title
               }))}
             />
-            <TextInput id="edit-cat-title" name="title" label="Title" value={title} onChange={onChange} s={12} />
+            <TextInput id="edit-cat-title" name="title" label="Title" value={title} onChange={onChangeHandler} s={12} />
             <Row>
               <img src={thumbnail} alt="" width="200" />
             </Row>

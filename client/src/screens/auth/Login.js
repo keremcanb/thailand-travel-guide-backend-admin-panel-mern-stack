@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { TextInput, Button, Icon, Row, Container } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
-import { login } from '../../store/actions/auth';
+import { loginUser } from '../../store/actions/auth';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -11,18 +11,18 @@ const Login = () => {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
-  const onChange = (e) => {
+  const onChangeHandler = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  const onSubmit = (e) => {
+  const onSubmitHandler = (e) => {
     e.preventDefault();
     if (!email) {
       M.toast({ html: 'Please enter email' });
     } else if (!password) {
       M.toast({ html: 'Please enter password' });
     } else {
-      dispatch(login(email, password));
+      dispatch(loginUser(email, password));
     }
   };
 
@@ -32,13 +32,13 @@ const Login = () => {
   return (
     <Container className="center mt auth-container">
       <Row>
-        <form onSubmit={onSubmit}>
-          <TextInput id="email" label="Email" email value={email} onChange={onChange} s={12} />
+        <form onSubmit={onSubmitHandler}>
+          <TextInput id="email" label="Email" email value={email} onChange={onChangeHandler} s={12} />
           <TextInput
             id="password"
             label="Password"
             value={password}
-            onChange={onChange}
+            onChange={onChangeHandler}
             minLength="6"
             password
             s={12}

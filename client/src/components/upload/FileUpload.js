@@ -8,12 +8,12 @@ const FileUpload = ({ updateFileNameToParent }) => {
   const [filename, setFilename] = useState('Thumbnail *');
   const [message, setMessage] = useState('');
 
-  const onChange = (e) => {
+  const onChangeHandler = (e) => {
     setFile(e.target.files[0]);
     setFilename(e.target.files[0].name);
   };
 
-  const onSubmit = async (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('file', file);
@@ -36,8 +36,8 @@ const FileUpload = ({ updateFileNameToParent }) => {
 
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <TextInput id="add-cat-thumb" name="thumbnail" type="file" label={filename} onChange={onChange} s={12} />
+      <form onSubmit={onSubmitHandler}>
+        <TextInput id="add-cat-thumb" name="thumbnail" type="file" label={filename} onChange={onChangeHandler} s={12} />
         {message && <Message msg={message} />}
         <Button variant="contained" className="blue darken-2 mb" type="submit">
           Submit
