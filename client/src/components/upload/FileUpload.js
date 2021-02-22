@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { post } from 'axios';
 import { Button, Icon, TextInput } from 'react-materialize';
+import api from '../../utils/api';
 import Message from './Message';
 
 const FileUpload = ({ updateFileNameToParent }) => {

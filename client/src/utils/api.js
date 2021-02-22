@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 import axios from 'axios';
 import store from '../store/store';
 import { LOGOUT } from '../store/types';
