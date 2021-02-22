@@ -4,9 +4,9 @@ import { TextInput, Row } from 'react-materialize';
 import { filterPlaces, clearFilter } from '../../store/actions/place';
 
 const PlaceFilter = () => {
-  const filtered = useSelector((state) => state.place.filtered);
   const text = useRef('');
   const dispatch = useDispatch();
+  const filtered = useSelector((state) => state.place.filtered);
 
   useEffect(() => {
     if (!filtered) {

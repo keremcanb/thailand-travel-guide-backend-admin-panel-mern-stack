@@ -6,8 +6,8 @@ import { Helmet } from 'react-helmet';
 import { getPlaces } from '../../store/actions/place';
 import PlaceItem from './PlaceItem';
 import PlaceFilter from './PlaceFilter';
-import Loader from '../../components/layout/Loader';
-import Fab from '../../components/layout/Fab';
+import Loader from '../../components/utils/Loader';
+import Fab from '../../components/utils/Fab';
 
 const Places = () => {
   const dispatch = useDispatch();

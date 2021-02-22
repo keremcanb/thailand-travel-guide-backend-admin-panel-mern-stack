@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Row } from 'react-materialize';
-import Loader from './Loader';
+import Loader from '../utils/Loader';
 
 const Dashboard = () => {
   const auth = useSelector((state) => state.auth);

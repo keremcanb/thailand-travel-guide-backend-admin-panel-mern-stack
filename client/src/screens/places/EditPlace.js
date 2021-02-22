@@ -11,10 +11,10 @@ const EditPlace = ({ history }) => {
   const [place, setPlace] = useState('');
   const { title, thumbnail, content, location, category, info, link, lat, lng } = place;
   const [submittedFileName, setSubmittedFileName] = useState('');
-  const current = useSelector((state) => state.place.current);
   const locations = useResources('locations');
   const categories = useResources('categories');
   const dispatch = useDispatch();
+  const current = useSelector((state) => state.place.current);
 
   useEffect(() => {
     if (current) {

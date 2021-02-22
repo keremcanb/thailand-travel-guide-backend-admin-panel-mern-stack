@@ -17,8 +17,8 @@ const AddCategory = ({ history }) => {
   });
   const { title, location } = category;
   const [submittedFileName, setSubmittedFileName] = useState('');
-  const dispatch = useDispatch();
   const locations = useResources('locations');
+  const dispatch = useDispatch();
   const animatedComponents = makeAnimated();
 
   const onChange = (e) => {

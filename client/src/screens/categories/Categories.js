@@ -6,8 +6,8 @@ import { Helmet } from 'react-helmet';
 import { getCategories } from '../../store/actions/category';
 import CategoryItem from './CategoryItem';
 import CategoryFilter from './CategoryFilter';
-import Loader from '../../components/layout/Loader';
-import Fab from '../../components/layout/Fab';
+import Loader from '../../components/utils/Loader';
+import Fab from '../../components/utils/Fab';
 
 const Categories = () => {
   const dispatch = useDispatch();

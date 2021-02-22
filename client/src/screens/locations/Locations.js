@@ -6,8 +6,8 @@ import { Helmet } from 'react-helmet';
 import { getLocations } from '../../store/actions/location';
 import LocationItem from './LocationItem';
 import LocationFilter from './LocationFilter';
-import Loader from '../../components/layout/Loader';
-import Fab from '../../components/layout/Fab';
+import Loader from '../../components/utils/Loader';
+import Fab from '../../components/utils/Fab';
 
 const Locations = () => {
   const dispatch = useDispatch();
