@@ -12,15 +12,10 @@ import FileUpload from '../../components/upload/FileUpload';
 const EditCategory = ({ history }) => {
   const [category, setCategory] = useState('');
   const { title, thumbnail, location } = category;
-
   const [submittedFileName, setSubmittedFileName] = useState('');
-
   const locations = useResources('locations');
-
   const animatedComponents = makeAnimated();
-
   const current = useSelector((state) => state.category.current);
-
   const dispatch = useDispatch();
 
   useEffect(() => {

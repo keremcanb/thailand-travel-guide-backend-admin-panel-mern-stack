@@ -9,12 +9,9 @@ import FileUpload from '../../components/upload/FileUpload';
 const EditLocation = ({ history }) => {
   const [location, setLocation] = useState('');
   const { title, thumbnail } = location;
-
   const [submittedFileName, setSubmittedFileName] = useState('');
-
-  const current = useSelector((state) => state.location.current);
-
   const dispatch = useDispatch();
+  const current = useSelector((state) => state.location.current);
 
   useEffect(() => {
     if (current) {

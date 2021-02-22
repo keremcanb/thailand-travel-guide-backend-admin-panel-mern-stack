@@ -14,10 +14,8 @@ const Register = () => {
     password2: ''
   });
   const { firstName, lastName, email, password, password2 } = formData;
-
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-
   const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
@@ -41,7 +39,6 @@ const Register = () => {
   if (isAuthenticated) {
     return <Redirect to="/dashboard" />;
   }
-
   return (
     <Container className="center mt auth-container">
       <Row>

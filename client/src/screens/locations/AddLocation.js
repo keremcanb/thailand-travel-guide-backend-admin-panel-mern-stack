@@ -10,12 +10,11 @@ const AddLocation = ({ history }) => {
   const [location, setLocation] = useState({ title: '', thumbnail: '' });
   const { title } = location;
   const [submittedFileName, setSubmittedFileName] = useState('');
+  const dispatch = useDispatch();
 
   const onChange = (e) => {
     setLocation({ ...location, [e.target.name]: e.target.value });
   };
-
-  const dispatch = useDispatch();
 
   const onSubmit = () => {
     if (!title) {

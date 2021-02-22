@@ -5,13 +5,8 @@ import M from 'materialize-css/dist/js/materialize.min.js';
 import { deleteCategory, setCurrent } from '../../store/actions/category';
 
 const CategoryItem = ({ category }) => {
-  const { thumbnail, title } = category;
-
   const dispatch = useDispatch();
-
-  const onClick = () => {
-    dispatch(setCurrent(category));
-  };
+  const { thumbnail, title } = category;
 
   const onDelete = () => {
     dispatch(deleteCategory(category._id));
@@ -32,7 +27,13 @@ const CategoryItem = ({ category }) => {
         >
           <Row className="center">
             <Link to="editcategory">
-              <Button className="blue darken-2 mr" floating node="button" icon={<Icon>edit</Icon>} onClick={onClick} />
+              <Button
+                className="blue darken-2 mr"
+                floating
+                node="button"
+                icon={<Icon>edit</Icon>}
+                onClick={() => dispatch(setCurrent(category))}
+              />
             </Link>
             <Modal
               actions={[

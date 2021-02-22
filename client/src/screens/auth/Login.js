@@ -8,10 +8,8 @@ import { login } from '../../store/actions/auth';
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const { email, password } = formData;
-
-  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-
   const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
@@ -31,7 +29,6 @@ const Login = () => {
   if (isAuthenticated) {
     return <Redirect to="/dashboard" />;
   }
-
   return (
     <Container className="center mt auth-container">
       <Row>

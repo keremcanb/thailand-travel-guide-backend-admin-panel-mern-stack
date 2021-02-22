@@ -4,14 +4,9 @@ import { Navbar, NavItem, Icon } from 'react-materialize';
 import { logout } from '../../store/actions/auth';
 
 const Navigation = () => {
+  const dispatch = useDispatch();
   const auth = useSelector((state) => state.auth);
   const { isAuthenticated, loading } = auth;
-
-  const dispatch = useDispatch();
-
-  const logOut = () => {
-    dispatch(logout());
-  };
 
   const guestLinks = [
     <NavLink key={1} to="/login" href="/login" className="sidenav-close">
@@ -32,7 +27,7 @@ const Navigation = () => {
     <NavLink key={3} to="/places" href="/places" className="sidenav-close">
       Places
     </NavLink>,
-    <NavItem key={4} onClick={logOut}>
+    <NavItem key={4} onClick={() => dispatch(logout())}>
       <Icon>logout</Icon>
     </NavItem>
   ];

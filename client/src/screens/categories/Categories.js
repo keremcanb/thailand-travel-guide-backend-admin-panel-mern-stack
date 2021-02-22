@@ -10,10 +10,9 @@ import Loader from '../../components/layout/Loader';
 import Fab from '../../components/layout/Fab';
 
 const Categories = () => {
+  const dispatch = useDispatch();
   const category = useSelector((state) => state.category);
   const { categories, loading, filtered } = category;
-
-  const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCategories());

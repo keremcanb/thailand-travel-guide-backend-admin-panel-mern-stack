@@ -7,12 +7,7 @@ import { deletePlace, setCurrent } from '../../store/actions/place';
 
 const PlaceItem = ({ place }) => {
   const { thumbnail, title } = place;
-
   const dispatch = useDispatch();
-
-  const onClick = () => {
-    dispatch(setCurrent(place));
-  };
 
   const onDelete = () => {
     dispatch(deletePlace(place._id));
@@ -43,7 +38,13 @@ const PlaceItem = ({ place }) => {
         >
           <Row className="center">
             <Link to="editplace">
-              <Button className="blue darken-2 mr" floating node="button" icon={<Icon>edit</Icon>} onClick={onClick} />
+              <Button
+                className="blue darken-2 mr"
+                floating
+                node="button"
+                icon={<Icon>edit</Icon>}
+                onClick={() => dispatch(setCurrent(place))}
+              />
             </Link>
             <Modal
               actions={[

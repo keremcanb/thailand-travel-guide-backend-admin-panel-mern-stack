@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import { post } from 'axios';
 import { Button, Icon, TextInput } from 'react-materialize';
 import Message from './Message';
 

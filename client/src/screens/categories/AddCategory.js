@@ -16,14 +16,10 @@ const AddCategory = ({ history }) => {
     location: ''
   });
   const { title, location } = category;
-
   const [submittedFileName, setSubmittedFileName] = useState('');
-
-  const locations = useResources('locations');
-
-  const animatedComponents = makeAnimated();
-
   const dispatch = useDispatch();
+  const locations = useResources('locations');
+  const animatedComponents = makeAnimated();
 
   const onChange = (e) => {
     setCategory({ ...category, [e.target.name]: e.target.value });

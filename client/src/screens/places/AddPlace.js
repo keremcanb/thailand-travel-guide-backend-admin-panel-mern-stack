@@ -21,12 +21,9 @@ const AddPlace = ({ history }) => {
     lng: ''
   });
   const { title, content, location, category, info, link, lat, lng } = place;
-
   const [submittedFileName, setSubmittedFileName] = useState('');
-
   const locations = useResources('locations');
   const categories = useResources('categories');
-
   const dispatch = useDispatch();
 
   const onChange = (e) => {
