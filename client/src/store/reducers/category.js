@@ -35,17 +35,13 @@ export default function (state = initialState, action) {
     case UPDATE_CATEGORY:
       return {
         ...state,
-        categories: state.categories.map((category) =>
-          category._id === payload._id ? payload : category
-        ),
+        categories: state.categories.map((category) => (category._id === payload._id ? payload : category)),
         loading: false
       };
     case DELETE_CATEGORY:
       return {
         ...state,
-        categories: state.categories.filter(
-          (category) => category._id !== payload
-        ),
+        categories: state.categories.filter((category) => category._id !== payload),
         loading: false
       };
     case FILTER_CATEGORIES:

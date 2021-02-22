@@ -1,4 +1,3 @@
-import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Navbar, NavItem, Icon } from 'react-materialize';
@@ -24,20 +23,10 @@ const Navigation = () => {
   ];
 
   const authLinks = [
-    <NavLink
-      key={1}
-      to="/locations"
-      href="/locations"
-      className="sidenav-close"
-    >
+    <NavLink key={1} to="/locations" href="/locations" className="sidenav-close">
       Locations
     </NavLink>,
-    <NavLink
-      key={2}
-      to="/categories"
-      href="/categories"
-      className="sidenav-close"
-    >
+    <NavLink key={2} to="/categories" href="/categories" className="sidenav-close">
       Categories
     </NavLink>,
     <NavLink key={3} to="/places" href="/places" className="sidenav-close">
@@ -58,11 +47,7 @@ const Navigation = () => {
       menuIcon={<Icon>menu</Icon>}
       brand={
         <>
-          <img
-            src="/logo.png"
-            alt="logo"
-            style={{ marginRight: '10px', marginTop: '6px' }}
-          />
+          <img src="/logo.png" alt="logo" style={{ marginRight: '10px', marginTop: '6px' }} />
           <a className="brand-logo" href="/">
             TGR
           </a>

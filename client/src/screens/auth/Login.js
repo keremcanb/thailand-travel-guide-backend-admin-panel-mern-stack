@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { TextInput, Button, Icon, Row, Container } from 'react-materialize';
@@ -36,14 +36,7 @@ const Login = () => {
     <Container className="center mt auth-container">
       <Row>
         <form onSubmit={onSubmit}>
-          <TextInput
-            id="email"
-            label="Email"
-            email
-            value={email}
-            onChange={onChange}
-            s={12}
-          />
+          <TextInput id="email" label="Email" email value={email} onChange={onChange} s={12} />
           <TextInput
             id="password"
             label="Password"
@@ -54,12 +47,7 @@ const Login = () => {
             s={12}
           />
           <Row s={12} m={12}>
-            <Button
-              className="blue darken-2"
-              type="submit"
-              value="Login"
-              variant="contained"
-            >
+            <Button className="blue darken-2" type="submit" value="Login" variant="contained">
               Login
               <Icon right>login</Icon>
             </Button>

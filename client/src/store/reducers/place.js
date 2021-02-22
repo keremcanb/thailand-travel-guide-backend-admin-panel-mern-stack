@@ -35,9 +35,7 @@ export default function (state = initialState, action) {
     case UPDATE_PLACE:
       return {
         ...state,
-        places: state.places.map((place) =>
-          place._id === payload._id ? payload : place
-        ),
+        places: state.places.map((place) => (place._id === payload._id ? payload : place)),
         loading: false
       };
     case DELETE_PLACE:

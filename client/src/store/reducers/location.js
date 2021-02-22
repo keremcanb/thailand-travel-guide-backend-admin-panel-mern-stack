@@ -35,17 +35,13 @@ export default function (state = initialState, action) {
     case UPDATE_LOCATION:
       return {
         ...state,
-        locations: state.locations.map((location) =>
-          location._id === payload._id ? payload : location
-        ),
+        locations: state.locations.map((location) => (location._id === payload._id ? payload : location)),
         loading: false
       };
     case DELETE_LOCATION:
       return {
         ...state,
-        locations: state.locations.filter(
-          (location) => location._id !== payload
-        ),
+        locations: state.locations.filter((location) => location._id !== payload),
         loading: false
       };
     case FILTER_LOCATIONS:

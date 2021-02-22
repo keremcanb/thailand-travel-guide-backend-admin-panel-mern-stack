@@ -14,10 +14,7 @@ router.post(
   '/',
   [
     check('email', 'Please include a valid email').isEmail(),
-    check(
-      'password',
-      'Please enter a password with 6 or more characters'
-    ).isLength({ min: 6 })
+    check('password', 'Please enter a password with 6 or more characters').isLength({ min: 6 })
   ],
   async (req, res) => {
     const errors = validationResult(req);
@@ -28,9 +25,7 @@ router.post(
     try {
       let user = await User.findOne({ email });
       if (user) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: 'User already exists' }] });
+        return res.status(400).json({ errors: [{ msg: 'User already exists' }] });
       }
       user = new User({
         firstName,
@@ -46,20 +41,15 @@ router.post(
           id: user.id
         }
       };
-      jwt.sign(
-        payload,
-        `${process.env.JWT_SECRET}`,
-        { expiresIn: 360000 },
-        (err, token) => {
-          if (err) throw err;
-          res.status(201).json({
-            token,
-            success: true,
-            message: 'User created!',
-            errors: []
-          });
-        }
-      );
+      jwt.sign(payload, `${process.env.JWT_SECRET}`, { expiresIn: 360000 }, (err, token) => {
+        if (err) throw err;
+        res.status(201).json({
+          token,
+          success: true,
+          message: 'User created!',
+          errors: []
+        });
+      });
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');

@@ -13,11 +13,9 @@ import {
 } from './types';
 
 // Set loading to true
-export const setLoading = () => {
-  return {
-    type: SET_LOADING
-  };
-};
+export const setLoading = () => ({
+  type: SET_LOADING
+});
 
 // Get places
 export const getPlaces = () => async (dispatch) => {
@@ -92,26 +90,18 @@ export const deletePlace = (id) => async (dispatch) => {
 };
 
 // Set current place
-export const setCurrent = (place) => {
-  return {
-    type: CURRENT_PLACE,
-    payload: place
-  };
-};
+export const setCurrent = (place) => ({
+  type: CURRENT_PLACE,
+  payload: place
+});
 
 // Clear current place
-export const clearCurrent = () => {
-  return {
-    type: CLEAR_CURRENT
-  };
-};
+export const clearCurrent = () => ({
+  type: CLEAR_CURRENT
+});
 
 // Filter
-export const filterPlaces = (text) => {
-  return { type: FILTER_PLACES, payload: text };
-};
+export const filterPlaces = (text) => ({ type: FILTER_PLACES, payload: text });
 
 // Clear Filter
-export const clearFilter = () => {
-  return { type: CLEAR_FILTER };
-};
+export const clearFilter = () => ({ type: CLEAR_FILTER });

@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TextInput, Row } from 'react-materialize';
 import { filterCategories, clearFilter } from '../../store/actions/category';

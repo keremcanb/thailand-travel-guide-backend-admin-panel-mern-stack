@@ -1,15 +1,6 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import {
-  Col,
-  Row,
-  Icon,
-  Card,
-  CardTitle,
-  Modal,
-  Button
-} from 'react-materialize';
+import { Col, Row, Icon, Card, CardTitle, Modal, Button } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { deleteLocation, setCurrent } from '../../store/actions/location';
 
@@ -41,13 +32,7 @@ const LocationItem = ({ location }) => {
         >
           <Row className="center">
             <Link to="editlocation">
-              <Button
-                className="blue darken-2 mr"
-                floating
-                node="button"
-                icon={<Icon>edit</Icon>}
-                onClick={onClick}
-              />
+              <Button className="blue darken-2 mr" floating node="button" icon={<Icon>edit</Icon>} onClick={onClick} />
             </Link>
             <Modal
               actions={[

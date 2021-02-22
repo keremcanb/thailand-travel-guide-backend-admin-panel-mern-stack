@@ -1,16 +1,7 @@
-import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 // import FadeIn from 'react-lazyload-fadein';
-import {
-  Col,
-  Row,
-  Icon,
-  Card,
-  CardTitle,
-  Modal,
-  Button
-} from 'react-materialize';
+import { Col, Row, Icon, Card, CardTitle, Modal, Button } from 'react-materialize';
 import M from 'materialize-css/dist/js/materialize.min.js';
 import { deletePlace, setCurrent } from '../../store/actions/place';
 
@@ -52,13 +43,7 @@ const PlaceItem = ({ place }) => {
         >
           <Row className="center">
             <Link to="editplace">
-              <Button
-                className="blue darken-2 mr"
-                floating
-                node="button"
-                icon={<Icon>edit</Icon>}
-                onClick={onClick}
-              />
+              <Button className="blue darken-2 mr" floating node="button" icon={<Icon>edit</Icon>} onClick={onClick} />
             </Link>
             <Modal
               actions={[

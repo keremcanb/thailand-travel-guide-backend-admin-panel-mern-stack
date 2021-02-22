@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import makeAnimated from 'react-select/animated';
 import Select from 'react-select';
@@ -72,14 +72,7 @@ const AddCategory = ({ history }) => {
                 label: loc.title
               }))}
             />
-            <TextInput
-              id="add-cat-title"
-              name="title"
-              placeholder="Title *"
-              value={title}
-              onChange={onChange}
-              s={12}
-            />
+            <TextInput id="add-cat-title" name="title" placeholder="Title *" value={title} onChange={onChange} s={12} />
             <FileUpload updateFileNameToParent={setSubmittedFileName} />
           </form>
         </Row>

@@ -13,11 +13,9 @@ import {
 } from './types';
 
 // Set loading to true
-export const setLoading = () => {
-  return {
-    type: SET_LOADING
-  };
-};
+export const setLoading = () => ({
+  type: SET_LOADING
+});
 
 // Get locations
 export const getLocations = () => async (dispatch) => {
@@ -63,10 +61,7 @@ export const updateLocation = (location) => async (dispatch) => {
   try {
     setLoading();
 
-    const { data } = await axios.patch(
-      `/api/locations/${location._id}`,
-      location
-    );
+    const { data } = await axios.patch(`/api/locations/${location._id}`, location);
 
     dispatch({
       type: UPDATE_LOCATION,
@@ -100,26 +95,18 @@ export const deleteLocation = (id) => async (dispatch) => {
 };
 
 // Set current location
-export const setCurrent = (location) => {
-  return {
-    type: CURRENT_LOCATION,
-    payload: location
-  };
-};
+export const setCurrent = (location) => ({
+  type: CURRENT_LOCATION,
+  payload: location
+});
 
 // Clear current location
-export const clearCurrent = () => {
-  return {
-    type: CLEAR_CURRENT
-  };
-};
+export const clearCurrent = () => ({
+  type: CLEAR_CURRENT
+});
 
 // Filter
-export const filterLocations = (text) => {
-  return { type: FILTER_LOCATIONS, payload: text };
-};
+export const filterLocations = (text) => ({ type: FILTER_LOCATIONS, payload: text });
 
 // Clear Filter
-export const clearFilter = () => {
-  return { type: CLEAR_FILTER };
-};
+export const clearFilter = () => ({ type: CLEAR_FILTER });

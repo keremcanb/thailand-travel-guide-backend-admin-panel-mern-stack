@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Row, Col } from 'react-materialize';
@@ -29,12 +29,8 @@ const Locations = () => {
         <Row>
           <Col className="grid-style">
             {filtered
-              ? filtered.map((item) => (
-                  <LocationItem key={item._id} location={item} />
-                ))
-              : locations.map((item) => (
-                  <LocationItem key={item._id} location={item} />
-                ))}
+              ? filtered.map((item) => <LocationItem key={item._id} location={item} />)
+              : locations.map((item) => <LocationItem key={item._id} location={item} />)}
           </Col>
         </Row>
       ) : (

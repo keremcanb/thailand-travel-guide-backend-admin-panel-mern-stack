@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
@@ -52,13 +52,11 @@ const EditCategory = ({ history }) => {
         <Row>
           <form onSubmit={onSubmit}>
             {location &&
-              location.map((loc) => {
-                return (
-                  <li style={{ display: 'inline' }} key={loc.value}>
-                    {loc.label},{' '}
-                  </li>
-                );
-              })}
+              location.map((loc) => (
+                <li style={{ display: 'inline' }} key={loc.value}>
+                  {loc.label},{' '}
+                </li>
+              ))}
             <Select
               id="edit-cat-loc"
               name="locations"
@@ -73,14 +71,7 @@ const EditCategory = ({ history }) => {
                 label: loc.title
               }))}
             />
-            <TextInput
-              id="edit-cat-title"
-              name="title"
-              label="Title"
-              value={title}
-              onChange={onChange}
-              s={12}
-            />
+            <TextInput id="edit-cat-title" name="title" label="Title" value={title} onChange={onChange} s={12} />
             <Row>
               <img src={thumbnail} alt="" width="200" />
             </Row>

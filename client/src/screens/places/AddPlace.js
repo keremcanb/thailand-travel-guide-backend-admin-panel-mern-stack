@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { TextInput, Textarea, Select, Row, Container } from 'react-materialize';
@@ -62,14 +62,7 @@ const AddPlace = ({ history }) => {
       <Container className="center mt form-container">
         <Row>
           <form onSubmit={onSubmit}>
-            <TextInput
-              id="add-place-title"
-              name="title"
-              label="Title"
-              value={title}
-              onChange={onChange}
-              s={12}
-            />
+            <TextInput id="add-place-title" name="title" label="Title" value={title} onChange={onChange} s={12} />
             {/* <TextInput
               id="add-place-image"
               name="image"
@@ -86,13 +79,7 @@ const AddPlace = ({ history }) => {
               onChange={onChange}
               s={12}
             />
-            <Select
-              id="add-place-loc"
-              name="location"
-              value={location}
-              onChange={onChange}
-              s={6}
-            >
+            <Select id="add-place-loc" name="location" value={location} onChange={onChange} s={6}>
               <option disabled value="">
                 Location
               </option>
@@ -102,13 +89,7 @@ const AddPlace = ({ history }) => {
                 </option>
               ))}
             </Select>
-            <Select
-              id="add-place-cat"
-              name="category"
-              value={category}
-              onChange={onChange}
-              s={6}
-            >
+            <Select id="add-place-cat" name="category" value={category} onChange={onChange} s={6}>
               <option disabled value="">
                 Category
               </option>
@@ -118,38 +99,10 @@ const AddPlace = ({ history }) => {
                 </option>
               ))}
             </Select>
-            <TextInput
-              id="add-place-info"
-              name="info"
-              label="Info"
-              value={info}
-              onChange={onChange}
-              s={12}
-            />
-            <TextInput
-              id="add-place-link"
-              name="link"
-              label="Link"
-              value={link}
-              onChange={onChange}
-              s={12}
-            />
-            <TextInput
-              id="add-place-lat"
-              name="lat"
-              label="Lat"
-              value={lat}
-              onChange={onChange}
-              s={6}
-            />
-            <TextInput
-              id="add-place-lng"
-              name="lng"
-              label="Lng"
-              value={lng}
-              onChange={onChange}
-              s={6}
-            />
+            <TextInput id="add-place-info" name="info" label="Info" value={info} onChange={onChange} s={12} />
+            <TextInput id="add-place-link" name="link" label="Link" value={link} onChange={onChange} s={12} />
+            <TextInput id="add-place-lat" name="lat" label="Lat" value={lat} onChange={onChange} s={6} />
+            <TextInput id="add-place-lng" name="lng" label="Lng" value={lng} onChange={onChange} s={6} />
             <FileUpload updateFileNameToParent={setSubmittedFileName} />
           </form>
         </Row>

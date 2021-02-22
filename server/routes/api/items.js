@@ -77,25 +77,20 @@ router.get('/places/:id', async (req, res) => {
 // @route    POST api/items
 // @desc     Create an item
 // @access   Private
-router.post(
-  '/locations',
-  auth,
-  [check('title', 'Text is required').not().isEmpty()],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-    try {
-      const newLocation = new Location(req.body);
-      const location = await newLocation.save();
-      res.json(location);
-    } catch (err) {
-      console.error(err.message);
-      res.status(500).send('Server Error');
-    }
+router.post('/locations', auth, [check('title', 'Text is required').not().isEmpty()], async (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array() });
   }
-);
+  try {
+    const newLocation = new Location(req.body);
+    const location = await newLocation.save();
+    res.json(location);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
 router.post('/categories', auth, async (req, res) => {
   const errors = validationResult(req);

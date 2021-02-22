@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector } from 'react-redux';
 import { Row } from 'react-materialize';
 import Loader from './Loader';

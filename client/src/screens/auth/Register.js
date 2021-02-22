@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import { TextInput, Button, Row, Icon, Container } from 'react-materialize';
@@ -19,8 +19,7 @@ const Register = () => {
 
   const dispatch = useDispatch();
 
-  const onChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const onChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -96,12 +95,7 @@ const Register = () => {
             m={6}
           />
           <Row s={12} m={12}>
-            <Button
-              className="blue darken-2"
-              type="submit"
-              variant="contained"
-              value="Register"
-            >
+            <Button className="blue darken-2" type="submit" variant="contained" value="Register">
               Register
               <Icon right>add</Icon>
             </Button>

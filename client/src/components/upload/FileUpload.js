@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { Button, Icon, TextInput } from 'react-materialize';
 import Message from './Message';
@@ -37,14 +37,7 @@ const FileUpload = ({ updateFileNameToParent }) => {
   return (
     <>
       <form onSubmit={onSubmit}>
-        <TextInput
-          id="add-cat-thumb"
-          name="thumbnail"
-          type="file"
-          label={filename}
-          onChange={onChange}
-          s={12}
-        />
+        <TextInput id="add-cat-thumb" name="thumbnail" type="file" label={filename} onChange={onChange} s={12} />
         {message && <Message msg={message} />}
         <Button variant="contained" className="blue darken-2 mb" type="submit">
           Submit

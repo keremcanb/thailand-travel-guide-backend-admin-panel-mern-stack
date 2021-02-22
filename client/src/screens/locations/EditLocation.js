@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import { TextInput, Row, Container } from 'react-materialize';
@@ -45,14 +45,7 @@ const EditLocation = ({ history }) => {
       <Container className="center mt form-container">
         <Row>
           <form onSubmit={onSubmit}>
-            <TextInput
-              id="edit-loc-title"
-              name="title"
-              label="Title"
-              value={title}
-              onChange={onChange}
-              s={12}
-            />
+            <TextInput id="edit-loc-title" name="title" label="Title" value={title} onChange={onChange} s={12} />
             <Row>
               <img src={thumbnail} alt="" width="200" />
             </Row>
