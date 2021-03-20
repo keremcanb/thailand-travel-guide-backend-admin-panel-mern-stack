@@ -12,8 +12,8 @@ import {
 } from '../types';
 
 const initialState = {
-  places: null,
-  current: null,
+  places: [],
+  current: {},
   loading: false,
   filtered: null,
   error: null
